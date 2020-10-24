@@ -11,6 +11,7 @@
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "contentful": "^7.14.8",
+    "date-fns": "^2.16.1",
     "next": "latest",
     "next-google-fonts": "^1.2.1",
     "prism-react-renderer": "^1.1.1",
@@ -27,10 +28,22 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "image-trace-loader": "^1.0.2",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^8.0.0",
+    "jimp": "^0.16.1",
+    "lqip-loader": "^2.2.1",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.6.2",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
-    "tailwindcss": "^1.7.4"
+    "responsive-loader": "^2.2.0",
+    "svg-sprite-loader": "^5.0.0",
+    "tailwindcss": "^1.7.4",
+    "webp-loader": "^0.6.0"
   },
   "license": "MIT"
 }

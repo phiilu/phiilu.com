@@ -6,7 +6,8 @@
       "@hooks/*": ["hooks/*"],
       "@lib/*": ["lib/*"],
       "@helpers/*": ["helpers/*"],
-      "@images/*": ["images/*"]
+      "@images/*": ["images/*"],
+      "@md/*": ["md/*"]
     }
   }
 }

@@ -1,12 +1,20 @@
 import Layout from '@components/Layout/Layout';
 import Head from '@components/Head/Head';
+import Container from '@components/Container/Container';
+import Markdown from '@components/Markdown/Markdown';
+
+import usesMarkdown from '@md/uses.md';
 
 const Uses = () => {
   return (
     <>
       <Head title="Uses" />
       <Layout>
-        <h1>Uses</h1>
+        <Container as="main" className="space-y-4 xl:space-y-0">
+          <div className="space-y-12">
+            <Markdown>{usesMarkdown}</Markdown>
+          </div>
+        </Container>
       </Layout>
     </>
   );

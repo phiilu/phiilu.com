@@ -40,6 +40,7 @@
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
+    "raw-loader": "^4.0.2",
     "responsive-loader": "^2.2.0",
     "svg-sprite-loader": "^5.0.0",
     "tailwindcss": "^1.7.4",

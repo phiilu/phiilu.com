@@ -15,7 +15,6 @@ export default {
       content_type
     });
     if (entries.items) {
-      console.log(entries.items);
       return entries.items.map(transformPost);
     }
     throw new Error(`Error getting Entries for post.`);

@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@tailwindcss/ui": "^0.6.2",
-    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "contentful": "^7.14.8",
     "date-fns": "^2.16.1",
@@ -18,7 +17,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^5.0.2",
-    "react-syntax-highlighter": "^15.2.1",
     "use-clipboard-copy": "^0.1.2"
   },
   "devDependencies": {

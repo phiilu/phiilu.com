@@ -22,6 +22,7 @@
     "use-clipboard-copy": "^0.1.2"
   },
   "devDependencies": {
+    "@wordpress/wordcount": "^2.13.0",
     "eslint": "^7.12.0",
     "eslint-config-prettier": "^6.14.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",

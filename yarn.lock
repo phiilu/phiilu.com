@@ -1026,7 +1026,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.1.tgz#b4116a6b6711d010b2dad3b7b6e43bf1b9954740"
   integrity sha512-J5AIf3vPj3UwXaAzb5j1xM4WAQDX3EMgemF8rjCP3SoW09LfRKAXQKt6CoVYl230P6iWdRcBbnLDDdnqWxZSCA==
@@ -2015,6 +2015,14 @@
     "@webassemblyjs/ast" "1.9.0"
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
+
+"@wordpress/wordcount@^2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/wordcount/-/wordcount-2.13.0.tgz#833573c1207f6bcc61dd43fc910236f3ad633a58"
+  integrity sha512-pml9Nc+/eICxCijQjtiJ1gCv0Z4uzWwFxEQe9XKbo5wd0LTq57NkaudxvoUgwAzS/s+60tpWgWPgR1n8S0rWOQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    lodash "^4.17.19"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"

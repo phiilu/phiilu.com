@@ -1,4 +1,5 @@
 const contentful = require('contentful');
+const transformPost = require('@helpers/transformPost').default;
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -13,8 +14,11 @@ export default {
     const entries = await client.getEntries({
       content_type
     });
-    if (entries.items) return entries.items;
-    console.log(`Error getting Entries for post.`);
+    if (entries.items) {
+      console.log(entries.items);
+      return entries.items.map(transformPost);
+    }
+    throw new Error(`Error getting Entries for post.`);
   },
   async getPostEntry(slug) {
     const entry = await client.getEntries({
@@ -24,9 +28,6 @@ export default {
 
     if (entry.total > 1) throw new Error('slug is not unique and returns more than 1 post');
 
-    const { tags: origTags, ...fields } = entry.items[0].fields;
-    const tags = origTags.map((tag) => tag.fields);
-
-    return { ...fields, tags };
+    return transformPost(entry.items[0]);
   }
 };

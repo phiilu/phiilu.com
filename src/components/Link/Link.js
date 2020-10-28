@@ -6,11 +6,18 @@ import trackEvent from '@helpers/tracking';
 
 const cn = 'link';
 
-const Link = ({ children, activeClassName, to, className, ...props }) => {
+const Link = ({ children, activeClassName, to, className, tracking, ...props }) => {
   const { pathname } = useRouter();
 
   function handleOutboundLinkClicked() {
     trackEvent('click', 'Outbound Link');
+    handleTracking();
+  }
+
+  function handleTracking() {
+    if (tracking) {
+      trackEvent(tracking);
+    }
   }
 
   if (to.startsWith('http')) {
@@ -30,7 +37,7 @@ const Link = ({ children, activeClassName, to, className, ...props }) => {
   }
 
   return (
-    <NextLink {...props} href={to}>
+    <NextLink {...props} href={to} onClick={handleTracking}>
       <a
         className={classNames(cn, className, {
           [activeClassName]: pathname === to

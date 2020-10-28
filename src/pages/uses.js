@@ -9,16 +9,17 @@ import getOgImage from '@lib/getOgImage';
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
   const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
+  const baseUrl = process.env.BASE_URL;
 
   return {
-    props: { ogImage }
+    props: { ogImage, baseUrl }
   };
 }
 
-const Uses = ({ ogImage }) => {
+const Uses = ({ ogImage, baseUrl }) => {
   return (
     <>
-      <Head title="Uses" url={`/uses`} image={ogImage} />
+      <Head title="Uses" url={`${baseUrl}/uses`} image={ogImage} />
       <Layout>
         <Container as="main" className="space-y-4 xl:space-y-0">
           <div className="space-y-12">

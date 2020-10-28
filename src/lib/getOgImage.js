@@ -3,9 +3,9 @@ const { createHash } = require('crypto');
 const fs = require('fs');
 
 async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
-  // if (process.env.NODE_ENV === 'development') {
-  //   return 'og image will be generated in production';
-  // }
+  if (process.env.NODE_ENV === 'development') {
+    return 'og image will be generated in production';
+  }
 
   const url = `${baseUrl}${path}`;
   const hash = createHash('md5').update(url).digest('hex');

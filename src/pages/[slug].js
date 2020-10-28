@@ -18,9 +18,10 @@ export async function getStaticProps({ params: { slug } }) {
   const ogImage = await getOgImage(
     `/phiilu.com?title=${post.title}&url=${process.env.BASE_URL}/${slug}`
   );
+  const baseUrl = process.env.BASE_URL;
 
   return {
-    props: { post, ogImage }
+    props: { post, ogImage, baseUrl }
   };
 }
 
@@ -132,7 +133,8 @@ function ShareOnTwitterCta({ onClick }) {
 
 const PostDetails = ({
   post: { title, slug, content, icon, rawDate, date, tags, published, timeToRead },
-  ogImage
+  ogImage,
+  baseUrl
 }) => {
   const handleSocialShare = React.useCallback(
     (url, name, windowSize) => (e) => {
@@ -142,11 +144,11 @@ const PostDetails = ({
     []
   );
 
-  const url = `${process.env.BASE_URL}/${slug}`;
+  const url = `${baseUrl}/${slug}`;
 
   return (
     <>
-      <Head title={title} description={title} url={`/${slug}`} image={ogImage} date={rawDate} />
+      <Head title={title} description={title} url={url} image={ogImage} date={rawDate} />
       <Layout>
         <Container as="main">
           <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">

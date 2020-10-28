@@ -17,9 +17,10 @@ export async function getStaticProps({ params: { slug } }) {
   const ogImage = await getOgImage(
     `/phiilu.com?title=Tag: ${tag.title}&url=${process.env.BASE_URL}/tag/${slug}`
   );
+  const baseUrl = process.env.BASE_URL;
 
   return {
-    props: { tag, posts, ogImage }
+    props: { tag, posts, ogImage, baseUrl }
   };
 }
 
@@ -35,7 +36,7 @@ export async function getStaticPaths() {
   };
 }
 
-function TagDetail({ tag, posts, ogImage }) {
+function TagDetail({ tag, posts, ogImage, baseUrl }) {
   const { description, bg, text, title, mainColor } = { ...tagColors[tag.slug], ...tag };
   const count = posts.length;
 
@@ -44,7 +45,7 @@ function TagDetail({ tag, posts, ogImage }) {
       <Head
         title={`Tag: ${title}`}
         description={description}
-        url={`/tag/${tag.slug}`}
+        url={`${baseUrl}/tag/${tag.slug}`}
         image={ogImage}
       />
       <Container as="main" noMargin>

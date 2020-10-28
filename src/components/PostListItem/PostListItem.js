@@ -18,13 +18,15 @@ const PostListItem = ({ post: { slug, title, description, published, icon, date,
         <div className="relative z-10 space-y-4 pointer-events-none xl:space-y-0 xl:grid xl:grid-cols-4 xl:col-gap-6">
           <DraftBadge isPublished={published}></DraftBadge>
           <div className="flex items-center pr-2 xl:space-x-6 xl:pb-0 xl:col-span-3">
-            <Image
-              src={`https:${icon.url}`}
-              height="48"
-              width="48"
-              alt={icon.alt}
-              className="hidden w-12 h-12 xl:inline-block"
-            />
+            <div className="hidden w-12 h-12 xl:inline-block">
+              <Image
+                src={`https:${icon.url}`}
+                height={48}
+                width={48}
+                alt={icon.alt}
+                className="object-cover"
+              />
+            </div>
             <div className="space-y-2">
               <Heading size="h2" noMargin>
                 {title}
@@ -33,13 +35,15 @@ const PostListItem = ({ post: { slug, title, description, published, icon, date,
             </div>
           </div>
           <div className="flex items-center pt-4 space-x-6 border-t border-gray-200 xl:pl-4 xl:pt-0 xl:space-x-0 xl:border-l xl:border-t-0">
-            <Image
-              src={`https:${icon.url}`}
-              height="48"
-              width="48"
-              alt={icon.alt}
-              className="inline-block w-12 h-12 xl:hidden"
-            />
+            <div className="inline-block w-12 h-12 xl:hidden">
+              <Image
+                src={`https:${icon.url}`}
+                height={48}
+                width={48}
+                alt={icon.alt}
+                className="object-cover"
+              />
+            </div>
             <div>
               <dl>
                 <dt className="sr-only">Published on</dt>

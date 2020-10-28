@@ -23,7 +23,7 @@ export default function IndexPage({ posts, ogImage }) {
   return (
     <>
       <Head
-        title="Phiilu's Blog"
+        title="Home"
         description="Welcome to my blog!"
         image={ogImage}
         url="https://phiilu.com/"

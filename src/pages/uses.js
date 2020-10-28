@@ -4,11 +4,21 @@ import Container from '@components/Container/Container';
 import Markdown from '@components/Markdown/Markdown';
 
 import usesMarkdown from '@md/uses.md';
+import getOgImage from '@lib/getOgImage';
 
-const Uses = () => {
+export async function getStaticProps() {
+  const title = "Phiilu's Blog";
+  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=https://phiilu.com/`);
+
+  return {
+    props: { ogImage }
+  };
+}
+
+const Uses = ({ ogImage }) => {
   return (
     <>
-      <Head title="Uses" />
+      <Head title="Uses" url={`https://phiilu.com/uses`} image={ogImage} />
       <Layout>
         <Container as="main" className="space-y-4 xl:space-y-0">
           <div className="space-y-12">

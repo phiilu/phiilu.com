@@ -29,7 +29,9 @@ const Head = ({ children, title, description, url, date, image }) => {
       <meta name="twitter:description" content={description} />
       {image && <meta name="twitter:image" content={image} />}
 
-      <title>{title}</title>
+      {url && <link rel="canonical" href={url} />}
+
+      <title>{title} | Phiilu</title>
 
       {children}
     </NextHead>

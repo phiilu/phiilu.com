@@ -7,15 +7,20 @@ import Heading from '@components/Heading/Heading';
 import Link from '@components/Link/Link';
 import Button from '@components/Button/Button';
 import contentful from '@lib/contentful';
+import ogImage from '@lib/ogImage';
 import Comments from '@components/Comments/Comments';
 import Tags from '@components/Tags/Tags';
 import DraftBadge from '@components/DraftBadge/DraftBadge';
+import Head from '@components/Head/Head';
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getPostEntry(slug);
+  const image = await ogImage(
+    `https://og-image.phiilu.com/phiilu.com?title=${post.title}&url=https://phiilu.com/${slug}`
+  );
 
   return {
-    props: { post }
+    props: { post, ogImage: image }
   };
 }
 
@@ -126,7 +131,8 @@ function ShareOnTwitterCta({ onClick }) {
 }
 
 const PostDetails = ({
-  post: { title, slug, content, icon, date, tags, published, timeToRead }
+  post: { title, slug, content, icon, date, tags, published, timeToRead },
+  ogImage
 }) => {
   const handleSocialShare = React.useCallback(
     (url, name, windowSize) => (e) => {
@@ -139,38 +145,43 @@ const PostDetails = ({
   const url = `https://phiilu.com/${slug}`;
 
   return (
-    <Layout>
-      <Container as="main">
-        <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">
-          <DraftBadge isPublished={published}></DraftBadge>
-          <Heading noMargin className="pb-4 xl:pb-0 xl:mb-8 xl:col-span-3">
-            {title}
-          </Heading>
-          <div className="order-1 space-y-10 xl:order-none xl:col-span-3">
-            <Markdown>{content}</Markdown>
-            <hr className="border-gray-200" />
-            <ShareOnTwitterCta
+    <>
+      <Head>
+        <meta property="og:image" content={`data:image/png;base64,${ogImage}`}></meta>
+      </Head>
+      <Layout>
+        <Container as="main">
+          <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">
+            <DraftBadge isPublished={published}></DraftBadge>
+            <Heading noMargin className="pb-4 xl:pb-0 xl:mb-8 xl:col-span-3">
+              {title}
+            </Heading>
+            <div className="order-1 space-y-10 xl:order-none xl:col-span-3">
+              <Markdown>{content}</Markdown>
+              <hr className="border-gray-200" />
+              <ShareOnTwitterCta
+                title={title}
+                onClick={handleSocialShare(
+                  `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
+                  'twitter-share',
+                  'width=550,height=235'
+                )}
+              />
+              <Comments />
+            </div>
+            <PostSidebar
+              icon={icon}
+              date={date}
+              tags={tags}
+              timeToRead={timeToRead}
               title={title}
-              onClick={handleSocialShare(
-                `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
-                'twitter-share',
-                'width=550,height=235'
-              )}
+              url={url}
+              handleSocialShare={handleSocialShare}
             />
-            <Comments />
-          </div>
-          <PostSidebar
-            icon={icon}
-            date={date}
-            tags={tags}
-            timeToRead={timeToRead}
-            title={title}
-            url={url}
-            handleSocialShare={handleSocialShare}
-          />
-        </article>
-      </Container>
-    </Layout>
+          </article>
+        </Container>
+      </Layout>
+    </>
   );
 };
 

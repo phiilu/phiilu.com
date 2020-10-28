@@ -4,11 +4,9 @@ import Head from '@components/Head/Head';
 import PostListItem from '@components/PostListItem/PostListItem';
 import Link from '@components/Link/Link';
 import Heading from '@components/Heading/Heading';
+import Image from 'next/image';
 
 import contentful from '@lib/contentful';
-
-import meImage from '@images/me.jpeg?resize&size=400&trace';
-import meImageTrace from '@images/me.jpeg?trace';
 
 export async function getStaticProps() {
   const posts = await contentful.getEntries('post');
@@ -26,15 +24,12 @@ export default function IndexPage({ posts }) {
         <Container as="main" noMargin className="px-4 space-y-14">
           <div className="flex flex-col items-center justify-center p-6 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:space-x-8 xl:p-12 md:space-y-0 md:flex-row">
             <picture className="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44">
-              <img
-                className="absolute flex-none object-cover w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44"
-                src={meImageTrace.trace}
+              <Image
+                className="absolute flex-none object-cover w-40 h-40 rounded-full md:h-44 md:w-44"
+                src={'/images/me.jpg'}
                 alt="Me"
-              />
-              <img
-                className="absolute flex-none object-cover w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44"
-                src={meImage}
-                alt="Me"
+                width={176}
+                height={176}
               />
             </picture>
             <div className="space-y-2">

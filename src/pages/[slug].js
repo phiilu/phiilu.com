@@ -76,6 +76,10 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
               <ul className="space-y-2 sm:items-start sm:space-x-2 sm:space-y-0 xl:space-y-2 sm:flex xl:space-x-0 xl:block">
                 <li>
                   <Button
+                    tracking={{
+                      event: 'click',
+                      value: 'Share on Twitter clicked'
+                    }}
                     variant="twitter"
                     onClick={handleSocialShare(
                       `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
@@ -87,6 +91,10 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
                 </li>
                 <li>
                   <Button
+                    tracking={{
+                      event: 'click',
+                      value: 'Share on Hacker News clicked'
+                    }}
                     variant="hackernews"
                     onClick={handleSocialShare(
                       `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
@@ -116,15 +124,22 @@ function ShareOnTwitterCta({ onClick }) {
       <p className="prose lg:prose-xl">
         I would be really grateful if you let me{' '}
         <Link
-          data-track="Twitter CTA"
-          data-splitbee-event="Twitter CTA"
-          to="https://twitter.com/phiilu"
-          className="umami--click--Twitter-CTA">
+          tracking={{
+            event: 'click',
+            value: 'Twitter CTA'
+          }}
+          to="https://twitter.com/phiilu">
           @phiilu
         </Link>{' '}
         know by sharing it on Twitter!
       </p>
-      <Button variant="twitter" onClick={onClick}>
+      <Button
+        variant="twitter"
+        onClick={onClick}
+        tracking={{
+          event: 'click',
+          value: 'Share on Twitter clicked'
+        }}>
         Share on Twitter
       </Button>
     </aside>

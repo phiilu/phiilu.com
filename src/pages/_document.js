@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Scripts from '@components/Scripts/Scripts';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -12,6 +13,7 @@ class MyDocument extends Document {
         <Head />
         <body>
           <Main />
+          <Scripts />
           <NextScript />
         </body>
       </Html>

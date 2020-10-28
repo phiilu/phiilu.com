@@ -8,12 +8,15 @@ import Image from 'next/image';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
+import generateRssFeed from '@lib/rss';
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
   const posts = await contentful.getEntries('post', { order: '-fields.publishedDate' });
   const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
   const baseUrl = process.env.BASE_URL;
+
+  await generateRssFeed();
 
   return {
     props: { posts, ogImage, baseUrl }

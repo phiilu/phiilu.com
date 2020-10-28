@@ -1,0 +1,1842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://localhost:3000</id>
+    <title>Phiilu's Blog</title>
+    <updated>2020-10-28T19:32:44.839Z</updated>
+    <generator>Next.js</generator>
+    <author>
+        <name>Florian Kapfenberger</name>
+        <email>hey@phiilu.com</email>
+        <uri>https://twitter.com/phiilu</uri>
+    </author>
+    <link rel="alternate" href="http://localhost:3000/rss/feed.xml"/>
+    <link rel="self" href="http://localhost:3000/rss/atom.xml"/>
+    <subtitle>Welcome to my blog!</subtitle>
+    <logo>http://localhost:3000/images/logo.svg</logo>
+    <icon>http://localhost:3000/favicon.ico</icon>
+    <rights>All rights reserved 2020, Florian Kapfenberger</rights>
+    <entry>
+        <title type="html"><![CDATA[My thoughts on completing the React Fundamentals workshop from Epic React by Kent C. Dodds]]></title>
+        <id>http://localhost:3000/my-thoughts-on-completing-the-react-fundamentals-workshop-from-epic-react</id>
+        <link href="http://localhost:3000/my-thoughts-on-completing-the-react-fundamentals-workshop-from-epic-react"/>
+        <updated>2020-10-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I recently bought the Epic React course from Kent C. Dodds. I want to share with you my thoughts and what I have learned by completing the React Fundamentals workshop. ]]></summary>
+        <content type="html"><![CDATA[<p>I just finished my first workshop of the <a href="https://epicreact.dev/">Epic React by Kent C. Dodds</a> course. After each workshop, I thought I might write down my thoughts and summarize my learnings.</p>
+
+<p><img alt="React Fundamentals Certificate" src="//images.ctfassets.net/hb3id6ag4raq/4IVsPuDbTzkNTNML2kZK7u/6b4feed5ace8a873083528a9551c56a7/Screenshot_2020-10-12_at_21.26.08.png"/></p>
+
+<p>Epic React is a <strong>BIG</strong> online course with a total of 8 different workshops and I don&#39;t know how many hours of videos, I just know that there are a lot! </p>
+
+<p>If you want to learn or — like in my case — get better using React than this is probably the best course money can buy. Kent is an amazing instructor and he explains things very understandable. This epic course is so different than other online courses. It&#39;s more like an actual workshop where you attend in person. It will make sure that you will get your hands dirty and not just watch the videos!</p>
+
+<p>The first module was React Fundamentals. It will teach you: How React works, what JSX is, and how to do simple things like creating components, add styling, and implement forms.  </p>
+
+<h2>How I approached this course</h2>
+
+<p>Usually, when I buy an online course, I just watch the videos and maybe try out a few things on my own. Kent&#39;s workshops, however, are not intended to just watch them, <strong>YOU</strong> will be doing most of the exercises and watch the solution afterward.</p>
+
+<p>With each workshop, you will get access to a repository hosted on GitHub. It has all the files that you will need to follow along.</p>
+
+<p>These are the steps I did for each section of the workshop:</p>
+
+<ol><li>Watch the intro video where Kent introduces the topic/problem</li><li>Open the corresponding file in the editor and browser</li><li>In the browser read the whole description about the topic and what should be done</li><li>Solving the exercise (+ extra credit) and if there is a test run it to verify it is working</li><li>Go back to the video and watch how Kent solves it and listen to the tips he gives</li><li>Complete the section and go to the next one</li><li>Repeat</li></ol>
+
+<p>I like this approach and it helps me to try things out and finally understand them.</p>
+
+<h2>What did I learn?</h2>
+
+<p>More than I expected! I think I am already pretty good at React, but as it turns out I have skipped some fundamentals. 😅 </p>
+
+<p>At the beginning of this workshop, Kent will explain how React works under the hood without JSX. I knew JSX is just syntactical sugar and React uses plain JavaScript methods under the hood, but I never had to use them. Learning how the function <code>React.createElement</code> work will let you understand JSX much better. </p>
+
+<p>Another thing was writing custom <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">PropTypes</a>. I have used PropTypes before but never wrote a custom one myself. It&#39;s good to know that this exists, but to be fair I think I won&#39;t be writing PropTypes a lot in the future. I think switching to TypeScript would be better than defining PropTypes on top of JavaScript. </p>
+
+<p>Finally, I now completely understand why React needs the <code>key</code> prop when looping over an array and rendering it. The demo with the input focus made me realize how important it is to use something unique to the item and not generated dynamically like the index!</p>
+
+<h2>Conclusion</h2>
+
+<p>So far I like this course and I am very happy that I bought it and I can&#39;t wait to go through the next workshop which will be about hooks! </p>
+
+<p>If you are learning React or already use it at work don&#39;t hesitate to buy it. I know it is expensive, but compared to the value you will get for that money, it&#39;s not! In some countries, parity purchasing power is available too.</p>
+
+<p>Now back to learning and going through the React Hook workshop! Of course, I will give you an update on how the workshop was later on. </p>
+
+<p>Happy coding!</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add Apple Maps to your website using a serverless function and host it on Netlify]]></title>
+        <id>http://localhost:3000/add-apple-maps-to-your-website-using-a-serverless-function-and-host-it-on-netlify</id>
+        <link href="http://localhost:3000/add-apple-maps-to-your-website-using-a-serverless-function-and-host-it-on-netlify"/>
+        <updated>2020-10-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Everyone knows that you can use Google Maps to add a map to your website, but did you know Apple has an JS SDK too?]]></summary>
+        <content type="html"><![CDATA[<p>I bet at one point in your developer career you were asked or wanted to implement an interactive map on your website. Interactive maps are great to visualize locations and routes for users and have replaced the need of using an old-school map helping us to navigate in the real world!</p>
+
+<p>So you are now on your way to implement such a feature and the first thing you will do is search on google <strong>&quot;How do implement an interactive map on a website&quot;</strong> and probably the first few results will point you to use Google Maps. But what if I tell you that Google is not the only player in the game and there are different maps provider too!</p>
+
+<p>In this blog post, we will be focusing on <a href="https://developer.apple.com/documentation/mapkitjs">Apple Maps</a>! Yeah, you heard correctly Apple Maps. <em>&quot;But doesn&#39;t Apple Maps suck? Apple Maps on a website? I thought that only exists on iOS?&quot;</em> you might ask and the answers are as usual &quot;it depends&quot; and &quot;yeah it exists!&quot;. </p>
+
+<p>You know Apple has released <strong>Apple Mapkit for JS</strong> in 2015 and since that year you can implement Apple Maps on websites! The most popular service I can find using Apple Maps is DuckDuckGo. If you search <a href="https://duckduckgo.com/?q=where+is+vienna&amp;t=ffab&amp;atb=v233-1&amp;ia=web">&quot;where is vienna&quot;</a> you will find a small map on the right of the search results using Apple Maps. If you click it, you will get redirect to a <a href="https://duckduckgo.com/?q=where+is+vienna&amp;t=ffab&amp;atb=v233-1&amp;ia=web&amp;iaxm=about&amp;iax=images">site which has a bigger map</a>.</p>
+
+<p><img alt="DuckDuckGo Apple Maps search result" src="//images.ctfassets.net/hb3id6ag4raq/3Hmr5g4f31R4s7ZdmgsFvz/089d327af77c258008f31e9ad5691309/Screenshot_2020-10-04_at_19.08.33.png" title="DuckDuckGo Apple Maps search result"/></p>
+
+<hr/>
+
+<p>Okay now you know you could use Apple Maps on your website, but how do you make it work? Well, it is not as easy as it seems, because Apple handles the API key differently than Google Maps.</p>
+
+<p>Usually when you want to use a service you will sign up on their site and generate an API key that you than can use. Apple instaed will give you a private key which you can use to generate <a href="https://jwt.io/">Json Web Token (JWT)</a> tokens that will be used to validate your access to Apple Maps. This is why we need backend code to hide this private key and therefore we will implement this with a serverless function.  </p>
+
+<p>In this post, I will show you how to get the credentials from Apple, create a small example using Apple Maps + serverless function, and finally deploy it using Netlify.</p>
+
+<h2>Prerequisites</h2>
+
+<ul><li>You will need to have a <a href="https://developer.apple.com/support/compare-memberships/">paid Apple Developer membership</a>, otherwise, you will not be able to download the credentials for using Apple Maps</li><li>A free Netlify account to be able to deploy the final website</li></ul>
+
+<p>Sadly you will need to be in Apple&#39;s Developer program if you want to follow along, if you can&#39;t follow along you may still check out the final version <a href="https://apple-maps-example.netlify.app/">here</a> and take a look at the code on <a href="https://github.com/phiilu/apple-maps-example">GitHub</a>. </p>
+
+<h2>Obtaining the credentials from Apple</h2>
+
+<blockquote><p>I did not figure out these steps on my own and they can be found on <a href="https://developer.apple.com/documentation/mapkitjs/creating_a_maps_identifier_and_a_private_key">Apple&#39;s website</a> too.</p></blockquote>
+
+<p>First head over to the <a href="https://developer.apple.com/account/">account page</a> of your Apple Developer membership. We need to create two things: Maps ID and a MapKit JS private key. </p>
+
+<h3>Maps ID</h3>
+
+<p>In the sidebar select <strong>Certificates, Identifiers &amp; Profiles</strong> and than <strong>Identifiers</strong> and click the small plus icon.</p>
+
+<p><img alt="Apple Developer Console - Certificates, Identifiers &amp; Profiles" src="//images.ctfassets.net/hb3id6ag4raq/77XDq9HO4IYlOAV9jPgHeU/7a0fff5c50164b381127d8c4d8754a06/Screenshot_2020-10-04_at_20.31.23.png"/></p>
+
+<p><img alt="Apple Developer Console - Create Identifier" src="//images.ctfassets.net/hb3id6ag4raq/qFYPUkR6TewPh6L7LPRyg/c0240184f22d18b44a4e8725809e410f/Screenshot_2020-10-04_at_20.28.20.png"/></p>
+
+<p>Next, give it a description and an identifier using a reverse domain like <code>maps.com.phiilu.example</code> and click <strong>Continue</strong> and <strong>Register</strong>. </p>
+
+<p><img alt="Apple Developer Console - Create Maps ID" src="//images.ctfassets.net/hb3id6ag4raq/2o67Hb0LOoKNWxJuOfqOvv/0b20060f6d22fd901d16520c0cf3d880/Screenshot_2020-10-04_at_20.30.10.png"/></p>
+
+<p>Now you have created a Maps ID which we will need for our Private Key. </p>
+
+<h3>MapKit JS private key</h3>
+
+<p>Back on the <strong>Certificates, Identifiers &amp; Profiles</strong> overview page select <strong>Keys</strong> and create a new key by selecting the small plus icon.</p>
+
+<p><img alt="Apple Developer Console - Create Key" src="//images.ctfassets.net/hb3id6ag4raq/5y0c0Lof8nVUDEFodsiTMn/a0dd4f4cba52ccff91db5c06ac9099c4/Screenshot_2020-10-04_at_20.43.26.png"/></p>
+
+<p>Give the Key a name and you should see MapKit JS as an option in the services. If not then you did not create a Maps ID. </p>
+
+<p><img alt="Apple Developer Console - Create MapKit JS Key" src="//images.ctfassets.net/hb3id6ag4raq/6DVZjAH2yqF6Wh7uRNEchf/01306d1697efbf5f81c98e2015ab81d1/Screenshot_2020-10-04_at_20.46.59.png"/></p>
+
+<p>Next select Configure next to the MapKit JS, select the previously created Maps ID, and click <strong>Save</strong>. Review your settings and click <strong>Continue</strong>.</p>
+
+<p><img alt="Apple Developer Console - Select Maps ID for MapKit JS Key" src="//images.ctfassets.net/hb3id6ag4raq/T3AjkhZH24SoB1xKVva7p/e169e846f35cf840c831da605aa49372/Screenshot_2020-10-04_at_20.47.33.png"/></p>
+
+<p>You will see a summary of the services you enabled for this key and can register your key with <strong>Register</strong>.</p>
+
+<p><img alt="Apple Developer Console - Key summary before registering" src="//images.ctfassets.net/hb3id6ag4raq/2T9vYkzvslLYdWhe1tHx0A/fa54024a28c455218a873c1b2e70bc48/Screenshot_2020-10-04_at_20.53.38.png"/></p>
+
+<p>Finally, your key is registered and you can download it! As the warning says this is a <strong>ONE TIME DOWNLOAD</strong> and you won&#39;t be able to download the key again. </p>
+
+<p><img alt="Apple Developer Console - Download Key" src="//images.ctfassets.net/hb3id6ag4raq/6gmOtazTEYlkZxeeGkn6DF/1b53d603a1f66dbaa8a46c6f347d4490/Screenshot_2020-10-04_at_20.53.51.png"/></p>
+
+<p>You will download a file named <code>AuthKey_Z11AA36DZ4.p8</code> or similar and if you open this you will find 6 lines of text, which will be your private key. </p>
+
+<p>This key should <strong>ALWAYS</strong> be kept private and never be leaked to the public, hence why we need to create a serverless function to safely store the key in backend code.</p>
+
+<p>Take note of the generated <strong>Key ID</strong> too, because you will need it later.</p>
+
+<h3>Team ID</h3>
+
+<p>The Team ID is already created for you, but you need to copy it from the top right next to your name.</p>
+
+<p><img alt="Apple Developer Console - Team ID" src="//images.ctfassets.net/hb3id6ag4raq/3jNAjIAG5NEFJsN4USllts/68a3524c70b74ff04a57c688291b6d8a/Screenshot_2020-10-05_at_21.13.08.png"/></p>
+
+<hr/>
+
+<p>Now that we have everything we need and we can start integrating Apple Maps on our website.</p>
+
+<h2>Setting up the development environment</h2>
+
+<p>This project is using the <a href="https://www.netlify.com/products/dev/">Netlify CLI</a>, so you will need to install it globally using npm.</p>
+
+<p><code>bash
+npm install netlify-cli -g
+</code></p>
+
+<p>Next, you will need to clone the git repository and checkout the branch <code>tutorial-start</code>.</p>
+
+<p><code>bash
+git clone git@github.com:phiilu/apple-maps-example.git
+cd apple-maps-example &amp;&amp; git checkout tutorial-start
+</code></p>
+
+<p>To start the project you need to install the dependencies and run the development server.</p>
+
+<p><code>bash
+npm install
+npm start
+</code></p>
+
+<p>When you open the browser at <code>http://localhost:18080</code> you will see a simple styled website where we will be adding Apple Maps.</p>
+
+<p>To keep it simple we will be using basic HTML, vanilla Javascript, and styles using <a href="https://tailwindcss.com/">Tailwind</a>. It will be compiled using <a href="https://parceljs.org/">Parcel</a> and the serverless functions can be tested locally using the Netlify CLI.</p>
+
+<h2>Project structure explained</h2>
+
+<p>Inside the project directory run the following command to list all folders and files.</p>
+
+<p><code>bash
+tree -I &#39;dist|node_modules&#39;
+</code></p>
+
+<p><code></code>`
+.
+├── README.md
+├── netlify.toml
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── src
+│   ├── functions
+│   ├── index.html
+│   ├── index.js
+│   └── index.pcss
+└── tailwind.config.js</p>
+
+<p>2 directories, 9 files
+<code></code>`</p>
+
+<p>Most of these files should not need explaining, but I will explain the most interesting ones.</p>
+
+<h3>netlify.toml</h3>
+
+<p><code>netlify.toml</code> contains the configuration for Netlify and the Netlify CLI.</p>
+
+<p><code></code>`toml
+[build]
+  command = &quot;npm run build&quot;
+  functions = &quot;src/functions&quot;
+  NODE_ENV = &quot;12&quot;
+  publish = &quot;/dist&quot;</p>
+
+<p>[dev]
+  port = 18080
+  publish = &quot;/dist&quot;
+  command = &quot;npm run dev&quot;</p>
+
+<p>[production]
+  publish = &quot;/dist&quot;
+  command = &quot;npm run build&quot;</p>
+
+<p>[[redirects]]
+  from = &quot;/api/*&quot;
+  to = &quot;/.netlify/functions/:splat&quot;
+  status = 200
+<code></code>`</p>
+
+<p>It will tell Netlify where our serverless functions are, which Node.js version we want to use, which port we want the development server should run, how it can start our project in development mode, and redirects all requests from <code>/api/*</code> to the correct Netlify function. </p>
+
+<h3>src directory</h3>
+
+<p><code>src</code> will contain all of the code we write. It contains the <code>functions</code> directory where we will be putting our serverless functions and our HTML, Javascript, and CSS files.</p>
+
+<h3>Tailwind</h3>
+
+<blockquote><p>A utility-first CSS framework for rapidly building custom designs. - <a href="https://tailwindcss.com/">tailwindcss.com</a></p></blockquote>
+
+<p>Lots of the other files you see are to configure Tailwind. I just like to use Tailwind to add styling to my projects, but we won&#39;t be adding more styles, so you will not need to know how it works.</p>
+
+<h2>Adding Apple Maps to the website</h2>
+
+<p>Let&#39;s start adding Apple Maps to the website! When you open the cloned repo and open up the <code>index.html</code> file you will see that there is already Apple MapKit pulled in from Apple.</p>
+
+<p><code>html
+&lt;!-- index.html --&gt;
+&lt;script src=&quot;https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js&quot;&gt;&lt;/script&gt;
+</code></p>
+
+<blockquote><p>This line will load the latest MapKit from Apple. You can find how Apple versions MapKit <a href="https://developer.apple.com/documentation/mapkitjs/loading_the_latest_or_a_specific_version_of_mapkit_js">here</a>.</p></blockquote>
+
+<p>Further down the file, you will find the <code>div</code> where we want to mount Apple Maps.</p>
+
+<p><code>html
+&lt;div
+  id=&quot;apple-maps&quot;
+  style=&quot;height: 800px&quot;
+  class=&quot;w-full rounded-md shadow-lg&quot;
+/&gt;
+</code></p>
+
+<p>This <code>div</code> has set a <code>height</code> and some classes that will make it look a bit nicer. If you open up <code>http://localhost:18080/</code> you should see a simple website with navigation, a search box, and a blank space with a shadow around.</p>
+
+<p><img alt="Apple Maps Example starting point" src="//images.ctfassets.net/hb3id6ag4raq/3sVqvzueRVJtiQqbbaFEQP/bb74717671dbb5affbc6eea9a39d3650/Screenshot_2020-10-05_at_20.29.21.png"/></p>
+
+<p>Now we want to add Apple Maps to this <code>div</code>, so open up the <code>index.js</code> file and paste this code:</p>
+
+<p><code></code>`js
+mapkit.init({
+    authorizationCallback: function (done) {
+        fetch(&quot;/api/token&quot;)
+            .then((res) =&gt; res.text())
+            .then(done);
+    },
+    language: navigator.language || navigator.userLanguage,
+})</p>
+
+<p>const center = new mapkit.Coordinate(48.210033, 16.363449) // Vienna
+const map = new mapkit.Map(&quot;apple-maps&quot;, {
+    center,
+    cameraDistance: 15000,
+})
+<code></code>`</p>
+
+<p><img alt="Apple Maps Example - Initialize Map failed" src="//images.ctfassets.net/hb3id6ag4raq/2ffGKcmb4GaZPHCFmkeaO/5998932ac1ff1b4c9b289ade256adc02/Screenshot_2020-10-05_at_20.38.38.png"/></p>
+
+<p>Now you should see a Map showing up in your browser... well not really. If you have a look at the console you will see an error and a warning.</p>
+
+<p><img alt="Apple MapKit JS - failed initialization" src="//images.ctfassets.net/hb3id6ag4raq/WNDluyrrfgWmMWYcPOLZk/aec9a71120bbd0e2b9bb1f648e2f0875/Screenshot_2020-10-05_at_20.40.32.png"/></p>
+
+<p>Let&#39;s debug our code and find out why it is not working. </p>
+
+<p>You can see, we are mounting the map correctly using the <code>id</code> of <code>apple-maps</code> that we specified in the <code>index.html</code> file. </p>
+
+<p>But before mounting we are calling <code>mapkit.init(...)</code> and fetching a new token from <code>/api/token</code>. This token is how Apple Maps verifies that this site has access to Apple Maps, but we did not write any code that would generate such a token yet. </p>
+
+<p>In the next section, we will write the serverless function that will generate our token for Apple Maps.</p>
+
+<h2>Creating a serverless function to create a valid JWT token for Apple Maps</h2>
+
+<p>It&#39;s time to take our generated private key and use it to generate JWT tokens for our frontend!</p>
+
+<h3>Configure .env with our obtained secrets</h3>
+
+<p>Before working on the serverless function we will need to create a <code>.env</code> file in the root of your project and put in our obtained credentials.</p>
+
+<p><code>bash
+MAPS_KEY_ID=&lt;MAP_KEY_ID&gt;
+APPLE_TEAM_ID=&lt;TEAM_ID&gt;
+APPLE_MAPS_KEY=&lt;PRIVATE_KEY&gt;
+SITE_ORIGIN=http://localhost:18080
+</code></p>
+
+<p>Put in your information that you saved from the previous sections. </p>
+
+<p><code>APPLE_MAPS_KEY</code> is a little special, because we downloaded it as a file. You will need to copy the contents of the file and replace all line breaks with <code>\n</code>. Your <code>APPLE_MAPS_KEY</code> entry should look like this:</p>
+
+<p><code>bash
+APPLE_MAPS_KEY=&quot;-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMAyyqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg698QaJcP/pbDrXHE\nSzt8Igy6KgeUm2ky1LZZoBDcVzygCgYI2oZIzj0DAQehRANCAAST56qF4NUi1v0Y\nrWfvSNVbSdQjT7M6syC7bJYiB5zTlwzzGeIU2kilRNY7p3KlUnC5QGISGHjN3FL+\n7wjrPBNa\n-----END PRIVATE KEY-----&quot;
+</code></p>
+
+<blockquote><p>Don&#39;t worry, this is not my real private key</p></blockquote>
+
+<p>Your <code>.env</code> file should look something like this:</p>
+
+<p><code>bash
+MAPS_KEY_ID=AAAAAAB994
+APPLE_TEAM_ID=1234A8E9Z5
+APPLE_MAPS_KEY=&quot;-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMAyyqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg698QaJcP/pbDrXHE\nSzt8Igy6KgeUm2ky1LZZoBDcVzagCgYI2oZIzj0DAQehRANCAAST56qF4NUi1v0Y\nrWfvSNVbSdQjT7M6syC7bJYiB5zTlwzzGeIU2kilRNY7p3KlUnC5QGISGHjN3FL+\n7wjrPBNa\n-----END PRIVATE KEY-----&quot;
+SITE_ORIGIN=http://localhost:18080
+</code></p>
+
+<h3>Writing the serverless function</h3>
+
+<p>Create a <code>token</code> folder inside the <code>functions</code> folder and open it in your editor. Next scaffold a <code>package.json</code> using <code>npm</code> inside the <code>token</code> folder.</p>
+
+<p><code></code>`bash
+npm init -y</p>
+
+<p><code></code>`</p>
+
+<p>As I already mention we need to generate JWT tokens, so we will be using the <code>jsonwebtoken</code> <a href="https://github.com/auth0/node-jsonwebtoken">package</a>.</p>
+
+<p><code>bash
+npm i jsonwebtoken
+</code></p>
+
+<p>Now create a file named <code>token.js</code> and paste this code:</p>
+
+<p><code></code>`js
+const jwt = require(&#39;jsonwebtoken&#39;);</p>
+
+<p>const origin = process.env.SITE<em>ORIGIN;
+const privatekey = process.env.APPLE</em>MAPS<em>KEY.replace(/\n/gm, &#39;\n&#39;);
+const keyid = process.env.MAPS</em>KEY<em>ID;
+const issuer = process.env.APPLE</em>TEAM_ID;</p>
+
+<p>exports.handler = async function (event, context) {
+  const token = jwt.sign({
+    origin
+  }, privatekey, {
+    algorithm: &#39;ES256&#39;,
+    expiresIn: &quot;1d&quot;,
+    keyid,
+    issuer,
+  });</p>
+
+<p>  return {
+    statusCode: 200,
+    body: token,
+  }
+}
+<code></code>`</p>
+
+<p>This simple function will generate a JWT token that is signed using your private key. The private key needs to replace the <code>\\n</code> with real <code>\n</code>, because Netlify somehow adds this automatically. I found the solution through <a href="https://github.com/auth0/node-jsonwebtoken/issues/642#issuecomment-585173594">this comment</a> on GitHub.</p>
+
+<p>The token will be valid for <code>1 day</code> and will only work on the website configured in <code>SITE_ORIGIN</code>. You can change these options if you want and adjust them to your needs.</p>
+
+<p>Apple has documented what each field is and what is used for at their <a href="https://developer.apple.com/documentation/mapkitjs/creating_and_using_tokens_with_mapkit_js">documentation</a>.</p>
+
+<hr/>
+
+<p>Restart your development server and open up <code>http://localhost:18080/</code> and you should see a map with the center being Vienna 🥳</p>
+
+<p><img alt="Apple Maps Example - the map is working" src="//images.ctfassets.net/hb3id6ag4raq/3dPfSCJ0C0kvQbP55NDcWq/d072cc0ca95c7bb9be9bafccc248d71f/Screenshot_2020-10-05_at_21.39.01.png"/></p>
+
+<h2>Deploy the website to Netlify</h2>
+
+<p>Now that our Map is working we want to publish our little project on Netlify and we will do this using the Netlify CLI that you already know.</p>
+
+<p>If you did not login to Netlify using the CLI you will have to do this first.</p>
+
+<p><code>bash
+netlify login
+</code></p>
+
+<p>Next, go to the root of your project directory and run <code>netlify deploy</code>. This will walk you through and create the site on Netlify.</p>
+
+<p><code></code>`
+netlify deploy
+This folder isn&#39;t linked to a site yet
+? What would you like to do? +  Create &amp; configure a new site
+? Team: Florian Kapfenberger&#39;s team
+Choose a unique site name (e.g. isnt-phiilu-awesome.netlify.app) or leave it blank for a random name. You can update the site name later.
+? Site name (optional): apple-maps-example</p>
+
+<p>Site Created</p>
+
+<p>Admin URL: https://app.netlify.com/sites/apple-maps-example
+URL:       https://apple-maps-example.netlify.app
+Site ID:   44aa1f3e-f887-47e0-bf55-4c80f2ec01ab
+Deploy path:        /Users/florian/Code/privat/projects/apple-maps-example/dist
+Functions path:     /Users/florian/Code/privat/projects/apple-maps-example/src/functions
+Configuration path: /Users/florian/Code/privat/projects/apple-maps-example/netlify.toml
+Deploying to draft URL...
+✔ Finished hashing 10 files and 1 functions
+✔ CDN requesting 9 files and 1 functions
+ ›   Warning:
+ ›   {}
+ ›
+    TypeError: Cannot read property &#39;0&#39; of undefined
+<code></code>`</p>
+
+<p>As you can see I got an error the first time, so I reran the script and it worked!</p>
+
+<p><code></code>`
+netlify deploy
+Deploy path:        /Users/florian/Code/privat/projects/apple-maps-example/dist
+Functions path:     /Users/florian/Code/privat/projects/apple-maps-example/src/functions
+Configuration path: /Users/florian/Code/privat/projects/apple-maps-example/netlify.toml
+Deploying to draft URL...
+✔ Finished hashing 10 files and 1 functions
+✔ CDN requesting 9 files and 1 functions
+✔ Finished uploading 10 assets
+✔ Deploy is live!</p>
+
+<p>Logs:              https://app.netlify.com/sites/apple-maps-example/deploys/5f7b795ed6d83e3ab0a3f4a2
+Website Draft URL: https://5f7b795ed6d83e3ab0a3f4a2--apple-maps-example.netlify.app
+<code></code>`</p>
+
+<p>Our site may be deployed, but it is still not working, because we need to configure the environment variables in Netlify first.</p>
+
+<p>Open up <code>netlify.com</code>, log in and go to the <strong>Build &amp; deploy</strong> settings of the created project and add the environment variables from your <code>.env</code> file.</p>
+
+<p><img alt="Netlify Dashboard - add environment variables" src="//images.ctfassets.net/hb3id6ag4raq/6UZH0ssIWmntSF43mocxv0/e6124f2a45c250c8e86978ec5aee797c/Screenshot_2020-10-05_at_22.30.37.png"/></p>
+
+<p>The last step is to deploy your project again, but this time with the <code>--prod</code> flag.</p>
+
+<p><code>bash
+netlify deploy --prod
+</code></p>
+
+<p>Your project is now live and you can visit it at the URL the Netlify CLI displays you or you can check out mine at <a href="https://apple-maps-example.netlify.app/">https://apple-maps-example.netlify.app/</a></p>
+
+<h2>Adding a Searchbox using Apple Maps (optional)</h2>
+
+<p>For now, we just displayed a map but did not interact with it. In this section, I want to show you how you can easily search for cities and transition to them using just a few lines of code.</p>
+
+<p>Open up <code>index.js</code> and append the following lines to it:</p>
+
+<p><code></code>`js
+// index.js</p>
+
+<p>const search = new mapkit.Search({
+    language: navigator.language || navigator.userLanguage,
+    getsUserLocation: true,
+    region: map.region,
+});</p>
+
+<p>const searchFormElement = document.getElementById(&quot;search-form&quot;);
+const searchBoxElement = document.getElementById(&quot;search-box&quot;);</p>
+
+<p>searchFormElement.addEventListener(&quot;submit&quot;, (e) =&gt; {
+    e.preventDefault();
+    const query = searchBoxElement.value;
+    if (query) {
+        search.search(query, (error, data) =&gt; {
+            console.log(data);
+            if (error) {
+                console.log(&quot;Error&quot;, error);
+                return;
+            }
+            map.setRegionAnimated(data.boundingRegion);
+        });
+    }
+});
+<code></code>`</p>
+
+<p>Using <code>new mapkit.Search(...)</code> we can create an instance of <code>Search</code> and use it to search for locations on the map.</p>
+
+<p>The <code>document.getElementById(...)</code> lines will be used to get references to the <code>form</code> and <code>input</code> elements of the page.</p>
+
+<p>After we have the reference we can add an event listener for the <code>submit</code> event on the <code>form</code>. We prevent the default even, which would reload the page and get the text from the <code>searchBoxElement</code>. </p>
+
+<p>Next, we perform the search using <code>search.search(...)</code>. The first argument is the query and the second one will be a callback when the request has finished. If we don&#39;t have an error we will use <code>map.setRegionAnimated(data.boundingRegion)</code> to transition to the found location on the map.</p>
+
+<p>Try it out! Open up <code>http://localhost:18080/</code> or <a href="https://apple-maps-example.netlify.app/">https://apple-maps-example.netlify.app/</a> and search for a city like Berlin and press enter. You will see the map transition to the center of Berlin.</p>
+
+<p>If it works, you can deploy your changes with <code>netlify deploy --prod</code>.</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Make your Ubuntu Server VPS more secure against unauthorized access]]></title>
+        <id>http://localhost:3000/make-your-ubuntu-server-vps-more-secure-against-unauthorized-access</id>
+        <link href="http://localhost:3000/make-your-ubuntu-server-vps-more-secure-against-unauthorized-access"/>
+        <updated>2020-09-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[When creating a new VPS you need to make sure that you secure your server from the scary internet. Only you should be able to log in and administrate your server.]]></summary>
+        <content type="html"><![CDATA[<p>When creating a new VPS you need to make sure that you secure your server from the scary internet. The only one that should be able to administrate the server should be you and <strong>only</strong> you!</p>
+
+<p>There are few (simple) steps involved in how you can secure your server and have a good sleep at night, without fearing someone might hack your server.</p>
+
+<h2>Prerequisites</h2>
+
+<p>You should have an existing or freshly installed server running Ubuntu 20.08 VPS available and able to log in. </p>
+
+<p>If you don&#39;t know how you can create your own server, check out my blog post <a href="https://phiilu.com/create-your-first-vps-on-vultr">Create your first VPS on Vultr</a> to deploy your very first VPS using <a href="https://www.vultr.com/?ref=8356779">Vultr*</a>. </p>
+
+<p>Vultr is just my choice for hosting servers on the internet, but you can use other providers such as <a href="https://www.linode.com/">Linode</a> or <a href="https://m.do.co/c/c9b5a3aebb78">DigitalOcean*</a> too. You can&#39;t be wrong choosing any of the mentioned providers.</p>
+
+<blockquote><p>Disclaimer: links containing a * at the end are affiliate links, which means if you signup using that link I would get a small commission and it helps me out!</p></blockquote>
+
+<h2>Creating a new user to administrate the server</h2>
+
+<p>When you create a new VPS you usually get access to the <code>root</code> user with a password. For security reasons, we create a new user that will be used to administrate the server. It is good practice to only work with the least amount of privileges you need and use <code>sudo</code> when you need more permissions. </p>
+
+<p>We will disable the possibility to log in as the <code>root</code> user using a password, but we will allow it to log in using public-key authentication.</p>
+
+<hr/>
+
+<p>To add a new user you can use the <code>adduser</code> command.</p>
+
+<p><code>
+adduser phiilu
+</code></p>
+
+<p>You will be asked a few questions including what password you want to use. Make sure the password is secure and in the best case random generated and stored in a password manager like <a href="https://1password.com/">1Password</a> or <a href="https://www.lastpass.com/">Lastpass</a>.</p>
+
+<p><code>
+Adding user `phiilu&#39; ...
+Adding new group `phiilu&#39; (1000) ...
+Adding new user `phiilu&#39; (1000) with group `phiilu&#39; ...
+Creating home directory `/home/phiilu&#39; ...
+Copying files from `/etc/skel&#39; ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for phiilu
+Enter the new value, or press ENTER for the default
+	Full Name []: Florian
+	Room Number []:
+	Work Phone []:
+	Home Phone []:
+	Other []:
+Is the information correct? [Y/n]
+</code></p>
+
+<p>Now we have a new user that we can use to log in. If you are the <code>root</code> user you can just type</p>
+
+<p><code>
+su phiilu
+</code></p>
+
+<p>and you will be logged in as the user without prompted a password. You can also use log in with the <code>login</code> command.</p>
+
+<p><code>
+login phiilu
+</code></p>
+
+<hr/>
+
+<p>Next, we want to give the user permission to administrate the server. Right now we have a new user, but the user does not have any permission to make any changes as a superuser. </p>
+
+<p>You can confirm this when trying to update the packages:</p>
+
+<p><code>
+sudo apt install
+</code></p>
+
+<p><code>
+[sudo] password for phiilu:
+phiilu is not in the sudoers file.  This incident will be reported.
+</code></p>
+
+<p>As you can see, we need to add the new user to the sudoers file to be able to execute commands as the superuser.</p>
+
+<p>We need to exit our current session with <code>exit</code>. You should now be logged in as the <code>root</code> user.</p>
+
+<p>If you are <code>root</code>, you can type <code>visudo</code> to check the current sudoers file.</p>
+
+<p><code></code>`</p>
+
+<h1></h1>
+
+<h1>This file MUST be edited with the &#39;visudo&#39; command as root.</h1>
+
+<h1></h1>
+
+<h1>Please consider adding local content in /etc/sudoers.d/ instead of</h1>
+
+<h1>directly modifying this file.</h1>
+
+<h1></h1>
+
+<h1>See the man page for details on how to write a sudoers file.</h1>
+
+<h1>Defaults        env_reset</h1>
+
+<p>Defaults        mail<em>badpass
+Defaults        secure</em>path=&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin&quot;</p>
+
+<h1>Host alias specification</h1>
+
+<h1>User alias specification</h1>
+
+<h1>Cmnd alias specification</h1>
+
+<h1>User privilege specification</h1>
+
+<p>root    ALL=(ALL:ALL) ALL</p>
+
+<h1>Members of the admin group may gain root privileges</h1>
+
+<p>%admin ALL=(ALL) ALL</p>
+
+<h1>Allow members of group sudo to execute any command</h1>
+
+<p>%sudo   ALL=(ALL:ALL) ALL</p>
+
+<h1>See sudoers(5) for more information on &quot;#include&quot; directives:</h1>
+
+<h1>includedir /etc/sudoers.d</h1>
+
+<p><code></code>`</p>
+
+<p>You can see that if a user is in the <code>sudo</code> group, he should be able to execute commands as <code>root</code>. There is also the <code>admin</code> group in my <code>sudoers</code> file which will allow the user in that group to execute some commands as <code>root</code>. We want to be able to do the same things the root user can do so we will choose the <code>sudo</code> group.</p>
+
+<p>To add a user to a group you can use the <code>usermod</code> command using the options <code>-a</code> for add and <code>-G</code> for alternative groups followed by the group&#39;s name and the user you want to modify.</p>
+
+<p><code>
+usermod -a -G sudo phiilu
+</code></p>
+
+<p>With <code>id</code> you can check the groups (and ids) of a user and can confirm that the user is now part of the <code>sudo</code> group.</p>
+
+<p><code>
+id phiilu
+uid=1000(phiilu) gid=1000(phiilu) groups=1000(phiilu),27(sudo)
+</code></p>
+
+<p>Now that our user is in the <code>sudo</code> group, you can log in as that user and try to update the packages again and this time it should work!</p>
+
+<h2>Securing SSH</h2>
+
+<p>Now that we have a new user that can execute commands as <code>root</code>, we can go forward and harden our server even more by changing some settings for <code>ssh</code>. </p>
+
+<p>Before doing that we want to set up public-key authentication for both our users <code>root</code> and the one we created before.</p>
+
+<h3>Using public key authentication</h3>
+
+<blockquote><p>This is a recap of the &quot;Skip passwords with public key authentication&quot; section of my <a href="https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/" title="Use Visual Studio Code Remote to edit files on servers">Use Visual Studio Code Remote to edit files on servers</a> post.</p></blockquote>
+
+<p><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Public key authentication</a> is a secure way to connect to a server with SSH using a set of key pairs. The public key is saved on the server and the private key should be kept on your local machine. This is the key to unlock the server and <strong>must never</strong> be leaked or shared with someone else.</p>
+
+<p>If you are using Windows you must have <a href="https://gitforwindows.org/">Git for Windows</a> installed and use the following commands inside the <strong>Git Bash</strong>.</p>
+
+<p>The following commands should be the same for Windows and macOS except you might have to end the commands on Windows with <code>.exe</code>.</p>
+
+<h4>Generating SSH Key</h4>
+
+<p>If you already have an SSH key that you might already use with <code>git</code> you can skip this step.</p>
+
+<p><code>
+ssh-keygen -b 4096
+</code></p>
+
+<p>Which results in the following output.</p>
+
+<p><code>
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/flori/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/flori/.ssh/id_rsa.
+Your public key has been saved in /c/Users/flori/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx flori@Windows
+</code></p>
+
+<p>You can set a passphrase for the key if you want, but then you have to enter a password for the log in which we want to avoid.</p>
+
+<h4>Copy the public key to the server</h4>
+
+<p>You can either manually paste the key to the server or you can use a program called <code>ssh-copy-id</code> which I prefer.</p>
+
+<p>On macOS you have to install <code>ssh-copy-id</code> using <code>brew</code> on Windows it should be already present in the Git Bash. </p>
+
+<p><code>
+brew install ssh-copy-id
+</code></p>
+
+<p>To copy the key to the server you just have to log in to the server using the <code>ssh-copy-id</code> utility. Do this step twice for both users.</p>
+
+<blockquote><p>replace VPS_IP with the real IP of your VPS</p></blockquote>
+
+<p><code>
+ssh-copy-id root@VPS_IP
+</code></p>
+
+<p><code></code>`
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/Users/florian/.ssh/id<em>rsa.pub&quot;
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@VPS</em>IP&#39;s password:</p>
+
+<p>Number of key(s) added:        1</p>
+
+<p>Now try logging into the machine, with:   &quot;ssh &#39;root@VPS_IP&#39;&quot;
+and check to make sure that only the key(s) you wanted were added.
+<code></code>`</p>
+
+<h4>Verifying the public key authentication</h4>
+
+<p>Now if you try to log in with <code>ssh</code> you should not be asked for a password.</p>
+
+<p>If you are still asked for a password check if the permissions on the <code>authorized_keys</code> file on the server are correct:</p>
+
+<p><code>
+ls -la ~/.ssh
+</code></p>
+
+<p><code>
+drwx------ 2 root root 4096 Sep 18 17:23 .
+drwx------ 7 root root 4096 Sep 21 14:48 ..
+-rw------- 1 root root  416 Sep 18 17:23 authorized_keys
+</code></p>
+
+<p>If your permissions are different you might have to change them:</p>
+
+<p><code>
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+</code></p>
+
+<h3>A more secure ssh config</h3>
+
+<p>To change the configuration for <code>ssh</code> open the <code>/etc/ssh/sshd_config</code> file with your favorite text editor or you can check out my blog post <strong><a href="https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/" title="Use Visual Studio Code Remote to edit files on servers">Use Visual Studio Code Remote to edit files on servers</a></strong> to use a GUI editor to modify your server files.</p>
+
+<p>First of all, I want to change that the <code>root</code> user is not able to log in with a password, but should be able to use public-key authentication to sign in.</p>
+
+<p>Find the line that says <code>PermitRootLogin yes</code> and change it to <code>PermitRootLogin without-password</code>. </p>
+
+<hr/>
+
+<p>If you want to only allow public-key authentication find the following configuration keys and change them:</p>
+
+<p><code>
+PubkeyAuthentication yes
+PasswordAuthentication no
+</code></p>
+
+<hr/>
+
+<p>Last but not least only allow users that you explicitly defined to log in to your server. Go to the end of the file and add the following line:</p>
+
+<p><code>
+AllowUsers phiilu root dokku
+</code></p>
+
+<p>Here you should add the usernames separated with space. In my case, I am allowing the users <code>phiilu</code> <code>root</code> and <code>dokku</code> to log in into my server using ssh.</p>
+
+<hr/>
+
+<p>After changing the configuration you must restart the <code>sshd</code> server.</p>
+
+<p><code>
+sudo service sshd restart
+</code></p>
+
+<h2>Banning bad people with fail2ban</h2>
+
+<p><a href="https://twitter.com/phiilu/status/1068652093098086400?s=20">The Internet is a scary place</a> and you need to be aware that everyone out there wants to take over your server. It is very important to make sure bad people or in this case, bad IP addresses get sent to jail and never will bother our server again. </p>
+
+<p>This is why we will install <code>fail2ban</code>. Fail2ban is a small service that will run on your server and will read your log files and makes sure to ban IP addresses that are trying to log in to your server. </p>
+
+<p>In this post, I will only show you how you configure <code>fail2ban</code> to only check the logs of the <code>ssh</code> service, but <code>fail2ban</code> can also be used to check other log files like <code>nginx</code> or <code>mail</code>.</p>
+
+<h3>Installation and configuration</h3>
+
+<p>Installation is very easy and only one command away.</p>
+
+<p><code>
+sudo apt install fail2ban
+</code></p>
+
+<p>That is it, we don&#39;t need to make any additional configuration, fail2ban is now working and will make sure it bans bad log in attempts. </p>
+
+<p>If you want to make changes to the config file, you must copy the original <code>/etc/fail2ban/jail.conf</code> file and create a <code>/etc/fail2ban/jail.local</code> file</p>
+
+<p><code>
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+</code></p>
+
+<p>Now you could make changes in <code>jail.local</code> and adjust ban time or retries, but I think the default is already pretty good. </p>
+
+<h3>Unban an IP address</h3>
+
+<p>Sometimes you may want to unban an IP address because you somehow locked yourself out, but you still got access using the VPS providers web console. </p>
+
+<p>Luckily <code>fail2ban</code> lets us easily unban IP addresses using the included client:</p>
+
+<p><code>
+sudo fail2ban-client set sshd unbanip IP
+</code></p>
+
+<p>Here you can see an example of how I unbanned an IP.</p>
+
+<p><code>
+root@dokku:~# fail2ban-client status sshd
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	1114
+|  `- File list:	/var/log/auth.log
+`- Actions
+   |- Currently banned:	2
+   |- Total banned:	241
+   `- Banned IP list:	199.38.121.35 49.88.112.112
+root@dokku:~# fail2ban-client set sshd unbanip 199.38.121.35
+1
+root@dokku:~# fail2ban-client status sshd
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	1114
+|  `- File list:	/var/log/auth.log
+`- Actions
+   |- Currently banned:	1
+   |- Total banned:	241
+   `- Banned IP list:	49.88.112.112
+</code></p>
+
+<h3>Check how many IPs are already banned</h3>
+
+<p>Fail2ban comes with an easy to use client, where you can check the status of a specific service and see how many IPs are already banned</p>
+
+<p><code>
+fail2ban-client status sshd
+</code></p>
+
+<p>This is my server after being online for about a week. You can see and confirm that the Internet is a scary place and everyone wants to take over your server!</p>
+
+<p><code>
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	663
+|  `- File list:	/var/log/auth.log
+`- Actions
+   |- Currently banned:	1
+   |- Total banned:	129
+   `- Banned IP list:	49.88.112.76
+ </code></p>
+
+<h2>Firewall</h2>
+
+<p><strong>What is a Firewall?</strong> you may ask. A firewall defines rules in which services can connect to our server (incoming) or are allowed to talk to others on the Internet (outgoing). A server without a firewall will be allowed to do everything and has no restriction and can talk to everyone, but as we already learned we don&#39;t want that because we can&#39;t trust anyone on the Internet.</p>
+
+<p>A lot of VPS providers are allowing you to configure a firewall within their dashboard, but for those of you that are not able to do that, you can still use a software firewall like <code>ufw</code>. UFW is a software firewall and we can secure our server with just four commands!</p>
+
+<p><code>
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw enable
+</code></p>
+
+<p>Now your server is only allowed to respond to requests that are talking on port 22 (ssh) and every other service is disabled.</p>
+
+<p><code>ufw allow ssh</code> is just an easy way to write <code>ufw allow 22/tcp</code>. Some services are known to run on a specific port so <code>ufw</code> already knows a lot of them!</p>
+
+<p>If you have a webserver running too, you probably want to enable <code>http</code> and <code>https</code>. So just type <code>ufw allow http</code> and <code>ufw allow https</code> and your server is now allowed to respond to <code>http</code> and <code>https</code> requests!</p>
+
+<p>For additional services you may run on your server you will eventually open more ports.</p>
+
+<h2>Conclusion</h2>
+
+<p>Hosting your server can be a bit scary, but if you followed the post closely you should be fine. Of coures, you should still log in into the server from time to tome and run updates with <code>sudo apt update &amp;&amp; sudo apt upgrade</code> to make sure you get the latest security patches. </p>
+
+<p>Let me know in the comments if this was useful and if I might have missed something that every server should configure to be more secure!</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Check your LAN network speeds with iperf3]]></title>
+        <id>http://localhost:3000/check-your-lan-network-speeds-with-iperf3</id>
+        <link href="http://localhost:3000/check-your-lan-network-speeds-with-iperf3"/>
+        <updated>2020-09-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Sometimes you might want to know if you really max out your router/switch/server network speeds and with iperf3 it is really easy to test your LAN network speeds.]]></summary>
+        <content type="html"><![CDATA[<p>When you are installing new network cables or a new router/switch you might want to test if your equipment performs as it should. </p>
+
+<p>I recently installed new CAT 7 cables which I had crimped myself. Therefore I wanted to test if what I did was actually working and giving me the maximal theoretical speed of <strong>1 Gbit/sec</strong> in my network. </p>
+
+<p>When you want to test your internet speed you are usually used to going to a website like <a href="https://www.speedtest.net/">speedtest.net</a> or <a href="https://fast.com/">fast.com</a>. Those websites are great if you want to test your ISP&#39;s network speed, but usually not great if you want to test your <strong>LAN</strong> network speed. Of course, if you have a 1 Gbit/sec up and downlink contract with your ISP, those sites should work too.</p>
+
+<p>For the rest of us, who don&#39;t have those extreme speeds we need to use tools that are using our LAN network. </p>
+
+<p><code>iperf3</code> is an excellent tool to measure LAN network speeds and to find bottlenecks or bad network equipment.</p>
+
+<p>In the following, I will show how to install <code>iperf3</code> and how to use it for a basic network test.</p>
+
+<h2>Install iperf3</h2>
+
+<p>First of all, we need to install <code>iperf3</code> on both devices that you want to test. </p>
+
+<h3>Debian/Ubuntu</h3>
+
+<p><code>
+sudo apt install iperf3
+</code></p>
+
+<h3>macOS</h3>
+
+<p><code>
+brew install iperf3
+</code></p>
+
+<h2>Testing your LAN speeds</h2>
+
+<p><code>iperf3</code> is a client-server application, which means it will need to run on two different computers to work.  </p>
+
+<p>First, determine which of your device should be the server and which should be the client. It does not matter which device has which role. </p>
+
+<p>In my case, I chose my Raspberry Pi as the server and my MacBook Pro as the client.</p>
+
+<p>On the server device you just start the iperf3 in server mode:</p>
+
+<p><code>
+iperf3 -s
+</code></p>
+
+<p>In your terminal window, you should now see that your server is ready</p>
+
+<h2>```</h2>
+
+<h2>Server listening on 5201</h2>
+
+<p><code></code>`</p>
+
+<p>On your client device you will now have to connect to the server:</p>
+
+<p><code>
+iperf3 -c 192.168.1.10
+</code></p>
+
+<blockquote><p>Note that you should change the IP address to the one of the server</p></blockquote>
+
+<p><code></code>`
+Connecting to host 192.168.1.10, port 5201
+[  5] local 192.168.1.179 port 63816 connected to 192.168.1.10 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   114 MBytes   956 Mbits/sec
+[  5]   1.00-2.00   sec   112 MBytes   941 Mbits/sec
+[  5]   2.00-3.00   sec   112 MBytes   935 Mbits/sec
+[  5]   3.00-4.00   sec   111 MBytes   928 Mbits/sec
+[  5]   4.00-5.00   sec   113 MBytes   945 Mbits/sec
+[  5]   5.00-6.00   sec   112 MBytes   943 Mbits/sec
+[  5]   6.00-7.00   sec   112 MBytes   941 Mbits/sec
+[  5]   7.00-8.00   sec   112 MBytes   941 Mbits/sec
+[  5]   8.00-9.00   sec   112 MBytes   941 Mbits/sec
+[  5]   9.00-10.00  sec   112 MBytes   941 Mbits/sec</p>
+
+<hr/>
+
+<p>[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  sender
+[  5]   0.00-10.01  sec  1.10 GBytes   940 Mbits/sec                  receiver</p>
+
+<p>iperf Done.
+<code></code>`</p>
+
+<p>Now you can see how fast your LAN speeds are. If you have a 1Gbit/sec network like me you should see speeds around <code>940 Mbits/sec</code>.</p>
+
+<p>This is really close to the theoretical 1Gbit/sec. You can repeat the test multiple times as there can be different results depending on the systems load.</p>
+
+<h2>Additional options to use</h2>
+
+<p>Here I will list some extra options that you can pass to <code>iperf3</code>. If you want to check out more options use the man pages by typing <code>man iperf3</code> into the terminal.</p>
+
+<h3>Parallel test streams</h3>
+
+<p>If you have more than 1 Gbits/s you can try to use the <code>-P</code> parameter to run multiple test streams at once at parallel. </p>
+
+<p><code>
+iperf3 -c 192.168.1.13 -P 3
+</code></p>
+
+<p><code></code>`
+Connecting to host 192.168.1.13, port 5201
+[  5] local 192.168.1.179 port 63847 connected to 192.168.1.13 port 5201
+[  7] local 192.168.1.179 port 63848 connected to 192.168.1.13 port 5201
+[  9] local 192.168.1.179 port 63849 connected to 192.168.1.13 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  15.0 MBytes   126 Mbits/sec
+[  7]   0.00-1.00   sec  42.8 MBytes   359 Mbits/sec
+[  9]   0.00-1.00   sec  56.7 MBytes   476 Mbits/sec
+[SUM]   0.00-1.00   sec   115 MBytes   961 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   1.00-2.00   sec  10.8 MBytes  90.8 Mbits/sec
+[  7]   1.00-2.00   sec  49.5 MBytes   416 Mbits/sec
+[  9]   1.00-2.00   sec  52.1 MBytes   437 Mbits/sec
+[SUM]   1.00-2.00   sec   112 MBytes   943 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   2.00-3.00   sec  17.7 MBytes   149 Mbits/sec
+[  7]   2.00-3.00   sec  47.5 MBytes   398 Mbits/sec
+[  9]   2.00-3.00   sec  47.3 MBytes   397 Mbits/sec
+[SUM]   2.00-3.00   sec   113 MBytes   944 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   3.00-4.00   sec  24.8 MBytes   208 Mbits/sec
+[  7]   3.00-4.00   sec  46.6 MBytes   391 Mbits/sec
+[  9]   3.00-4.00   sec  41.0 MBytes   344 Mbits/sec
+[SUM]   3.00-4.00   sec   112 MBytes   943 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   4.00-5.00   sec  26.0 MBytes   218 Mbits/sec
+[  7]   4.00-5.00   sec  43.2 MBytes   362 Mbits/sec
+[  9]   4.00-5.00   sec  42.9 MBytes   360 Mbits/sec
+[SUM]   4.00-5.00   sec   112 MBytes   940 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   5.00-6.00   sec  32.2 MBytes   270 Mbits/sec
+[  7]   5.00-6.00   sec  43.2 MBytes   363 Mbits/sec
+[  9]   5.00-6.00   sec  36.6 MBytes   307 Mbits/sec
+[SUM]   5.00-6.00   sec   112 MBytes   940 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   6.00-7.00   sec  33.4 MBytes   280 Mbits/sec
+[  7]   6.00-7.00   sec  39.6 MBytes   332 Mbits/sec
+[  9]   6.00-7.00   sec  39.3 MBytes   330 Mbits/sec
+[SUM]   6.00-7.00   sec   112 MBytes   943 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   7.00-8.00   sec  27.5 MBytes   231 Mbits/sec
+[  7]   7.00-8.00   sec  41.5 MBytes   348 Mbits/sec
+[  9]   7.00-8.00   sec  43.0 MBytes   361 Mbits/sec
+[SUM]   7.00-8.00   sec   112 MBytes   940 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   8.00-9.00   sec  23.2 MBytes   195 Mbits/sec
+[  7]   8.00-9.00   sec  45.3 MBytes   380 Mbits/sec
+[  9]   8.00-9.00   sec  42.6 MBytes   358 Mbits/sec
+[SUM]   8.00-9.00   sec   111 MBytes   932 Mbits/sec</p>
+
+<hr/>
+
+<p>[  5]   9.00-10.00  sec  26.2 MBytes   219 Mbits/sec
+[  7]   9.00-10.00  sec  43.9 MBytes   368 Mbits/sec
+[  9]   9.00-10.00  sec  43.4 MBytes   364 Mbits/sec
+[SUM]   9.00-10.00  sec   113 MBytes   952 Mbits/sec</p>
+
+<hr/>
+
+<p>[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec   237 MBytes   199 Mbits/sec                  sender
+[  5]   0.00-10.01  sec   236 MBytes   198 Mbits/sec                  receiver
+[  7]   0.00-10.00  sec   443 MBytes   372 Mbits/sec                  sender
+[  7]   0.00-10.01  sec   442 MBytes   370 Mbits/sec                  receiver
+[  9]   0.00-10.00  sec   445 MBytes   373 Mbits/sec                  sender
+[  9]   0.00-10.01  sec   444 MBytes   372 Mbits/sec                  receiver
+[SUM]   0.00-10.00  sec  1.10 GBytes   944 Mbits/sec                  sender
+[SUM]   0.00-10.01  sec  1.10 GBytes   940 Mbits/sec                  receiver</p>
+
+<p>iperf Done.
+<code></code>`</p>
+
+<p>You see that there are now 3 test streams occupying the full 1 Gbit/sec bandwidth.</p>
+
+<h3>Changing the displayed speed format</h3>
+
+<p>By default <code>iperf3</code> will show you the speed in <code>Mbit/sec</code>, but you can change that with the <code>-f [kmgtKMGT]</code> option.</p>
+
+<p>To display <code>Gbit/sec</code> you can you use the following command:</p>
+
+<p><code>
+iperf3 -c 192.168.1.13 -f g
+</code></p>
+
+<p><code></code>`
+Connecting to host 192.168.1.13, port 5201
+[  5] local 192.168.1.179 port 63952 connected to 192.168.1.13 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   1.00-2.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   2.00-3.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   3.00-4.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   4.00-5.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   5.00-6.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   6.00-7.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   7.00-8.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   8.00-9.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   9.00-10.00  sec   112 MBytes  0.94 Gbits/sec</p>
+
+<hr/>
+
+<p>[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec  1.10 GBytes  0.94 Gbits/sec                  sender
+[  5]   0.00-10.01  sec  1.09 GBytes  0.94 Gbits/sec                  receiver</p>
+
+<p>iperf Done.
+<code></code>`</p>
+
+<h2>Conclusion</h2>
+
+<p>Now you know how you can test your own LAN network and it is not that difficult too. Next time you notice a drop in transfer speed between your NAS and computer, you may want to check your connection with <code>iperf3</code> and figure out where the problem could be 😄</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Dealing with URL query parameters in Javascript using URLSearchParams]]></title>
+        <id>http://localhost:3000/dealing-with-url-query-parameters-in-javascript-using-urlsearchparams</id>
+        <link href="http://localhost:3000/dealing-with-url-query-parameters-in-javascript-using-urlsearchparams"/>
+        <updated>2020-08-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Interacting with the browsers URL search parameters was never easier with URLSearchParams. No need for external libraries.]]></summary>
+        <content type="html"><![CDATA[<p>Often in Single Page Applications, you will have to interact with the URL to implement some functionality like pagination or filtering. </p>
+
+<p>The URL is a great place to put some of your applications state on it. The advantages are that users can copy the URL and share it and getting back to it with the set filters and page where they left off. </p>
+
+<p>The hard part is, sometimes how you get and update those URL parameters. Frankly, in modern browsers, there is a neat API named <code>URLSearchParams</code>. It allows us to extremely easy to retrieve or update the URL parameters. <code>URLSearchParams</code> is available in node.js and most browsers.</p>
+
+<p>Recently we had an issue with an npm package named <code>query-string</code> in production which would <a href="https://github.com/sindresorhus/query-string/issues/189">throw an error in IE11</a>, so we decided to remove it and use <code>URLSearchParams</code> with a polyfill instead. We could have switched to the older version 5 and support older browsers, but I wanted to try out something new.</p>
+
+<p><code>query-string</code> is a great library and you can still use it, but it is more focused to be used on the backend with node.js and for newer browsers. </p>
+
+<h2>Example</h2>
+
+<p>I have put together a simple example of the most commonly used methods in this CodeSandBox. The example will list all the provided search parameters, adds one parameter, and allows the user to add or delete a certain parameter. Open it on CodeSandBox directly to see the URL.</p>
+
+<p>&lt;iframe src=&quot;https://codesandbox.io/embed/urlsearchparams-example-0wp7y?fontsize=14&amp;hidenavigation=1&amp;theme=dark&quot;
+     style=&quot;width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;&quot;
+     title=&quot;URLSearchParams example&quot;
+     allow=&quot;accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking&quot;
+     sandbox=&quot;allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts&quot;
+   &gt;&lt;/iframe&gt;</p>
+
+<h2>Getting Started</h2>
+
+<p>First, you will have to initialize the <code>URLSearchParams</code> class with a string that has the format of a query string like <code>?page=10&amp;offset=5</code></p>
+
+<p><code>js
+  const params = new URLSearchParams(window.location.search);
+</code></p>
+
+<p>To get the query string from the current website you have to pass <code>URLSearchParams</code> the query string from the <code>window.location</code> object. </p>
+
+<p>Now you have an instance of <code>URLSearchParams</code> saved to <code>params</code> which you can use to read and modify query parameters.</p>
+
+<h2>Reading parameters</h2>
+
+<p>If you just want to get one specific parameter you can use the method <code>get()</code></p>
+
+<p><code>js
+  const page = params.get(&#39;page&#39;); // will return the value of the parameter page 
+  console.log(page) // 10
+</code></p>
+
+<p>To get a list of all values you can use <code>values()</code></p>
+
+<p><code>js
+  const values = Array.from(params.values());
+  console.log(values) // [10, 5]
+</code></p>
+
+<p><code>values()</code> will return an Iterator which you can use to loop over the values in a <code>foreach</code> or like in the example to create a new array with <code>Array.from</code></p>
+
+<p>There is also an <code>entries()</code> method which you can use. It is similar to <code>values()</code>, but it will also return you the key of the query parameter.</p>
+
+<p><code>js
+  const entries = Array.from(params.entries());
+  console.log(entries) // [[&#39;page&#39;, 10], [&#39;offset&#39;, 5]]
+</code></p>
+
+<h2>Updating parameters</h2>
+
+<p>To modify URL parameters you can use functions like <code>append()</code>, <code>delete()</code> or <code>set()</code>. </p>
+
+<p>In my example, I delete the parameter <code>page</code> using a button like this</p>
+
+<p><code>js
+$deletePageButton.addEventListener(&quot;click&quot;, () =&gt; {
+  if (params.has(&quot;page&quot;)) {
+    params.delete(&quot;page&quot;);
+  }
+});
+</code></p>
+
+<p>The methods modify the current <code>URLSearchParams</code> instance. If you want to explore the whole API check out the documentation on <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams">MDN</a>.</p>
+
+<h2>Generating a URL</h2>
+
+<p>Another useful use case is to generate a URL with <code>URL</code> and under the hood <code>URLSearchParams</code>.</p>
+
+<p><code>js
+const myURL = new URL(&#39;https://phiilu.com&#39;)
+myURL.searchParams.set(&#39;greeting&#39;, &#39;Hello World&#39;)
+console.log(myURL.toString()) // https://phiilu.com/?greeting=Hello+World
+</code></p>
+
+<p>Using <code>toString()</code> will generate a URL as you would expect!</p>
+
+<h2>Browser Support</h2>
+
+<p>If you don&#39;t have to support Internet Explorer 11 you can use <code>URLSearchParams</code> right away because it is supported in all modern browsers. It&#39;s been in Chrome since version 49 and in Firefox since version 44.</p>
+
+<p>For you poor developers who still have to maintain IE11, you can still use <code>URLSearchParams</code> by using a <a href="https://github.com/ungap/url-search-params">polyfill</a>. </p>
+
+<h2>Conclusion</h2>
+
+<p>There are a lot of APIs already built into browsers and sometimes they are just the right tool for the job. I think learning a few of them or just being aware that they exist will make your developer life a bit easier. <code>URLSearchParams</code> is really cool and very easy to use. I am happy that it exists.</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Use Visual Studio Code Remote to edit files on servers]]></title>
+        <id>http://localhost:3000/use-visual-studio-code-remote-to-edit-files-on-servers</id>
+        <link href="http://localhost:3000/use-visual-studio-code-remote-to-edit-files-on-servers"/>
+        <updated>2020-07-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Editing files on a remote server using the Visual Studio Code Remote extension is that easy.]]></summary>
+        <content type="html"><![CDATA[<p>Editing files on a remote server using the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Visual Studio Code Remote extension</a> is that easy.</p>
+
+<p>If you find yourself ever configuring a service on a server you probably had to edit files directly via the terminal using <code>nano</code>, <code>vim</code>, <code>emacs</code> or some other text based editor.</p>
+
+<p>By no means are those editors bad, but they are also not the easiest to use, at least for most of us. I know some of that <code>vim</code> magic myself and also am capable of exiting it, but sometimes I wish I could just use a good IDE like Visual Studio Code to edit my files on the server.</p>
+
+<h2>Install the Visual Studio Code Remote extension</h2>
+
+<p>Go to the extension menu in VS Code and search for <strong>remote</strong>.</p>
+
+<p><img alt="Search for &quot;Remote&quot;" src="//images.ctfassets.net/hb3id6ag4raq/qXxIaG7f2iUrwT3TpIrDi/765d49ef0fb5c7945ac81a3e9b2cc72c/Remote-SSH-search.png"/></p>
+
+<p>Click on <strong>Remote - SSH</strong> and later <strong>install</strong>, after the installation click <strong>reload</strong>. You can also install it by visiting the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Visual Studio Marketplace</a> Website and click <strong>install</strong>.</p>
+
+<p><img alt="Remote - SSH Extension Overview" title="VS Code Remote - SSH Extension Overview" src="//images.ctfassets.net/hb3id6ag4raq/47QaqLrknWyQhiHLnBOUvs/45a5afc7e3178ad2ab0bf559a28464b2/Remote-SSH-overview.png"/></p>
+
+<p>Visual Studio Code Remote should now be installed and you should be able to connect to servers with SSH.</p>
+
+<h2>Connect to a server</h2>
+
+<p>You might notice a new icon on the bottom left of the VS Code window.</p>
+
+<p><img alt="Remote - SSH connection menu" title="VS Code Remote connection menu" src="//images.ctfassets.net/hb3id6ag4raq/1hpYHSsX3Q0ecDvfkhcAk9/752cc2abf2615828bd7d1b81a88e7fa8/Remote-SSH-connection-menu.png"/></p>
+
+<p>To connect to a server you just have to <strong>click</strong> it. Next you need to enter which user and server IP or hostname you want to connect to.</p>
+
+<p><img alt="Remote - SSH connection syntax" title="SSH connection syntax" src="//images.ctfassets.net/hb3id6ag4raq/65SqIZWGrWbiyDLAXocjfv/b60e07527fb890d7c97a95dff5748f64/Remote-SSH-connection-command.png"/></p>
+
+<p><code>[user@]hostname</code> is the <a href="https://man.openbsd.org/ssh">syntax</a> how you connect to a server using SSH. In my case I am connecting to the server <code>192.168.1.10</code> with the user <code>pi</code>.</p>
+
+<p><img alt="Remote - SSH fingerprint confirmation" title="confirming the server fingerprint" src="//images.ctfassets.net/hb3id6ag4raq/7IlwgZMFGm2g5hPoE4L2W4/3a2103d1c4870726ad218be88f87200d/Remote-SSH-confirm-fingerprint.png"/></p>
+
+<p>The first time you connect to a server it will ask you to confirm the servers fingerprint. This is a security measure from SSH to be safe for future connections that the server will always be the same and was not compromised.</p>
+
+<p>If for any reason you get an error saying the fingerprint does not match with the one saved on the computer, your server might have been altered. This might also happen if you connect to a server with the same <a href="https://en.wikipedia.org/wiki/Private_network">private IP address (RFC 1918)</a>, but in a different network. If it is the later and you are sure no one messed with your server, you can ignore the warning and update the fingerprint with the following command:</p>
+
+<p><code>bash
+ssh-keygen -R IP
+</code></p>
+
+<p>After the fingerprint confirmation VS Code Remote will ask you to put in the password for the specified user.</p>
+
+<p><img alt="Remote - SSH password input" title="SSH password prompt" src="//images.ctfassets.net/hb3id6ag4raq/3UZUA4Ht3DT9yksgKazlIc/9d9f58bc778ef4688ecc72621b657bba/Remote-SSH-password.png"/></p>
+
+<p>Entering the password each login is cumbersome, so <a href="#Skip-passwords-with-public-key-authentication">later in this post</a> I will show you how you can skip this step using SSH Public Key authentication.</p>
+
+<p><img alt="Remote - SSH VS Code Server installation" title="Visual Studio Server is being installed" src="//images.ctfassets.net/hb3id6ag4raq/1dQHaO1xkI8B8p53jEPqb0/43a33a71865513093857654e53cb02f6/Remote-SSH-vs-code-server-installation.png"/></p>
+
+<p>After a successful login, VS Code Remote will start installing Visual Studio Server on the remote server which might take a while.</p>
+
+<p><img alt="Remote - SSH successful connection" title="successful connection to the server" src="//images.ctfassets.net/hb3id6ag4raq/2xRLOLJpvqoet2NWK4lTdZ/7066a79f87536b21243a4042bda96314/Remote-SSH-connected.png"/></p>
+
+<p>If everything went fine you should now be connected to your server. You can start opening files right from VS Code and use the integrated terminal to enter commands!</p>
+
+<p><img alt="Remote - SSH editing a file on the server using VS Code Remote" title="editing .bashrc file on the server using VS Code" src="//images.ctfassets.net/hb3id6ag4raq/3C6UCqWinrAu00OchRGHn0/4143816dee832b26dbc2d0b024f57007/Remote-SSH-file-open.png"/></p>
+
+<h2>Developing on a remote server with Visual Studio Code</h2>
+
+<p>The inspiration for this blog post came actually while developing a small Node.js application that needs access to the hardware GPIOs on the Raspberry Pi.</p>
+
+<p>I was not satisfied using <code>vim</code> or copy the files over to the server over and over again.</p>
+
+<p>Visual Studio Code Remote was the perfect solution for my problem. I already love to develop in VS Code and now I can develop on the Raspberry Pi without sitting in front of it or moving files!</p>
+
+<p>One thing you might notice when you start developing on a remote server with VS Code is that you won&#39;t have all your extensions available.</p>
+
+<p><img alt="Remote - SSH missing remote extensions" title="Remote server has no extensions installed" src="//images.ctfassets.net/hb3id6ag4raq/7cHNX3b9Oqf5ac5rKn0F4I/322d3944092864b698f588ea3fbebc97/Remote-SSH-remote-extensions.png"/></p>
+
+<p>This is because you have to install them on the remote server too. So if you want to use <code>eslint</code> you have to install the extension on the server using VS Code. It is not complicated, but an extra step to think about.</p>
+
+<p><img alt="Remote - SSH missing remote extension installation" src="//images.ctfassets.net/hb3id6ag4raq/3N806PwcYTeNg0HS4cZrAj/ef78617dab3580eb551f9d96dbaa0296/Remote-SSH-remote-extension-install.png"/></p>
+
+<h2>Skip passwords with public key authentication</h2>
+
+<blockquote><p>This is a optional step and not really mandatory to do</p></blockquote>
+
+<p><a href="https://en.wikipedia.org/wiki/Public-key_cryptography">Public key authentication</a> is a secure way to connect to a server with SSH using a set of key pairs. The public key is saved on the server and the private key should be kept on your local machine. This is the key to unlock the server and <strong>must never</strong> be leaked or shared with someone else.</p>
+
+<p>If you are using Windows you must have <a href="https://gitforwindows.org/">Git for Windows</a> installed and use the following commands inside the <strong>Git Bash</strong>.</p>
+
+<p>The following commands should be the same for Windows and macOS except you might have to end the commands on Windows with <code>.exe</code>.</p>
+
+<h3>Generating SSH Key</h3>
+
+<p>If you already have an SSH key that you might already use with <code>git</code> you can skip this step.</p>
+
+<p><code>bash
+ssh-keygen -b 4096
+</code></p>
+
+<p>Which results in the following output.</p>
+
+<p><code>
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/flori/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/flori/.ssh/id_rsa.
+Your public key has been saved in /c/Users/flori/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx flori@Windows
+</code></p>
+
+<p>You can set a passphrase for the key if you want, but than you have to enter a password for the login which we want to avoid.</p>
+
+<h3>Copy the public key to the server</h3>
+
+<p>You can either manually paste the key to the server or you can use a program called <code>ssh-copy-id</code> which I prefer.</p>
+
+<p>On macOS you have to install <code>ssh-copy-id</code> using <code>brew</code> on Windows it should be already present in the Git Bash.</p>
+
+<p><code>bash
+brew install ssh-copy-id
+</code></p>
+
+<p>To copy the key to the server you just have to login to the server using the
+<code>ssh-copy-id</code> utility.</p>
+
+<p><code>bash
+ssh-copy-id pi@192.168.1.10
+</code></p>
+
+<p><code></code>`
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/c/Users/flori/.ssh/id_rsa.pub&quot;
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+pi@192.168.1.10&#39;s password:
+Permission denied, please try again.
+pi@192.168.1.10&#39;s password:</p>
+
+<p>Number of key(s) added: 1</p>
+
+<p>Now try logging into the machine, with:   &quot;ssh &#39;pi@192.168.1.10&#39;&quot;
+and check to make sure that only the key(s) you wanted were added.
+<code></code>`</p>
+
+<h3>Verifying the public key authentication</h3>
+
+<p>Now if you try to login with <code>ssh</code> you should not be asked for a password.
+VS Code should now also work with the public key authentication.</p>
+
+<p>If you are still asked for a password, check if you are using the correct
+ssh configuration. Also check if the permissions on the authorized_keys
+file on the server are correct:</p>
+
+<p><code>bash
+ls -l ~/.ssh
+</code></p>
+
+<p><code>
+drwx------ 2 pi pi 4096 Jul  9 15:56 .
+drwxr-xr-x 8 pi pi 4096 Jul  9 13:29 ..
+-rw------- 1 pi pi  739 Jul  9 15:56 authorized_keys
+</code></p>
+
+<p>If your permissions are different you might have to change them:</p>
+
+<p><code>bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+</code></p>
+
+<h2>Conclusion</h2>
+
+<p>Visual Studio Code Remote is a great extension that allowed me to programm on a remote server without changing my way to develop.</p>
+
+<p>In the future when I have to configure multiple files on a remote server I will probably use Visual Studio Code.</p>
+
+<p>For simple changes or to check something quickly I probably will still use a terminal based editor.</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Create your first VPS on Vultr]]></title>
+        <id>http://localhost:3000/create-your-first-vps-on-vultr</id>
+        <link href="http://localhost:3000/create-your-first-vps-on-vultr"/>
+        <updated>2020-02-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Creating a VPS is really straightforward. I have chosen Vultr as my VPS provider, because they offer great performance backed by benchmarks and have great support.]]></summary>
+        <content type="html"><![CDATA[<blockquote><p>This guide is meant for beginners, who have never created a VPS before</p></blockquote>
+
+<p>Creating a VPS is really straightforward. I have chosen <a href="https://s.phiilu.com/vultr-give-100">Vultr*</a> as my VPS provider, because they offer great performance
+backed by <a href="//www.vultr.com/products/cloud-compute/">benchmarks</a> and have great support. There are also other VPS providers out there like
+DigitalOcean or Linode, but this article focuses just on Vultr. Just to name a few of them.</p>
+
+<h2>Create your account</h2>
+
+<p>First of all you need to <a href="https://s.phiilu.com/vultr-give-100">create an account*</a> on Vultr.</p>
+
+<blockquote><p>If you signup for an account using my affiliate link ending with <strong>*</strong>
+you will get <strong>100$</strong> coupon for Vultr. <em>Be aware</em> that the unused portion of $100 credit expires after 30 days.</p></blockquote>
+
+<h2>Create your VPS</h2>
+
+<p>After you are logged in, you will see the following Dashboard. Press on the blue plus button to create a new server.</p>
+
+<p><img alt="Vultr dashboard screenshot" src="//images.ctfassets.net/hb3id6ag4raq/7kiztFt0TFtP8YZIahn4iH/4776b564c39c88b0c3ea9bdd2ce36f20/01-vultr.png"/></p>
+
+<h3>Select your server type</h3>
+
+<p>Next you need to select your server type from the 4 existing ones.</p>
+
+<p><img alt="Vultr server types screenshot" src="//images.ctfassets.net/hb3id6ag4raq/4T4XwOrbi4Xp9kO8HErdix/5c59248bc56425777e4cf91c8866e092/02-vultr.png"/></p>
+
+<h4><strong>Cloud Compute</strong></h4>
+
+<p>The most common VPS type.</p>
+
+<blockquote><p>Our high performance compute instances are perfect for your web application or development environment.</p></blockquote>
+
+<h4><strong>High Frequency</strong></h4>
+
+<p>If you need even better performance.</p>
+
+<blockquote><p>Instances are powered by high clock speed CPU&#39;s and NVMe local storage to power your most demanding applications.</p></blockquote>
+
+<h4><strong>Bare Metal</strong></h4>
+
+<p>Sometimes also called Root servers. It&#39;s like if you would own a physical server, but located somewhere else.</p>
+
+<blockquote><p>Stay in full control of your environment with high performance single-tenant dedicated servers.</p></blockquote>
+
+<h4><strong>Dedicated Cloud</strong></h4>
+
+<p>Kind of like Bare Metal, but not with dedicated hardware just for you, but with dedicated resources.</p>
+
+<blockquote><p>Say goodbye, noisy neighbors! Deploy cloud instances with dedicated CPU, SSD drives, and RAM just for you.</p></blockquote>
+
+<h3>Select a server location</h3>
+
+<p>Depending where you live, you can select a region where your server should be located.</p>
+
+<p><img alt="Vultr server location screenshot" src="//images.ctfassets.net/hb3id6ag4raq/1holZxiOSacwCregu1kNAf/4ef04dc713e629212543388009740b8a/03-vultr.png"/></p>
+
+<h3>Select a operating system</h3>
+
+<p>In this step you can select your operating system (OS) for the server. I am most familiar with debian based OS like Debian or Ubuntu.
+Make sure to select a Long-term support (LTS) version of Ubuntu, to get security updates for 5 years after the initial release.</p>
+
+<p><img alt="Vultr operating system options screenshot" src="//images.ctfassets.net/hb3id6ag4raq/6y4C8jcSFflZ9IDxdWPjE/77603e9b23ce7ac31bb8873d0cbead1a/04-vultr.png"/></p>
+
+<p>Vultr also has images with preinstalled application that could be used. If you don&#39;t find your OS on Vultr, they also support to upload
+your own ISO file.</p>
+
+<p><img alt="Vultr preinstalled application options screenshot" src="//images.ctfassets.net/hb3id6ag4raq/5CTzAD5qKrJO8Wi6dDqOAA/965df6e721907aad71ae54b641cc64c0/05-vultr.png"/></p>
+
+<h3>Select the specs of your server</h3>
+
+<p>Now comes the most important part. In this step you have to decide how much resources do you need.</p>
+
+<p><img alt="Vultr server specs option screenshot" src="//images.ctfassets.net/hb3id6ag4raq/ZLFWHO6hJYOb0rmLJNruV/cf6f52812cd40c69cf57af4bc32f26ca/06-vultr.png"/></p>
+
+<p>For small websites or web apps the 5$ instance should be enough to get started. 
+The 10\$ instance is probably a good choice if you also
+need to host a database with PostgreSQL or MySQL.</p>
+
+<p>If you ever think you current instance is sweating and can&#39;t handle the load anymore, Vultr allows to upgrade your server
+to better plan with just 1 click!</p>
+
+<h3>Deploy your server</h3>
+
+<p>Last but not least you can give your server a hostname. After that you get a summery and you can press &quot;Deploy Now&quot; to create your server.</p>
+
+<p><img alt="Vultr last steps before deployment screenshot" src="//images.ctfassets.net/hb3id6ag4raq/4ThsjemUAsrYdrOc0OgSb9/166b613b0e7679bb6d4c50e84bdfb289/07-vultr.png"/></p>
+
+<h3>Server overview</h3>
+
+<p>After some time your new server should be visible in the dashboard.</p>
+
+<p><img alt="Vultr deployed server overview page screenshot" src="//images.ctfassets.net/hb3id6ag4raq/5mCX13xgKSCR73vQkcXvpR/f2d5fade984f2a104d9f76ebd764f162/08-vultr.png"/></p>
+
+<p>Vultr will send you an Email with the IP of the server and how you can connect to it.</p>
+
+<p><img alt="Vultr success deployment email screenshot" src="//images.ctfassets.net/hb3id6ag4raq/52RqtnTldTxHLNtyPIiIh9/d38bc01b3fadec2964eaa6beb172c46b/09-vultr.png"/></p>
+
+<h3>Connecting to the server</h3>
+
+<p>When you click on the server in the dashboard you will find an overview and more settings to interact with it.</p>
+
+<p>You can copy the password for the root user using the copy symbol.</p>
+
+<p>If you are using Windows you need to enable <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux (WSL)</a> or
+download <a href="https://www.putty.org/">Putty</a> in order to connect to the server.</p>
+
+<p>On a Linux or macOS (or Windows 10 with WSL) system you can just open the Terminal application and connect via SSH.</p>
+
+<p><code></code>`
+ssh root@136.244.81.25
+The authenticity of host &#39;136.244.81.25 (136.244.81.25)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:E4VbM7b7i2jZO8aBgKSL1jfh6Td9Gv7TTswsSmGHc70.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &#39;136.244.81.25&#39; (ECDSA) to the list of known hosts.
+root@136.244.81.25&#39;s password:
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-74-generic x86_64)</p>
+
+<ul><li>Documentation:  https://help.ubuntu.com</li><li>Management:     https://landscape.canonical.com</li><li><p>Support:        https://ubuntu.com/advantage</p><p>System information as of Wed Feb 12 13:01:10 UTC 2020</p><p>System load:  0.0               Processes:           83
+Usage of /:   9.4% of 24.55GB   Users logged in:     0
+Memory usage: 12%               IP address for ens3: 136.244.81.25
+Swap usage:   0%</p></li></ul>
+
+<p>0 packages can be updated.
+0 updates are security updates.</p>
+
+<p>root@thanos:~#
+<code></code>`</p>
+
+<p><strong>Congratulations 🎉</strong> you now have successfully created a server on <a href="https://s.phiilu.com/vultr-give-100">Vultr*</a> and connected to it!</p>
+
+<p>For the next steps it is wise to update all the packages and secure your VPS by changing the default password and setting up some kind of firewall and blocking attackers with
+fail2ban. But this is a topic for a separate blog post 😄</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Host your own OpenVPN server in a few seconds]]></title>
+        <id>http://localhost:3000/host-your-own-openvpn-server-in-a-few-seconds</id>
+        <link href="http://localhost:3000/host-your-own-openvpn-server-in-a-few-seconds"/>
+        <updated>2020-01-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Hosting your own VPN has never been easier. There are now multiple Github projects that will reduce the pain on setting up your own VPN server.]]></summary>
+        <content type="html"><![CDATA[<blockquote><p><strong>Disclosure:</strong> This post contains affiliate links for ExpressVPN and Vultr.</p></blockquote>
+
+<p>Hosting your own VPN has never been easier. There are now multiple Github projects that will reduce the pain on setting up your own VPN server.</p>
+
+<p>Before we start installing the VPN, let&#39;s talk about what VPN is and how it can help us.</p>
+
+<h2>What is a VPN?</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Virtual_private_network">VPN</a> or Virtual Private Network is a network between the VPN client(s) and the VPN server. The advantage
+of this network is, that it is fully encrypted and the whole network traffic of the VPN client will go through the encrypted tunnel.</p>
+
+<p>The VPN client never access other (web)servers directly, everything will be requested from the VPN server and the VPN server will
+forward the request.</p>
+
+<h2>Why do I want to host my own VPN server?</h2>
+
+<p>Having your own VPN means that you have fully control over it and only YOU are able to
+read the logs of the server.</p>
+
+<p>Here are some use cases, where a VPN can be helpful:</p>
+
+<ul><li>Hiding your real IP address</li><li>Secure surfing in public Wi-Fis</li><li>Accessing services inside the VPN servers network</li></ul>
+
+<h2>Why should I not host my own VPN server?</h2>
+
+<p>If you want to have access to multiple server in different locations, you should probably buy a VPN
+from a known provider such as <a href="https://s.phiilu.com/expressvpn">ExpressVPN</a> or <a href="https://nordvpn.com/">NordVPN</a>. These providers have lots of VPN servers
+in different countries.</p>
+
+<h2>Hosting your VPN server</h2>
+
+<blockquote><p>I am using a Ubuntu 18.04.3 LTS server hosted on <a href="https://s.phiilu.com/vultr">Vultr</a></p><p>This Tutorial should also work on Debian, Ubuntu and CentOS</p></blockquote>
+
+<p>To install our VPN server in seconds, we are using a shell script created by <a href="https://github.com/Nyr">Nyr</a> named <a href="https://github.com/Nyr/openvpn-install">openvpn-install</a>.</p>
+
+<h3>OpenVPN installation</h3>
+
+<p><code>bash
+wget https://git.io/vpn -O openvpn-install.sh &amp;&amp; bash openvpn-install.sh
+</code></p>
+
+<p>The script will ask a few questions on how you want to setup your VPN server.
+Press Enter to use the default (and most of the time recommended) option.</p>
+
+<p>I only changed the default DNS to use <code>1.1.1.1</code></p>
+
+<p><code></code>`
+Welcome to this OpenVPN road warrior installer!</p>
+
+<p>I need to ask you a few questions before starting setup.
+You can use the default options and just press enter if you are ok with them.</p>
+
+<p>Which protocol do you want for OpenVPN connections?
+   1) UDP (recommended)
+   2) TCP
+Protocol [1]:</p>
+
+<p>What port do you want OpenVPN listening to?
+Port [1194]:</p>
+
+<p>Which DNS do you want to use with the VPN?
+   1) Current system resolvers
+   2) 1.1.1.1
+   3) Google
+   4) OpenDNS
+   5) Verisign
+DNS [1]: 2</p>
+
+<p>Finally, tell me a name for the client certificate.
+Client name [client]:</p>
+
+<p>Okay, that was all I needed. We are ready to set up your OpenVPN server now.
+Press any key to continue...
+<code></code>`</p>
+
+<p>The script will now install OpenVPN on your server.</p>
+
+<h3>Adding a new user</h3>
+
+<p>After the Installation has finished, you need the make the <code>openvpn-install.sh</code> exectuable.</p>
+
+<p><code>bash
+chmod +x openvpn-install.sh
+</code></p>
+
+<p>To add a new user just run the script again and select 1 and type in a name for which device you will be using this client certificate.
+In my case I created a user for my iPhone.</p>
+
+<p><code>bash
+./openvpn-install.sh
+</code></p>
+
+<p><code></code>`
+Looks like OpenVPN is already installed.</p>
+
+<p>What do you want to do?
+   1) Add a new user
+   2) Revoke an existing user
+   3) Remove OpenVPN
+   4) Exit
+Select an option: 1</p>
+
+<p>Tell me a name for the client certificate.
+Client name: iphone</p>
+
+<p>Using SSL: openssl OpenSSL 1.1.1  11 Sep 2018
+Can&#39;t load /etc/openvpn/server/easy-rsa/pki/.rnd into RNG
+140236248433088:error:2406F079:random number generator:RAND<em>load</em>file:Cannot open file:../crypto/rand/randfile.c:88:Filename=/etc/openvpn/server/easy-rsa/pki/.rnd
+Generating a RSA private key
+................................+++++
+.................+++++
+writing new private key to &#39;/etc/openvpn/server/easy-rsa/pki/private/iphone.key.BnNBhJXQKm&#39;</p>
+
+<hr/>
+
+<p>Using configuration from ./safessl-easyrsa.cnf
+Can&#39;t load /etc/openvpn/server/easy-rsa/pki/.rnd into RNG
+140374526300608:error:2406F079:random number generator:RAND<em>load</em>file:Cannot open file:../crypto/rand/randfile.c:88:Filename=/etc/openvpn/server/easy-rsa/pki/.rnd
+Check that the request matches the signature
+Signature ok
+The Subject&#39;s Distinguished Name is as follows
+commonName            :ASN.1 12:&#39;iphone&#39;
+Certificate is to be certified until Jan 19 18:31:07 2030 GMT (3650 days)</p>
+
+<p>Write out database with 1 new entries
+Data Base Updated</p>
+
+<p>Client iphone added, configuration is available at: /root/iphone.ovpn
+<code></code>`</p>
+
+<h3>Retrieving the .ovpn file from the server</h3>
+
+<p>On macOS and Linux you can copy the file from the server to your machine using <code>scp</code>. On Windows it is best if you download <a href="https://filezilla-project.org/">Filezilla</a> or
+<a href="https://winscp.net/eng/download.php">WinSCP</a> and logging into the server using SFTP.</p>
+
+<p>To copy the file with <code>scp</code> run the following command:</p>
+
+<p><code>bash
+scp &lt;USERNAME&gt;@&lt;SERVER_IP&gt;:/root/&lt;CLIENT&gt;.ovpn .
+</code></p>
+
+<p>an example could look like this:</p>
+
+<p><code>bash
+scp root@123.45.67.89:/root/iphone.ovpn .
+</code></p>
+
+<p>If the certificate is for a smartphone, it is important that you copy it using a secure medium. With a Mac and a iPhone it is recommended that
+you copy the .ovpn file using AirDrop.</p>
+
+<p>If you have to use Email, please zip the .ovpn file and give the zip file a strong password before you send it.</p>
+
+<h3>Using the .ovpn file</h3>
+
+<p>On macOS you can use the app <a href="https://tunnelblick.net/">Tunnelblick</a>, on Windows there is an official programm from <a href="https://openvpn.net/community-downloads/">OpenVPN</a> and on iOS and Android there are offical OpenVPN Connect apps on the <a href="https://apps.apple.com/app/openvpn-connect/id590379981">App Store</a> and <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn">Google Play</a>.</p>
+
+<p>Usually the process is the same for every client. You have to import the .ovpn file into the client and connect to the
+server. If the connection was successful you can type into google <a href="https://www.google.com/search?q=what+is+my+ip+address">&quot;what is my ip address&quot;</a> and Google should show you your
+current IP address.</p>
+
+<p>If the IP address is the same as the server, you can congratulate yourself! You just set up your (first) self hosted VPN server 🎉</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello World]]></title>
+        <id>http://localhost:3000/hello-world</id>
+        <link href="http://localhost:3000/hello-world"/>
+        <updated>2020-01-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Hey I am Phiilu and this is my first blog post ever! I always wanted to blog and share my knowledge with the world, but I never had the courage to do it.]]></summary>
+        <content type="html"><![CDATA[<p>Hey I am <a href="https://phiilu.com">Phiilu</a> and this is my first blog post ever! I always wanted to blog and share my knowledge with
+the world, but I never had the courage to do it.</p>
+
+<p><strong>Reasons for this were:</strong></p>
+
+<ul><li>English not being my native language</li><li>Being too shy saying something wrong</li><li>Having nothing useful or interesting to share</li><li>Too lazy 😅</li></ul>
+
+<p>Now it&#39;s 2020 and it&#39;s time that I stop giving a f*ck what other people think and actually put myself out there.
+I need to stop worring about what others may say, or others may reply. Writing and posting something that I find interesting, or I think
+could help someone is what I want to do! If only one person thinks that one of my posts helped him/her, than this blog is already a big success!</p>
+
+<h2>Who is this guy?</h2>
+
+<p>In my day-to-day job I am working as a <strong>Frontend Developer</strong> for a agency.
+<a href="https://reactjs.org/">React</a> and the projects evolving around React are my daily working tools. Before specialising in Fronted, I started with Backend.
+Everything started with me learning Ruby on Rails and Java, but at some point I learned more and more about Javascript/Node.js and ended up using and loving React.</p>
+
+<p>I really like to code, but also setting up services on servers. I always loved configuring servers, this is why I am still hosting a lot of services by myself.
+This is where a lot of my knowledge about the internet and the <a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a> comes from and how our modern internet is working.</p>
+
+<p>That should be enough about me, if you want to know more, you can check <a href="https://kapfenberger.me/">my personal website</a> out.</p>
+
+<h2>What can you expect?</h2>
+
+<p>I am mostly interested in technical related topics like:</p>
+
+<ul><li>Setting up services on servers</li><li>Programming related content</li><li>Consumer Electronics</li></ul>
+
+<p>But I really don&#39;t want to restrict myself on what to write here. Maybe one day I want to try out a 7 day fast and share my progress here 🤔 .</p>
+
+<p>My goal though is to give people value by sharing my experiences and (hopefully) helpful tutorials. All my life I have been a consumer and consumed
+various blog posts, articles and videos that helped me through my life.</p>
+
+<p>Now it&#39;s time to give something back!</p>]]></content>
+        <author>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </author>
+        <contributor>
+            <name>Florian Kapfenberger</name>
+            <email>hey@phiilu.com</email>
+            <uri>https://twitter.com/phiilu</uri>
+        </contributor>
+    </entry>
+</feed>

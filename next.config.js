@@ -5,5 +5,8 @@ module.exports = {
       use: 'raw-loader'
     });
     return config;
+  },
+  images: {
+    domains: ['images.ctfassets.net', 'ctfassets.net']
   }
 };

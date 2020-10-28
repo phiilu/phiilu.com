@@ -1105,6 +1105,15 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fec/remark-a11y-emoji@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@fec/remark-a11y-emoji/-/remark-a11y-emoji-2.0.0.tgz#827ff1f9689eaa57eeaa5d2c31f9619f43aa8b0d"
+  integrity sha512-lS5KLSzuM5454YhYSRx0UbriVNBj8bLJDWa4Zzek85QN5yxzQgVOpB999T87XfJ3YG8RNZdkg4qLxDb6js5rzg==
+  dependencies:
+    emoji-regex "^9.0.0"
+    gemoji "^5.0.1"
+    unist-util-visit "^2.0.3"
+
 "@fullhuman/postcss-purgecss@^2.1.2":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.3.0.tgz#50a954757ec78696615d3e118e3fee2d9291882e"
@@ -3388,6 +3397,11 @@ gauge@~2.7.3:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
+
+gemoji@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/gemoji/-/gemoji-5.0.1.tgz#4cea541c735b74ec82edd56c2d46538cd54f355d"
+  integrity sha512-7yV9K8JdiK+h2M4YDnf/8bunJKYvs0t0p8eKh7zexVSuXddRG9Ue18ZViKOZljISk57DE64X19gvJfHZmhggGg==
 
 get-stdin@^6.0.0:
   version "6.0.0"
@@ -6839,7 +6853,7 @@ unist-util-visit-parents@^3.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^4.0.0"
 
-unist-util-visit@^2.0.0:
+unist-util-visit@^2.0.0, unist-util-visit@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.3.tgz#c3703893146df47203bb8a9795af47d7b971208c"
   integrity sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==

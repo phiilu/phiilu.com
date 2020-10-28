@@ -7,19 +7,27 @@ import Heading from '@components/Heading/Heading';
 import Image from 'next/image';
 
 import contentful from '@lib/contentful';
+import getOgImage from '@lib/getOgImage';
 
 export async function getStaticProps() {
+  const title = "Phiilu's Blog";
   const posts = await contentful.getEntries('post');
+  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=https://phiilu.com/`);
 
   return {
-    props: { posts }
+    props: { posts, ogImage }
   };
 }
 
-export default function IndexPage({ posts }) {
+export default function IndexPage({ posts, ogImage }) {
   return (
     <>
-      <Head title="Phiilu's Blog" />
+      <Head
+        title="Phiilu's Blog"
+        description="Welcome to my blog!"
+        image={ogImage}
+        url="https://phiilu.com/"
+      />
       <Layout>
         <Container as="main" noMargin className="px-4 space-y-14">
           <div className="flex flex-col items-center justify-center p-6 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:space-x-8 xl:p-12 md:space-y-0 md:flex-row">

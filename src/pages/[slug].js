@@ -7,7 +7,7 @@ import Heading from '@components/Heading/Heading';
 import Link from '@components/Link/Link';
 import Button from '@components/Button/Button';
 import contentful from '@lib/contentful';
-import ogImage from '@lib/ogImage';
+import getOgImage from '@lib/getOgImage';
 import Comments from '@components/Comments/Comments';
 import Tags from '@components/Tags/Tags';
 import DraftBadge from '@components/DraftBadge/DraftBadge';
@@ -15,12 +15,12 @@ import Head from '@components/Head/Head';
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getPostEntry(slug);
-  const image = await ogImage(
-    `https://og-image.phiilu.com/phiilu.com?title=${post.title}&url=https://phiilu.com/${slug}`
+  const ogImage = await getOgImage(
+    `/phiilu.com?title=${post.title}&url=https://phiilu.com/${slug}`
   );
 
   return {
-    props: { post, ogImage: image }
+    props: { post, ogImage }
   };
 }
 
@@ -131,7 +131,7 @@ function ShareOnTwitterCta({ onClick }) {
 }
 
 const PostDetails = ({
-  post: { title, slug, content, icon, date, tags, published, timeToRead },
+  post: { title, slug, content, icon, rawDate, date, tags, published, timeToRead },
   ogImage
 }) => {
   const handleSocialShare = React.useCallback(
@@ -146,9 +146,7 @@ const PostDetails = ({
 
   return (
     <>
-      <Head>
-        <meta property="og:image" content={`data:image/png;base64,${ogImage}`}></meta>
-      </Head>
+      <Head title={title} description={title} url={url} image={ogImage} date={rawDate} />
       <Layout>
         <Container as="main">
           <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">

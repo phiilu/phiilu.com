@@ -13,8 +13,12 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   const imagePath = `./public/images/og/${hash}.png`;
   const publicPath = `${process.env.BASE_URL}/images/og/${hash}.png`;
 
-  if (fs.existsSync(imagePath)) {
-    return publicPath;
+  try {
+    if (fs.existsSync(imagePath)) {
+      return publicPath;
+    }
+  } catch (error) {
+    // file does not exists, so we create it
   }
 
   const page = await browser.newPage();

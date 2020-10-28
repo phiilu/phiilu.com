@@ -9,6 +9,7 @@ import Image from 'next/image';
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 import generateRssFeed from '@lib/rss';
+import generateSitemap from '@lib/sitemap';
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
@@ -17,6 +18,7 @@ export async function getStaticProps() {
   const baseUrl = process.env.BASE_URL;
 
   await generateRssFeed();
+  await generateSitemap();
 
   return {
     props: { posts, ogImage, baseUrl }

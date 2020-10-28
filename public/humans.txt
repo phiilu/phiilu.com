@@ -1,0 +1,8 @@
+/* TEAM */
+Contact: hey [at] phiilu.com
+Twitter: @phiilu
+From: Austria
+
+/* SITE */
+Doctype: HTML5
+IDE: Next.js, React.js, Visual Studio Code

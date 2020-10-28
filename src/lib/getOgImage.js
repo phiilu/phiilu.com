@@ -3,20 +3,20 @@ const { createHash } = require('crypto');
 const fs = require('fs');
 
 async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
-  if (process.env.NODE_ENV === 'development') {
-    return 'og image will be generated in production';
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   return 'og image will be generated in production';
+  // }
 
   const url = `${baseUrl}${path}`;
   const hash = createHash('md5').update(url).digest('hex');
   const browser = await playwright.launchChromium({ headless: true });
-  const imagePath = `./public/images/og/${hash}.png`;
+  const ogImageDir = `./public/images/og`;
+  const imagePath = `${ogImageDir}/${hash}.png`;
   const publicPath = `${process.env.BASE_URL}/images/og/${hash}.png`;
 
   try {
-    if (fs.existsSync(imagePath)) {
-      return publicPath;
-    }
+    fs.statSync(imagePath);
+    return publicPath;
   } catch (error) {
     // file does not exists, so we create it
   }
@@ -27,6 +27,7 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   const buffer = await page.screenshot({ type: 'png' });
   await browser.close();
 
+  fs.mkdirSync(ogImageDir, { recursive: true });
   fs.writeFileSync(imagePath, buffer);
 
   return publicPath;

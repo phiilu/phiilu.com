@@ -16,7 +16,7 @@ const Head = ({ children, title, description, url, date, image }) => {
       <meta name="og:title" content={title} />
       <meta name="og:description" content={description} />
       <meta name="og:type" content="website" />
-      {url && <meta name="og:url" content={url} />}
+      {url && <meta name="og:url" content={`${process.env.BASE_URL}${url}`} />}
 
       {image && <meta name="og:image" content={image} />}
       {image && <meta name="image" content={image} />}

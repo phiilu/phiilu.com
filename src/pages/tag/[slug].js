@@ -44,7 +44,7 @@ function TagDetail({ tag, posts, ogImage }) {
       <Head
         title={`Tag: ${title}`}
         description={description}
-        path={`/tag/${tag.slug}`}
+        url={`/tag/${tag.slug}`}
         image={ogImage}
       />
       <Container as="main" noMargin>

@@ -9,12 +9,10 @@ import Image from 'next/image';
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 
-const baseUrl = process.env.BASE_URL;
-
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
   const posts = await contentful.getEntries('post', { order: '-fields.publishedDate' });
-  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${baseUrl}/`);
+  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
 
   return {
     props: { posts, ogImage }
@@ -24,7 +22,7 @@ export async function getStaticProps() {
 export default function IndexPage({ posts, ogImage }) {
   return (
     <>
-      <Head title="Home" description="Welcome to my blog!" image={ogImage} url={`${baseUrl}/`} />
+      <Head title="Home" description="Welcome to my blog!" image={ogImage} url={`/`} />
       <Layout>
         <Container as="main" noMargin className="px-4 space-y-14">
           <div className="flex flex-col items-center justify-center p-6 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:space-x-8 xl:p-12 md:space-y-0 md:flex-row">
@@ -63,7 +61,7 @@ export default function IndexPage({ posts, ogImage }) {
                 Latest Articles
               </h1>
               <p className="max-w-2xl mt-4 text-xl leading-9 text-gray-500 lg:mx-auto">
-                Here are my latest written articles I hope you like them! <br /> I write about
+                Here are my latest written articles, I hope you like them! <br /> I write about
                 programming and server related topics.
               </p>
             </div>

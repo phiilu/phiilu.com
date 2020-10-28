@@ -146,7 +146,7 @@ const PostDetails = ({
 
   return (
     <>
-      <Head title={title} description={title} url={url} image={ogImage} date={rawDate} />
+      <Head title={title} description={title} url={`/${slug}`} image={ogImage} date={rawDate} />
       <Layout>
         <Container as="main">
           <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">

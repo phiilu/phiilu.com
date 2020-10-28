@@ -7,7 +7,7 @@ const Container = ({ as, noMargin, children, className }) => {
   return (
     <Element.as
       className={classNames(
-        'max-w-3xl mx-auto xl:max-w-5xl',
+        'container max-w-3xl mx-auto xl:max-w-5xl',
         { 'px-4 xl:px-0': !noMargin },
         className
       )}>

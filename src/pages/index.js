@@ -11,7 +11,7 @@ import getOgImage from '@lib/getOgImage';
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
-  const posts = await contentful.getEntries('post');
+  const posts = await contentful.getEntries('post', { order: '-fields.publishedDate' });
   const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=https://phiilu.com/`);
 
   return {

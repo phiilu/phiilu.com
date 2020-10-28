@@ -14,7 +14,7 @@ import DraftBadge from '@components/DraftBadge/DraftBadge';
 import Head from '@components/Head/Head';
 
 export async function getStaticProps({ params: { slug } }) {
-  const post = await contentful.getPostEntry(slug);
+  const post = await contentful.getEntry('post', slug);
   const ogImage = await getOgImage(
     `/phiilu.com?title=${post.title}&url=https://phiilu.com/${slug}`
   );

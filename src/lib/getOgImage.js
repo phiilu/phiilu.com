@@ -1,4 +1,4 @@
-const { chromium } = require('playwright');
+const playwright = require('playwright-aws-lambda');
 const { v2: cloudinary } = require('cloudinary');
 const { createHash } = require('crypto');
 const axios = require('axios');
@@ -12,7 +12,7 @@ cloudinary.config({
 async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   const url = `${baseUrl}${path}`;
   const hash = createHash('md5').update(url).digest('hex');
-  const browser = await chromium.launch();
+  const browser = await playwright.launchChromium({ headless: true });
 
   try {
     const cloudinaryUrl = cloudinary.url(`phiilu.com/og/${hash}`, { secure: true });
@@ -28,6 +28,7 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   await page.goto(url, { waitUntil: 'networkidle' });
   const buffer = await page.screenshot({ type: 'png' });
   const base64Image = buffer.toString('base64');
+  await browser.close();
 
   const imageUrl = new Promise((resolve, reject) => {
     cloudinary.uploader.upload(

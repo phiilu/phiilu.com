@@ -16,7 +16,7 @@ import Head from '@components/Head/Head';
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getEntry('post', slug);
   const ogImage = await getOgImage(
-    `/phiilu.com?title=${post.title}&url=https://phiilu.com/${slug}`
+    `/phiilu.com?title=${post.title}&url=${process.env.BASE_URL}/${slug}`
   );
 
   return {
@@ -142,7 +142,7 @@ const PostDetails = ({
     []
   );
 
-  const url = `https://phiilu.com/${slug}`;
+  const url = `${process.env.BASE_URL}/${slug}`;
 
   return (
     <>

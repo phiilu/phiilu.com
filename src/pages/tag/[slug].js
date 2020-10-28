@@ -15,7 +15,7 @@ export async function getStaticProps({ params: { slug } }) {
     'fields.tags.sys.id': tag.id
   });
   const ogImage = await getOgImage(
-    `/phiilu.com?title=Tag: ${tag.title}&url=https://phiilu.com/tag/${slug}`
+    `/phiilu.com?title=Tag: ${tag.title}&url=${process.env.BASE_URL}/tag/${slug}`
   );
 
   return {

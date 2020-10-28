@@ -6,9 +6,11 @@ import Markdown from '@components/Markdown/Markdown';
 import usesMarkdown from '@md/uses.md';
 import getOgImage from '@lib/getOgImage';
 
+const baseUrl = process.env.BASE_URL;
+
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
-  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=https://phiilu.com/`);
+  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${baseUrl}/`);
 
   return {
     props: { ogImage }
@@ -18,7 +20,7 @@ export async function getStaticProps() {
 const Uses = ({ ogImage }) => {
   return (
     <>
-      <Head title="Uses" url={`https://phiilu.com/uses`} image={ogImage} />
+      <Head title="Uses" url={`${baseUrl}/uses`} image={ogImage} />
       <Layout>
         <Container as="main" className="space-y-4 xl:space-y-0">
           <div className="space-y-12">

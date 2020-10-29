@@ -1,31 +1,6 @@
 import '../styles/index.css';
 import GoogleFonts from 'next-google-fonts';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import * as FathomClient from 'fathom-client';
-
-function Fathom() {
-  const router = useRouter();
-
-  useEffect(() => {
-    FathomClient.load(process.env.FATHOM_SITE_ID, {
-      url: 'https://mandrill.phiilu.com/script.js',
-      honorDNT: true,
-      includedDomains: ['phiilu.com']
-    });
-
-    function onRouteChangeComplete() {
-      FathomClient.trackPageview();
-    }
-    router.events.on('routeChangeComplete', onRouteChangeComplete);
-
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete);
-    };
-  }, []);
-
-  return null;
-}
+import Fathom from '@components/Fathom/Fathom';
 
 function PhiiluBlog({ Component, pageProps }) {
   return (

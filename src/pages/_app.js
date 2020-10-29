@@ -9,6 +9,8 @@ function Fathom() {
 
   useEffect(() => {
     FathomClient.load(process.env.FATHOM_SITE_ID, {
+      url: 'https://mandrill.phiilu.com/script.js',
+      honorDNT: true,
       includedDomains: ['phiilu.com']
     });
 

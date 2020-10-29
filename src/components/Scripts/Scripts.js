@@ -22,9 +22,9 @@ function Scripts() {
       {/* Splitbee */}
       <script async defer src="https://cdn.splitbee.io/sb.js"></script>
       {/* Simple Analytics */}
-      <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+      <script async defer src="https://sa.phiilu.com/latest.js"></script>
       <noscript>
-        <img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" />
+        <img src="https://sa.phiilu.com/noscript.gif" alt="noscript loading spinner" />
       </noscript>
       {/* Fathom is in _app.js */}
     </>

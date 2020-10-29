@@ -21,6 +21,8 @@ function Fathom() {
       router.events.off('routeChangeComplete', onRouteChangeComplete);
     };
   }, []);
+
+  return null;
 }
 
 function PhiiluBlog({ Component, pageProps }) {

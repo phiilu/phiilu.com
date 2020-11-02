@@ -4,9 +4,9 @@
 
 Although this Macbook Pro is already a few years old, it still gets the job done! I got the base model and upgraded the SSD to 512 GB and the RAM to 16GB. The only problem I have is the [keyboard](https://support.apple.com/keyboard-service-program-for-mac-notebooks). But this is a known issue and only from time to time one of the keys gets stuck. Annoying, if you keep in mind that this laptop was more than 2000€
 
-### [iPhone 12](https://uses.phiilu.com/iphone-8-plus)
+### [iPhone 12](https://www.apple.com/iphone-12/)
 
-After 3 years I finally upgraded to the iPhone 12 and I love it. It is so fast and the battery lasts twice as long as the one from my old iPhone 8 Plus.
+After 3 years I finally upgraded to the iPhone 12 and I love it. It is so fast and the battery lasts twice as long as the one from my old iPhone 8 Plus. Only wished it had Touch ID in addition to Face ID like the new iPads. Face ID is not so great in an era where everyone is wearing masks.
 
 ### [Apple Watch Series 3](https://uses.phiilu.com/apple-watch-series-3)
 

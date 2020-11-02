@@ -168,10 +168,10 @@ const PostDetails = ({
         <Container as="main">
           <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">
             <DraftBadge isPublished={published}></DraftBadge>
-            <Heading noMargin className="pb-4 xl:pb-0 xl:mb-8 xl:col-span-3">
+            <Heading noMargin className="pb-4 md:mr-8 xl:pb-0 xl:mb-8 xl:col-span-3">
               {title}
             </Heading>
-            <div className="order-1 space-y-16 xl:order-none xl:col-span-3">
+            <div className="order-1 space-y-16 md:mr-8 xl:order-none xl:col-span-3">
               <Markdown>{content}</Markdown>
               <hr className="border-gray-200" />
               <ShareOnTwitterCta

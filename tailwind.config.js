@@ -9,19 +9,29 @@ module.exports = {
     './src/helpers/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    typography: {
+    typography: (theme) => ({
       default: {
         css: {
           pre: {
-            maxWidth: '100vw',
             borderRadius: 0
           },
-          'pre code::after': {
-            content: 'none'
+          code: {
+            'word-break': 'break-word'
+          },
+          a: {
+            'word-break': 'break-word',
+            textDecoration: 'none',
+            color: theme('colors.indigo.500'),
+            '&:hover': {
+              color: theme('colors.indigo.600')
+            },
+            '&:visited': {
+              color: theme('colors.indigo.800')
+            }
           }
         }
       }
-    },
+    }),
     extend: {
       fontFamily: {
         'open-sans': 'Open Sans, sans-serif',

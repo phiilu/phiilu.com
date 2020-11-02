@@ -190,6 +190,15 @@ const tags = {
     mainColor: 'text-react-500',
     hover: 'hover:bg-react-500 hover:text-react-gray-500',
     description: 'React is a JavaScript library for building user interfaces'
+  },
+  'next.js': {
+    name: 'next.js',
+    slug: slugify('next.js'),
+    bg: 'bg-black',
+    text: 'text-white',
+    mainColor: 'text-black',
+    hover: 'hover:bg-white hover:text-black',
+    description: 'Stuff'
   }
 };
 

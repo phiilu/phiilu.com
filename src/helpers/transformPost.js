@@ -1,7 +1,18 @@
 import format from 'date-fns/format';
 import { count } from '@wordpress/wordcount';
 
-export default function transformPost(post) {
+export const POST_LIST_ITEM_FIELDS = [
+  'id',
+  'slug',
+  'title',
+  'description',
+  'published',
+  'icon',
+  'date',
+  'tags'
+];
+
+export default function transformPost(post, returnFields = []) {
   const { sys, fields } = post;
   const { id } = sys;
   const tags = fields.tags.map((tag) => tag.fields);
@@ -15,7 +26,7 @@ export default function transformPost(post) {
   const numberOfWords = count(content, 'words', {});
   const timeToRead = Math.round(numberOfWords / 275); // average reading speed is 275 WPM
 
-  return {
+  const newPost = {
     id,
     slug,
     title,
@@ -29,4 +40,17 @@ export default function transformPost(post) {
     numberOfWords,
     timeToRead
   };
+
+  if (returnFields.length <= 0) return newPost;
+
+  return Object.keys(newPost).reduce((post, field) => {
+    if (returnFields.includes(field)) {
+      return {
+        ...post,
+        [field]: newPost[field]
+      };
+    }
+
+    return post;
+  }, {});
 }

@@ -9,6 +9,19 @@ module.exports = {
     './src/helpers/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
+    typography: {
+      default: {
+        css: {
+          pre: {
+            maxWidth: '100vw',
+            borderRadius: 0
+          },
+          'pre code::after': {
+            content: 'none'
+          }
+        }
+      }
+    },
     extend: {
       fontFamily: {
         'open-sans': 'Open Sans, sans-serif',

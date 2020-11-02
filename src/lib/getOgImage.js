@@ -9,7 +9,6 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
 
   const url = `${baseUrl}${path}`;
   const hash = createHash('md5').update(url).digest('hex');
-  const browser = await playwright.launchChromium({ headless: true });
   const ogImageDir = `./public/images/og`;
   const imagePath = `${ogImageDir}/${hash}.png`;
   const publicPath = `${process.env.BASE_URL}/images/og/${hash}.png`;
@@ -21,6 +20,7 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
     // file does not exists, so we create it
   }
 
+  const browser = await playwright.launchChromium({ headless: true });
   const page = await browser.newPage();
   await page.setViewportSize({ width: 1200, height: 630 });
   await page.goto(url, { waitUntil: 'networkidle' });

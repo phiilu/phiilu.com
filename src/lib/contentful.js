@@ -11,7 +11,7 @@ const client = contentful.createClient({
 });
 
 export default {
-  async getEntries(content_type = 'post', options = { order: '-sys.createdAt' }) {
+  async getEntries(content_type = 'post', options = { order: '-sys.createdAt' }, fields = []) {
     const entries = await client.getEntries({
       content_type,
       ...options
@@ -19,7 +19,7 @@ export default {
     if (entries.items) {
       switch (content_type) {
         case 'post':
-          return entries.items.map(transformPost);
+          return entries.items.map((item) => transformPost(item, fields));
         case 'tag':
           return entries.items.map(transformTag);
         default:

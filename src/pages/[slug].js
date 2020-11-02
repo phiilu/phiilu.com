@@ -56,7 +56,7 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
             </dd>
           </dl>
           {timeToRead > 0 && (
-            <dl className="mt-4 mr-8 xl:mt-0 xl:mr-0">
+            <dl className="mt-4 md:mr-8 xl:mt-0 xl:mr-0">
               <dt className="font-semibold font-source-sans-pro">Reading time</dt>
               <dd className="text-base font-medium leading-6 text-time">
                 {timeToRead} Minute
@@ -64,17 +64,17 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
               </dd>
             </dl>
           )}
-          <dl className="mt-4 mr-8 xl:mt-0 xl:mr-0">
+          <dl className="w-full mt-4 md:mr-8 md:w-auto xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Tags</dt>
             <dd className="text-base font-medium leading-6 text-time">
               <Tags tags={tags}></Tags>
             </dd>
           </dl>
-          <dl className="mt-4 mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
+          <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Social Corner</dt>
             <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time">
               <ul className="space-y-2 sm:items-start sm:space-x-2 sm:space-y-0 xl:space-y-2 sm:flex xl:space-x-0 xl:block">
-                <li>
+                <li className="w-full">
                   <Button
                     tracking={{
                       event: 'click',
@@ -89,7 +89,7 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
                     Share on Twitter
                   </Button>
                 </li>
-                <li>
+                <li className="w-full">
                   <Button
                     tracking={{
                       event: 'click',
@@ -171,7 +171,7 @@ const PostDetails = ({
             <Heading noMargin className="pb-4 xl:pb-0 xl:mb-8 xl:col-span-3">
               {title}
             </Heading>
-            <div className="order-1 space-y-10 xl:order-none xl:col-span-3">
+            <div className="order-1 space-y-16 xl:order-none xl:col-span-3">
               <Markdown>{content}</Markdown>
               <hr className="border-gray-200" />
               <ShareOnTwitterCta

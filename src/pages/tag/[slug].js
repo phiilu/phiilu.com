@@ -1,19 +1,25 @@
-import contentful from '@lib/contentful';
 import classNames from 'classnames';
+
 import Layout from '@components/Layout/Layout';
 import Head from '@components/Head/Head';
 import Container from '@components/Container/Container';
 import Heading from '@components/Heading/Heading';
 import PostListItem from '@components/PostListItem/PostListItem';
 
+import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 import tagColors from '@helpers/tagColors';
+import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
 
 export async function getStaticProps({ params: { slug } }) {
   const tag = await contentful.getEntry('tag', slug);
-  const posts = await contentful.getEntries('post', {
-    'fields.tags.sys.id': tag.id
-  });
+  const posts = await contentful.getEntries(
+    'post',
+    {
+      'fields.tags.sys.id': tag.id
+    },
+    POST_LIST_ITEM_FIELDS
+  );
   const ogImage = await getOgImage(
     `/phiilu.com?title=Tag: ${tag.title}&url=${process.env.BASE_URL}/tag/${slug}`
   );

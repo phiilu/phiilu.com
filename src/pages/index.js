@@ -10,10 +10,15 @@ import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 import generateRssFeed from '@lib/rss';
 import generateSitemap from '@lib/sitemap';
+import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
-  const posts = await contentful.getEntries('post', { order: '-fields.publishedDate' });
+  const posts = await contentful.getEntries(
+    'post',
+    { order: '-fields.publishedDate' },
+    POST_LIST_ITEM_FIELDS
+  );
   const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
   const baseUrl = process.env.BASE_URL;
 

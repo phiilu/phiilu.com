@@ -7,3 +7,7 @@
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */
+
+.code:hover .copyToClipboard {
+  opacity: 1;
+}

@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown/with-html';
-import a11yEmoji from '@fec/remark-a11y-emoji';
+import pluginUnwrapImages from 'remark-unwrap-images';
+import classNames from 'classnames';
 
 import Code from '@components/Markdown/Code/Code';
 
-const renderers = {
-  code: Code
-};
+const plugins = [pluginUnwrapImages];
 
-const plugins = [a11yEmoji];
+const Markdown = ({ children, className }) => {
+  const renderers = {
+    code: Code
+  };
 
-const Markdown = ({ children }) => {
   return (
     <ReactMarkdown
       allowDangerousHtml
-      className="prose lg:prose-lg"
+      className={classNames('prose lg:prose-lg', className)}
       renderers={renderers}
       plugins={plugins}>
       {children}

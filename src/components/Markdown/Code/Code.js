@@ -16,7 +16,7 @@ const CopyToClipboard = ({ toCopy, className, ...props }) => {
   return (
     <button
       className={classNames(
-        'absolute bottom-0 right-0 block px-2 m-2 mb-3 text-sm text-indigo-800 bg-indigo-200 rounded-lg outline-none hover:bg-indigo-500 hover:text-white',
+        'absolute copyToClipboard opacity-0 bottom-0 right-0 block px-2 m-2 mb-3 text-sm text-indigo-800 bg-indigo-200 rounded-lg outline-none transition-all duration-200 ease-in-out hover:bg-indigo-500 hover:text-white',
         className
       )}
       onClick={handleClick}
@@ -31,31 +31,29 @@ const CodeBlock = ({ language, value }) => {
     <Highlight {...defaultProps} code={value} language={language} theme={nightOwl}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return (
-          <div className="overflow-x-auto code-container ">
-            <pre className={'relative code rounded-md px-4 overflow-x-auto '} style={{ ...style }}>
-              <CopyToClipboard toCopy={value} />
-              <code className={classNames(className)} data-language={language}>
-                {tokens.map((line, i) => {
-                  return (
-                    <div key={i} {...getLineProps({ line, key: i })}>
-                      {line.map((token, key) => {
-                        if (token.content.length === 0) return null;
-                        if (token.empty && tokens.length === 2) return null;
-                        if (token.empty) return <div key={key} className="my-4" />;
-                        return (
-                          <span
-                            key={key}
-                            {...getTokenProps({ token, key })}
-                            className="font-mono text-sm"
-                          />
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-              </code>
-            </pre>
-          </div>
+          <pre className="relative px-4 -mx-4 md:mx-0 md:rounded-md code" style={{ ...style }}>
+            <CopyToClipboard toCopy={value} />
+            <code className={classNames(className)} data-language={language}>
+              {tokens.map((line, i) => {
+                return (
+                  <div key={i} {...getLineProps({ line, key: i })}>
+                    {line.map((token, key) => {
+                      if (token.content.length === 0) return null;
+                      if (token.empty && tokens.length === 2) return null;
+                      if (token.empty) return <div key={key} className="my-4" />;
+                      return (
+                        <span
+                          key={key}
+                          {...getTokenProps({ token, key })}
+                          className="font-mono text-sm"
+                        />
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </code>
+          </pre>
         );
       }}
     </Highlight>

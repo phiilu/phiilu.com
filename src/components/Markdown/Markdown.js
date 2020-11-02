@@ -14,7 +14,6 @@ function Image({ src, alt }) {
 }
 
 const Markdown = ({ children, className }) => {
-  console.log(ReactMarkdown.renderers);
   const renderers = {
     code: Code,
     image: Image,

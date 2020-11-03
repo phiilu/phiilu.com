@@ -147,7 +147,7 @@ function ShareOnTwitterCta({ onClick }) {
 }
 
 const PostDetails = ({
-  post: { title, slug, content, icon, rawDate, date, tags, published, timeToRead },
+  post: { title, description, slug, content, icon, rawDate, date, tags, published, timeToRead },
   ogImage,
   baseUrl
 }) => {
@@ -160,10 +160,18 @@ const PostDetails = ({
   );
 
   const url = `${baseUrl}/${slug}`;
+  const keywords = tags?.map((tag) => tag.title).join(', ') ?? '';
 
   return (
     <>
-      <Head title={title} description={title} url={url} image={ogImage} date={rawDate} />
+      <Head
+        title={title}
+        description={description}
+        url={url}
+        image={ogImage}
+        date={rawDate}
+        keywords={keywords}
+      />
       <Layout>
         <Container as="main">
           <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">

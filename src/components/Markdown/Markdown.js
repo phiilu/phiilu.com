@@ -15,6 +15,10 @@ function Image({ src, alt }) {
 
 const Markdown = ({ children, className }) => {
   const renderers = {
+    // link: () => null,
+    // linkReference: () => null,
+    // inlineCode: () => null,
+    // blockquote: () => null,
     code: Code,
     image: Image,
     imageReference: Image

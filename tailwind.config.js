@@ -13,7 +13,11 @@ module.exports = {
       default: {
         css: {
           pre: {
+            maxWidth: '100vw',
             borderRadius: 0
+          },
+          'pre code::after': {
+            content: 'none'
           },
           code: {
             'word-break': 'break-word'

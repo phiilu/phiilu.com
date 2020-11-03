@@ -8,6 +8,10 @@
 @tailwind utilities;
 /* Stop purging. */
 
+body {
+  overflow-x: hidden;
+}
+
 .code:hover .copyToClipboard {
   opacity: 1;
 }

@@ -16,6 +16,9 @@ module.exports = {
             maxWidth: '100vw',
             borderRadius: 0
           },
+          'pre code': {
+            'word-break': 'normal'
+          },
           'pre code::after': {
             content: 'none'
           },

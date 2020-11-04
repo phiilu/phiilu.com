@@ -4,6 +4,7 @@ import Head from '@components/Head/Head';
 import PostListItem from '@components/PostListItem/PostListItem';
 import Link from '@components/Link/Link';
 import Heading from '@components/Heading/Heading';
+import Button from '@components/Button/Button';
 import Image from 'next/image';
 
 import contentful from '@lib/contentful';
@@ -16,7 +17,7 @@ export async function getStaticProps() {
   const title = "Phiilu's Blog";
   const posts = await contentful.getEntries(
     'post',
-    { order: '-fields.publishedDate' },
+    { order: '-fields.publishedDate', limit: 5 },
     POST_LIST_ITEM_FIELDS
   );
   const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
@@ -50,7 +51,9 @@ export default function IndexPage({ posts, ogImage, baseUrl }) {
               <div className="space-y-1 space-y-2 text-xl leading-7 md:text-2xl md:leading-8 lg:text-3xl lg:leading-10">
                 <Heading size="h2" noMargin>
                   Hey, I&apos;m Florian <i className="font-medium">also known as</i>{' '}
-                  <Link to="https://twitter.com/phiilu">@phiilu</Link>
+                  <Link className="text-indigo-500" to="https://twitter.com/phiilu">
+                    @phiilu
+                  </Link>
                 </Heading>
                 <small>
                   I am a <strong className="font-bold">Frontend Developer</strong> from Austria
@@ -84,6 +87,12 @@ export default function IndexPage({ posts, ogImage, baseUrl }) {
                 </li>
               ))}
             </ul>
+
+            <div className="flex justify-center">
+              <Button as={Link} to="/articles" width="medium">
+                View all
+              </Button>
+            </div>
           </div>
         </Container>
       </Layout>

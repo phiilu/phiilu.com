@@ -198,7 +198,16 @@ const tags = {
     text: 'text-white',
     mainColor: 'text-black',
     hover: 'hover:bg-white hover:text-black',
-    description: 'Stuff'
+    description: 'Next.js'
+  },
+  analytics: {
+    name: 'analytics',
+    slug: slugify('analytics'),
+    bg: 'bg-green-200',
+    text: 'text-green-900',
+    hover: 'hover:bg-green-500 hover:text-white',
+    mainColor: 'text-green-500',
+    description: 'Analytics'
   }
 };
 

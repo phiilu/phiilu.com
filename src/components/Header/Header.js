@@ -26,8 +26,8 @@ const Header = () => {
           </Link>
           <ul className="flex space-x-2">
             <li>
-              <Link to="/" className="px-4 py-2" activeClassName={activeClassName}>
-                <span className="font-semibold text-md font-open-sans">Blog</span>
+              <Link to="/articles" className="px-4 py-2" activeClassName={activeClassName}>
+                <span className="font-semibold text-md font-open-sans">All Articles</span>
               </Link>
             </li>
             <li>

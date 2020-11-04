@@ -24,7 +24,8 @@ const Button = ({ as, variant, width, children, onClick, tracking, ...props }) =
         [primaryVariant]: variant === 'primary',
         [twitterVariant]: variant === 'twitter',
         [hackerNewsVariant]: variant === 'hackernews',
-        'w-full': width === 'full'
+        'w-full': width === 'full',
+        'px-8': width === 'medium'
       })}
       onClick={handleOnClick}
       {...props}>

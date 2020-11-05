@@ -4,6 +4,7 @@ import Head from '@components/Head/Head';
 import PostListItem from '@components/PostListItem/PostListItem';
 import Heading from '@components/Heading/Heading';
 import dateFormat from 'date-fns/format';
+import formatISO9075 from 'date-fns/formatISO9075';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
@@ -12,15 +13,16 @@ import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
 function getPostsByMonth(posts) {
   return posts.reduce((postsByDate, post) => {
     const exists = postsByDate.find((p) => {
-      const postDate = new Date(post.rawDate);
-      return p.date === `${postDate.getFullYear()}-${postDate.getMonth() + 1}`;
+      const postDate = formatISO9075(new Date(post.rawDate).setDate(0), { representation: 'date' });
+      return p.date === postDate;
     });
+
     if (exists) {
       exists.posts.push(post);
     } else {
-      const date = new Date(post.rawDate);
+      const date = new Date(post.rawDate).setDate(0);
       postsByDate.push({
-        date: `${date.getFullYear()}-${date.getMonth() + 1}`,
+        date: formatISO9075(date, { representation: 'date' }),
         posts: [post]
       });
     }

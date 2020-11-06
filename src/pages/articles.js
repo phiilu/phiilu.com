@@ -3,6 +3,7 @@ import Layout from '@components/Layout/Layout';
 import Head from '@components/Head/Head';
 import PostListItem from '@components/PostListItem/PostListItem';
 import Heading from '@components/Heading/Heading';
+import Newsletter from '@components/Newsletter/Newsletter';
 import dateFormat from 'date-fns/format';
 import formatISO9075 from 'date-fns/formatISO9075';
 
@@ -77,6 +78,7 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
               </div>
             );
           })}
+          <Newsletter />
         </Container>
       </Layout>
     </>

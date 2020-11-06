@@ -5,6 +5,7 @@ import PostListItem from '@components/PostListItem/PostListItem';
 import Link from '@components/Link/Link';
 import Heading from '@components/Heading/Heading';
 import Button from '@components/Button/Button';
+import Newsletter from '@components/Newsletter/Newsletter';
 import Image from 'next/image';
 
 import contentful from '@lib/contentful';
@@ -94,6 +95,8 @@ export default function IndexPage({ posts, ogImage, baseUrl }) {
               </Button>
             </div>
           </div>
+
+          <Newsletter />
         </Container>
       </Layout>
     </>

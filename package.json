@@ -10,15 +10,17 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
-    "@tailwindcss/ui": "^0.6.2",
+    "@tailwindcss/ui": "^0.7.2",
     "@wordpress/wordcount": "^2.13.0",
     "classnames": "^2.2.6",
     "contentful": "^7.14.8",
+    "convertkit-react": "^1.4.2",
     "date-fns": "^2.16.1",
     "fathom-client": "^3.0.0",
     "markdown": "^0.5.0",
-    "next": "^10.0.0",
+    "next": "^10.0.1",
     "next-google-fonts": "^1.2.1",
+    "node-fetch": "^2.6.1",
     "prism-react-renderer": "^1.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -28,7 +30,7 @@
     "use-clipboard-copy": "^0.1.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^10.0.0",
+    "@next/bundle-analyzer": "^10.0.1",
     "cross-env": "^7.0.2",
     "eslint": "^7.12.0",
     "eslint-config-prettier": "^6.14.0",
@@ -41,11 +43,11 @@
     "playwright-aws-lambda": "^0.6.0",
     "playwright-chromium": "^1.5.2",
     "playwright-core": "^1.5.2",
-    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-flexbugs-fixes": "5.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "raw-loader": "^4.0.2",
-    "sitemap": "^6.3.2"
+    "sitemap": "^6.3.3"
   },
   "license": "MIT"
 }

@@ -12,6 +12,7 @@ import Comments from '@components/Comments/Comments';
 import Tags from '@components/Tags/Tags';
 import DraftBadge from '@components/DraftBadge/DraftBadge';
 import Head from '@components/Head/Head';
+import Newsletter from '@components/Newsletter/Newsletter';
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getEntry('post', slug);
@@ -181,6 +182,8 @@ const PostDetails = ({
             </Heading>
             <div className="order-1 space-y-16 md:mr-8 xl:order-none xl:col-span-3">
               <Markdown>{content}</Markdown>
+              <Newsletter />
+
               <hr className="border-gray-200" />
               <ShareOnTwitterCta
                 title={title}

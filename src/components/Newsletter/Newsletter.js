@@ -1,24 +1,75 @@
 import * as React from 'react';
-import ConvertKitForm from 'convertkit-react';
-import Button from '@components/Button/Button';
+import Alert from '@components/Alert/Alert';
+
+function Input({ label, type, required, placeholder, ...props }) {
+  return (
+    <input
+      aria-label={label}
+      type={type}
+      required={required}
+      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline focus:border-blue-300 sm:max-w-xs"
+      placeholder={placeholder}
+      {...props}
+    />
+  );
+}
 
 function Newsletter() {
-  const [consent, setConsent] = React.useState(false);
+  const [form, setForm] = React.useState({ first_name: '', email: '' });
+  const [state, setState] = React.useState('idle');
 
-  function handleConsnetClick() {
-    setConsent((prev) => !prev);
+  function handleChange(event) {
+    setForm((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value
+    }));
   }
 
-  React.useEffect(() => {
-    const lsConset = localStorage.getItem('ck-consent');
-    if (lsConset) {
-      setConsent(lsConset === 'true');
-    }
-  }, []);
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetch('https://api.phiilu.com/newsletter-signup', {
+      method: 'POST',
+      body: JSON.stringify(form),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setState('success');
+      })
+      .catch(() => {
+        setState('error');
+      });
+  }
 
-  React.useEffect(() => {
-    localStorage.setItem('ck-consent', consent);
-  }, [consent]);
+  function tryAgain() {
+    setState('idle');
+  }
+
+  if (state === 'success') {
+    return (
+      <Alert
+        variant="success"
+        title="Thanks for signing up for my Newsletter!"
+        message="Only one step left. Please check your email to confirm your subscription."
+      />
+    );
+  }
+
+  if (state === 'error') {
+    return (
+      <Alert
+        variant="error"
+        title="Ohh shoot!"
+        message="Sorry we could not sign you up... wanna try again?"
+        action={{
+          name: 'Hell yes!',
+          onClick: tryAgain
+        }}
+      />
+    );
+  }
 
   return (
     <div className="flex bg-white">
@@ -29,13 +80,36 @@ function Newsletter() {
             Sign up for my newsletter.
           </span>
         </h2>
-        {consent ? (
-          <ConvertKitForm className="ck-fm" submitText="Notify me" formId={1795678} />
-        ) : (
-          <Button className="mt-8" onClick={handleConsnetClick}>
-            Click here to show sign up form powered by ConvertKit (loads cookies)
-          </Button>
-        )}
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 space-y-3 sm:flex sm:space-y-0 sm:space-x-3"
+          aria-labelledby="newsletter-headline">
+          <Input
+            label="Firstname"
+            name="first_name"
+            type="text"
+            required
+            placeholder="Your Firstname"
+            value={form.first_name}
+            onChange={handleChange}
+          />
+          <Input
+            label="Email address"
+            name="email"
+            type="email"
+            required
+            placeholder="Your Email"
+            value={form.email}
+            onChange={handleChange}
+          />
+          <div className="mt-3 rounded-md shadow sm:mt-0 sm:flex-shrink-0">
+            <button
+              type="submit"
+              className="flex items-center justify-center w-full px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
+              Notify me
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

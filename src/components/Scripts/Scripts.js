@@ -22,7 +22,7 @@ function Scripts() {
       {/* Plausible Analytics */}
       <script async defer data-domain="phiilu.com" src="https://cp.phiilu.com/js/index.js"></script>
       {/* Splitbee */}
-      <script async defer src="https://cdn.splitbee.io/sb.js"></script>
+      <script async defer src="https://bee.phiilu.com/sb.js"></script>
       {/* Simple Analytics */}
       <script async defer src="https://sa.phiilu.com/latest.js"></script>
       <noscript>

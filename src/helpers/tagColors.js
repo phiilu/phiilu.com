@@ -208,6 +208,15 @@ const tags = {
     hover: 'hover:bg-green-500 hover:text-white',
     mainColor: 'text-green-500',
     description: 'Analytics'
+  },
+  privacy: {
+    name: 'privacy',
+    slug: slugify('privacy'),
+    bg: 'bg-blue-200',
+    text: 'text-blue-900',
+    hover: 'hover:bg-blue-500 hover:text-white',
+    mainColor: 'text-blue-500',
+    description: 'Privacy'
   }
 };
 

@@ -8,7 +8,7 @@ import DraftBadge from '@components/DraftBadge/DraftBadge';
 const PostListItem = ({ post: { slug, title, description, published, icon, date, tags } }) => {
   return React.useMemo(
     () => (
-      <article className="relative inline-block text-gray-900 rounded-md outline-none md:p-4 post-item hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:shadow-sm focus:text-gray-700">
+      <article className="relative inline-block p-4 text-gray-900 rounded-md outline-none post-item hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:shadow-sm focus:text-gray-700">
         <Link href={`/${slug}`}>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
           <a

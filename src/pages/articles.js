@@ -6,6 +6,8 @@ import Heading from '@components/Heading/Heading';
 import Newsletter from '@components/Newsletter/Newsletter';
 import dateFormat from 'date-fns/format';
 import formatISO9075 from 'date-fns/formatISO9075';
+import isSameMonth from 'date-fns/isSameMonth';
+import isSameYear from 'date-fns/isSameYear';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
@@ -14,14 +16,15 @@ import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
 function getPostsByMonth(posts) {
   return posts.reduce((postsByDate, post) => {
     const exists = postsByDate.find((p) => {
-      const postDate = formatISO9075(new Date(post.rawDate).setDate(0), { representation: 'date' });
-      return p.date === postDate;
+      const newDate = new Date(post.rawDate);
+      const existingDate = new Date(p.date);
+      return isSameMonth(newDate, existingDate) && isSameYear(newDate, existingDate);
     });
 
     if (exists) {
       exists.posts.push(post);
     } else {
-      const date = new Date(post.rawDate).setDate(0);
+      const date = new Date(post.rawDate);
       postsByDate.push({
         date: formatISO9075(date, { representation: 'date' }),
         posts: [post]
@@ -59,15 +62,18 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
         url={`${baseUrl}/`}
       />
       <Layout>
-        <Container as="main" noMargin className="px-4 space-y-14">
+        <Container as="main" noMargin className="space-y-14">
           {postsByMonth.map((month) => {
             return (
-              <div key={month.date}>
-                <Heading size="h3" className="text-indigo-500 border-b-2 border-gray-100">
+              <div key={month.date} className="space-y-8">
+                <Heading
+                  noMargin
+                  size="h3"
+                  className="mx-4 text-indigo-500 border-b-2 border-gray-100 md:mx-0">
                   {dateFormat(new Date(month.date), 'MMMM yyyy')}
                 </Heading>
                 <div className="space-y-8 md:space-y-14">
-                  <ul className="space-y-8">
+                  <ul className="space-y-16 md:space-y-8">
                     {month.posts.map((post) => (
                       <li key={post.id}>
                         <PostListItem post={post} />

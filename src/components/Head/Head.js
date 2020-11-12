@@ -10,7 +10,7 @@ const Head = ({ children, title, description, keywords, url, date, image }) => {
       <meta key="httpEquiv" httpEquiv="x-ua-compatible" content="ie=edge" />
 
       <meta key="title" name="title" content={title} />
-      <meta key="description" name="description" content={description} />
+      {description && <meta key="description" name="description" content={description} />}
       {keywords && <meta key="keywords" name="keywords" content={keywords} />}
       <meta key="author" name="author" content="Florian Kapfenberger" />
 

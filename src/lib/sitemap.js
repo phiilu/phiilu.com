@@ -4,6 +4,9 @@ const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
 const fs = require('fs');
 
+// pages that should not be in the sitemap
+const blocklist = ['/newsletter-success', '/404'];
+
 async function generateSitemap() {
   if (process.env.NODE_ENV === 'development') {
     return;
@@ -18,16 +21,18 @@ async function generateSitemap() {
   ]);
 
   // normal page routes
-  const pageLinks = pages.map((page) => {
-    const path = page
-      .replace('pages', '')
-      .replace('.js', '')
-      .replace('.mdx', '')
-      .replace('src/', '');
-    return path === '/index'
-      ? { url: '/', changefreq: 'daily', priority: 0.7 }
-      : { url: path, changefreq: 'daily', priority: 0.7 };
-  });
+  const pageLinks = pages
+    .map((page) => {
+      const path = page
+        .replace('pages', '')
+        .replace('.js', '')
+        .replace('.mdx', '')
+        .replace('src/', '');
+      return path === '/index'
+        ? { url: '/', changefreq: 'daily', priority: 0.7 }
+        : { url: path, changefreq: 'daily', priority: 0.7 };
+    })
+    .filter((page) => !blocklist.includes(page.url));
 
   // post routes
   const posts = await contentful.getEntries('post', { order: '-fields.publishedDate' });

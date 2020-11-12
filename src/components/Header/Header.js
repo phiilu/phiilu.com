@@ -6,6 +6,17 @@ import { useScroll } from '@hooks/useScroll';
 
 const activeClassName = 'bg-cool-gray-100 rounded-md';
 
+function HeaderLink({ to, children }) {
+  return (
+    <Link
+      to={to}
+      className="px-2 py-2 transition-colors duration-100 ease-in-out rounded-md md:px-4 hover:bg-cool-gray-100"
+      activeClassName={activeClassName}>
+      <span className="font-semibold text-md font-open-sans ">{children}</span>
+    </Link>
+  );
+}
+
 const Header = () => {
   const [scrolled] = useScroll();
 
@@ -17,23 +28,22 @@ const Header = () => {
         })}
         style={{ width: `${scrolled}%` }}
       />
-      <Container as="header" className="w-full pt-10 pb-16">
-        <nav className="flex items-center space-x-8">
-          <Link to="/">
-            <h1 className="text-2xl font-semibold tracking-tight text-indigo-600 font-open-sans">
+      <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
+        <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white md:space-y-0 md:flex-no-wrap rounded-xl">
+          <Link to="/" className="w-full">
+            <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 md:text-2xl font-open-sans md:text-left">
               Phiilu
             </h1>
           </Link>
-          <ul className="flex space-x-2">
+          <ul className="flex items-center justify-center flex-none w-full space-x-2 place-items-center md:w-auto">
             <li>
-              <Link to="/articles" className="px-4 py-2" activeClassName={activeClassName}>
-                <span className="font-semibold text-md font-open-sans">All Articles</span>
-              </Link>
+              <HeaderLink to="/articles">All Articles</HeaderLink>
             </li>
             <li>
-              <Link to="/uses" className="px-4 py-2" activeClassName={activeClassName}>
-                <span className="font-semibold text-md font-open-sans">Uses</span>
-              </Link>
+              <HeaderLink to="/about-me">About Me</HeaderLink>
+            </li>
+            <li>
+              <HeaderLink to="/uses">Uses</HeaderLink>
             </li>
           </ul>
         </nav>

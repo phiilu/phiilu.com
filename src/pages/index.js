@@ -39,7 +39,7 @@ function Hero() {
       <picture className="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44">
         <Image
           className="absolute flex-none object-cover w-40 h-40 rounded-full md:h-44 md:w-44"
-          src={'/images/me.jpg'}
+          src="/images/me.jpg"
           alt="Me"
           width={176}
           height={176}

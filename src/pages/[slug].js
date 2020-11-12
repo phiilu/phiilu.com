@@ -79,7 +79,8 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
                   <Button
                     tracking={{
                       event: 'click',
-                      value: 'Share on Twitter clicked'
+                      value: 'Share on Twitter clicked',
+                      name: 'Share on Twitter clicked'
                     }}
                     variant="twitter"
                     onClick={handleSocialShare(
@@ -94,7 +95,8 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
                   <Button
                     tracking={{
                       event: 'click',
-                      value: 'Share on Hacker News clicked'
+                      value: 'Share on Hacker News clicked',
+                      name: 'Share on Hacker News clicked'
                     }}
                     variant="hackernews"
                     onClick={handleSocialShare(
@@ -118,7 +120,7 @@ function ShareOnTwitterCta({ onClick }) {
   return (
     <aside
       aria-label="Share on Twitter card"
-      className="px-6 py-6 space-y-4 bg-gray-100 rounded-md">
+      className="px-6 py-6 space-y-4 rounded-md bg-indigo-50">
       <Heading size="h2" noMargin>
         Did you find this post useful or learned something?
       </Heading>
@@ -127,7 +129,8 @@ function ShareOnTwitterCta({ onClick }) {
         <Link
           tracking={{
             event: 'click',
-            value: 'Twitter CTA'
+            value: 'Twitter CTA',
+            name: 'Twitter CTA'
           }}
           to="https://twitter.com/phiilu">
           @phiilu
@@ -139,7 +142,8 @@ function ShareOnTwitterCta({ onClick }) {
         onClick={onClick}
         tracking={{
           event: 'click',
-          value: 'Share on Twitter clicked'
+          value: 'Share on Twitter clicked',
+          name: 'Share on Twitter clicked'
         }}>
         Share on Twitter
       </Button>

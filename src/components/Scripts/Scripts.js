@@ -23,12 +23,6 @@ function Scripts() {
       <script async defer data-domain="phiilu.com" src="https://cp.phiilu.com/js/index.js"></script>
       {/* Splitbee */}
       <script async defer src="https://bee.phiilu.com/sb.js"></script>
-      {/* Simple Analytics */}
-      <script async defer src="https://sa.phiilu.com/latest.js"></script>
-      <noscript>
-        <img src="https://sa.phiilu.com/noscript.gif" alt="noscript loading spinner" />
-      </noscript>
-      {/* Fathom is in _app.js */}
     </>
   );
 }

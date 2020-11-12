@@ -12,7 +12,8 @@ const Footer = () => {
           <Link
             tracking={{
               event: 'click',
-              value: 'Twitter visits'
+              value: 'Twitter visits',
+              name: 'Twitter visits'
             }}
             className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-twitter-200 hover:text-twitter-800"
             to="https://twitter.com/phiilu">
@@ -21,7 +22,8 @@ const Footer = () => {
           <Link
             tracking={{
               event: 'click',
-              value: 'GitHub visits'
+              value: 'GitHub visits',
+              name: 'GitHub visits'
             }}
             className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-github-200 hover:text-github-800 "
             to="https://github.com/phiilu">
@@ -30,7 +32,8 @@ const Footer = () => {
           <Link
             tracking={{
               event: 'click',
-              value: 'LinkedIn visits'
+              value: 'LinkedIn visits',
+              name: 'LinkedIn visits'
             }}
             className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-linkedin-200 hover:text-linkedin-800"
             to="https://www.linkedin.com/in/florian-kapfenberger-59581b164/">

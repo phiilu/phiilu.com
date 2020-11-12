@@ -4,6 +4,7 @@ import pluginUnwrapImages from 'remark-unwrap-images';
 import classNames from 'classnames';
 
 import Code from '@components/Markdown/Code/Code';
+import Link from '@components/Link/Link';
 
 const plugins = [pluginUnwrapImages];
 
@@ -13,15 +14,17 @@ function Image({ src, alt }) {
   );
 }
 
+function MarkdownLink({ href, children }) {
+  return <Link to={href}>{children}</Link>;
+}
+
 const Markdown = ({ children, className }) => {
   const renderers = {
-    // link: () => null,
-    // linkReference: () => null,
-    // inlineCode: () => null,
-    // blockquote: () => null,
     code: Code,
     image: Image,
-    imageReference: Image
+    imageReference: Image,
+    link: MarkdownLink,
+    linkReference: MarkdownLink
   };
 
   return (

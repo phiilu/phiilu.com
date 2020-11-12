@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Alert from '@components/Alert/Alert';
+import Button from '@components/Button/Button';
 
 function Input({ label, type, required, placeholder, ...props }) {
   return (
@@ -36,6 +37,9 @@ function Newsletter() {
     })
       .then((res) => res.json())
       .then(() => {
+        if (window?.splitbee) {
+          window.splitbee.user.set({ displayName: form.first_name, email: form.email });
+        }
         setState('success');
       })
       .catch(() => {
@@ -103,11 +107,17 @@ function Newsletter() {
             onChange={handleChange}
           />
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:flex-shrink-0">
-            <button
+            <Button
+              raw
               type="submit"
-              className="flex items-center justify-center w-full px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
+              className="flex items-center justify-center w-full px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
+              tracking={{
+                event: 'newsletter-signup',
+                name: 'Newsletter Signup Notify clicked',
+                value: 'Newsletter Signup Notify clicked'
+              }}>
               Notify me
-            </button>
+            </Button>
           </div>
         </form>
       </div>

@@ -18,7 +18,7 @@ const TagList = ({ tags }) => {
               <Link
                 to={`/tag/${tag.slug}`}
                 className={classNames(
-                  'pointer-events-auto inline-block rounded-md px-2 py-1 text-sm font-semibold',
+                  'pointer-events-auto inline-block rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-200 ease-in-out',
                   tag.bg,
                   tag.text,
                   tag.hover

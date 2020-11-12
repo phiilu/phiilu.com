@@ -8,24 +8,27 @@ const primaryVariant = `bg-indigo-200 text-indigo-800 hover:bg-indigo-500 hover:
 const twitterVariant = `bg-twitter-200 text-twitter-800 hover:bg-twitter-500 hover:text-white`;
 const hackerNewsVariant = `bg-hackernews-200 text-hackernews-800 hover:bg-hackernews-500 hover:text-white`;
 
-const Button = ({ as, variant, width, children, onClick, tracking, className, ...props }) => {
+const Button = ({ as, variant, width, children, onClick, tracking, className, raw, ...props }) => {
   const Element = { as };
 
   function handleOnClick(event) {
     if (tracking) {
       trackEvent(tracking);
     }
-    onClick(event);
+    if (onClick) {
+      onClick(event);
+    }
   }
 
   return (
     <Element.as
-      className={classNames(defaultClassName, className, {
-        [primaryVariant]: variant === 'primary',
-        [twitterVariant]: variant === 'twitter',
-        [hackerNewsVariant]: variant === 'hackernews',
-        'w-full': width === 'full',
-        'px-8': width === 'medium'
+      className={classNames(className, {
+        [defaultClassName]: !raw,
+        [primaryVariant]: !raw && variant === 'primary',
+        [twitterVariant]: !raw && variant === 'twitter',
+        [hackerNewsVariant]: !raw && variant === 'hackernews',
+        'w-full': !raw && width === 'full',
+        'px-8': !raw && width === 'medium'
       })}
       onClick={handleOnClick}
       {...props}>

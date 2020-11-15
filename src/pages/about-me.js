@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
-import { slideInRight, slideInLeft } from '@helpers/animation';
+import { slideInRight, slideInLeft, slideInUp } from '@helpers/animation';
 
 function PointsPattern() {
   return (
@@ -130,7 +130,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
                   </motion.figure>
                 </div>
               </div>
-              <motion.div variants={slideInRight}>
+              <motion.div variants={slideInUp}>
                 <div className="mx-auto text-base max-w-prose lg:max-w-none">
                   <p className="mb-5 text-lg leading-7 text-gray-500">
                     Hey thanks for visiting my blog and wanting to get to know me better!

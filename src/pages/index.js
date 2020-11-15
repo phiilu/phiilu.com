@@ -14,7 +14,7 @@ import getOgImage from '@lib/getOgImage';
 import generateRssFeed from '@lib/rss';
 import generateSitemap from '@lib/sitemap';
 import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
-import { listVariants, itemVariants } from '@helpers/animation';
+import { listVariants, itemVariants, delayedSlideInUp } from '@helpers/animation';
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
@@ -102,11 +102,11 @@ export default function IndexPage({ posts, ogImage, baseUrl }) {
               </motion.li>
             ))}
           </motion.ul>
-          <div className="flex justify-center">
+          <motion.div variants={delayedSlideInUp} className="flex justify-center">
             <Button as={Link} to="/articles" width="medium">
               View all
             </Button>
-          </div>
+          </motion.div>
         </div>
         <Newsletter />
       </Container>

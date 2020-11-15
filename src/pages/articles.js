@@ -68,7 +68,6 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
             return (
               <motion.div
                 initial="initial"
-                exit="none"
                 variants={itemVariants}
                 key={month.date}
                 className="space-y-8">

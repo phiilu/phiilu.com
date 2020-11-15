@@ -75,7 +75,7 @@ export const slideInLeft = {
   exit: {
     x: -100,
     opacity: 0,
-    transition: { duration: 0.2, ease: easing }
+    transition: { duration: 0.4, ease: easing }
   },
   enter: {
     x: 0,
@@ -85,7 +85,7 @@ export const slideInLeft = {
 };
 
 export const slideInRight = {
-  exit: { x: 150, opacity: 0, transition: { duration: 0.2, ease: easing } },
+  exit: { x: 150, opacity: 0, transition: { duration: 0.4, ease: easing } },
   enter: {
     x: 0,
     opacity: 1,

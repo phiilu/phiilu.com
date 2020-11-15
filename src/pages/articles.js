@@ -62,7 +62,7 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
         image={ogImage}
         url={`${baseUrl}/`}
       />
-      <Container as="main" noMargin>
+      <Container as="main" noMargin className="md:px-4">
         <motion.div initial="initial" variants={listVariants} className="space-y-16">
           {postsByMonth.map((month) => {
             return (

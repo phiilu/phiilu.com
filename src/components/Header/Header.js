@@ -4,7 +4,6 @@ import Link from '@components/Link/Link';
 import classNames from 'classnames';
 import { useScroll } from '@hooks/useScroll';
 import { motion, AnimateSharedLayout } from 'framer-motion';
-import { useRouter } from 'next/router';
 
 import { spring } from '@helpers/animation';
 
@@ -70,10 +69,9 @@ function getActiveIndex(pathname) {
   return menuItems.findIndex((item) => item.to === pathname);
 }
 
-const Header = () => {
-  const { pathname } = useRouter();
+const Header = ({ route }) => {
   const [scrolled] = useScroll();
-  const [activeHoverIndex, setActiveHoverIndex] = React.useState(() => getActiveIndex(pathname));
+  const [activeHoverIndex, setActiveHoverIndex] = React.useState(() => getActiveIndex(route));
   const hasClicked = React.useRef(false);
   const hasHover = React.useRef(false);
 
@@ -91,7 +89,7 @@ const Header = () => {
     if (hasClicked.current) {
       return;
     }
-    const index = getActiveIndex(pathname);
+    const index = getActiveIndex(route);
 
     // if we are on the homepage check if there is a hover state on another
     // item, otherwise we set the activeIndex to -1 and remove the hover
@@ -109,6 +107,11 @@ const Header = () => {
 
     hasHover.current = false;
   }
+
+  React.useEffect(() => {
+    hasClicked.current = false;
+    setActiveHoverIndex(getActiveIndex(route));
+  }, [route]);
 
   return (
     <>

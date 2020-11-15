@@ -13,7 +13,7 @@ function PhiiluBlog({ Component, pageProps, router }) {
   return (
     <>
       <GoogleFonts href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" />
-      <Layout key={router.route}>
+      <Layout route={router.route}>
         <AnimatePresence exitBeforeEnter onExitComplete={handleScrollToTop}>
           <motion.div
             key={router.route}

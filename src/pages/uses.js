@@ -22,7 +22,7 @@ const Uses = ({ ogImage, baseUrl }) => {
     <>
       <Head title="Uses" url={`${baseUrl}/uses`} image={ogImage} />
       <Container as="main" className="space-y-4 xl:space-y-0">
-        <motion.div className="space-y-12" variants={slideInUp}>
+        <motion.div className="space-y-12 md:px-4" variants={slideInUp}>
           <Markdown>{usesMarkdown}</Markdown>
         </motion.div>
       </Container>

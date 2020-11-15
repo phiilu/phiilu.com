@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Alert from '@components/Alert/Alert';
 import Button from '@components/Button/Button';
+import { motion } from 'framer-motion';
 
 function Input({ label, type, required, placeholder, ...props }) {
   return (
@@ -14,6 +15,20 @@ function Input({ label, type, required, placeholder, ...props }) {
     />
   );
 }
+
+let easing = [0.175, 0.85, 0.42, 0.96];
+const variants = {
+  exit: { y: 150, opacity: 0, transition: { duration: 0.5, ease: easing } },
+  enter: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.5,
+      ease: easing
+    }
+  }
+};
 
 function Newsletter() {
   const [form, setForm] = React.useState({ first_name: '', email: '' });
@@ -76,7 +91,7 @@ function Newsletter() {
   }
 
   return (
-    <div className="flex bg-white">
+    <motion.div variants={variants} className="flex bg-white">
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
           Want blog post updates? <br className="hidden sm:inline" />
@@ -121,7 +136,7 @@ function Newsletter() {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

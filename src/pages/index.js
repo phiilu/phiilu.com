@@ -1,5 +1,4 @@
 import Container from '@components/Container/Container';
-import Layout from '@components/Layout/Layout';
 import Head from '@components/Head/Head';
 import PostListItem from '@components/PostListItem/PostListItem';
 import Link from '@components/Link/Link';
@@ -8,12 +7,14 @@ import Button from '@components/Button/Button';
 import Newsletter from '@components/Newsletter/Newsletter';
 import SectionHeading from '@components/SectionHeading/SectionHeading';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 import generateRssFeed from '@lib/rss';
 import generateSitemap from '@lib/sitemap';
 import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
+import { listVariants, itemVariants, delayedSlideInUp } from '@helpers/animation';
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
@@ -33,9 +34,21 @@ export async function getStaticProps() {
   };
 }
 
+const heroVariants = {
+  initial: {
+    opacity: 0,
+    scale: 0.8
+  },
+  enter: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  exit: { opacity: 0, scale: 0.5, transition: { duration: 0.5 } }
+};
+
 function Hero() {
   return (
-    <div className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:mx-0 md:space-x-8 xl:p-12 md:space-y-0 md:flex-row">
+    <motion.div
+      initial="initial"
+      variants={heroVariants}
+      className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:mx-0 md:space-x-8 xl:p-12 md:space-y-0 md:flex-row">
       <picture className="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44">
         <Image
           className="absolute flex-none object-cover w-40 h-40 rounded-full md:h-44 md:w-44"
@@ -62,7 +75,7 @@ function Hero() {
           </small>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -70,30 +83,33 @@ export default function IndexPage({ posts, ogImage, baseUrl }) {
   return (
     <>
       <Head title="Home" description="Welcome to my blog!" image={ogImage} url={`${baseUrl}/`} />
-      <Layout>
-        <Container as="main" noMargin className="md:px-4 space-y-14">
-          <Hero />
-          <div className="space-y-8 md:space-y-14">
-            <SectionHeading heading="Blog" subheading="Latest Articles">
-              Here are my latest written articles, I hope you like them! <br /> I write about
-              programming and server related topics.
-            </SectionHeading>
-            <ul className="space-y-16 md:space-y-8">
-              {posts.map((post) => (
-                <li key={post.id}>
-                  <PostListItem post={post} />
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-center">
-              <Button as={Link} to="/articles" width="medium">
-                View all
-              </Button>
-            </div>
-          </div>
-          <Newsletter />
-        </Container>
-      </Layout>
+      <Container as="main" noMargin className="md:px-4 space-y-14">
+        <Hero />
+        <div className="space-y-8 md:space-y-14">
+          <SectionHeading heading="Blog" subheading="Latest Articles">
+            Here are my latest written articles, I hope you like them! <br /> I write about
+            programming and server related topics.
+          </SectionHeading>
+          <motion.ul
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={listVariants}
+            className="space-y-16 md:space-y-8">
+            {posts.map((post) => (
+              <motion.li variants={itemVariants} key={post.id}>
+                <PostListItem post={post} />
+              </motion.li>
+            ))}
+          </motion.ul>
+          <motion.div variants={delayedSlideInUp} className="flex justify-center">
+            <Button as={Link} to="/articles" width="medium">
+              View all
+            </Button>
+          </motion.div>
+        </div>
+        <Newsletter />
+      </Container>
     </>
   );
 }

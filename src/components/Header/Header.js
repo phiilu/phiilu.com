@@ -123,7 +123,7 @@ const Header = ({ route }) => {
       />
       <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
         <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white md:space-y-0 md:flex-no-wrap rounded-xl">
-          <Link to="/" className="w-full">
+          <Link to="/" className="w-full" scroll={false}>
             <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 md:text-2xl font-open-sans md:text-left">
               Phiilu
             </h1>

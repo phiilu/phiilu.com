@@ -103,7 +103,7 @@ export default function IndexPage({ posts, ogImage, baseUrl }) {
             ))}
           </motion.ul>
           <motion.div variants={delayedSlideInUp} className="flex justify-center">
-            <Button as={Link} to="/articles" width="medium">
+            <Button as={Link} to="/articles" width="medium" scroll={false}>
               View all
             </Button>
           </motion.div>

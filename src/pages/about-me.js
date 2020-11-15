@@ -95,7 +95,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
       <Head title="About Me" image={ogImage} url={`${baseUrl}/about`}></Head>
       <Container>
         <div className="overflow-hidden bg-white">
-          <div className="relative px-4 pb-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="relative px-4 pb-16 mx-auto max-w-7xl">
             <motion.div
               variants={slideInLeft}
               className="mx-auto text-base max-w-prose lg:max-w-none">

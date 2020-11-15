@@ -26,7 +26,7 @@ const Link = ({ children, activeClassName, to, className, tracking, ...props }) 
         rel="noopener noreferrer"
         href={to}
         className={classNames(className, {
-          [activeClassName]: pathname === to
+          [activeClassName]: activeClassName && pathname === to
         })}
         onClick={handleOutboundLinkClicked}>
         {children}
@@ -38,7 +38,7 @@ const Link = ({ children, activeClassName, to, className, tracking, ...props }) 
     <NextLink {...props} href={to} onClick={handleTracking}>
       <a
         className={classNames(className, {
-          [activeClassName]: pathname === to
+          [activeClassName]: activeClassName && pathname === to
         })}>
         {children}
       </a>

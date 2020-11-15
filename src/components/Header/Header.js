@@ -3,22 +3,112 @@ import Container from '@components/Container/Container';
 import Link from '@components/Link/Link';
 import classNames from 'classnames';
 import { useScroll } from '@hooks/useScroll';
+import { motion, AnimateSharedLayout } from 'framer-motion';
+import { useRouter } from 'next/router';
 
-const activeClassName = 'bg-cool-gray-100 rounded-md';
+import { spring } from '@helpers/animation';
+
+function MenuItem({ onHoverStart, onHoverEnd, onClick, active, children }) {
+  return (
+    <motion.li
+      className="relative"
+      onHoverStart={onHoverStart}
+      onHoverEnd={onHoverEnd}
+      onClick={onClick}>
+      {children}
+      {active && <SharedHover />}
+    </motion.li>
+  );
+}
+
+function SharedHover() {
+  return (
+    <motion.div
+      initial={false}
+      transition={spring}
+      layoutId="hover"
+      className="absolute left-0 right-0 rounded-md bg-cool-gray-100"
+      style={{
+        top: -7,
+        bottom: -7,
+        left: 0,
+        right: 0
+      }}
+    />
+  );
+}
 
 function HeaderLink({ to, children }) {
   return (
     <Link
       to={to}
-      className="px-2 py-2 transition-colors duration-100 ease-in-out rounded-md md:px-4 hover:bg-cool-gray-100"
-      activeClassName={activeClassName}>
-      <span className="font-semibold text-md font-open-sans ">{children}</span>
+      className="relative z-10 inline-block px-2 py-2 text-center transition-colors duration-100 ease-in-out rounded-md sm:inline md:px-4">
+      <span className="font-semibold text-md font-open-sans">{children}</span>
     </Link>
   );
 }
 
+const menuItems = [
+  {
+    index: 0,
+    to: '/articles',
+    name: 'All Articles'
+  },
+  {
+    index: 1,
+    to: '/about-me',
+    name: 'About Me'
+  },
+  {
+    index: 2,
+    to: '/uses',
+    name: 'Uses'
+  }
+];
+
+function getActiveIndex(pathname) {
+  return menuItems.findIndex((item) => item.to === pathname);
+}
+
 const Header = () => {
+  const { pathname } = useRouter();
   const [scrolled] = useScroll();
+  const [activeHoverIndex, setActiveHoverIndex] = React.useState(() => getActiveIndex(pathname));
+  const hasClicked = React.useRef(false);
+  const hasHover = React.useRef(false);
+
+  const handleOnClicked = () => {
+    hasClicked.current = true;
+  };
+  const handleOnHoverStart = React.useCallback(
+    (index) => () => {
+      hasHover.current = true;
+      setActiveHoverIndex(index);
+    },
+    []
+  );
+  function handleOnHoverEnd() {
+    if (hasClicked.current) {
+      return;
+    }
+    const index = getActiveIndex(pathname);
+
+    // if we are on the homepage check if there is a hover state on another
+    // item, otherwise we set the activeIndex to -1 and remove the hover
+    // active/state
+    //
+    // else set the hover index
+    if (index < 0) {
+      setTimeout(() => {
+        if (hasHover.current) return;
+        setActiveHoverIndex(index);
+      }, 500);
+    } else {
+      setActiveHoverIndex(index);
+    }
+
+    hasHover.current = false;
+  }
 
   return (
     <>
@@ -35,17 +125,20 @@ const Header = () => {
               Phiilu
             </h1>
           </Link>
-          <ul className="flex items-center justify-center flex-none w-full space-x-2 place-items-center md:w-auto">
-            <li>
-              <HeaderLink to="/articles">All Articles</HeaderLink>
-            </li>
-            <li>
-              <HeaderLink to="/about-me">About Me</HeaderLink>
-            </li>
-            <li>
-              <HeaderLink to="/uses">Uses</HeaderLink>
-            </li>
-          </ul>
+          <AnimateSharedLayout>
+            <ul className="flex items-center justify-center flex-none w-full space-x-2 place-items-center md:w-auto">
+              {menuItems.map(({ to, name, index }) => (
+                <MenuItem
+                  key={index}
+                  active={activeHoverIndex === index}
+                  onHoverStart={handleOnHoverStart(index)}
+                  onHoverEnd={handleOnHoverEnd}
+                  onClick={handleOnClicked}>
+                  <HeaderLink to={to}>{name}</HeaderLink>
+                </MenuItem>
+              ))}
+            </ul>
+          </AnimateSharedLayout>
         </nav>
       </Container>
     </>

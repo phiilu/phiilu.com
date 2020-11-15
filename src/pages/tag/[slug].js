@@ -1,15 +1,16 @@
 import classNames from 'classnames';
 
-import Layout from '@components/Layout/Layout';
 import Head from '@components/Head/Head';
 import Container from '@components/Container/Container';
 import Heading from '@components/Heading/Heading';
 import PostListItem from '@components/PostListItem/PostListItem';
+import { motion } from 'framer-motion';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 import tagColors from '@helpers/tagColors';
 import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
+import { listVariants, itemVariants, slideInUp } from '@helpers/animation';
 
 export async function getStaticProps({ params: { slug } }) {
   const tag = await contentful.getEntry('tag', slug);
@@ -47,7 +48,7 @@ function TagDetail({ tag, posts, ogImage, baseUrl }) {
   const count = posts.length;
 
   return (
-    <Layout>
+    <>
       <Head
         title={`Tag: ${title}`}
         description={description}
@@ -56,7 +57,7 @@ function TagDetail({ tag, posts, ogImage, baseUrl }) {
       />
       <Container as="main" noMargin>
         <article className="space-y-12">
-          <div className="px-4 space-y-4">
+          <motion.div variants={slideInUp} className="px-4 space-y-4">
             <Heading noMargin className="space-x-2">
               <span className={classNames('font-bold', mainColor)}>{count}</span> Post
               {count > 1 ? 's ' : ' '}
@@ -71,17 +72,17 @@ function TagDetail({ tag, posts, ogImage, baseUrl }) {
               </span>
             </Heading>
             {description && <p className="mb-12 text-xl text-gray-800">{description}</p>}
-          </div>
-          <ul className="space-y-8">
+          </motion.div>
+          <motion.ul initial="initial" variants={listVariants} className="space-y-8">
             {posts.map((post) => (
-              <li key={post.id}>
+              <motion.li initial="initial" variants={itemVariants} key={post.id}>
                 <PostListItem post={post} />
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </article>
       </Container>
-    </Layout>
+    </>
   );
 }
 

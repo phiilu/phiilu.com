@@ -1,5 +1,4 @@
 import Container from '@components/Container/Container';
-import Layout from '@components/Layout/Layout';
 import Head from '@components/Head/Head';
 import PostListItem from '@components/PostListItem/PostListItem';
 import Heading from '@components/Heading/Heading';
@@ -8,10 +7,12 @@ import dateFormat from 'date-fns/format';
 import formatISO9075 from 'date-fns/formatISO9075';
 import isSameMonth from 'date-fns/isSameMonth';
 import isSameYear from 'date-fns/isSameYear';
+import { motion } from 'framer-motion';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
+import { listVariants, itemVariants } from '@helpers/animation';
 
 function getPostsByMonth(posts) {
   return posts.reduce((postsByDate, post) => {
@@ -61,11 +62,16 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
         image={ogImage}
         url={`${baseUrl}/`}
       />
-      <Layout>
-        <Container as="main" noMargin className="space-y-14">
+      <Container as="main" noMargin>
+        <motion.div initial="initial" variants={listVariants} className="space-y-16">
           {postsByMonth.map((month) => {
             return (
-              <div key={month.date} className="space-y-8">
+              <motion.div
+                initial="initial"
+                exit="none"
+                variants={itemVariants}
+                key={month.date}
+                className="space-y-8">
                 <Heading
                   noMargin
                   size="h3"
@@ -73,20 +79,23 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
                   {dateFormat(new Date(month.date), 'MMMM yyyy')}
                 </Heading>
                 <div className="space-y-8 md:space-y-14">
-                  <ul className="space-y-16 md:space-y-8">
+                  <motion.ul
+                    initial="initial"
+                    variants={listVariants}
+                    className="space-y-16 md:space-y-8">
                     {month.posts.map((post) => (
-                      <li key={post.id}>
+                      <motion.li initial="initial" variants={itemVariants} key={post.id}>
                         <PostListItem post={post} />
-                      </li>
+                      </motion.li>
                     ))}
-                  </ul>
+                  </motion.ul>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-          <Newsletter />
-        </Container>
-      </Layout>
+        </motion.div>
+        <Newsletter />
+      </Container>
     </>
   );
 }

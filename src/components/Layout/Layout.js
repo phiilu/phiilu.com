@@ -2,20 +2,16 @@ import React from 'react';
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
 
-const Layout = ({ as, children }) => {
-  const Element = { as };
+const Layout = ({ children }) => {
   return (
-    <Element.as
+    <div
       className="grid min-h-screen antialised font-open-sans"
       style={{ gridTemplateRows: 'auto 1fr auto' }}>
       <Header />
       {children}
       <Footer />
-    </Element.as>
+    </div>
   );
-};
-Layout.defaultProps = {
-  as: 'div'
 };
 
 export default Layout;

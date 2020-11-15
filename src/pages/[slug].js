@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Layout from '@components/Layout/Layout';
 import Container from '@components/Container/Container';
 import Markdown from '@components/Markdown/Markdown';
 import Heading from '@components/Heading/Heading';
@@ -13,6 +12,8 @@ import Tags from '@components/Tags/Tags';
 import DraftBadge from '@components/DraftBadge/DraftBadge';
 import Head from '@components/Head/Head';
 import Newsletter from '@components/Newsletter/Newsletter';
+import { slideInUp, slideInRight, delayedSlideInUp } from '@helpers/animation';
+import { motion } from 'framer-motion';
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getEntry('post', slug);
@@ -40,7 +41,7 @@ export async function getStaticPaths() {
 
 function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialShare }) {
   return (
-    <aside className="pb-10">
+    <motion.aside variants={slideInRight} className="pb-10">
       <div className="sticky top-0 flex flex-col items-start pt-4 border-t border-gray-200 xl:pl-4 sm:flex-row xl:border-l xl:border-t-0 xl:space-y-8 xl:block">
         <img
           src={icon.url}
@@ -112,7 +113,7 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
           </dl>
         </div>
       </div>
-    </aside>
+    </motion.aside>
   );
 }
 
@@ -177,40 +178,40 @@ const PostDetails = ({
         date={rawDate}
         keywords={keywords}
       />
-      <Layout>
-        <Container as="main">
-          <article className="relative flex flex-col xl:grid xl:grid-cols-4 xl:col-gap-6">
-            <DraftBadge isPublished={published}></DraftBadge>
-            <Heading noMargin className="pb-4 md:mr-8 xl:pb-0 xl:mb-8 xl:col-span-3">
-              {title}
-            </Heading>
-            <div className="order-1 space-y-16 md:mr-8 xl:order-none xl:col-span-3">
-              <Markdown>{content}</Markdown>
-              <Newsletter />
+      <Container as="main">
+        <article className="relative flex flex-col md:px-4 xl:grid xl:grid-cols-4 xl:col-gap-6">
+          <DraftBadge isPublished={published}></DraftBadge>
+          <motion.div variants={slideInUp} className="pb-4 md:mr-8 xl:pb-0 xl:mb-8 xl:col-span-3">
+            <Heading noMargin>{title}</Heading>
+          </motion.div>
+          <motion.div
+            variants={delayedSlideInUp}
+            className="order-1 space-y-16 md:mr-8 xl:order-none xl:col-span-3">
+            <Markdown>{content}</Markdown>
+            <Newsletter />
 
-              <hr className="border-gray-200" />
-              <ShareOnTwitterCta
-                title={title}
-                onClick={handleSocialShare(
-                  `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
-                  'twitter-share',
-                  'width=550,height=235'
-                )}
-              />
-              <Comments />
-            </div>
-            <PostSidebar
-              icon={icon}
-              date={date}
-              tags={tags}
-              timeToRead={timeToRead}
+            <hr className="border-gray-200" />
+            <ShareOnTwitterCta
               title={title}
-              url={url}
-              handleSocialShare={handleSocialShare}
+              onClick={handleSocialShare(
+                `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
+                'twitter-share',
+                'width=550,height=235'
+              )}
             />
-          </article>
-        </Container>
-      </Layout>
+            <Comments />
+          </motion.div>
+          <PostSidebar
+            icon={icon}
+            date={date}
+            tags={tags}
+            timeToRead={timeToRead}
+            title={title}
+            url={url}
+            handleSocialShare={handleSocialShare}
+          />
+        </article>
+      </Container>
     </>
   );
 };

@@ -16,6 +16,7 @@ const TagList = ({ tags }) => {
           return (
             <li key={tag.slug} className="flex-none mt-2 mr-2">
               <Link
+                scroll={false}
                 to={`/tag/${tag.slug}`}
                 className={classNames(
                   'pointer-events-auto inline-block rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-200 ease-in-out',

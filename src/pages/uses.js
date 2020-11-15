@@ -1,7 +1,8 @@
-import Layout from '@components/Layout/Layout';
 import Head from '@components/Head/Head';
 import Container from '@components/Container/Container';
 import Markdown from '@components/Markdown/Markdown';
+import { slideInUp } from '@helpers/animation';
+import { motion } from 'framer-motion';
 
 import usesMarkdown from '@md/uses.md';
 import getOgImage from '@lib/getOgImage';
@@ -20,13 +21,11 @@ const Uses = ({ ogImage, baseUrl }) => {
   return (
     <>
       <Head title="Uses" url={`${baseUrl}/uses`} image={ogImage} />
-      <Layout>
-        <Container as="main" className="space-y-4 xl:space-y-0">
-          <div className="space-y-12">
-            <Markdown>{usesMarkdown}</Markdown>
-          </div>
-        </Container>
-      </Layout>
+      <Container as="main" className="space-y-4 xl:space-y-0">
+        <motion.div className="space-y-12" variants={slideInUp}>
+          <Markdown>{usesMarkdown}</Markdown>
+        </motion.div>
+      </Container>
     </>
   );
 };

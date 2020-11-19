@@ -23,7 +23,6 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
     // file does not exists, so we create it
   }
 
-  // const browser = await playwright.launchChromium({ headless: true });
   const browser = await chrome.puppeteer.launch({
     args: chrome.args,
     executablePath: isDev ? exePath : await chrome.executablePath,

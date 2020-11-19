@@ -17,8 +17,8 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   const publicPath = `${process.env.BASE_URL}/images/og/${hash}.png`;
 
   try {
-    // fs.statSync(imagePath);
-    // return publicPath;
+    fs.statSync(imagePath);
+    return publicPath;
   } catch (error) {
     // file does not exists, so we create it
   }

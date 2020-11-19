@@ -44,7 +44,6 @@
     "postcss-flexbugs-fixes": "5.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
-    "puppeteer-core": "^5.5.0",
     "raw-loader": "^4.0.2",
     "sitemap": "^6.3.3"
   },

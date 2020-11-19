@@ -1,4 +1,5 @@
 const chrome = require('chrome-aws-lambda');
+import { launch } from 'puppeteer-core';
 const { createHash } = require('crypto');
 const fs = require('fs');
 
@@ -24,7 +25,7 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   }
 
   // const browser = await playwright.launchChromium({ headless: true });
-  const browser = await chrome.puppeteer.launch({
+  const browser = await launch({
     args: chrome.args,
     executablePath: isDev ? exePath : await chrome.executablePath,
     headless: isDev ? true : chrome.headless

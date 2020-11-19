@@ -29,7 +29,7 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   const browser = await chrome.puppeteer.launch({
     args: chrome.args,
     executablePath: isDev ? exePath : await chrome.executablePath,
-    headless: isDev ? true : chrome.headless
+    headless: true
   });
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 630 });

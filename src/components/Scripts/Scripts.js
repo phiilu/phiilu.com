@@ -13,14 +13,12 @@ function Scripts() {
         data-domains="phiilu.com"
         data-website-id={process.env.UMAMI_WEBSITE_ID}
         src="https://u.phiilu.com/umami.js"></script>
-      {/* Plausible Analytics (self hosted) */}
+      {/* Plausible Analytics */}
       <script
         async
         defer
         data-domain="phiilu.com"
         src="https://p.phiilu.com/js/plausible.js"></script>
-      {/* Plausible Analytics */}
-      <script async defer data-domain="phiilu.com" src="https://cp.phiilu.com/js/index.js"></script>
       {/* Splitbee */}
       <script async defer src="https://bee.phiilu.com/sb.js"></script>
     </>

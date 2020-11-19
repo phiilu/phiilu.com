@@ -9,7 +9,7 @@ function Input({ label, type, required, placeholder, ...props }) {
       aria-label={label}
       type={type}
       required={required}
-      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline focus:border-blue-300 sm:max-w-xs"
+      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none dark:text-gray-100 dark:bg-gray-800 dark: focus:outline-none focus:shadow-outline focus:border-blue-300 sm:max-w-xs dark:placeholder-gray-400 dark:border-gray-700"
       placeholder={placeholder}
       {...props}
     />
@@ -91,7 +91,7 @@ function Newsletter() {
   }
 
   return (
-    <motion.div variants={variants} className="flex bg-white">
+    <motion.div variants={variants} className="flex">
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
           Want blog post updates? <br className="hidden sm:inline" />

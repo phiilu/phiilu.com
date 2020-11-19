@@ -157,6 +157,7 @@ const PostDetails = ({
   ogImage,
   baseUrl
 }) => {
+  console.log(title);
   const handleSocialShare = React.useCallback(
     (url, name, windowSize) => (e) => {
       e.preventDefault();

@@ -4,7 +4,7 @@ import trackEvent from '@helpers/tracking';
 
 const defaultClassName =
   'inline-block px-4 py-2 font-semibold text-center transition-colors duration-300 ease-in-out rounded-md';
-const primaryVariant = `bg-indigo-200 text-indigo-800 hover:bg-indigo-500 hover:text-white`;
+const primaryVariant = `bg-indigo-200 text-indigo-800 hover:bg-indigo-500 hover:text-white dark:bg-indigo-500 dark:text-indigo-100 dark:hover:bg-indigo-200 dark:hover:text-indigo-800`;
 const twitterVariant = `bg-twitter-200 text-twitter-800 hover:bg-twitter-500 hover:text-white`;
 const hackerNewsVariant = `bg-hackernews-200 text-hackernews-800 hover:bg-hackernews-500 hover:text-white`;
 

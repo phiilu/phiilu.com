@@ -3,7 +3,11 @@ import GoogleFonts from 'next-google-fonts';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from '@components/Layout/Layout';
 
+import { useDarkMode } from '@hooks/useDarkMode';
+
 function PhiiluBlog({ Component, pageProps, router }) {
+  useDarkMode();
+
   function handleScrollToTop() {
     window.scrollTo({
       top: 0,

@@ -5,8 +5,6 @@ const fs = require('fs');
 const isDev = process.env.NODE_ENV === 'development';
 const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
-console.log('isDev', isDev);
-
 async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   if (isDev) {
     return 'og image will be generated in production';

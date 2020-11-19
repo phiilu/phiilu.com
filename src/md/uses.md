@@ -8,6 +8,11 @@ This is an up to date list of hardware and software I am using on a regular basi
 
 Although this Macbook Pro is already a few years old, it still gets the job done! I got the base model and upgraded the SSD to 512 GB and the RAM to 16GB. The only problem I have is the [keyboard](https://support.apple.com/keyboard-service-program-for-mac-notebooks). But this is a known issue and only from time to time one of the keys gets stuck. Annoying, if you keep in mind that this laptop was more than 2000€
 
+### [Keychron K2 Wireless Mechanical Keyboard](https://s.phiilu.com/keychron-k2) ([Coupon](https://s.phiilu.com/keychron-k2-coupon))
+
+You probably know this one from MKBHD, but I gotta say it is a very impressive wireless keyboard. I love the color scheme and the RGB backlighting.
+I use this keyboard for programming on my Mac. It was the reason I learned the english keyboard layout. The english keyboard layout as way superior to the german one and I am glad I learned it. If you are interested in buying one I can offer you 10% off with a [coupon](https://s.phiilu.com/keychron-k2-coupon) I got when I bought it.
+
 ### [iPhone 12](https://s.phiilu.com/iphone-12)
 
 After 3 years I finally upgraded to the iPhone 12 and I love it. It is so fast and the battery lasts twice as long as the one from my old iPhone 8 Plus. Only wished it had Touch ID in addition to Face ID like the new iPads. Face ID is not so great in an era where everyone is wearing masks.

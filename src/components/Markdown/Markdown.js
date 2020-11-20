@@ -30,7 +30,7 @@ const Markdown = ({ children, className }) => {
   return (
     <ReactMarkdown
       allowDangerousHtml
-      className={classNames('prose lg:prose-lg dark:text-gray-100', className)}
+      className={classNames('prose lg:prose-lg dark:prose dark:prose-lg prose-indigo', className)}
       renderers={renderers}
       plugins={plugins}>
       {children}

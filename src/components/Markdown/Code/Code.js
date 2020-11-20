@@ -38,9 +38,6 @@ const CodeBlock = ({ language, value }) => {
                 return (
                   <div key={i} {...getLineProps({ line, key: i })}>
                     {line.map((token, key) => {
-                      if (token.content.length === 0) return null;
-                      if (token.empty && tokens.length === 2) return null;
-                      if (token.empty) return <div key={key} className="my-4" />;
                       return (
                         <span
                           key={key}

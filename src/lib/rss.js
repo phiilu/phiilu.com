@@ -20,7 +20,7 @@ async function generateRssFeed() {
     title: `Phiilu's Blog`,
     description: 'Welcome to my blog!',
     id: baseUrl,
-    link: `${baseUrl}/rss/feed.xml`,
+    link: baseUrl,
     language: 'en',
     image: `${baseUrl}/images/logo.svg`,
     favicon: `${baseUrl}/favicon.ico`,

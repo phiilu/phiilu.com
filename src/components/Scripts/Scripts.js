@@ -18,7 +18,7 @@ function Scripts() {
         async
         defer
         data-domain="phiilu.com"
-        src="https://p.phiilu.com/js/plausible.js"></script>
+        src="https://p.phiilu.com/js/plausible.outbound-links.js"></script>
       {/* Splitbee */}
       <script async defer src="https://bee.phiilu.com/sb.js"></script>
     </>

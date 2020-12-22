@@ -217,6 +217,15 @@ const tags = {
     hover: 'hover:bg-blue-500 hover:text-white',
     mainColor: 'text-blue-500',
     description: 'Privacy'
+  },
+  seo: {
+    name: 'seo',
+    slug: slugify('seo'),
+    bg: 'bg-green-200',
+    text: 'text-green-900',
+    hover: 'hover:bg-green-500 hover:text-white',
+    mainColor: 'text-green-500',
+    description: 'SEO'
   }
 };
 

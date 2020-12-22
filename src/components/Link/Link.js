@@ -4,8 +4,12 @@ import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import trackEvent from '@helpers/tracking';
 
+const baseUrl = 'https://phiilu.com';
+
 const Link = ({ children, activeClassName, to, className, tracking, ...props }) => {
   const { pathname } = useRouter();
+  const href = React.useMemo(() => to.replace(baseUrl, ''), [to]);
+  const hasActiveClassName = activeClassName && pathname === href;
 
   function handleOutboundLinkClicked() {
     trackEvent({ event: 'click', name: 'Outbound Link', value: to });
@@ -18,15 +22,15 @@ const Link = ({ children, activeClassName, to, className, tracking, ...props }) 
     }
   }
 
-  if (to.startsWith('http')) {
+  if (href.startsWith('http')) {
     return (
       <a
         {...props}
         target="_blank"
         rel="noopener noreferrer"
-        href={to}
+        href={href}
         className={classNames(className, {
-          [activeClassName]: activeClassName && pathname === to
+          [activeClassName]: hasActiveClassName
         })}
         onClick={handleOutboundLinkClicked}>
         {children}
@@ -35,10 +39,10 @@ const Link = ({ children, activeClassName, to, className, tracking, ...props }) 
   }
 
   return (
-    <NextLink {...props} href={to} onClick={handleTracking}>
+    <NextLink {...props} href={href} onClick={handleTracking}>
       <a
         className={classNames(className, {
-          [activeClassName]: activeClassName && pathname === to
+          [activeClassName]: hasActiveClassName
         })}>
         {children}
       </a>

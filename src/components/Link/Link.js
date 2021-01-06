@@ -8,7 +8,12 @@ const baseUrl = 'https://phiilu.com';
 
 const Link = ({ children, activeClassName, to, className, tracking, ...props }) => {
   const { pathname } = useRouter();
-  const href = React.useMemo(() => to.replace(baseUrl, ''), [to]);
+  const href = React.useMemo(() => {
+    if (to.startsWith(baseUrl)) {
+      return to.replace(baseUrl, '');
+    }
+    return to;
+  }, [to]);
   const hasActiveClassName = activeClassName && pathname === href;
 
   function handleOutboundLinkClicked() {

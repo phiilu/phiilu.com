@@ -47,7 +47,7 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
           src={icon.url}
           height="48px"
           width="48px"
-          className="inline-block w-12 h-12 mt-4 mr-8 xl:block xl:self-center self-justify-center xl:mt-0 xl:mr-0"
+          className="inline-block object-contain w-12 h-12 mt-4 mr-8 xl:block xl:self-center self-justify-center xl:mt-0 xl:mr-0"
           alt={icon.alt}
         />
         <div className="flex flex-wrap xl:block xl:space-y-8">

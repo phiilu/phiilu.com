@@ -226,6 +226,15 @@ const tags = {
     hover: 'hover:bg-green-500 hover:text-white',
     mainColor: 'text-green-500',
     description: 'SEO'
+  },
+  docker: {
+    name: 'docker',
+    slug: slugify('docker'),
+    bg: 'bg-blue-200',
+    text: 'text-blue-900',
+    hover: 'hover:bg-blue-500 hover:text-white',
+    mainColor: 'text-blue-500',
+    description: 'Docker'
   }
 };
 

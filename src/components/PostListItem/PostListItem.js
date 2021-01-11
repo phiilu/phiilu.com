@@ -24,7 +24,7 @@ const PostListItem = ({ post: { slug, title, description, published, icon, date,
                 height={48}
                 width={48}
                 alt={icon.alt}
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div className="space-y-2">
@@ -43,7 +43,7 @@ const PostListItem = ({ post: { slug, title, description, published, icon, date,
                 height={48}
                 width={48}
                 alt={icon.alt}
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div>

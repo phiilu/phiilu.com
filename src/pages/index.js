@@ -59,17 +59,18 @@ function Hero() {
         />
       </picture>
       <div className="space-y-2">
-        <Heading noMargin className="text-5xl">
+        <h1 className="text-2xl font-bold md:text-3xl xl:text-4xl">
           Hey, I&apos;m Florian (
           <Link className="text-indigo-500" to="https://twitter.com/phiilu">
             @phiilu
           </Link>
           ),
-        </Heading>
-        <p className="md:text-2xl">
+        </h1>
+        <p className="text-xl md:text-2xl">
           I am a <strong className="font-bold">Frontend Developer</strong> from{' '}
           <span aria-label="Austria">
-            <span className="text-red-500">Au</span>str<span className="text-red-500">ia</span>
+            <span className="dark:text-red-500">Au</span>str
+            <span className="dark:text-red-500">ia</span>
           </span>{' '}
           creating websites &amp; apps using{' '}
           <Link

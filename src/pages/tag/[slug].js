@@ -71,7 +71,9 @@ function TagDetail({ tag, posts, ogImage, baseUrl }) {
                 {title}
               </span>
             </Heading>
-            {description && <p className="mb-12 text-xl text-gray-800">{description}</p>}
+            {description && (
+              <p className="mb-12 text-xl text-gray-800 dark:text-gray-200">{description}</p>
+            )}
           </motion.div>
           <motion.ul initial="initial" variants={listVariants} className="space-y-8">
             {posts.map((post) => (

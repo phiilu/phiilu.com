@@ -26,7 +26,7 @@ function SharedHover() {
       initial={false}
       transition={spring}
       layoutId="hover"
-      className="absolute left-0 right-0 rounded-md bg-cool-gray-100"
+      className="absolute left-0 right-0 rounded-md bg-cool-gray-100 dark:bg-cool-gray-800"
       style={{
         top: -7,
         bottom: -7,
@@ -122,9 +122,9 @@ const Header = ({ route }) => {
         style={{ width: `${scrolled}%` }}
       />
       <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
-        <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white md:space-y-0 md:flex-no-wrap rounded-xl">
-          <Link to="/" className="w-full" scroll={false}>
-            <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 md:text-2xl font-open-sans md:text-left">
+        <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-no-wrap rounded-xl">
+          <Link to="/" className="flex-1" scroll={false}>
+            <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
               Phiilu
             </h1>
           </Link>

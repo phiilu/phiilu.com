@@ -9,7 +9,7 @@ function Input({ label, type, required, placeholder, ...props }) {
       aria-label={label}
       type={type}
       required={required}
-      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline focus:border-blue-300 sm:max-w-xs"
+      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none dark:text-gray-100 dark:bg-gray-800 dark: focus:outline-none focus:shadow-outline focus:border-blue-300 sm:max-w-xs dark:placeholder-gray-400 dark:border-gray-700"
       placeholder={placeholder}
       {...props}
     />
@@ -91,11 +91,11 @@ function Newsletter() {
   }
 
   return (
-    <motion.div variants={variants} className="flex bg-white">
+    <motion.div variants={variants} className="flex">
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
-        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
           Want blog post updates? <br className="hidden sm:inline" />
-          <span className="text-indigo-600" id="newsletter-headline">
+          <span className="text-indigo-600 dark:text-indigo-500" id="newsletter-headline">
             Sign up for my newsletter.
           </span>
         </h2>
@@ -123,9 +123,7 @@ function Newsletter() {
           />
           <div className="mt-3 rounded-md shadow sm:mt-0 sm:flex-shrink-0">
             <Button
-              raw
               type="submit"
-              className="flex items-center justify-center w-full px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
               tracking={{
                 event: 'newsletter-signup',
                 name: 'Newsletter Signup Notify clicked',

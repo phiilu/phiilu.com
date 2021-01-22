@@ -7,7 +7,6 @@ import Link from '@components/Link/Link';
 import Button from '@components/Button/Button';
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
-import Comments from '@components/Comments/Comments';
 import Tags from '@components/Tags/Tags';
 import DraftBadge from '@components/DraftBadge/DraftBadge';
 import Head from '@components/Head/Head';
@@ -42,7 +41,7 @@ export async function getStaticPaths() {
 function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialShare }) {
   return (
     <motion.aside variants={slideInRight} className="pb-10">
-      <div className="sticky top-0 flex flex-col items-start pt-4 border-t border-gray-200 xl:pl-4 sm:flex-row xl:border-l xl:border-t-0 xl:space-y-8 xl:block">
+      <div className="sticky top-0 flex flex-col items-start pt-4 border-t border-gray-200 dark:border-gray-800 xl:pl-4 sm:flex-row xl:border-l xl:border-t-0 xl:space-y-8 xl:block">
         <img
           src={icon.url}
           height="48px"
@@ -53,14 +52,14 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
         <div className="flex flex-wrap xl:block xl:space-y-8">
           <dl className="mt-4 mr-8 xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Published on</dt>
-            <dd className="text-base font-medium leading-6 text-time">
+            <dd className="text-base font-medium leading-6 text-time dark:text-gray-400">
               <time dateTime={date}>{date}</time>
             </dd>
           </dl>
           {timeToRead > 0 && (
             <dl className="mt-4 md:mr-8 xl:mt-0 xl:mr-0">
               <dt className="font-semibold font-source-sans-pro">Reading time</dt>
-              <dd className="text-base font-medium leading-6 text-time">
+              <dd className="text-base font-medium leading-6 text-time dark:text-gray-400">
                 {timeToRead} Minute
                 {timeToRead > 1 ? 's' : ''}
               </dd>
@@ -68,13 +67,13 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
           )}
           <dl className="w-full mt-4 md:mr-8 md:w-auto xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Tags</dt>
-            <dd className="text-base font-medium leading-6 text-time">
+            <dd className="text-base font-medium leading-6 text-time dark:text-gray-400">
               <Tags tags={tags}></Tags>
             </dd>
           </dl>
           <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Social Corner</dt>
-            <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time">
+            <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time dark:text-gray-400">
               <ul className="space-y-2 sm:items-start sm:space-x-2 sm:space-y-0 xl:space-y-2 sm:flex xl:space-x-0 xl:block">
                 <li className="w-full">
                   <Button
@@ -121,11 +120,11 @@ function ShareOnTwitterCta({ onClick }) {
   return (
     <aside
       aria-label="Share on Twitter card"
-      className="px-6 py-6 space-y-4 rounded-md bg-indigo-50">
+      className="px-6 py-6 space-y-4 rounded-md bg-indigo-50 dark:bg-gray-800">
       <Heading size="h2" noMargin>
         Did you find this post useful or learned something?
       </Heading>
-      <p className="prose lg:prose-xl">
+      <p className="prose lg:prose-xl dark:prose-dark">
         I would be really grateful if you let me{' '}
         <Link
           tracking={{
@@ -190,7 +189,7 @@ const PostDetails = ({
             <Markdown>{content}</Markdown>
             <Newsletter />
 
-            <hr className="border-gray-200" />
+            <hr className="border-gray-200 dark:border-gray-800" />
             <ShareOnTwitterCta
               title={title}
               onClick={handleSocialShare(
@@ -199,7 +198,6 @@ const PostDetails = ({
                 'width=550,height=235'
               )}
             />
-            <Comments />
           </motion.div>
           <PostSidebar
             icon={icon}

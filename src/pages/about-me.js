@@ -26,7 +26,14 @@ function PointsPattern() {
           width="20"
           height="20"
           patternUnits="userSpaceOnUse">
-          <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
+          <rect
+            x="0"
+            y="0"
+            width="4"
+            height="4"
+            className="text-gray-200 dark:text-gray-700"
+            fill="currentColor"
+          />
         </pattern>
       </defs>
       <rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
@@ -94,7 +101,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
     <>
       <Head title="About Me" image={ogImage} url={`${baseUrl}/about`}></Head>
       <Container>
-        <div className="overflow-hidden bg-white">
+        <div className="overflow-hidden">
           <div className="relative px-4 pb-16 mx-auto max-w-7xl">
             <motion.div
               variants={slideInLeft}
@@ -102,7 +109,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
               <p className="text-base font-semibold leading-6 tracking-wide text-indigo-600 uppercase">
                 About me
               </p>
-              <h1 className="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+              <h1 className="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
                 Meet Florian
               </h1>
             </motion.div>
@@ -118,7 +125,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
                       height="1376"
                       className="absolute inset-0 object-cover object-center w-full h-full rounded-lg shadow-lg lg:static lg:h-auto"
                     />
-                    <figcaption className="flex items-center mt-3 text-sm text-gray-500">
+                    <figcaption className="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-100">
                       <CameraIcon />
                       <span className="flex-1">
                         I should have read the text on the bubble first{' '}
@@ -132,11 +139,11 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
               </div>
               <motion.div variants={slideInUp}>
                 <div className="mx-auto text-base max-w-prose lg:max-w-none">
-                  <p className="mb-5 text-lg leading-7 text-gray-500">
+                  <p className="mb-5 text-lg leading-7 text-gray-500 dark:text-gray-100">
                     Hey thanks for visiting my blog and wanting to get to know me better!
                   </p>
                 </div>
-                <div className="mx-auto prose text-gray-500 lg:max-w-none lg:row-start-1 lg:col-start-1">
+                <div className="mx-auto prose dark:prose-dark text-gray-500 lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100">
                   <p>
                     I am an <strong aria-live="polite">{age}</strong> seconds ({ageInYears} years)
                     old Austrian frontend developer.

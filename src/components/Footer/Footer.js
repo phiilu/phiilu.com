@@ -58,9 +58,11 @@ const Footer = () => {
           </Link>
         </div>
       </Container>
-      <div className="py-4 bg-indigo-100">
+      <div className="py-4 bg-indigo-100 dark:bg-gray-800">
         <Container className="text-center">
-          <span className="font-semibold text-indigo-800">&copy; {today.getFullYear()} Phiilu</span>
+          <span className="font-semibold text-indigo-800 dark:text-gray-300">
+            &copy; {today.getFullYear()} Phiilu
+          </span>
         </Container>
       </div>
     </footer>

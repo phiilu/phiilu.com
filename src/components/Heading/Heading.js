@@ -16,7 +16,7 @@ const Heading = ({ as, size, children, noMargin, className, ...props }) => {
   return (
     <Element.as
       className={classNames(
-        'font-source-sans-pro tracking-tight text-gray-900',
+        'font-source-sans-pro tracking-tight text-gray-900 dark:text-gray-100',
         {
           'text-4xl font-extrabold': size === Sizes.h1,
           'text-3xl font-bold leading-relaxed': size === Sizes.h2,

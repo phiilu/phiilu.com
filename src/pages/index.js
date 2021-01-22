@@ -61,7 +61,7 @@ function Hero() {
       <div className="space-y-2">
         <h1 className="text-2xl font-bold md:text-3xl xl:text-4xl">
           Hey, I&apos;m Florian (
-          <Link className="text-indigo-500" to="https://twitter.com/phiilu">
+          <Link className="text-indigo-500 hover:text-indigo-400" to="https://twitter.com/phiilu">
             @phiilu
           </Link>
           ),
@@ -75,10 +75,9 @@ function Hero() {
           creating websites &amp; apps using{' '}
           <Link
             to="https://reactjs.org/"
-            className="font-semibold text-indigo-600 dark:text-indigo-500">
+            className="font-semibold text-indigo-600 dark:text-indigo-500 hover:text-indigo-400">
             React
           </Link>
-          !
         </p>
       </div>
     </motion.div>

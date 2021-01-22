@@ -15,7 +15,7 @@
     "@tailwindcss/ui": "^0.7.2",
     "@wordpress/wordcount": "^2.13.0",
     "classnames": "^2.2.6",
-    "contentful": "^7.14.13",
+    "contentful": "^8.1.7",
     "date-fns": "^2.16.1",
     "fathom-client": "^3.0.0",
     "framer-motion": "^2.9.4",

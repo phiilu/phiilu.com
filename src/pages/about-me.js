@@ -26,7 +26,14 @@ function PointsPattern() {
           width="20"
           height="20"
           patternUnits="userSpaceOnUse">
-          <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
+          <rect
+            x="0"
+            y="0"
+            width="4"
+            height="4"
+            className="text-gray-200 dark:text-gray-700"
+            fill="currentColor"
+          />
         </pattern>
       </defs>
       <rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)" />
@@ -136,7 +143,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
                     Hey thanks for visiting my blog and wanting to get to know me better!
                   </p>
                 </div>
-                <div className="mx-auto prose text-gray-500 lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100">
+                <div className="mx-auto prose dark:prose-dark text-gray-500 lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100">
                   <p>
                     I am an <strong aria-live="polite">{age}</strong> seconds ({ageInYears} years)
                     old Austrian frontend developer.

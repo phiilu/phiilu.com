@@ -48,7 +48,7 @@ function Hero() {
     <motion.div
       initial="initial"
       variants={heroVariants}
-      className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:mx-0 md:space-x-8 xl:p-12 md:space-y-0 md:flex-row dark:bg-indigo-800">
+      className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:mx-0 md:space-x-8 xl:p-12 md:space-y-0 md:flex-row dark:bg-gray-800">
       <picture className="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44">
         <Image
           className="absolute flex-none object-cover w-40 h-40 rounded-full md:h-44 md:w-44"
@@ -59,23 +59,26 @@ function Hero() {
         />
       </picture>
       <div className="space-y-2">
-        <div className="space-y-1 space-y-2 text-xl leading-7 md:text-2xl md:leading-8 lg:text-3xl lg:leading-10">
-          <Heading size="h2" noMargin>
-            Hey, I&apos;m Florian <i className="font-medium">also known as</i>{' '}
-            <Link className="text-indigo-500" to="https://twitter.com/phiilu">
-              @phiilu
-            </Link>
-          </Heading>
-          <small>
-            I am a <strong className="font-bold">Frontend Developer</strong> from Austria creating
-            websites &amp; apps with{' '}
-            <Link
-              to="https://reactjs.org/"
-              className="font-semibold text-indigo-600 dark:text-indigo-500">
-              React
-            </Link>
-          </small>
-        </div>
+        <Heading noMargin className="text-5xl">
+          Hey, I&apos;m Florian (
+          <Link className="text-indigo-500" to="https://twitter.com/phiilu">
+            @phiilu
+          </Link>
+          ),
+        </Heading>
+        <p className="md:text-2xl">
+          I am a <strong className="font-bold">Frontend Developer</strong> from{' '}
+          <span aria-label="Austria">
+            <span className="text-red-500">Au</span>str<span className="text-red-500">ia</span>
+          </span>{' '}
+          creating websites &amp; apps using{' '}
+          <Link
+            to="https://reactjs.org/"
+            className="font-semibold text-indigo-600 dark:text-indigo-500">
+            React
+          </Link>
+          !
+        </p>
       </div>
     </motion.div>
   );

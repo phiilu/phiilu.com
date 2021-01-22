@@ -4,56 +4,56 @@ const tags = {
   beginners: {
     name: 'beginners',
     slug: slugify('beginners'),
-    bg: 'bg-green-200',
-    text: 'text-green-900',
-    hover: 'hover:bg-green-500 hover:text-white',
+    bg: 'bg-green-200 dark:bg-green-500',
+    text: 'text-green-900 dark:text-white',
+    hover: 'hover:bg-green-500 hover:text-white dark:hover:bg-green-400',
     mainColor: 'text-green-500',
     description: 'This tag shows posts aimed merely for beginners.'
   },
   openvpn: {
     name: 'openvpn',
     slug: slugify('openvpn'),
-    bg: 'bg-openvpn-200',
-    text: 'text-openvpn-900',
+    bg: 'bg-openvpn-200 dark:bg-openvpn-500',
+    text: 'text-openvpn-900 dark:text-white',
     mainColor: 'text-openvpn-500',
-    hover: 'hover:bg-openvpn-500 hover:text-white',
+    hover: 'hover:bg-openvpn-500 hover:text-white dark:hover:bg-openvpn-400',
     description:
       'OpenVPN is open-source commercial software that implements virtual private network techniques to create secure point-to-point or site-to-site connections.'
   },
   'raspberry pi': {
     name: 'raspberry pi',
     slug: slugify('raspberry pi'),
-    bg: 'bg-raspberrypi-200',
-    text: 'text-raspberrypi-800',
+    bg: 'bg-raspberrypi-200 dark:bg-raspberrypi-500',
+    text: 'text-raspberrypi-800 dark:text-white',
     mainColor: 'text-raspberrypi-500',
-    hover: 'hover:bg-raspberrypi-500 hover:text-white',
+    hover: 'hover:bg-raspberrypi-500 hover:text-white dark:hover:bg-raspberrypi-400',
     description: 'The Raspberry Pi is a small single-board computer.'
   },
   security: {
     name: 'security',
     slug: slugify('security'),
-    bg: 'bg-gray-200',
-    text: 'text-gray-900',
+    bg: 'bg-gray-200 dark:bg-gray-500',
+    text: 'text-gray-900 dark:text-white',
     mainColor: 'text-security-500',
-    hover: 'hover:bg-gray-500 hover:text-white',
+    hover: 'hover:bg-gray-500 hover:text-white dark:hover:bg-gray-400',
     description:
       'This tag shows posts containing security related content like securing servers or ethical hacking. '
   },
   'code editor': {
     name: 'code editor',
     slug: slugify('code editor'),
-    bg: 'bg-vscode-200',
-    text: 'text-vscode-800',
+    bg: 'bg-vscode-200 dark:bg-vscode-500',
+    text: 'text-vscode-800 dark:text-white',
     mainColor: 'text-vscode-500',
-    hover: 'hover:bg-vscode-500 hover:text-white',
+    hover: 'hover:bg-vscode-500 hover:text-white dark:hover:bg-vscode-400',
     description:
       'This tag shows posts with tipps & tricks for code editors like Visual Studio Code.'
   },
   vps: {
     name: 'vps',
     slug: slugify('vps'),
-    bg: 'bg-purple-200',
-    text: 'text-purple-800',
+    bg: 'bg-purple-200 dark:bg-purple-500',
+    text: 'text-purple-800 dark:text-white',
     mainColor: 'text-purple-500',
     hover: 'hover:bg-purple-500 hover:text-white',
     description: 'This tag shows posts that are taking advantage of Virtual Private Servers.'

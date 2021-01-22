@@ -116,12 +116,9 @@ const Header = ({ route }) => {
   return (
     <>
       <div
-        className={classNames(
-          'fixed top-0 left-0 z-20 h-2 bg-indigo-500 bg-opacity-75 dark:bg-indigo-800',
-          {
-            'rounded-r-full': scrolled !== 100
-          }
-        )}
+        className={classNames('fixed top-0 left-0 z-20 h-2 bg-indigo-500 bg-opacity-75', {
+          'rounded-r-full': scrolled !== 100
+        })}
         style={{ width: `${scrolled}%` }}
       />
       <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">

@@ -1,5 +1,5 @@
 module.exports = {
-  darkMode: 'class',
+  darkMode: 'media',
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true
@@ -214,27 +214,46 @@ module.exports = {
                 color: theme('colors.indigo.800')
               }
             }
-          },
-          dark: {
-            css: {
-              h1: {
-                color: '#A9B1D6'
+          }
+        },
+        dark: {
+          css: {
+            color: theme('colors.gray.200'),
+            strong: {
+              color: theme('colors.gray.100')
+            },
+            blockquote: {
+              color: theme('colors.gray.200')
+            },
+            h1: {
+              color: theme('colors.gray.100')
+            },
+            h2: {
+              color: theme('colors.gray.100')
+            },
+            h3: {
+              color: theme('colors.gray.100')
+            },
+            h4: {
+              color: theme('colors.gray.100')
+            },
+            h5: {
+              color: theme('colors.gray.100')
+            },
+            h6: {
+              color: theme('colors.gray.100')
+            },
+            a: {
+              color: theme('colors.indigo.500'),
+              '&:hover': {
+                color: theme('colors.indigo.600')
               },
-              h2: {
-                color: '#A9B1D6'
-              },
-              h3: {
-                color: '#A9B1D6'
-              },
-              h4: {
-                color: '#A9B1D6'
-              },
-              h5: {
-                color: '#A9B1D6'
-              },
-              h6: {
-                color: '#A9B1D6'
+              '&:visited': {
+                color: theme('colors.indigo.700')
               }
+            },
+            code: {
+              color: theme('colors.gray.200')
             }
           }
         }
@@ -242,7 +261,7 @@ module.exports = {
     }
   },
   variants: {
-    typography: ['dark']
+    extend: { typography: ['dark'] }
   },
   plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')]
 };

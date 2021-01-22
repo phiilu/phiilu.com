@@ -10,7 +10,11 @@ const plugins = [pluginUnwrapImages];
 
 function Image({ src, alt }) {
   return (
-    <img src={src} alt={alt} className="mx-auto border-4 border-indigo-200 rounded-md shadow-xl" />
+    <img
+      src={src}
+      alt={alt}
+      className="mx-auto border-4 border-indigo-200 rounded-md shadow-xl dark:border-indigo-500"
+    />
   );
 }
 
@@ -30,7 +34,7 @@ const Markdown = ({ children, className }) => {
   return (
     <ReactMarkdown
       allowDangerousHtml
-      className={classNames('prose lg:prose-lg dark:prose dark:prose-lg prose-indigo', className)}
+      className={classNames('prose lg:prose-lg dark:prose-dark', className)}
       renderers={renderers}
       plugins={plugins}>
       {children}

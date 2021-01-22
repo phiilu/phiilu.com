@@ -223,7 +223,15 @@ module.exports = {
               color: theme('colors.gray.100')
             },
             blockquote: {
-              color: theme('colors.gray.200')
+              color: theme('colors.gray.200'),
+              backgroundColor: theme('colors.gray.800'),
+              paddingTop: theme('spacing.4'),
+              paddingBottom: theme('spacing.4'),
+              borderTopRightRadius: theme('borderRadius.md'),
+              borderBottomRightRadius: theme('borderRadius.md'),
+              '> p': {
+                margin: 0
+              }
             },
             h1: {
               color: theme('colors.gray.100')
@@ -254,6 +262,9 @@ module.exports = {
             },
             code: {
               color: theme('colors.gray.200')
+            },
+            hr: {
+              borderColor: theme('colors.gray.800')
             }
           }
         }

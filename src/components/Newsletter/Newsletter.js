@@ -93,7 +93,7 @@ function Newsletter() {
   return (
     <motion.div variants={variants} className="flex">
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
-        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
           Want blog post updates? <br className="hidden sm:inline" />
           <span className="text-indigo-600 dark:text-indigo-500" id="newsletter-headline">
             Sign up for my newsletter.

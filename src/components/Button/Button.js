@@ -7,6 +7,7 @@ const defaultClassName =
 const primaryVariant = `bg-indigo-200 text-indigo-800 hover:bg-indigo-500 hover:text-white dark:bg-indigo-500 dark:text-indigo-100 dark:hover:bg-indigo-400`;
 const twitterVariant = `bg-twitter-200 dark:bg-twitter-500 dark:text-white dark:hover:bg-twitter-400 text-twitter-800 hover:bg-twitter-500 hover:text-white`;
 const hackerNewsVariant = `bg-hackernews-200 dark:bg-hackernews-500 dark:text-white dark:hover:bg-hackernews-400 text-hackernews-800 hover:bg-hackernews-500 hover:text-white`;
+const secondaryVariant = `bg-amber-200 text-amber-800 hover:bg-amber-500 hover:text-white dark:bg-amber-500 dark:text-amber-100 dark:hover:bg-amber-400`;
 
 const Button = ({ as, variant, width, children, onClick, tracking, className, raw, ...props }) => {
   const Element = { as };
@@ -25,6 +26,7 @@ const Button = ({ as, variant, width, children, onClick, tracking, className, ra
       className={classNames(className, {
         [defaultClassName]: !raw,
         [primaryVariant]: !raw && variant === 'primary',
+        [secondaryVariant]: !raw && variant === 'secondary',
         [twitterVariant]: !raw && variant === 'twitter',
         [hackerNewsVariant]: !raw && variant === 'hackernews',
         'w-full': !raw && width === 'full',

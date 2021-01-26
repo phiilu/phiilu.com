@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   darkMode: 'media',
   future: {
@@ -19,6 +21,7 @@ module.exports = {
         14: '3rem'
       },
       colors: {
+        amber: colors.amber,
         prose: '#374151',
         time: '#6B7280',
         openvpn: {
@@ -272,7 +275,7 @@ module.exports = {
     }
   },
   variants: {
-    extend: { typography: ['dark'] }
+    extend: { typography: ['dark'], translate: ['group-hover'] }
   },
   plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')]
 };

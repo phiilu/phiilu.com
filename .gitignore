@@ -36,3 +36,5 @@ yarn-error.log*
 public/images/og
 public/rss
 public/sitemap.xml
+
+report.*.json

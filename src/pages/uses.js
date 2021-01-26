@@ -75,8 +75,8 @@ function GeneralItems({ items }) {
                     </div>
                   </div>
                 </Link>
-                <Markdown className="col-span-2">{description}</Markdown>
-                <div className="grid grid-cols-2 col-span-2 col-start-2 gap-4">
+                <Markdown className="lg:col-span-2">{description}</Markdown>
+                <div className="grid grid-cols-2 gap-4 lg:col-span-2 lg:col-start-2">
                   {link && (
                     <Button as={Link} to={link}>
                       Product Details
@@ -129,8 +129,8 @@ function SoftwareItems({ items }) {
                   <Heading noMargin size="h3">
                     {title}
                   </Heading>
-                  <Markdown className="col-span-2 lg:h-48">{description}</Markdown>
-                  <div>
+                  <Markdown className="col-span-2 xl:h-44">{description}</Markdown>
+                  <div className="grid gap-4 xl:grid-cols-2 xl:col-span-2 xl:col-start-2">
                     <Button as={Link} to={link}>
                       Visit Homepage
                     </Button>

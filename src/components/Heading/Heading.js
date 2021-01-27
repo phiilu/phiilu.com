@@ -18,12 +18,12 @@ const Heading = ({ as, size, children, noMargin, className, ...props }) => {
       className={classNames(
         'font-source-sans-pro tracking-tight text-gray-900 dark:text-gray-100',
         {
-          'text-4xl font-extrabold': size === Sizes.h1,
-          'text-3xl font-bold leading-relaxed': size === Sizes.h2,
-          'text-2xl font-bold leading-relaxed': size === Sizes.h3,
-          'text-xl font-bold leading-normal': size === Sizes.h4,
-          'text-lg font-bold leading-snug': size === Sizes.h5,
-          'text-md font-bold leading-tight': size === Sizes.h6
+          'text-4xl xl:text-5xl font-extrabold leading-tight xl:leading-tight': size === Sizes.h1,
+          'text-3xl xl:text-4xl font-bold leading-snug xl:leading-snug': size === Sizes.h2,
+          'text-2xl xl:text-3xl font-bold leading-snug xl:leading-snug': size === Sizes.h3,
+          'text-xl xl:text-2xl font-bold leading-snug xl:leading-snug': size === Sizes.h4,
+          'text-lg xl:text-xl font-bold leading-snug xl:leading-snug': size === Sizes.h5,
+          'text-md xl:text-lg font-bold leading-snug xl:leading-snug': size === Sizes.h6
         },
         {
           'mt-12 mb-6': !noMargin

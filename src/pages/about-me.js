@@ -2,6 +2,7 @@ import * as React from 'react';
 import Container from '@components/Container/Container';
 import Head from '@components/Head/Head';
 import Link from '@components/Link/Link';
+import Heading from '@components/Heading/Heading';
 import Newsletter from '@components/Newsletter/Newsletter';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -106,12 +107,12 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
             <motion.div
               variants={slideInLeft}
               className="mx-auto text-base max-w-prose lg:max-w-none">
-              <p className="text-base font-semibold leading-6 tracking-wide text-indigo-600 uppercase">
+              <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase xl:text-xl text-md">
                 About me
               </p>
-              <h1 className="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
+              <Heading noMargin className="mb-8">
                 Meet Florian
-              </h1>
+              </Heading>
             </motion.div>
             <div className="lg:grid lg:grid-cols-2 lg:gap-8">
               <div className="relative mb-8 lg:mb-0 lg:row-start-1 lg:col-start-2">
@@ -143,7 +144,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
                     Hey thanks for visiting my blog and wanting to get to know me better!
                   </p>
                 </div>
-                <div className="mx-auto prose dark:prose-dark text-gray-500 lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100">
+                <div className="mx-auto prose text-gray-500 xl:prose-lg dark:prose-dark lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100">
                   <p>
                     I am an <strong aria-live="polite">{age}</strong> seconds ({ageInYears} years)
                     old Austrian frontend developer.

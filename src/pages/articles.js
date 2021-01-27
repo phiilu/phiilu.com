@@ -73,6 +73,7 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
                 className="space-y-8">
                 <Heading
                   noMargin
+                  as="h1"
                   size="h3"
                   className="mx-4 text-indigo-500 border-b-2 border-gray-100 dark:border-gray-800 md:mx-0">
                   {dateFormat(new Date(month.date), 'MMMM yyyy')}

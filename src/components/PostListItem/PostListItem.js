@@ -8,7 +8,7 @@ import DraftBadge from '@components/DraftBadge/DraftBadge';
 const PostListItem = ({ post: { slug, title, description, published, icon, date, tags } }) => {
   return React.useMemo(
     () => (
-      <article className="group relative inline-block p-4 text-gray-900 rounded-md outline-none dark:text-gray-100 post-item hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:shadow-sm focus:text-gray-700 dark:hover:bg-gray-800">
+      <article className="relative inline-block p-4 text-gray-900 rounded-md outline-none group dark:text-gray-100 post-item hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:shadow-sm focus:text-gray-700 dark:focus:bg-gray-800 dark:hover:bg-gray-800">
         <Link href={`/${slug}`} scroll={false}>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
           <a
@@ -31,12 +31,12 @@ const PostListItem = ({ post: { slug, title, description, published, icon, date,
               <Heading size="h2" noMargin>
                 {title}
               </Heading>
-              <p className="text-lg tracking-tight text-gray-800 dark:text-gray-100">
+              <p className="text-lg tracking-tight text-gray-800 xl:text-xl xl:leading-8 dark:text-gray-100">
                 {description}
               </p>
             </div>
           </div>
-          <div className="flex items-center pt-4 space-x-6 border-t dark:group-hover:border-gray-700 dark:border-gray-800 border-gray-200 xl:pl-4 xl:pt-0 xl:space-x-0 xl:border-l xl:border-t-0">
+          <div className="flex items-center pt-4 space-x-6 border-t border-gray-200 dark:group-hover:border-gray-700 dark:border-gray-800 xl:pl-4 xl:pt-0 xl:space-x-0 xl:border-l xl:border-t-0">
             <div className="inline-block w-12 h-12 xl:hidden">
               <Image
                 src={`https:${icon.url}`}

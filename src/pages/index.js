@@ -59,14 +59,14 @@ function Hero() {
         />
       </picture>
       <div className="space-y-2">
-        <h1 className="text-2xl font-bold md:text-3xl xl:text-4xl">
+        <Heading noMargin>
           Hey, I&apos;m Florian (
           <Link className="text-indigo-500 hover:text-indigo-400" to="https://twitter.com/phiilu">
             @phiilu
           </Link>
-          ),
-        </h1>
-        <p className="text-xl md:text-2xl">
+          )
+        </Heading>
+        <p className="text-xl xl:text-3xl xl:leading-snug">
           I am a <strong className="font-bold">Frontend Developer</strong> from{' '}
           <span aria-label="Austria">
             <span className="dark:text-red-500">Au</span>str

@@ -12,5 +12,14 @@ module.exports = withBundleAnalyzer({
   },
   images: {
     domains: ['images.ctfassets.net', 'ctfassets.net']
+  },
+  async redirects() {
+    return [
+      {
+        source: '/uses',
+        destination: '/my-gear',
+        permanent: true
+      }
+    ];
   }
 });

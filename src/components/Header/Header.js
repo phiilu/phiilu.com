@@ -60,8 +60,8 @@ const menuItems = [
   },
   {
     index: 2,
-    to: '/uses',
-    name: 'Uses'
+    to: '/my-gear',
+    name: 'My Gear'
   }
 ];
 

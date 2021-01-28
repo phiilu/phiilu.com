@@ -6,7 +6,7 @@ import tagColors from '@helpers/tagColors';
 const TagList = ({ tags }) => {
   return React.useMemo(() => {
     const tagList = tags.map((tag) => ({
-      ...tagColors[tag.title.trim()],
+      ...tagColors[tag.slug],
       ...tag
     }));
 

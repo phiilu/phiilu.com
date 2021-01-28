@@ -20,8 +20,8 @@ const tags = {
     description:
       'OpenVPN is open-source commercial software that implements virtual private network techniques to create secure point-to-point or site-to-site connections.'
   },
-  'raspberry pi': {
-    name: 'raspberry pi',
+  'raspberry-pi': {
+    name: 'raspberry-pi',
     slug: slugify('raspberry pi'),
     bg: 'bg-raspberrypi-200 dark:bg-raspberrypi-500',
     text: 'text-raspberrypi-800 dark:text-white',
@@ -39,7 +39,7 @@ const tags = {
     description:
       'This tag shows posts containing security related content like securing servers or ethical hacking. '
   },
-  'code editor': {
+  'code-editor': {
     name: 'code editor',
     slug: slugify('code editor'),
     bg: 'bg-vscode-200 dark:bg-vscode-500',
@@ -88,7 +88,7 @@ const tags = {
     description:
       'This tag shows posts that contain information about Ubuntu configuration. Ubuntu is a Linux distribution based on Debian.'
   },
-  'hello world': {
+  'hello-world': {
     name: 'hello world',
     slug: slugify('hello world'),
     bg: 'bg-red-200 dark:bg-red-500',
@@ -131,7 +131,7 @@ const tags = {
     slug: slugify('terminal'),
     bg: 'bg-gray-900 dark:bg-black',
     text: 'text-white',
-    mainColor: 'text-gray-900',
+    mainColor: 'text-gray-900 dark:text-gray-200',
     hover: 'hover:bg-gray-900 hover:text-green-400',
     description: 'Posts that using CLI in the terminal.'
   },
@@ -163,7 +163,7 @@ const tags = {
     hover: 'hover:bg-netlify-500 hover:text-white dark:hover:bg-netlify-400 dark:hover:text-black',
     description: 'Netlify is a cloud service provider where you can host your static websites!'
   },
-  'apple maps': {
+  'apple-maps': {
     name: 'apple maps',
     slug: slugify('apple maps'),
     bg: 'bg-gray-100 dark:bg-gray-500',
@@ -191,7 +191,7 @@ const tags = {
     hover: 'hover:bg-react-500 hover:text-react-gray-500',
     description: 'React is a JavaScript library for building user interfaces'
   },
-  'next.js': {
+  'next-js': {
     name: 'next.js',
     slug: slugify('next.js'),
     bg: 'bg-black',

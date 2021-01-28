@@ -4,7 +4,7 @@ import Heading from '@components/Heading/Heading';
 
 const NotFoundPage = () => (
   <Container as="main" className="flex flex-col items-center">
-    <Heading noMargin className="mb-4 md:text-5xl">
+    <Heading noMargin className="mb-4">
       The site you are looking for was not found...
     </Heading>
     <p className="text-lg leading-7 md:text-2xl">

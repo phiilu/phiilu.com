@@ -58,10 +58,13 @@ function TagDetail({ tag, posts, ogImage, baseUrl }) {
       <Container as="main" noMargin>
         <article className="space-y-12">
           <motion.div variants={slideInUp} className="px-4 space-y-4">
-            <Heading noMargin className="space-x-2">
-              <span className={classNames('font-bold', mainColor)}>{count}</span> Post
-              {count > 1 ? 's ' : ' '}
-              in
+            <Heading noMargin className="flex items-center space-x-2">
+              <span className={classNames('font-bold', mainColor)}>{count}</span>
+              <span>
+                Post
+                {count > 1 ? 's ' : ' '}
+                in
+              </span>
               <span
                 className={classNames(
                   'inline-block rounded-md px-4 py-1 text-3xl font-semibold',

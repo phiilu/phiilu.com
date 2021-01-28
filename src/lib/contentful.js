@@ -1,6 +1,7 @@
 const contentful = require('contentful');
 const transformPost = require('@helpers/transformPost').default;
 const transformTag = require('@helpers/transformTag').default;
+const transformGear = require('@helpers/transformGear').default;
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -22,6 +23,8 @@ export default {
           return entries.items.map((item) => transformPost(item, fields));
         case 'tag':
           return entries.items.map(transformTag);
+        case 'gear':
+          return entries.items.map(transformGear);
         default:
           return entries.items;
       }

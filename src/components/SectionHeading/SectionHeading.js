@@ -13,7 +13,7 @@ function SectionHeading({ heading, subheading, children }) {
         {heading}
       </p>
       <Heading noMargin>{subheading}</Heading>
-      <p className="max-w-2xl mt-4 text-xl leading-9 text-gray-500 xl:text-2xl dark:text-gray-100 lg:mx-auto xl:leading-9">
+      <p className="max-w-2xl mt-4 text-xl leading-9 text-gray-500 xl:text-xl dark:text-gray-100 lg:mx-auto xl:leading-9">
         {children}
       </p>
     </motion.div>

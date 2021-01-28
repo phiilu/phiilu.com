@@ -31,7 +31,7 @@ const PostListItem = ({ post: { slug, title, description, published, icon, date,
               <Heading size="h2" noMargin>
                 {title}
               </Heading>
-              <p className="text-lg tracking-tight text-gray-800 xl:text-xl xl:leading-8 dark:text-gray-100">
+              <p className="text-lg tracking-tight text-gray-800 xl:text-lg xl:leading-8 dark:text-gray-100">
                 {description}
               </p>
             </div>

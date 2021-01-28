@@ -110,6 +110,17 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
               </ul>
             </dd>
           </dl>
+          <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
+            <dt className="font-semibold font-source-sans-pro">Support Corner</dt>
+            <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time dark:text-gray-400">
+              <a href="https://www.buymeacoffee.com/phiilu">
+                <img
+                  alt="Buy me a mate tea"
+                  src="https://img.buymeacoffee.com/button-api/?text=Buy me a mate tea&emoji=🍵&slug=phiilu&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                />
+              </a>
+            </dd>
+          </dl>
         </div>
       </div>
     </motion.aside>

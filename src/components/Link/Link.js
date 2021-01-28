@@ -17,7 +17,7 @@ const Link = ({ children, activeClassName, to, className, tracking, ...props }) 
   const hasActiveClassName = activeClassName && pathname === href;
 
   function handleOutboundLinkClicked() {
-    trackEvent({ event: 'click', name: 'Outbound Link', value: to });
+    trackEvent({ event: 'click', name: 'Outbound Link', value: to, type: 'url' });
     handleTracking();
   }
 

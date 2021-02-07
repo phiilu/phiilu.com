@@ -235,6 +235,15 @@ const tags = {
     hover: 'hover:bg-blue-500 hover:text-white dark:hover:bg-blue-400',
     mainColor: 'text-blue-500',
     description: 'Docker'
+  },
+  'web-apis': {
+    name: 'web-apis',
+    slug: slugify('web apis'),
+    bg: 'bg-fuchsia-200 dark:bg-fuchsia-500',
+    text: 'text-fuchsia-900 dark:text-white',
+    hover: 'hover:bg-fuchsia-500 hover:text-white dark:hover:bg-fuchsia-400',
+    mainColor: 'text-fuchsia-500',
+    description: 'Web APIs'
   }
 };
 

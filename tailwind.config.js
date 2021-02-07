@@ -22,6 +22,7 @@ module.exports = {
       },
       colors: {
         amber: colors.amber,
+        fuchsia: colors.fuchsia,
         prose: '#374151',
         time: '#6B7280',
         openvpn: {

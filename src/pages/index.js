@@ -87,7 +87,11 @@ function Hero() {
 export default function IndexPage({ posts, ogImage, baseUrl }) {
   return (
     <>
-      <Head title="Home" description="Welcome to my blog!" image={ogImage} url={`${baseUrl}/`} />
+      <Head
+        description="Frontend Developer / Jamstack: React, Next.js, JavaScript, TypeScript, Tailwind CSS and a bit of PHP with Laravel / Loves to self-host apps and services"
+        image={ogImage}
+        url={`${baseUrl}/`}
+      />
       <Container as="main" noMargin className="md:px-4 space-y-14">
         <Hero />
         <div className="space-y-8 md:space-y-14">
@@ -108,8 +112,8 @@ export default function IndexPage({ posts, ogImage, baseUrl }) {
             ))}
           </motion.ul>
           <motion.div variants={delayedSlideInUp} className="flex justify-center">
-            <Button as={Link} to="/articles" width="medium" scroll={false}>
-              View all
+            <Button as={Link} to="/blog" width="medium" scroll={false}>
+              Visit My Blog
             </Button>
           </motion.div>
         </div>

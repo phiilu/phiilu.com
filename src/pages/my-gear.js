@@ -91,8 +91,6 @@ export async function getStaticProps() {
     return accu;
   }, {});
 
-  console.log(gear);
-
   const sortedGearByCategory = {
     Hardware: gearByCategory.Hardware,
     Software: gearByCategory.Software,
@@ -233,7 +231,6 @@ function SoftwareItems({ items }) {
 }
 
 const Uses = ({ ogImage, baseUrl, gearByCategory }) => {
-  console.log(gearByCategory);
   return (
     <>
       <Head title="My Gear / Uses" url={`${baseUrl}/uses`} image={ogImage} />

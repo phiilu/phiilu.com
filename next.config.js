@@ -19,6 +19,11 @@ module.exports = withBundleAnalyzer({
         source: '/uses',
         destination: '/my-gear',
         permanent: true
+      },
+      {
+        source: '/articles',
+        destination: '/blog',
+        permanent: true
       }
     ];
   }

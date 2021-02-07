@@ -16,8 +16,9 @@ import { motion } from 'framer-motion';
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getEntry('post', slug);
+  const readTime = `${post.timeToRead} Minute${post.timeToRead > 1 ? 's' : ''}`;
   const ogImage = await getOgImage(
-    `/phiilu.com?title=${post.title}&url=${process.env.BASE_URL}/${slug}`
+    `/phiilu.com/post?title=${post.title}&url=${process.env.BASE_URL}/${slug}&date=${post.date}&readTime=${readTime}`
   );
   const baseUrl = process.env.BASE_URL;
 

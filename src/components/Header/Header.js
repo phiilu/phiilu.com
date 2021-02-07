@@ -50,8 +50,8 @@ function HeaderLink({ to, children }) {
 const menuItems = [
   {
     index: 0,
-    to: '/articles',
-    name: 'All Articles'
+    to: '/blog',
+    name: 'Blog'
   },
   {
     index: 1,

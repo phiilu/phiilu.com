@@ -37,13 +37,13 @@ function getPostsByMonth(posts) {
 }
 
 export async function getStaticProps() {
-  const title = 'All Articles';
+  const title = 'Blog';
   const posts = await contentful.getEntries('post', { order: '-fields.publishedDate' }, [
     ...POST_LIST_ITEM_FIELDS,
     'rawDate'
   ]);
   const ogImage = await getOgImage(
-    `/phiilu.com?title=${title}&url=${process.env.BASE_URL}/articles`
+    `/phiilu.com/post?title=${title}&url=${process.env.BASE_URL}/blog`
   );
   const baseUrl = process.env.BASE_URL;
   const postsByMonth = getPostsByMonth(posts);
@@ -53,15 +53,10 @@ export async function getStaticProps() {
   };
 }
 
-function Articles({ postsByMonth, baseUrl, ogImage }) {
+function Blog({ postsByMonth, baseUrl, ogImage }) {
   return (
     <>
-      <Head
-        title="All Articles"
-        description="All written blog articles"
-        image={ogImage}
-        url={`${baseUrl}/`}
-      />
+      <Head title="Blog" description="Florian's Blog" image={ogImage} url={`${baseUrl}/`} />
       <Container as="main" noMargin className="md:px-4">
         <motion.div initial="initial" variants={listVariants} className="space-y-16">
           {postsByMonth.map((month) => {
@@ -100,4 +95,4 @@ function Articles({ postsByMonth, baseUrl, ogImage }) {
   );
 }
 
-export default Articles;
+export default Blog;

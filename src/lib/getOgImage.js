@@ -16,13 +16,6 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
   const imagePath = `${ogImageDir}/${hash}.png`;
   const publicPath = `${process.env.BASE_URL}/images/og/${hash}.png`;
 
-  try {
-    fs.statSync(imagePath);
-    return publicPath;
-  } catch (error) {
-    // file does not exists, so we create it
-  }
-
   const browser = await chrome.puppeteer.launch({
     args: chrome.args,
     executablePath: isDev ? exePath : await chrome.executablePath,

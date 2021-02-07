@@ -54,7 +54,9 @@ const Head = ({ children, title, description, keywords, url, date, image }) => {
       <meta key="msapplication-TileColor" name="msapplication-TileColor" content="#667eea" />
       <meta key="theme-color" name="theme-color" content="#667eea" />
 
-      <title key="pageTitle">{title} | Phiilu</title>
+      <title key="pageTitle">
+        {title ? `${title} | Phiilu | Florian Kapfenberger` : 'Phiilu | Florian Kapfenberger'}{' '}
+      </title>
 
       {children}
     </NextHead>

@@ -76,7 +76,7 @@ const CategoryIcons = {
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
-  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
+  const ogImage = await getOgImage(`/phiilu.com/post?title=${title}&url=${process.env.BASE_URL}/`);
   const baseUrl = process.env.BASE_URL;
 
   const gear = await contentful.getEntries('gear', { order: 'fields.title' });
@@ -90,8 +90,6 @@ export async function getStaticProps() {
     }
     return accu;
   }, {});
-
-  console.log(gear);
 
   const sortedGearByCategory = {
     Hardware: gearByCategory.Hardware,
@@ -233,7 +231,6 @@ function SoftwareItems({ items }) {
 }
 
 const Uses = ({ ogImage, baseUrl, gearByCategory }) => {
-  console.log(gearByCategory);
   return (
     <>
       <Head title="My Gear / Uses" url={`${baseUrl}/uses`} image={ogImage} />

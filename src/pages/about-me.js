@@ -69,7 +69,7 @@ export async function getStaticProps() {
   const title = 'About Me';
   const posts = await contentful.getEntries('post', { order: '-fields.publishedDate' }, ['id']);
   const ogImage = await getOgImage(
-    `/phiilu.com?title=${title}&url=${process.env.BASE_URL}/about-me`
+    `/phiilu.com/post?title=${title}&url=${process.env.BASE_URL}/about-me`
   );
   const baseUrl = process.env.BASE_URL;
 

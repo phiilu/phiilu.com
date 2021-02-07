@@ -42,7 +42,9 @@ export async function getStaticProps() {
     ...POST_LIST_ITEM_FIELDS,
     'rawDate'
   ]);
-  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/blog`);
+  const ogImage = await getOgImage(
+    `/phiilu.com/post?title=${title}&url=${process.env.BASE_URL}/blog`
+  );
   const baseUrl = process.env.BASE_URL;
   const postsByMonth = getPostsByMonth(posts);
 

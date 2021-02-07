@@ -17,13 +17,12 @@ import { POST_LIST_ITEM_FIELDS } from '@helpers/transformPost';
 import { listVariants, itemVariants, delayedSlideInUp } from '@helpers/animation';
 
 export async function getStaticProps() {
-  const title = "Phiilu's Blog";
   const posts = await contentful.getEntries(
     'post',
     { order: '-fields.publishedDate', limit: 5 },
     POST_LIST_ITEM_FIELDS
   );
-  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
+  const ogImage = await getOgImage(`/phiilu.com/`);
   const baseUrl = process.env.BASE_URL;
 
   await generateRssFeed();

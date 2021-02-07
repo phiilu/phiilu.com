@@ -22,7 +22,7 @@ export async function getStaticProps({ params: { slug } }) {
     POST_LIST_ITEM_FIELDS
   );
   const ogImage = await getOgImage(
-    `/phiilu.com?title=Tag: ${tag.title}&url=${process.env.BASE_URL}/tag/${slug}`
+    `/phiilu.com/post?title=Tag: ${tag.title}&url=${process.env.BASE_URL}/tag/${slug}`
   );
   const baseUrl = process.env.BASE_URL;
 

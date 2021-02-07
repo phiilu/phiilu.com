@@ -76,7 +76,7 @@ const CategoryIcons = {
 
 export async function getStaticProps() {
   const title = "Phiilu's Blog";
-  const ogImage = await getOgImage(`/phiilu.com?title=${title}&url=${process.env.BASE_URL}/`);
+  const ogImage = await getOgImage(`/phiilu.com/post?title=${title}&url=${process.env.BASE_URL}/`);
   const baseUrl = process.env.BASE_URL;
 
   const gear = await contentful.getEntries('gear', { order: 'fields.title' });

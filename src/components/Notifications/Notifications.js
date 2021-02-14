@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 function SuccessIcon() {
   return (
     <svg
-      className="w-6 h-6 text-green-400"
+      className="w-6 h-6 text-green-400 dark:text-green-500"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -23,7 +23,7 @@ function SuccessIcon() {
 function ErrorIcon() {
   return (
     <svg
-      className="w-6 h-6 text-red-400"
+      className="w-6 h-6 text-red-400 dark:text-red-500"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -40,7 +40,7 @@ function ErrorIcon() {
 function LoadingIcon() {
   return (
     <svg
-      className="w-8 h-8 text-indigo-400"
+      className="w-8 h-8 text-indigo-400 dark:text-indigo-500"
       viewBox="0 0 45 45"
       xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor">
@@ -131,7 +131,7 @@ const Notifications = () => {
               key={toast.id}
               role={toast.role}
               aria-live={toast.ariaLive}
-              className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg pointer-events-auto ring-1 ring-black ring-opacity-5">
+              className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg pointer-events-auto dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
               <div className="p-4">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
@@ -140,14 +140,18 @@ const Notifications = () => {
                     {toast.type === 'loading' && <LoadingIcon />}
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
-                    <p className="text-sm font-medium text-gray-900">{toast.message.title}</p>
-                    <p className="mt-1 text-sm text-gray-500">{toast.message.text}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white">
+                      {toast.message.title}
+                    </p>
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-100">
+                      {toast.message.text}
+                    </p>
                   </div>
                   {toast.message.dismiss && (
                     <div className="flex flex-shrink-0 ml-4">
                       <button
                         onClick={() => toastAction.dismiss(toast.id)}
-                        className="inline-flex text-gray-400 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        className="inline-flex text-gray-400 bg-white rounded-md dark:bg-gray-900 dark:text-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         <span className="sr-only">Close</span>
                         <svg
                           className="w-5 h-5"

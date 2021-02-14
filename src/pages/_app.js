@@ -2,6 +2,7 @@ import '../styles/index.css';
 import GoogleFonts from 'next-google-fonts';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from '@components/Layout/Layout';
+import Notifications from '@components/Notifications/Notifications';
 
 import { useDarkMode } from '@hooks/useDarkMode';
 
@@ -29,6 +30,7 @@ function PhiiluBlog({ Component, pageProps, router }) {
           </motion.div>
         </AnimatePresence>
       </Layout>
+      <Notifications />
     </>
   );
 }

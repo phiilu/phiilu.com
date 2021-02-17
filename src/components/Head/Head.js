@@ -34,7 +34,7 @@ const Head = ({ children, title, description, keywords, url, date, image }) => {
 
       <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
       <meta key="twitter:creator" name="twitter:creator" content="@phiilu" />
-      <meta key="twitter:title" name="twitter:title" content={title} />
+      <meta key="twitter:title" name="twitter:title" content={title ? `${title} | Phiilu | Florian Kapfenberger` : "Phiilu | Florian Kapfenberger"} />
       <meta key="twitter:description" name="twitter:description" content={description} />
       {image && <meta key="twitter:image" name="twitter:image" content={image} />}
 

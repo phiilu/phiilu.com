@@ -20,7 +20,8 @@ function Scripts() {
         data-domain="phiilu.com"
         src="https://p.phiilu.com/js/plausible.outbound-links.js"></script>
       {/* Splitbee */}
-      <script async defer src="https://bee.phiilu.com/sb.js"></script>
+      {/* <script async defer src="https://bee.phiilu.com/sb.js"></script> */}
+      <script async data-api="/_hive" src="/bee.js"></script>
     </>
   );
 }

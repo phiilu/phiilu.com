@@ -55,6 +55,7 @@ function Hero() {
           alt="Me"
           width={176}
           height={176}
+          priority
         />
       </picture>
       <div className="space-y-2">

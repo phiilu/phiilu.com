@@ -120,6 +120,7 @@ function About({ postsCount, ogImage, baseUrl, initialAge }) {
                 <div className="relative mx-auto text-base max-w-prose lg:max-w-none">
                   <motion.figure variants={slideInRight}>
                     <Image
+                      priority
                       src="/images/me.jpg"
                       alt="Me"
                       width="1184"

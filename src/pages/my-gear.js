@@ -1,15 +1,17 @@
 import Head from '@components/Head/Head';
 import Container from '@components/Container/Container';
-import Markdown from '@components/Markdown/Markdown';
 import { slideInUp } from '@helpers/animation';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
+import dynamic from 'next/dynamic';
 
 import contentful from '@lib/contentful';
 import getOgImage from '@lib/getOgImage';
 import Heading from '@components/Heading/Heading';
 import Link from '@components/Link/Link';
 import Button from '@components/Button/Button';
+
+const Markdown = dynamic(() => import('@components/Markdown/Markdown'));
 
 const CategoryIcons = {
   Hardware: (

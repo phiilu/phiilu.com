@@ -1,7 +1,7 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 
 import Container from '@components/Container/Container';
-import Markdown from '@components/Markdown/Markdown';
 import Heading from '@components/Heading/Heading';
 import Link from '@components/Link/Link';
 import Button from '@components/Button/Button';
@@ -14,6 +14,8 @@ import Newsletter from '@components/Newsletter/Newsletter';
 import Share from '@components/Share/Share';
 import { slideInUp, slideInRight, delayedSlideInUp } from '@helpers/animation';
 import { motion } from 'framer-motion';
+
+const Markdown = dynamic(() => import('@components/Markdown/Markdown'));
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getEntry('post', slug);

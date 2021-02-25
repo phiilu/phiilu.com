@@ -11,6 +11,7 @@ import Tags from '@components/Tags/Tags';
 import DraftBadge from '@components/DraftBadge/DraftBadge';
 import Head from '@components/Head/Head';
 import Newsletter from '@components/Newsletter/Newsletter';
+import Share from '@components/Share/Share';
 import { slideInUp, slideInRight, delayedSlideInUp } from '@helpers/animation';
 import { motion } from 'framer-motion';
 
@@ -75,40 +76,7 @@ function PostSidebar({ title, url, icon, date, tags, timeToRead, handleSocialSha
           <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Social Corner</dt>
             <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time dark:text-gray-400">
-              <ul className="space-y-2 sm:items-start sm:space-x-2 sm:space-y-0 xl:space-y-2 sm:flex xl:space-x-0 xl:block">
-                <li className="w-full">
-                  <Button
-                    tracking={{
-                      event: 'click',
-                      value: 'Share on Twitter clicked',
-                      name: 'Share on Twitter clicked'
-                    }}
-                    variant="twitter"
-                    onClick={handleSocialShare(
-                      `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
-                      'twitter-share',
-                      'width=550,height=235'
-                    )}>
-                    Share on Twitter
-                  </Button>
-                </li>
-                <li className="w-full">
-                  <Button
-                    tracking={{
-                      event: 'click',
-                      value: 'Share on Hacker News clicked',
-                      name: 'Share on Hacker News clicked'
-                    }}
-                    variant="hackernews"
-                    onClick={handleSocialShare(
-                      `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
-                      'hn-share',
-                      'width=550,height=350'
-                    )}>
-                    Share on Hacker News
-                  </Button>
-                </li>
-              </ul>
+              <Share title={title} url={url} onClick={handleSocialShare} />
             </dd>
           </dl>
           <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">

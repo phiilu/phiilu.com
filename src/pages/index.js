@@ -33,6 +33,15 @@ export async function getStaticProps() {
   };
 }
 
+// const heroVariants = {
+//   initial: {
+//     opacity: 0,
+//     scale: 0.8
+//   },
+//   enter: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+//   exit: { opacity: 0, scale: 0.5, transition: { duration: 0.5 } }
+// };
+
 const heroVariants = {
   initial: {
     opacity: 0,
@@ -47,6 +56,8 @@ function Hero() {
     <motion.div
       initial="initial"
       variants={heroVariants}
+      animate="enter"
+      exit="exit"
       className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:mx-0 md:space-x-8 xl:p-12 md:space-y-0 md:flex-row dark:bg-gray-800">
       <picture className="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44">
         <Image

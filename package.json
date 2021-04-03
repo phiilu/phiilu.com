@@ -11,8 +11,6 @@
     "postinstall": "node node_modules/puppeteer-core/install.js"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.3.1",
-    "@tailwindcss/ui": "^0.7.2",
     "@wordpress/wordcount": "^2.13.0",
     "classnames": "^2.2.6",
     "contentful": "^8.1.7",
@@ -29,12 +27,14 @@
     "react-hot-toast": "^1.0.2",
     "react-markdown": "^5.0.3",
     "remark-unwrap-images": "^2.0.0",
-    "tailwindcss": "^2.0.1",
     "use-clipboard-copy": "^0.1.2",
     "use-local-storage-state": "^6.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.3.1",
+    "@tailwindcss/ui": "^0.7.2",
     "@next/bundle-analyzer": "^10.0.2",
+    "@tailwindcss/jit": "^0.1.18",
     "chrome-aws-lambda": "^5.3.1",
     "cross-env": "^7.0.2",
     "eslint": "^7.13.0",
@@ -45,12 +45,13 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "feed": "^4.2.1",
     "globby": "^11.0.1",
-    "postcss": "^8.1.8",
+    "postcss": "^8.2.9",
     "postcss-flexbugs-fixes": "5.0.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
     "puppeteer-core": "^5.5.0",
     "raw-loader": "^4.0.2",
+    "tailwindcss": "^2.0.4",
     "sitemap": "^6.3.3"
   },
   "license": "MIT"

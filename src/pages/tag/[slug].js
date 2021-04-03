@@ -57,7 +57,12 @@ function TagDetail({ tag, posts, ogImage, baseUrl }) {
       />
       <Container as="main" noMargin>
         <article className="space-y-12">
-          <motion.div variants={slideInUp} className="px-4 space-y-4">
+          <motion.div
+            variants={slideInUp}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            className="px-4 space-y-4">
             <Heading noMargin className="flex items-center space-x-2">
               <span className={classNames('font-bold', mainColor)}>{count}</span>
               <span>
@@ -78,9 +83,19 @@ function TagDetail({ tag, posts, ogImage, baseUrl }) {
               <p className="mb-12 text-xl text-gray-800 dark:text-gray-200">{description}</p>
             )}
           </motion.div>
-          <motion.ul initial="initial" variants={listVariants} className="space-y-8">
+          <motion.ul
+            variants={listVariants}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            className="space-y-8">
             {posts.map((post) => (
-              <motion.li initial="initial" variants={itemVariants} key={post.id}>
+              <motion.li
+                variants={itemVariants}
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                key={post.id}>
                 <PostListItem post={post} />
               </motion.li>
             ))}

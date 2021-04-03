@@ -244,6 +244,15 @@ const tags = {
     hover: 'hover:bg-fuchsia-500 hover:text-white dark:hover:bg-fuchsia-400',
     mainColor: 'text-fuchsia-500',
     description: 'Web APIs'
+  },
+  'cloudflare-workers': {
+    name: 'cloudflare-workers',
+    slug: slugify('cloudflare workers'),
+    bg: 'bg-orange-200 dark:bg-orange-500',
+    text: 'text-orange-900 dark:text-white',
+    hover: 'hover:bg-orange-500 hover:text-white dark:hover:bg-orange-400',
+    mainColor: 'text-orange-500',
+    description: 'Cloudflare Workers'
   }
 };
 

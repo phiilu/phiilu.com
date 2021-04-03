@@ -58,12 +58,19 @@ function Blog({ postsByMonth, baseUrl, ogImage }) {
     <>
       <Head title="Blog" description="Florian's Blog" image={ogImage} url={`${baseUrl}/`} />
       <Container as="main" noMargin className="md:px-4">
-        <motion.div initial="initial" variants={listVariants} className="space-y-16">
+        <motion.div
+          variants={listVariants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="space-y-16">
           {postsByMonth.map((month) => {
             return (
               <motion.div
-                initial="initial"
                 variants={itemVariants}
+                initial="initial"
+                animate="enter"
+                exit="exit"
                 key={month.date}
                 className="space-y-8">
                 <Heading
@@ -75,11 +82,18 @@ function Blog({ postsByMonth, baseUrl, ogImage }) {
                 </Heading>
                 <div className="space-y-8 md:space-y-14">
                   <motion.ul
-                    initial="initial"
                     variants={listVariants}
+                    initial="initial"
+                    animate="enter"
+                    exit="exit"
                     className="space-y-16 md:space-y-8">
                     {month.posts.map((post) => (
-                      <motion.li initial="initial" variants={itemVariants} key={post.id}>
+                      <motion.li
+                        variants={itemVariants}
+                        initial="initial"
+                        animate="enter"
+                        exit="exit"
+                        key={post.id}>
                         <PostListItem post={post} />
                       </motion.li>
                     ))}

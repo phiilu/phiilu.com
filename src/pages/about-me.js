@@ -74,8 +74,7 @@ export async function getStaticProps() {
   const baseUrl = process.env.BASE_URL;
 
   return {
-    props: { postsCount: posts.length, ogImage, baseUrl, initialAge: getBirthdayInSecond() },
-    revalidate: 60 * 60 * 24
+    props: { postsCount: posts.length, ogImage, baseUrl, initialAge: getBirthdayInSecond() }
   };
 }
 

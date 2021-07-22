@@ -1,8 +1,9 @@
-const globby = require('globby');
-const contentful = require('./contentful').default;
-const { SitemapStream, streamToPromise } = require('sitemap');
-const { Readable } = require('stream');
-const fs = require('fs');
+import glob from 'fast-glob';
+import contentful from './contentful';
+import { SitemapStream, streamToPromise } from 'sitemap';
+// const { Readable } = require('stream');
+import fs from 'fs';
+import { Readable } from 'stream';
 
 // pages that should not be in the sitemap
 const blocklist = ['/newsletter-success', '/404'];
@@ -13,7 +14,7 @@ async function generateSitemap() {
   }
 
   const baseUrl = process.env.BASE_URL;
-  const pages = await globby([
+  const pages = await glob([
     'src/pages/**/*{.js,.mdx}',
     '!src/pages/**/[*',
     '!src/pages/_*.js',

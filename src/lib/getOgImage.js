@@ -1,6 +1,6 @@
-const chrome = require('chrome-aws-lambda');
-const { createHash } = require('crypto');
-const fs = require('fs');
+import chrome from 'chrome-aws-lambda';
+import { createHash } from 'crypto';
+import fs from 'fs';
 
 const isDev = process.env.NODE_ENV === 'development';
 const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';

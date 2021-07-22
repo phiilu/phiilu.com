@@ -1,17 +1,5 @@
-function trackEvent({ event, name, value, type = 'type' }) {
-  const { umami, plausible, splitbee } = window;
-
-  if (umami) {
-    umami.trackEvent(value, event);
-  }
-
-  if (plausible) {
-    if (name) {
-      plausible(name);
-    } else if (value) {
-      plausible(value);
-    }
-  }
+function trackEvent({ name, value, type = 'type' }) {
+  const { splitbee } = window;
 
   if (splitbee) {
     if (!name) return;

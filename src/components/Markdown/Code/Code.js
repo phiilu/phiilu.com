@@ -26,7 +26,15 @@ const CopyToClipboard = ({ toCopy, className, ...props }) => {
   );
 };
 
-const CodeBlock = ({ language, value }) => {
+const CodeBlock = ({ inline, className, children }) => {
+  const value = children?.[0] ?? '';
+
+  if (inline) {
+    return <code>{value}</code>;
+  }
+
+  const language = className?.replace(/language-/, '');
+
   return (
     <Highlight {...defaultProps} code={value} language={language} theme={nightOwl}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => {

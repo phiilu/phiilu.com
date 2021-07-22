@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown/with-html';
+import ReactMarkdown from 'react-markdown';
 import pluginUnwrapImages from 'remark-unwrap-images';
 import classNames from 'classnames';
+import pluginRaw from 'rehype-raw';
 
 import Code from '@components/Markdown/Code/Code';
 import Link from '@components/Link/Link';
 
-const plugins = [pluginUnwrapImages];
+const remarkPlugins = [pluginUnwrapImages];
+const rehypePlugins = [pluginRaw];
 
 function Image({ src, alt }) {
   return (
@@ -22,8 +24,16 @@ function MarkdownLink({ href, children }) {
   return <Link to={href}>{children}</Link>;
 }
 
+function PreElement({ node, children }) {
+  if (node.children.length) {
+    return children;
+  }
+  return <pre>{children}</pre>;
+}
+
 const Markdown = ({ children, className }) => {
-  const renderers = {
+  const components = {
+    pre: PreElement,
     code: Code,
     image: Image,
     imageReference: Image,
@@ -33,10 +43,10 @@ const Markdown = ({ children, className }) => {
 
   return (
     <ReactMarkdown
-      allowDangerousHtml
       className={classNames('prose lg:prose-lg dark:prose-dark', className)}
-      renderers={renderers}
-      plugins={plugins}>
+      components={components}
+      remarkPlugins={remarkPlugins}
+      rehypePlugins={rehypePlugins}>
       {children}
     </ReactMarkdown>
   );

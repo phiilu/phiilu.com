@@ -1,7 +1,7 @@
-const Feed = require('feed').Feed;
-const contentful = require('./contentful').default;
-const markdown = require('markdown').markdown;
-const fs = require('fs');
+import fs from 'fs';
+import { markdown } from 'markdown';
+import contentful from './contentful';
+import { Feed } from 'feed';
 
 async function generateRssFeed() {
   if (process.env.NODE_ENV === 'development') {

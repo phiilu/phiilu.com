@@ -1,12 +1,6 @@
 @tailwind base;
-
-/* Start purging... */
 @tailwind components;
-/* Stop purging. */
-
-/* Start purging... */
 @tailwind utilities;
-/* Stop purging. */
 
 body {
   overflow-x: hidden;

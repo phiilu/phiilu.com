@@ -253,6 +253,15 @@ const tags = {
     hover: 'hover:bg-orange-500 hover:text-white dark:hover:bg-orange-400',
     mainColor: 'text-orange-500',
     description: 'Cloudflare Workers'
+  },
+  hosting: {
+    name: 'hosting',
+    slug: slugify('hosting'),
+    bg: 'bg-red-200 dark:bg-red-500',
+    text: 'text-red-900 dark:text-white',
+    hover: 'hover:bg-red-500 hover:text-white dark:hover:bg-red-400',
+    mainColor: 'text-red-500',
+    description: 'hostingss'
   }
 };
 

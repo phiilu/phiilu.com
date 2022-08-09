@@ -45,15 +45,19 @@ const CodeBlock = ({ inline, className, children }) => {
               {tokens.map((line, i) => {
                 return (
                   <div key={i} {...getLineProps({ line, key: i })}>
-                    {line.map((token, key) => {
-                      return (
-                        <span
-                          key={key}
-                          {...getTokenProps({ token, key })}
-                          className="font-mono text-sm"
-                        />
-                      );
-                    })}
+                    {line
+                      .filter((l) => {
+                        return l.empty !== true;
+                      })
+                      .map((token, key) => {
+                        return (
+                          <span
+                            key={key}
+                            {...getTokenProps({ token, key })}
+                            className="font-mono text-sm"
+                          />
+                        );
+                      })}
                   </div>
                 );
               })}

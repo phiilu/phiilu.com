@@ -3271,11 +3271,6 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-google-fonts@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/next-google-fonts/-/next-google-fonts-2.2.0.tgz#b7ef8d1ba880a81ddf4303c4615b51a17e16ee6f"
-  integrity sha512-TCtNp+uu0vof2X8Xfptfw96Unc3zsUekBY2l4g2mGAX+U8QO/yfAaEioGhFCwU05M8NbMgwP5C8V40Vtwp87iQ==
-
 next-transpile-modules@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-8.0.0.tgz#56375cdc25ae5d23a834195f277fc2737b26cb97"

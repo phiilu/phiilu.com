@@ -1,5 +1,4 @@
 import '../styles/index.css';
-import { GoogleFonts } from 'next-google-fonts';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from '@components/Layout/Layout';
 import Notifications from '@components/Notifications/Notifications';
@@ -17,7 +16,6 @@ function PhiiluBlog({ Component, pageProps, router }) {
   }
   return (
     <>
-      <GoogleFonts href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" />
       <Layout route={router.route}>
         <AnimatePresence exitBeforeEnter onExitComplete={handleScrollToTop}>
           <motion.div

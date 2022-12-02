@@ -11,6 +11,7 @@
     "postinstall": "node node_modules/puppeteer-core/install.js"
   },
   "dependencies": {
+    "@vercel/analytics": "^0.1.5",
     "@wordpress/wordcount": "^3.2.0",
     "classnames": "^2.3.1",
     "contentful": "^8.4.2",

@@ -2,6 +2,7 @@ import '../styles/index.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from '@components/Layout/Layout';
 import Notifications from '@components/Notifications/Notifications';
+import { Analytics } from '@vercel/analytics/react';
 
 import { useDarkMode } from '@hooks/useDarkMode';
 
@@ -29,6 +30,7 @@ function PhiiluBlog({ Component, pageProps, router }) {
         </AnimatePresence>
       </Layout>
       <Notifications />
+      <Analytics />
     </>
   );
 }

@@ -4,7 +4,9 @@ import Link from '@components/Link/Link';
 import classNames from 'classnames';
 import { useScroll } from '@hooks/useScroll';
 import { motion, AnimateSharedLayout } from 'framer-motion';
-
+import Banner from '@components/Banner/Banner';
+import { useLocalStorage } from '@hooks/useLocalStorage';
+import PokezardsIcon from '@components/Icons/PokezardsLogo';
 import { spring } from '@helpers/animation';
 
 function MenuItem({ onHoverStart, onHoverEnd, onClick, active, children }) {
@@ -70,6 +72,7 @@ function getActiveIndex(pathname) {
 }
 
 const Header = ({ route }) => {
+  const [showBanner, setShowBanner] = useLocalStorage('show_banner', true);
   const [scrolled] = useScroll();
   const [activeHoverIndex, setActiveHoverIndex] = React.useState(() => getActiveIndex(route));
   const hasClicked = React.useRef(false);
@@ -115,6 +118,15 @@ const Header = ({ route }) => {
 
   return (
     <>
+      {showBanner ? (
+        <Banner
+          icon={<PokezardsIcon className="w-8 h-8" />}
+          ctaText={'Check it out'}
+          ctaHref="//pokezards.com?ref=phiilu.com"
+          text="Hey! If you like Pokémon TCG you might like my new project I am working on »Pokézards«"
+          onClose={() => setShowBanner(!showBanner)}
+        />
+      ) : null}
       <div
         className={classNames('fixed top-0 left-0 z-20 h-2 bg-indigo-500 bg-opacity-75', {
           'rounded-r-full': scrolled !== 100

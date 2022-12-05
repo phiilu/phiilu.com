@@ -124,6 +124,7 @@ const Header = ({ route }) => {
           ctaText={'Check it out'}
           ctaHref="//pokezards.com?ref=phiilu.com"
           text="Hey! If you like Pokémon TCG you might like my new project I am working on »Pokézards«"
+          shortText="I am working on a new product!"
           onClose={() => setShowBanner(!showBanner)}
         />
       ) : null}

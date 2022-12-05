@@ -1,6 +1,6 @@
 import trackEvent from '@helpers/tracking';
 
-function Banner({ onClose, ctaText, icon, ctaHref, text }) {
+function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }) {
   return (
     <div className="bg-gradient-to-r from-pokezards-yellow to-pokezards-dark-red">
       <div className="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -8,7 +8,7 @@ function Banner({ onClose, ctaText, icon, ctaHref, text }) {
           <div className="flex items-center flex-1 w-0">
             <span className="flex p-2 bg-orange-100 rounded-lg">{icon}</span>
             <p className="ml-3 font-medium text-white truncate">
-              <span className="md:hidden">We announced a new product!</span>
+              <span className="md:hidden">{shortText}</span>
               <span className="hidden md:inline">{text}</span>
             </p>
           </div>

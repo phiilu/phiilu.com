@@ -1,7 +1,10 @@
 {
-  "name": "phiilu-com-astro",
+  "name": "phiilu.com",
+  "version": "1.0.0",
   "type": "module",
-  "version": "0.0.1",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

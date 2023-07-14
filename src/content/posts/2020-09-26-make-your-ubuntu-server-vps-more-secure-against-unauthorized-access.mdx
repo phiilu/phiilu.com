@@ -1,0 +1,380 @@
+---
+title: Make your Ubuntu Server VPS more secure against unauthorized access
+icon: /images/icons/ubuntu-logo.png
+slug: make-your-ubuntu-server-vps-more-secure-against-unauthorized-access
+publishedDate: 2020-09-26
+published: true
+description: When creating a new VPS you need to make sure that you secure your server from the scary internet. Only you should be able to log in and administrate your server.
+tags: ["server", "terminal", "ubuntu", "vps", "vultr"]
+---
+
+When creating a new VPS you need to make sure that you secure your server from the scary internet. The only one that should be able to administrate the server should be you and **only** you!
+
+There are few (simple) steps involved in how you can secure your server and have a good sleep at night, without fearing someone might hack your server.
+
+## Prerequisites
+
+You should have an existing or freshly installed server running Ubuntu 20.08 VPS available and able to log in.
+
+If you don't know how you can create your own server, check out my blog post [Create your first VPS on Vultr](https://phiilu.com/create-your-first-vps-on-vultr) to deploy your very first VPS using [Vultr\*](https://www.vultr.com/?ref=8372363-6G).
+
+Vultr is just my choice for hosting servers on the internet, but you can use other providers such as [Linode](https://www.linode.com/) or [DigitalOcean\*](https://m.do.co/c/c9b5a3aebb78) too. You can't be wrong choosing any of the mentioned providers.
+
+> Disclaimer: links containing a \* at the end are affiliate links, which means if you signup using that link I would get a small commission and it helps me out!
+
+## Creating a new user to administrate the server
+
+When you create a new VPS you usually get access to the `root` user with a password. For security reasons, we create a new user that will be used to administrate the server. It is good practice to only work with the least amount of privileges you need and use `sudo` when you need more permissions.
+
+We will disable the possibility to log in as the `root` user using a password, but we will allow it to log in using public-key authentication.
+
+---
+
+To add a new user you can use the `adduser` command.
+
+```
+adduser phiilu
+```
+
+You will be asked a few questions including what password you want to use. Make sure the password is secure and in the best case random generated and stored in a password manager like [1Password](https://1password.com/) or [Lastpass](https://www.lastpass.com/).
+
+```
+Adding user `phiilu' ...
+Adding new group `phiilu' (1000) ...
+Adding new user `phiilu' (1000) with group `phiilu' ...
+Creating home directory `/home/phiilu' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for phiilu
+Enter the new value, or press ENTER for the default
+	Full Name []: Florian
+	Room Number []:
+	Work Phone []:
+	Home Phone []:
+	Other []:
+Is the information correct? [Y/n]
+```
+
+Now we have a new user that we can use to log in. If you are the `root` user you can just type
+
+```
+su phiilu
+```
+
+and you will be logged in as the user without prompted a password. You can also use log in with the `login` command.
+
+```
+login phiilu
+```
+
+---
+
+Next, we want to give the user permission to administrate the server. Right now we have a new user, but the user does not have any permission to make any changes as a superuser.
+
+You can confirm this when trying to update the packages:
+
+```
+sudo apt install
+```
+
+```
+[sudo] password for phiilu:
+phiilu is not in the sudoers file.  This incident will be reported.
+```
+
+As you can see, we need to add the new user to the sudoers file to be able to execute commands as the superuser.
+
+We need to exit our current session with `exit`. You should now be logged in as the `root` user.
+
+If you are `root`, you can type `visudo` to check the current sudoers file.
+
+```
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
+```
+
+You can see that if a user is in the `sudo` group, he should be able to execute commands as `root`. There is also the `admin` group in my `sudoers` file which will allow the user in that group to execute some commands as `root`. We want to be able to do the same things the root user can do so we will choose the `sudo` group.
+
+To add a user to a group you can use the `usermod` command using the options `-a` for add and `-G` for alternative groups followed by the group's name and the user you want to modify.
+
+```
+usermod -a -G sudo phiilu
+```
+
+With `id` you can check the groups (and ids) of a user and can confirm that the user is now part of the `sudo` group.
+
+```
+id phiilu
+uid=1000(phiilu) gid=1000(phiilu) groups=1000(phiilu),27(sudo)
+```
+
+Now that our user is in the `sudo` group, you can log in as that user and try to update the packages again and this time it should work!
+
+## Securing SSH
+
+Now that we have a new user that can execute commands as `root`, we can go forward and harden our server even more by changing some settings for `ssh`.
+
+Before doing that we want to set up public-key authentication for both our users `root` and the one we created before.
+
+### Using public key authentication
+
+> This is a recap of the "Skip passwords with public key authentication" section of my [Use Visual Studio Code Remote to edit files on servers](https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/ "Use Visual Studio Code Remote to edit files on servers") post.
+
+[Public key authentication](https://en.wikipedia.org/wiki/Public-key_cryptography) is a secure way to connect to a server with SSH using a set of key pairs. The public key is saved on the server and the private key should be kept on your local machine. This is the key to unlock the server and **must never** be leaked or shared with someone else.
+
+If you are using Windows you must have [Git for Windows](https://gitforwindows.org/) installed and use the following commands inside the **Git Bash**.
+
+The following commands should be the same for Windows and macOS except you might have to end the commands on Windows with `.exe`.
+
+#### Generating SSH Key
+
+If you already have an SSH key that you might already use with `git` you can skip this step.
+
+```
+ssh-keygen -b 4096
+```
+
+Which results in the following output.
+
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/flori/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/flori/.ssh/id_rsa.
+Your public key has been saved in /c/Users/flori/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx flori@Windows
+```
+
+You can set a passphrase for the key if you want, but then you have to enter a password for the log in which we want to avoid.
+
+#### Copy the public key to the server
+
+You can either manually paste the key to the server or you can use a program called `ssh-copy-id` which I prefer.
+
+On macOS you have to install `ssh-copy-id` using `brew` on Windows it should be already present in the Git Bash.
+
+```
+brew install ssh-copy-id
+```
+
+To copy the key to the server you just have to log in to the server using the `ssh-copy-id` utility. Do this step twice for both users.
+
+> replace VPS_IP with the real IP of your VPS
+
+```
+ssh-copy-id root@VPS_IP
+```
+
+```
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/Users/florian/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@VPS_IP's password:
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   "ssh 'root@VPS_IP'"
+and check to make sure that only the key(s) you wanted were added.
+```
+
+#### Verifying the public key authentication
+
+Now if you try to log in with `ssh` you should not be asked for a password.
+
+If you are still asked for a password check if the permissions on the `authorized_keys` file on the server are correct:
+
+```
+ls -la ~/.ssh
+```
+
+```
+drwx------ 2 root root 4096 Sep 18 17:23 .
+drwx------ 7 root root 4096 Sep 21 14:48 ..
+-rw------- 1 root root  416 Sep 18 17:23 authorized_keys
+```
+
+If your permissions are different you might have to change them:
+
+```
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+
+### A more secure ssh config
+
+To change the configuration for `ssh` open the `/etc/ssh/sshd_config` file with your favorite text editor or you can check out my blog post **[Use Visual Studio Code Remote to edit files on servers](https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/ "Use Visual Studio Code Remote to edit files on servers")** to use a GUI editor to modify your server files.
+
+First of all, I want to change that the `root` user is not able to log in with a password, but should be able to use public-key authentication to sign in.
+
+Find the line that says `PermitRootLogin yes` and change it to `PermitRootLogin without-password`.
+
+---
+
+If you want to only allow public-key authentication find the following configuration keys and change them:
+
+```
+PubkeyAuthentication yes
+PasswordAuthentication no
+```
+
+---
+
+Last but not least only allow users that you explicitly defined to log in to your server. Go to the end of the file and add the following line:
+
+```
+AllowUsers phiilu root dokku
+```
+
+Here you should add the usernames separated with space. In my case, I am allowing the users `phiilu` `root` and `dokku` to log in into my server using ssh.
+
+---
+
+After changing the configuration you must restart the `sshd` server.
+
+```
+sudo service sshd restart
+```
+
+## Banning bad people with fail2ban
+
+[The Internet is a scary place](https://twitter.com/phiilu/status/1068652093098086400?s=20) and you need to be aware that everyone out there wants to take over your server. It is very important to make sure bad people or in this case, bad IP addresses get sent to jail and never will bother our server again.
+
+This is why we will install `fail2ban`. Fail2ban is a small service that will run on your server and will read your log files and makes sure to ban IP addresses that are trying to log in to your server.
+
+In this post, I will only show you how you configure `fail2ban` to only check the logs of the `ssh` service, but `fail2ban` can also be used to check other log files like `nginx` or `mail`.
+
+### Installation and configuration
+
+Installation is very easy and only one command away.
+
+```
+sudo apt install fail2ban
+```
+
+That is it, we don't need to make any additional configuration, fail2ban is now working and will make sure it bans bad log in attempts.
+
+If you want to make changes to the config file, you must copy the original `/etc/fail2ban/jail.conf` file and create a `/etc/fail2ban/jail.local` file
+
+```
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+
+Now you could make changes in `jail.local` and adjust ban time or retries, but I think the default is already pretty good.
+
+### Unban an IP address
+
+Sometimes you may want to unban an IP address because you somehow locked yourself out, but you still got access using the VPS providers web console.
+
+Luckily `fail2ban` lets us easily unban IP addresses using the included client:
+
+```
+sudo fail2ban-client set sshd unbanip IP
+```
+
+Here you can see an example of how I unbanned an IP.
+
+```
+root@dokku:~# fail2ban-client status sshd
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	1114
+|  `- File list:	/var/log/auth.log
+`- Actions
+   |- Currently banned:	2
+   |- Total banned:	241
+   `- Banned IP list:	199.38.121.35 49.88.112.112
+root@dokku:~# fail2ban-client set sshd unbanip 199.38.121.35
+1
+root@dokku:~# fail2ban-client status sshd
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	1114
+|  `- File list:	/var/log/auth.log
+`- Actions
+   |- Currently banned:	1
+   |- Total banned:	241
+   `- Banned IP list:	49.88.112.112
+```
+
+### Check how many IPs are already banned
+
+Fail2ban comes with an easy to use client, where you can check the status of a specific service and see how many IPs are already banned
+
+```
+fail2ban-client status sshd
+```
+
+This is my server after being online for about a week. You can see and confirm that the Internet is a scary place and everyone wants to take over your server!
+
+```
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	663
+|  `- File list:	/var/log/auth.log
+`- Actions
+   |- Currently banned:	1
+   |- Total banned:	129
+   `- Banned IP list:	49.88.112.76
+```
+
+## Firewall
+
+**What is a Firewall?** you may ask. A firewall defines rules in which services can connect to our server (incoming) or are allowed to talk to others on the Internet (outgoing). A server without a firewall will be allowed to do everything and has no restriction and can talk to everyone, but as we already learned we don't want that because we can't trust anyone on the Internet.
+
+A lot of VPS providers are allowing you to configure a firewall within their dashboard, but for those of you that are not able to do that, you can still use a software firewall like `ufw`. UFW is a software firewall and we can secure our server with just four commands!
+
+```
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw enable
+```
+
+Now your server is only allowed to respond to requests that are talking on port 22 (ssh) and every other service is disabled.
+
+`ufw allow ssh` is just an easy way to write `ufw allow 22/tcp`. Some services are known to run on a specific port so `ufw` already knows a lot of them!
+
+If you have a webserver running too, you probably want to enable `http` and `https`. So just type `ufw allow http` and `ufw allow https` and your server is now allowed to respond to `http` and `https` requests!
+
+For additional services you may run on your server you will eventually open more ports.
+
+## Conclusion
+
+Hosting your server can be a bit scary, but if you followed the post closely you should be fine. Of coures, you should still log in into the server from time to tome and run updates with `sudo apt update && sudo apt upgrade` to make sure you get the latest security patches.
+
+Let me know in the comments if this was useful and if I might have missed something that every server should configure to be more secure!

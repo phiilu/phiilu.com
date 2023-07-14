@@ -1,0 +1,67 @@
+---
+title: My thoughts on completing the React Hooks workshop from Epic React by Kent C. Dodds
+icon: /images/icons/epic-react-icon.png
+slug: my-thoughts-on-completing-the-react-hooks-workshop-from-epic-react
+publishedDate: 2020-12-22
+published: true
+description: I recently bought the Epic React course from Kent C. Dodds. I want to share with you my thoughts and what I have learned by completing the React Hooks workshop.
+tags: ["react", "javascript", "beginners"]
+---
+
+I finally got some time and finished the second workshop of the [Epic React by Kent C. Dodds][1] course. It's been a while since I wrote [my last article about the first workshop][2], but here I am and trying to summarize my experience and learnings from the second workshop **React Hooks**.
+
+![Epic React Hooks Certificate][3]
+
+Some people are already finishing the whole Epic React course and it took someone over [3 weeks by spending 4 hours each day][4]. That's **84 hours** or 3 1/2 days spent on the whole course. I think I need to increase my speed on completing more workshops 😅 . This just shows how much content you get with this course.
+
+Now to my thoughts on the React Hooks workshop!
+
+## What will I learn?
+
+After completing the React Hooks workshop, you will be familiar with the most used hooks in React and how they work. `useState`, `useRef`, and `useEffect` will be explained and how you use them by programming a Tic-Tac-Toe game.
+
+Additionally, you will learn in which order hooks will run. Which `useEffect` will run first? What about my lazy initializer in my `useState`? When does my component get rendered? All these questions will get answered in this workshop.
+
+If you are still creating React components using classes and find hooks confusing, you will also get some exercises on how you can convert class components to function components with hooks.
+
+You will learn the concept of lifting state, so you will know when you need to move a certain state up to the parent.
+
+Finally, you will learn how you can fetch data from an external API with React hooks and learn about `ErrorBoundary`.
+
+## What did I learn?
+
+I am already quite familiar with React hooks, but there are still somethings I learned in this workshop.
+
+I was not aware of the [lazy initializer][5] function that you can pass to the `useState` function.
+
+Instead of doing this:
+
+```jsx
+const [data, setDate] = useState(getSomeComplexDefaultState());
+```
+
+You can write it like this:
+
+```jsx
+const [data, setDate] = useState(() => getSomeComplexDefaultState());
+```
+
+This is very useful for complex initial state. Using lazy initializers can in certain situations increase your web performance.
+
+The next thing I never looked up before, was the hook flow. Now I am more aware in which order my hooks in nested components run!
+
+Finally, in the last module about data fetching, I learned a lot about the React `ErrorBoundary` component and using the `react-error-boundary` [package][6]. Kent C. Dodds has a [blog post][7] on his website, if you want to learn about it.
+
+## Conclusion
+
+So after my second workshop, I have to say that I already know a lot about React, but at the same time, I don't. I am very glad that I bought this course and how much I gain from it. Knowing those little details is very valuable and can help you a lot when you encounter strange bugs in your code.
+
+The next workshop is **Advanced React Hooks**. After finishing it you will hear from me again 😄
+
+[1]: https://epicreact.dev/
+[2]: https://phiilu.com/my-thoughts-on-completing-the-react-fundamentals-workshop-from-epic-react
+[3]: //images.ctfassets.net/hb3id6ag4raq/3IswRrwubtaNsid0ELR9C7/eb52b0ef48f74d654288b54d99553544/Florian_Kapfenberger-epic-react-certificate.png
+[4]: https://twitter.com/kentcdodds/status/1337432764451180544
+[5]: https://kentcdodds.com/blog/use-state-lazy-initialization-and-function-updates
+[6]: https://github.com/bvaughn/react-error-boundary
+[7]: https://kentcdodds.com/blog/use-react-error-boundary-to-handle-errors-in-react

@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /newsletter-success
-
-Sitemap: https://phiilu.com/sitemap.xml

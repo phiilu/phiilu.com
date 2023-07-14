@@ -1,0 +1,168 @@
+---
+title: Accessing the Clipboard in Javascript using the Clipboard API
+icon: /images/icons/clipboard-api-icon.svg
+slug: accessing-the-clipboard-in-javascript-using-the-clipboard-api
+publishedDate: 2021-02-07
+published: true
+description: The Clipboard API is a way to interact with the clipboard of the user in the browser. This API is still an early working draft, but you can already use it today!
+tags: ["javascript", "web apis", "next.js", "react"]
+---
+
+Welcome to my new series where I will write about built-in Browser-APIs and demonstrate how you can use them today. Most of the APIs I will write about will be highly experimental and still will have the "Draft" status. So don't expect a wide browser adoption and only try this with modern browsers. You can always check [caniuse.com][1] or [MDN][2] for up-to-date information about the compatibility in the browsers.
+
+The first API I want to write about is the Clipboard API. With the Clipboard API, you can read from and write to the Clipboard of the user. It is not something new as you already can do this with the `document.execCommand()`.
+
+The problem is that `execCommand()` is a synchronous operation and will block the page while calling it. Also, a browser might implement the `document.execCommand('copy')` function differently than another one. This could lead to inconsistent results. You can read more aboute the old way [here][3].
+
+The Clipboard API tries to solve this by being asynchronous and offer a more consistent API across browsers.
+
+## Permissions & Security for accessing the Clipboard
+
+With the new Clipboard API, you will need the `clipboard-read` permission to read the user clipboard content. When you want to write to the clipboard you will need to have the `clipboard-write` permission. Although you will need this permission, the browser grants you the permission automatically when the page is in the current tab.
+
+The [Permissions API][4] is not supported in all browsers yet. Safari for example did not implement it, however, you can access the Clipboard API in Safari without requesting permissions. Firefox on the other hand supports the Permissions API but did not implement the `clipboard-read` and `clipboard-write` permissions yet. You already see that there might be issues if you start using it today.
+
+Also, you will need to have a [secure context][5] while accessing the Clipboard API. This usually means you can only access this API when you are on `localhost` or a webpage with a valid SSL/TLS certificate.
+
+You can access the Clipboard API on the `navigator` object. If `navigator.clipboard` is `undefined`, then the Clipboard API won't be available on your browser.
+
+## Listening for Clipboard Events
+
+If you want to act on if the user is copying, pasting, or cutting you can very easily get those events by attaching an event listener to the document. The names for these events are `copy`, `paste`, and `cut` events.
+
+```javascript
+function handlePasteEvent(event) {
+  handleClipboard();
+  event.preventDefault();
+}
+
+document.addEventListener("paste", handlePasteEvent);
+```
+
+The event that gets passed to the handler function will implement the `ClipboardEvent` interface. This interface will allow you to override the content of what is being passed to or from the Clipboard. Very handy if you want to format or remove the formatting of text that is being copied.
+
+Reading from the Clipboard
+For browsers that implement the Permissions API, you should first check if you have permission to read from the Clipboard.
+
+> I tried it out without querying for permission and it was working fine. This could obviously change in the future.
+
+```javascript
+navigator.permissions.query({ name: "clipboard-read" }).then(function (result) {
+  if (result.state === "granted") {
+    // you can read from the clipboard
+  }
+});
+```
+
+### Text
+
+If you only want to read text you can use the convenience method `readText()`. This method will return a Promise with the contents of the clipboard.
+
+```javascript
+const text = await navigator.clipboard.readText();
+```
+
+### Images
+
+If you want to read images from the clipboard you will have to use the `read()` method. This method will return a Promise containing an array of [ClipboardItem][6] objects.
+
+Here is an example of how you can read an image from the clipboard:
+
+```javascript
+navigator.clipboard
+  .read()
+  .then(async (clipboardItems) => {
+    for (const clipboardItem of clipboardItems) {
+      for (const type of clipboardItem.types) {
+        const blob = await clipboardItem.getType(type);
+        if (type === "image/png") {
+          const imageUrl = URL.createObjectURL(blob);
+          console.log(imageUrl); // blob:http://localhost:3000/e53d5d55-c674-454b-9587-2501a4396eed
+        }
+      }
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+Basically what we are doing here is to iterate over each item and check the MIME type and if it is a PNG image we will create an object URL that can be passed to the `src` attribute of an image to display it.
+
+> The **URL.createObjectURL()** static method creates a [DOMString][7] containing a URL representing the object given in the parameter. The URL lifetime is tied to the [document][8] in the window on which it was created. The new object URL represents the specified [File][9] object or [Blob][10] object. - [MDN][11]
+
+## Writing to the Clipboard
+
+As I already said you won't need to ask for the `clipboard-write` permissions because the browser will grant it automatically if the page is in the active tab.
+
+### Text
+
+If you just want to write text to the clipboard you can use the convenience `writeText()` method. Just pass the text you want to put on the clipboard as the first argument and you are done!.
+
+```javascript
+await navigator.clipboard.writeText("Hello World");
+```
+
+### Images
+
+If you want to write images to the clipboard you will have to use the `write()` method. This method takes an array of ClipboardItem objects as the first argument.
+
+Here is an example of how you can read an image from the clipboard:
+
+```javascript
+const result = await fetch(
+  "https://images.dog.ceo/breeds/pembroke/n02113023_15926.jpg",
+);
+const blob = await result.blob();
+await navigator.clipboard.write([
+  new ClipboardItem({
+    "image/png": blob,
+  }),
+]);
+```
+
+Basically will have to create a [Blob][10] out of that image. The easiest way I know how to achieve this is to call the URL of the image with `fetch`.
+
+### Using the API with React
+
+I am mostly developing with React nowadays, therefore I want to show how I used it with it. There is not much different than using it without React, because we won't need access to any DOM elements and can do everything inside an event handler or `useEffect` hook.
+
+I created an MVP of a Clipboard Manager without persistence, but it demonstrates most of the Clipboard API features very well.
+
+- DEMO: [https://clipboard-api.phiilu.com/][12]
+- GitHub: [https://github.com/phiilu/clipboard-browser-api-demo-nextjs][13]
+
+It is using Next.js and Tailwind CSS. I kept everything inside the `index.js` file. If you have any questions don't hesitate to ask me on [Twitter][14].
+
+## Conclusion
+
+At the time of writing the support for the Clipboard API is still limited and I think I won't be using it in production right now.
+
+I think it is important that the web will get more consistent APIs that are supported in most browsers and do the hard work for us. Thinking about how to copy a text to the clipboard should not be complicated.
+
+The Clipboard API will finally deliver a consistent API without using hacky methods. If you want to get more examples of how this API will help you, check out the [W3C Use Cases][15] section.
+
+**Sources:**
+
+- MDN: [https://developer.mozilla.org/en-US/docs/Web/API/Clipboard][16]
+- web.dev: [https://web.dev/async-clipboard/][17]
+- W3C: [https://w3c.github.io/clipboard-apis/][18]
+
+[1]: https://caniuse.com/
+[2]: https://developer.mozilla.org/en-US/docs/Web/API
+[3]: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard
+[4]: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API
+[5]: https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts
+[6]: https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem
+[7]: https://developer.mozilla.org/en-US/docs/Web/API/DOMString
+[8]: https://developer.mozilla.org/en-US/docs/Web/API/Document
+[9]: https://developer.mozilla.org/en-US/docs/Web/API/File
+[10]: https://developer.mozilla.org/en-US/docs/Web/API/Blob
+[11]: https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL
+[12]: https://clipboard-api.phiilu.com/
+[13]: https://github.com/phiilu/clipboard-browser-api-demo-nextjs
+[14]: https://twitter.com/phiilu
+[15]: https://w3c.github.io/clipboard-apis/#Cases
+[16]: https://developer.mozilla.org/en-US/docs/Web/API/Clipboard
+[17]: https://web.dev/async-clipboard/
+[18]: https://w3c.github.io/clipboard-apis/

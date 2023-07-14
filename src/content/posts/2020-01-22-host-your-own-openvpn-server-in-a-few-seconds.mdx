@@ -1,0 +1,173 @@
+---
+title: Host your own OpenVPN server in a few seconds
+icon: /images/icons/open-vpn-logo.svg
+slug: host-your-own-openvpn-server-in-a-few-seconds
+publishedDate: 2020-01-22
+published: true
+description: Hosting your own VPN has never been easier. There are now multiple Github projects that will reduce the pain on setting up your own VPN server.
+tags: ["openvpn", "vpn", "security", "ubuntu"]
+---
+
+> **Disclosure:** This post contains affiliate links for ExpressVPN and Vultr.
+
+Hosting your own VPN has never been easier. There are now multiple Github projects that will reduce the pain on setting up your own VPN server.
+
+Before we start installing the VPN, let's talk about what VPN is and how it can help us.
+
+## What is a VPN?
+
+A [VPN](https://en.wikipedia.org/wiki/Virtual_private_network) or Virtual Private Network is a network between the VPN client(s) and the VPN server. The advantage
+of this network is, that it is fully encrypted and the whole network traffic of the VPN client will go through the encrypted tunnel.
+
+The VPN client never access other (web)servers directly, everything will be requested from the VPN server and the VPN server will
+forward the request.
+
+## Why do I want to host my own VPN server?
+
+Having your own VPN means that you have fully control over it and only YOU are able to
+read the logs of the server.
+
+Here are some use cases, where a VPN can be helpful:
+
+- Hiding your real IP address
+- Secure surfing in public Wi-Fis
+- Accessing services inside the VPN servers network
+
+## Why should I not host my own VPN server?
+
+If you want to have access to multiple server in different locations, you should probably buy a VPN
+from a known provider such as [ExpressVPN](https://s.phiilu.com/expressvpn) or [NordVPN](https://nordvpn.com/). These providers have lots of VPN servers
+in different countries.
+
+## Hosting your VPN server
+
+> I am using a Ubuntu 18.04.3 LTS server hosted on [Vultr](https://www.vultr.com/?ref=8372363-6G)
+>
+> This Tutorial should also work on Debian, Ubuntu and CentOS
+
+To install our VPN server in seconds, we are using a shell script created by [Nyr](https://github.com/Nyr) named [openvpn-install](https://github.com/Nyr/openvpn-install).
+
+### OpenVPN installation
+
+```bash
+wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
+```
+
+The script will ask a few questions on how you want to setup your VPN server.
+Press Enter to use the default (and most of the time recommended) option.
+
+I only changed the default DNS to use `1.1.1.1`
+
+```
+Welcome to this OpenVPN road warrior installer!
+
+I need to ask you a few questions before starting setup.
+You can use the default options and just press enter if you are ok with them.
+
+Which protocol do you want for OpenVPN connections?
+   1) UDP (recommended)
+   2) TCP
+Protocol [1]:
+
+What port do you want OpenVPN listening to?
+Port [1194]:
+
+Which DNS do you want to use with the VPN?
+   1) Current system resolvers
+   2) 1.1.1.1
+   3) Google
+   4) OpenDNS
+   5) Verisign
+DNS [1]: 2
+
+Finally, tell me a name for the client certificate.
+Client name [client]:
+
+Okay, that was all I needed. We are ready to set up your OpenVPN server now.
+Press any key to continue...
+```
+
+The script will now install OpenVPN on your server.
+
+### Adding a new user
+
+After the Installation has finished, you need the make the `openvpn-install.sh` exectuable.
+
+```bash
+chmod +x openvpn-install.sh
+```
+
+To add a new user just run the script again and select 1 and type in a name for which device you will be using this client certificate.
+In my case I created a user for my iPhone.
+
+```bash
+./openvpn-install.sh
+```
+
+```
+Looks like OpenVPN is already installed.
+
+What do you want to do?
+   1) Add a new user
+   2) Revoke an existing user
+   3) Remove OpenVPN
+   4) Exit
+Select an option: 1
+
+Tell me a name for the client certificate.
+Client name: iphone
+
+Using SSL: openssl OpenSSL 1.1.1  11 Sep 2018
+Can't load /etc/openvpn/server/easy-rsa/pki/.rnd into RNG
+140236248433088:error:2406F079:random number generator:RAND_load_file:Cannot open file:../crypto/rand/randfile.c:88:Filename=/etc/openvpn/server/easy-rsa/pki/.rnd
+Generating a RSA private key
+................................+++++
+.................+++++
+writing new private key to '/etc/openvpn/server/easy-rsa/pki/private/iphone.key.BnNBhJXQKm'
+-----
+Using configuration from ./safessl-easyrsa.cnf
+Can't load /etc/openvpn/server/easy-rsa/pki/.rnd into RNG
+140374526300608:error:2406F079:random number generator:RAND_load_file:Cannot open file:../crypto/rand/randfile.c:88:Filename=/etc/openvpn/server/easy-rsa/pki/.rnd
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'iphone'
+Certificate is to be certified until Jan 19 18:31:07 2030 GMT (3650 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+Client iphone added, configuration is available at: /root/iphone.ovpn
+```
+
+### Retrieving the .ovpn file from the server
+
+On macOS and Linux you can copy the file from the server to your machine using `scp`. On Windows it is best if you download [Filezilla](https://filezilla-project.org/) or
+[WinSCP](https://winscp.net/eng/download.php) and logging into the server using SFTP.
+
+To copy the file with `scp` run the following command:
+
+```bash
+scp <USERNAME>@<SERVER_IP>:/root/<CLIENT>.ovpn .
+```
+
+an example could look like this:
+
+```bash
+scp root@123.45.67.89:/root/iphone.ovpn .
+```
+
+If the certificate is for a smartphone, it is important that you copy it using a secure medium. With a Mac and a iPhone it is recommended that
+you copy the .ovpn file using AirDrop.
+
+If you have to use Email, please zip the .ovpn file and give the zip file a strong password before you send it.
+
+### Using the .ovpn file
+
+On macOS you can use the app [Tunnelblick](https://tunnelblick.net/), on Windows there is an official programm from [OpenVPN](https://openvpn.net/community-downloads/) and on iOS and Android there are offical OpenVPN Connect apps on the [App Store](https://apps.apple.com/app/openvpn-connect/id590379981) and [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn).
+
+Usually the process is the same for every client. You have to import the .ovpn file into the client and connect to the
+server. If the connection was successful you can type into google ["what is my ip address"](https://www.google.com/search?q=what+is+my+ip+address) and Google should show you your
+current IP address.
+
+If the IP address is the same as the server, you can congratulate yourself! You just set up your (first) self hosted VPN server 🎉

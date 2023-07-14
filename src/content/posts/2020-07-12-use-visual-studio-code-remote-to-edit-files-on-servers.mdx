@@ -1,0 +1,179 @@
+---
+title: Use Visual Studio Code Remote to edit files on servers
+icon: /images/icons/visual-studio-code-logo.svg
+slug: use-visual-studio-code-remote-to-edit-files-on-servers
+publishedDate: 2020-07-12
+published: true
+description: Editing files on a remote server using the Visual Studio Code Remote extension is that easy.
+tags: ["beginners", "server", "raspberry pi", "code editor"]
+---
+
+Editing files on a remote server using the [Visual Studio Code Remote extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) is that easy.
+
+If you find yourself ever configuring a service on a server you probably had to edit files directly via the terminal using `nano`, `vim`, `emacs` or some other text based editor.
+
+By no means are those editors bad, but they are also not the easiest to use, at least for most of us. I know some of that `vim` magic myself and also am capable of exiting it, but sometimes I wish I could just use a good IDE like Visual Studio Code to edit my files on the server.
+
+## Install the Visual Studio Code Remote extension
+
+Go to the extension menu in VS Code and search for **remote**.
+
+![Search for "Remote"](/images/posts/use-visual-studio-code-remote-to-edit-files-on-servers-1.png)
+
+Click on **Remote - SSH** and later **install**, after the installation click **reload**. You can also install it by visiting the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh) Website and click **install**.
+
+![Remote - SSH Extension Overview](//images.ctfassets.net/hb3id6ag4raq/47QaqLrknWyQhiHLnBOUvs/45a5afc7e3178ad2ab0bf559a28464b2/Remote-SSH-overview.png "VS Code Remote - SSH Extension Overview")
+
+Visual Studio Code Remote should now be installed and you should be able to connect to servers with SSH.
+
+## Connect to a server
+
+You might notice a new icon on the bottom left of the VS Code window.
+
+![Remote - SSH connection menu](//images.ctfassets.net/hb3id6ag4raq/1hpYHSsX3Q0ecDvfkhcAk9/752cc2abf2615828bd7d1b81a88e7fa8/Remote-SSH-connection-menu.png "VS Code Remote connection menu")
+
+To connect to a server you just have to **click** it. Next you need to enter which user and server IP or hostname you want to connect to.
+
+![Remote - SSH connection syntax](//images.ctfassets.net/hb3id6ag4raq/65SqIZWGrWbiyDLAXocjfv/b60e07527fb890d7c97a95dff5748f64/Remote-SSH-connection-command.png "SSH connection syntax")
+
+`[user@]hostname` is the [syntax](https://man.openbsd.org/ssh) how you connect to a server using SSH. In my case I am connecting to the server `192.168.1.10` with the user `pi`.
+
+![Remote - SSH fingerprint confirmation](//images.ctfassets.net/hb3id6ag4raq/7IlwgZMFGm2g5hPoE4L2W4/3a2103d1c4870726ad218be88f87200d/Remote-SSH-confirm-fingerprint.png "confirming the server fingerprint")
+
+The first time you connect to a server it will ask you to confirm the servers fingerprint. This is a security measure from SSH to be safe for future connections that the server will always be the same and was not compromised.
+
+If for any reason you get an error saying the fingerprint does not match with the one saved on the computer, your server might have been altered. This might also happen if you connect to a server with the same [private IP address (RFC 1918)](https://en.wikipedia.org/wiki/Private_network), but in a different network. If it is the later and you are sure no one messed with your server, you can ignore the warning and update the fingerprint with the following command:
+
+```bash
+ssh-keygen -R IP
+```
+
+After the fingerprint confirmation VS Code Remote will ask you to put in the password for the specified user.
+
+![Remote - SSH password input](//images.ctfassets.net/hb3id6ag4raq/3UZUA4Ht3DT9yksgKazlIc/9d9f58bc778ef4688ecc72621b657bba/Remote-SSH-password.png "SSH password prompt")
+
+Entering the password each login is cumbersome, so [later in this post](#Skip-passwords-with-public-key-authentication) I will show you how you can skip this step using SSH Public Key authentication.
+
+![Remote - SSH VS Code Server installation](//images.ctfassets.net/hb3id6ag4raq/1dQHaO1xkI8B8p53jEPqb0/43a33a71865513093857654e53cb02f6/Remote-SSH-vs-code-server-installation.png "Visual Studio Server is being installed")
+
+After a successful login, VS Code Remote will start installing Visual Studio Server on the remote server which might take a while.
+
+![Remote - SSH successful connection](//images.ctfassets.net/hb3id6ag4raq/2xRLOLJpvqoet2NWK4lTdZ/7066a79f87536b21243a4042bda96314/Remote-SSH-connected.png "successful connection to the server")
+
+If everything went fine you should now be connected to your server. You can start opening files right from VS Code and use the integrated terminal to enter commands!
+
+![Remote - SSH editing a file on the server using VS Code Remote](//images.ctfassets.net/hb3id6ag4raq/3C6UCqWinrAu00OchRGHn0/4143816dee832b26dbc2d0b024f57007/Remote-SSH-file-open.png "editing .bashrc file on the server using VS Code")
+
+## Developing on a remote server with Visual Studio Code
+
+The inspiration for this blog post came actually while developing a small Node.js application that needs access to the hardware GPIOs on the Raspberry Pi.
+
+I was not satisfied using `vim` or copy the files over to the server over and over again.
+
+Visual Studio Code Remote was the perfect solution for my problem. I already love to develop in VS Code and now I can develop on the Raspberry Pi without sitting in front of it or moving files!
+
+One thing you might notice when you start developing on a remote server with VS Code is that you won't have all your extensions available.
+
+![Remote - SSH missing remote extensions](//images.ctfassets.net/hb3id6ag4raq/7cHNX3b9Oqf5ac5rKn0F4I/322d3944092864b698f588ea3fbebc97/Remote-SSH-remote-extensions.png "Remote server has no extensions installed")
+
+This is because you have to install them on the remote server too. So if you want to use `eslint` you have to install the extension on the server using VS Code. It is not complicated, but an extra step to think about.
+
+![Remote - SSH missing remote extension installation](/images/posts/use-visual-studio-code-remote-to-edit-files-on-servers-2.png)
+
+## Skip passwords with public key authentication
+
+> This is a optional step and not really mandatory to do
+
+[Public key authentication](https://en.wikipedia.org/wiki/Public-key_cryptography) is a secure way to connect to a server with SSH using a set of key pairs. The public key is saved on the server and the private key should be kept on your local machine. This is the key to unlock the server and **must never** be leaked or shared with someone else.
+
+If you are using Windows you must have [Git for Windows](https://gitforwindows.org/) installed and use the following commands inside the **Git Bash**.
+
+The following commands should be the same for Windows and macOS except you might have to end the commands on Windows with `.exe`.
+
+### Generating SSH Key
+
+If you already have an SSH key that you might already use with `git` you can skip this step.
+
+```bash
+ssh-keygen -b 4096
+```
+
+Which results in the following output.
+
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/flori/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/flori/.ssh/id_rsa.
+Your public key has been saved in /c/Users/flori/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx flori@Windows
+```
+
+You can set a passphrase for the key if you want, but than you have to enter a password for the login which we want to avoid.
+
+### Copy the public key to the server
+
+You can either manually paste the key to the server or you can use a program called `ssh-copy-id` which I prefer.
+
+On macOS you have to install `ssh-copy-id` using `brew` on Windows it should be already present in the Git Bash.
+
+```bash
+brew install ssh-copy-id
+```
+
+To copy the key to the server you just have to login to the server using the
+`ssh-copy-id` utility.
+
+```bash
+ssh-copy-id pi@192.168.1.10
+```
+
+```
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/c/Users/flori/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+pi@192.168.1.10's password:
+Permission denied, please try again.
+pi@192.168.1.10's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'pi@192.168.1.10'"
+and check to make sure that only the key(s) you wanted were added.
+```
+
+### Verifying the public key authentication
+
+Now if you try to login with `ssh` you should not be asked for a password.
+VS Code should now also work with the public key authentication.
+
+If you are still asked for a password, check if you are using the correct
+ssh configuration. Also check if the permissions on the authorized_keys
+file on the server are correct:
+
+```bash
+ls -l ~/.ssh
+```
+
+```
+drwx------ 2 pi pi 4096 Jul  9 15:56 .
+drwxr-xr-x 8 pi pi 4096 Jul  9 13:29 ..
+-rw------- 1 pi pi  739 Jul  9 15:56 authorized_keys
+```
+
+If your permissions are different you might have to change them:
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+
+## Conclusion
+
+Visual Studio Code Remote is a great extension that allowed me to programm on a remote server without changing my way to develop.
+
+In the future when I have to configure multiple files on a remote server I will probably use Visual Studio Code.
+
+For simple changes or to check something quickly I probably will still use a terminal based editor.

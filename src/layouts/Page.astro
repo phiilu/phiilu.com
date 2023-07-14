@@ -1,0 +1,23 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <div
+      class="grid min-h-screen antialised font-open-sans dark:bg-gray-900 dark:text-gray-100"
+      style={{ gridTemplateRows: "auto 1fr auto" }}
+    >
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>

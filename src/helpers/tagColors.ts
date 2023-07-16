@@ -1,4 +1,4 @@
-const slugify = (str: string) => str.replace(/\s+/g, "-").toLowerCase();
+import slugify from "@sindresorhus/slugify";
 
 export type TagListItem = {
   name: string;
@@ -30,7 +30,7 @@ const tags = {
     description:
       "OpenVPN is open-source commercial software that implements virtual private network techniques to create secure point-to-point or site-to-site connections.",
   },
-  "raspberry-pi": {
+  "raspberry pi": {
     name: "raspberry-pi",
     slug: slugify("raspberry pi"),
     bg: "bg-raspberrypi-200 dark:bg-raspberrypi-500",
@@ -50,7 +50,7 @@ const tags = {
     description:
       "This tag shows posts containing security related content like securing servers or ethical hacking. ",
   },
-  "code-editor": {
+  "code editor": {
     name: "code editor",
     slug: slugify("code editor"),
     bg: "bg-vscode-200 dark:bg-vscode-500",
@@ -100,7 +100,7 @@ const tags = {
     description:
       "This tag shows posts that contain information about Ubuntu configuration. Ubuntu is a Linux distribution based on Debian.",
   },
-  "hello-world": {
+  "hello world": {
     name: "hello world",
     slug: slugify("hello world"),
     bg: "bg-red-200 dark:bg-red-500",
@@ -178,7 +178,7 @@ const tags = {
     description:
       "Netlify is a cloud service provider where you can host your static websites!",
   },
-  "apple-maps": {
+  "apple maps": {
     name: "apple maps",
     slug: slugify("apple maps"),
     bg: "bg-gray-100 dark:bg-gray-500",
@@ -206,7 +206,7 @@ const tags = {
     hover: "hover:bg-react-500 hover:text-react-gray-500",
     description: "React is a JavaScript library for building user interfaces",
   },
-  "next-js": {
+  "next.js": {
     name: "next.js",
     slug: slugify("next.js"),
     bg: "bg-black",
@@ -251,7 +251,7 @@ const tags = {
     mainColor: "text-blue-500",
     description: "Docker",
   },
-  "web-apis": {
+  "web apis": {
     name: "web-apis",
     slug: slugify("web apis"),
     bg: "bg-fuchsia-200 dark:bg-fuchsia-500",
@@ -260,7 +260,7 @@ const tags = {
     mainColor: "text-fuchsia-500",
     description: "Web APIs",
   },
-  "cloudflare-workers": {
+  "cloudflare workers": {
     name: "cloudflare-workers",
     slug: slugify("cloudflare workers"),
     bg: "bg-orange-200 dark:bg-orange-500",

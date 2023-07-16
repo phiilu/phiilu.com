@@ -6,6 +6,7 @@ import { PostListItem } from "../../components/react/PostListItem";
 import { Heading } from "../../components/react/Heading";
 import clsx from "clsx";
 import tagColors, { TagListItem } from "../../helpers/tagColors";
+import slugify from "@sindresorhus/slugify";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -13,7 +14,7 @@ export async function getStaticPaths() {
   const tags = [...new Set(allTags)];
 
   return tags.map((tag) => ({
-    params: { slug: tag },
+    params: { slug: slugify(tag) },
     props: {
       name: tag,
       posts: posts.filter((post) => post.data.tags.includes(tag)),

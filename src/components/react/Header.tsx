@@ -127,7 +127,7 @@ export const Header = ({ route }: HeaderProps) => {
   }, [route]);
 
   return (
-    <>
+    <div>
       {showBanner ? (
         <Banner
           icon={<PokezardsIcon className="w-8 h-8" />}
@@ -170,6 +170,6 @@ export const Header = ({ route }: HeaderProps) => {
           </ul>
         </nav>
       </Container>
-    </>
+    </div>
   );
 };

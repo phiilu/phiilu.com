@@ -1,20 +1,10 @@
 import React from "react";
 import clsx from "clsx";
-import tagColors from "../../helpers/tagColors";
+import tagColors, { TagListItem } from "../../helpers/tagColors";
 
 interface TagListProps {
   tags: string[];
 }
-
-type TagListItem = {
-  name: string;
-  slug: string;
-  bg: string;
-  text: string;
-  hover: string;
-  mainColor: string;
-  description: string;
-};
 
 export const TagList = ({ tags }: TagListProps) => {
   return React.useMemo(() => {
@@ -25,9 +15,9 @@ export const TagList = ({ tags }: TagListProps) => {
 
     return (
       <ul className="flex flex-wrap">
-        {tagList.map((tag) => {
+        {tagList.map((tag, i) => {
           return (
-            <li key={tag.slug} className="flex-none mt-2 mr-2">
+            <li key={tag.slug + i} className="flex-none mt-2 mr-2">
               <a
                 href={`/tag/${tag.slug}`}
                 className={clsx(

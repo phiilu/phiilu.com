@@ -1,26 +1,6 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+// import HeaderLink from "./HeaderLink.astro";
+import { Header as ReactHeader } from "./react/Header";
 ---
 
-<header>
-  <h2></h2>
-  <nav>
-    <HeaderLink href="/">Home</HeaderLink>
-    <HeaderLink href="/blog">Blog</HeaderLink>
-    <HeaderLink href="/about">About</HeaderLink>
-    <HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">
-      Twitter
-    </HeaderLink>
-    <HeaderLink href="https://github.com/withastro/astro" target="_blank">
-      GitHub
-    </HeaderLink>
-  </nav>
-</header>
-<style>
-  header {
-    margin: 0em 0 2em;
-  }
-  h2 {
-    margin: 0.5em 0;
-  }
-</style>
+<ReactHeader client:load route={Astro.url.pathname} />

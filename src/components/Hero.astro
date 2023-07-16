@@ -1,5 +1,7 @@
 ---
 import { Heading } from "./react/Heading";
+import profileImage from "../assets/images/me.jpg";
+import { Image } from "astro:assets";
 ---
 
 <div
@@ -8,12 +10,13 @@ import { Heading } from "./react/Heading";
   <picture
     class="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44"
   >
-    <img
+    <Image
       class="absolute flex-none object-cover w-40 h-40 rounded-full md:h-44 md:w-44"
-      src="/images/me.jpg"
+      src={profileImage}
       alt="Me"
-      width={176}
-      height={176}
+      width={528}
+      height={528}
+      quality={80}
     />
   </picture>
   <div class="space-y-2">

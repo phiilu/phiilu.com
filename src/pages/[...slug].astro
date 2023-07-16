@@ -1,0 +1,28 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Layout from "../layouts/Page.astro";
+import { Container } from "../components/react/Container";
+import { Heading } from "../components/react/Heading";
+import { ShareOnTwitterCta } from "../components/react/ShareOnTwitterCta";
+import { PostDetail } from "../components/react/PostDetail";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"posts">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout>
+  <Container as="main">
+    <PostDetail client:idle post={post} url={Astro.url.href}>
+      <Content />
+    </PostDetail>
+  </Container>
+</Layout>

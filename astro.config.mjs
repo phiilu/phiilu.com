@@ -9,4 +9,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: "https://phiilu.com",
   integrations: [mdx(), sitemap(), tailwind(), react()],
+  experimental: {
+    assets: true,
+  },
 });

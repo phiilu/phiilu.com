@@ -1,5 +1,15 @@
 const slugify = (str: string) => str.replace(/\s+/g, "-").toLowerCase();
 
+export type TagListItem = {
+  name: string;
+  slug: string;
+  bg: string;
+  text: string;
+  hover: string;
+  mainColor: string;
+  description: string;
+};
+
 const tags = {
   beginners: {
     name: "beginners",

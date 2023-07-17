@@ -20,7 +20,7 @@ export function Banner({
   text,
 }: BannerProps) {
   return (
-    <div className="bg-gradient-to-r from-pokezards-yellow to-pokezards-dark-red">
+    <div className="fixed  bottom-5 rounded-md shadow-md left-5 right-5 z-20 bg-gradient-to-r from-pokezards-yellow to-pokezards-dark-red">
       <div className="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex items-center flex-1 w-0">

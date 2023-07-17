@@ -1,11 +1,8 @@
-import React, { Fragment, ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect } from "react";
 import clsx from "clsx";
 import { Container } from "./Container";
 import { useScroll } from "../../hooks/useScroll";
 import { motion, EventInfo } from "framer-motion";
-import { Banner } from "./Banner";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { PokezardsIcon } from "./icons/PokezardsIcon";
 import { spring } from "../../helpers/animation";
 import { Logo } from "./icons/Logo";
 
@@ -81,7 +78,6 @@ interface HeaderProps {
 }
 
 export const Header = ({ route }: HeaderProps) => {
-  const [showBanner, setShowBanner] = useState<boolean | null>(null);
   const [scrolled] = useScroll();
   const [activeHoverIndex, setActiveHoverIndex] = React.useState(() => {
     return getActiveIndex(route);
@@ -122,21 +118,6 @@ export const Header = ({ route }: HeaderProps) => {
     hasHover.current = false;
   }
 
-  function closeBanner() {
-    localStorage.setItem("show_banner", "false");
-    setShowBanner(false);
-  }
-
-  useEffect(() => {
-    const showBanner = localStorage.getItem("show_banner");
-
-    if (showBanner === null) {
-      setShowBanner(true);
-    } else {
-      setShowBanner(false);
-    }
-  }, []);
-
   useEffect(() => {
     hasClicked.current = false;
     setActiveHoverIndex(getActiveIndex(route));
@@ -144,16 +125,6 @@ export const Header = ({ route }: HeaderProps) => {
 
   return (
     <div>
-      {showBanner ? (
-        <Banner
-          icon={<PokezardsIcon className="w-8 h-8" />}
-          ctaText={"Check it out"}
-          ctaHref="//pokezards.com?ref=phiilu.com"
-          text="Hey! If you like Pokémon TCG you might like my new project I am working on »Pokézards«"
-          shortText="I am working on a new product!"
-          onClose={closeBanner}
-        />
-      ) : null}
       <div
         className={clsx(
           "fixed top-0 left-0 z-20 h-2 bg-indigo-500 bg-opacity-75",
@@ -165,7 +136,10 @@ export const Header = ({ route }: HeaderProps) => {
       />
       <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
         <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-no-wrap rounded-xl">
-          <a href="/" className="flex-1 flex gap-2 items-center">
+          <a
+            href="/"
+            className="flex-1 flex gap-2 items-center justify-center sm:justify-start"
+          >
             <Logo className="h-8 w-8" />
             <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
               phiilu

@@ -6,12 +6,12 @@ import { Newsletter } from "../components/react/Newsletter";
 import { Notifications } from "../components/react/Notifications";
 import { PageBanner } from "../components/react/PageBanner";
 
-const { title, description } = Astro.props;
+const { title, description, keywords } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} keywords={keywords} />
   </head>
   <body>
     <PageBanner client:only />

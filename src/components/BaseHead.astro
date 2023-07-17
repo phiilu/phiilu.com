@@ -7,17 +7,24 @@ export interface Props {
   title?: string;
   description: string;
   image?: string;
+  keywords?: string;
+  publishedDate?: Date;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
+const {
+  title,
+  description,
+  image = "/placeholder-social.jpg",
+  keywords,
+  publishedDate,
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
   rel="alternate"
@@ -26,6 +33,35 @@ const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
   href="/rss.xml"
 />
 <meta name="generator" content={Astro.generator} />
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/images/favicon/apple-touch-icon.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/images/favicon/favicon-32x32.png"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/images/favicon/favicon-16x16.png"
+/>
+<link rel="manifest" href="/images/favicon/site.webmanifest" />
+<link
+  rel="mask-icon"
+  href="/images/favicon/safari-pinned-tab.svg"
+  color="#818cf8"
+/>
+<link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-config" content="/images/favicon/browserconfig.xml" />
+<meta name="theme-color" content="#ffffff" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -44,7 +80,14 @@ const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
     ? `${title} | Phiilu | Florian Kapfenberger`
     : "Phiilu | Florian Kapfenberger"}
 />
+<meta name="author" content="Florian Kapfenberger" />
 <meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
+{
+  publishedDate && (
+    <meta name="article:published_time" content={publishedDate.toISOString()} />
+  )
+}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />

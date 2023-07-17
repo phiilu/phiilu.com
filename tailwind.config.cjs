@@ -1,11 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require("tailwindcss/colors");
+const addFontface = require("./tailwind/plugins/addFontFace.cjs");
 
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      fontFamily: {
+        "open-sans": "Open Sans, sans-serif",
+        "source-sans-pro": "Source Sans Pro, sans-serif",
+      },
+      lineHeight: {
+        14: "3rem",
+      },
       colors: {
         amber: colors.amber,
         fuchsia: colors.fuchsia,
@@ -195,7 +203,89 @@ module.exports = {
           900: "#03627c",
         },
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            pre: {
+              maxWidth: "100vw",
+              borderRadius: 0,
+            },
+            "pre code": {
+              "word-break": "normal",
+            },
+            "pre code::after": {
+              content: "none",
+            },
+            code: {
+              "word-break": "break-word",
+            },
+            a: {
+              "word-break": "break-word",
+              textDecoration: "none",
+              color: theme("colors.indigo.500"),
+              "&:hover": {
+                color: theme("colors.indigo.600"),
+              },
+              "&:visited": {
+                color: theme("colors.indigo.800"),
+              },
+            },
+          },
+        },
+        dark: {
+          css: {
+            color: theme("colors.gray.200"),
+            strong: {
+              color: theme("colors.gray.100"),
+            },
+            blockquote: {
+              color: theme("colors.gray.200"),
+              backgroundColor: theme("colors.gray.800"),
+              paddingTop: theme("spacing.4"),
+              paddingBottom: theme("spacing.4"),
+              borderTopRightRadius: theme("borderRadius.md"),
+              borderBottomRightRadius: theme("borderRadius.md"),
+              "> p": {
+                margin: 0,
+              },
+            },
+            h1: {
+              color: theme("colors.gray.100"),
+            },
+            h2: {
+              color: theme("colors.gray.100"),
+            },
+            h3: {
+              color: theme("colors.gray.100"),
+            },
+            h4: {
+              color: theme("colors.gray.100"),
+            },
+            h5: {
+              color: theme("colors.gray.100"),
+            },
+            h6: {
+              color: theme("colors.gray.100"),
+            },
+            a: {
+              color: theme("colors.indigo.500"),
+              "&:hover": {
+                color: theme("colors.indigo.600"),
+              },
+              "&:visited": {
+                color: theme("colors.indigo.700"),
+              },
+            },
+            code: {
+              color: theme("colors.gray.200"),
+            },
+            hr: {
+              borderColor: theme("colors.gray.800"),
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), addFontface],
 };

@@ -46,7 +46,9 @@ export function GearItem({
           <Heading noMargin size="h3">
             {title}
           </Heading>
-          <div className="lg:col-span-2 prose">{children}</div>
+          <div className="lg:col-span-2 prose lg:prose-lg dark:prose-dark">
+            {children}
+          </div>
           {link && <ProductLink href={link}>Homepage</ProductLink>}
           {affiliateLink && (
             <div className="flex items-end flex-1 max-w-sm">
@@ -109,9 +111,9 @@ function ProductLink({ href }: HTMLProps<HTMLAnchorElement>) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          stroke-line-cap="round"
-          stroke-line-join="round"
-          stroke-width={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
           d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
         />
       </svg>

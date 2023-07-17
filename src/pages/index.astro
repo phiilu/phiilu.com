@@ -1,0 +1,42 @@
+---
+import { Button } from '@components/react/Button';
+import { Container } from '@components/react/Container';
+import { getCollection } from 'astro:content';
+import { PostListItem } from '@components/react/PostListItem';
+import { SectionHeading } from '@components/react/SectionHeading';
+import Hero from '@components/Hero.astro';
+import Layout from '@/layouts/Page.astro';
+
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
+  .slice(0, 5);
+---
+
+<Layout>
+  <Container as="main" noMargin className="md:px-4 space-y-14">
+    <Hero />
+    <div class="space-y-8 md:space-y-14">
+      <SectionHeading heading="Blog" subheading="Latest Articles">
+        Here are my latest written articles, I hope you like them! <br /> I write about programming
+        and server related topics.
+      </SectionHeading>
+      <ul class="space-y-16 md:space-y-8">
+        {
+          posts.map((post) => (
+            <li>
+              <PostListItem
+                post={{
+                  ...post.data,
+                  slug: post.slug
+                }}
+              />
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex justify-center">
+        <Button as={'a'} href="/blog" width="medium">Visit My Blog</Button>
+      </div>
+    </div>
+  </Container>
+</Layout>

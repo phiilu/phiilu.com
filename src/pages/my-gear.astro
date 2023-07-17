@@ -1,0 +1,120 @@
+---
+import { Container } from '@components/react/Container';
+import { GearCategoryIcons } from '@components/react/icons/GearCategoryIcons';
+import { getCollection } from 'astro:content';
+import { Heading } from '@components/react/Heading';
+import Layout from '@/layouts/Page.astro';
+import {
+  GearItem,
+  type GearCollectionEntryRendered,
+  SoftwareGearItem
+} from '@components/react/GearItem';
+
+const gear = await getCollection('gear');
+
+const gearRendered: GearCollectionEntryRendered[] = [];
+
+for (const g of gear) {
+  const { Content } = await g.render();
+  gearRendered.push({
+    ...g,
+    Content
+  });
+}
+
+const gearByCategory = gearRendered.reduce(
+  (accu, gearItem) => {
+    if (accu[gearItem.data.category as string]) {
+      accu[gearItem.data.category as string].push(gearItem);
+    } else {
+      accu[gearItem.data.category as string] = [gearItem];
+    }
+    return accu;
+  },
+  {} as Record<string, GearCollectionEntryRendered[]>
+);
+
+const sortedGearByCategory = {
+  Hardware: gearByCategory.Hardware,
+  Software: gearByCategory.Software,
+  Office: gearByCategory.Office,
+  Lifestyle: gearByCategory.Lifestyle
+};
+---
+
+<Layout title="My Gear / Uses">
+  <Container as="main">
+    <div class="space-y-12 md:px-4">
+      <Heading noMargin>My Gear</Heading>
+      <p class="text-lg">
+        Inspired by{' '}
+        <a class="font-bold text-indigo-500" href="https://uses.tech/"> many others</a>{' '}
+         I created a list on hardware, software and equipment I use daily to make my life easier.
+      </p>
+
+      {
+        Object.entries(sortedGearByCategory).map(([category, gears]) => {
+          return (
+            <div class="relative space-y-4">
+              <Heading size="h2" className="flex items-center">
+                <GearCategoryIcons category={category} />
+                {category}
+              </Heading>
+              <ul class="space-y-12">
+                {gears.map((gear) => {
+                  if (gear.data.category === 'Software') {
+                    return (
+                      <li>
+                        <SoftwareGearItem gear={gear}>
+                          <gear.Content />
+                        </SoftwareGearItem>
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li>
+                      <GearItem gear={gear}>
+                        <gear.Content />
+                      </GearItem>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })
+      }
+      <div class="p-4 bg-indigo-50 rounded-md dark:bg-blue-300 dark:border-indigo-900">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg
+              class="w-5 h-5 text-indigo-800 dark:text-indigo-700"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="ml-3 space-y-2">
+            <p class="text-sm text-indigo-800 dark:text-indigo-900">
+              If you click <strong>Buy</strong> or <strong>the image</strong>
+               you will get redirected to a page where you can buy the product using an{' '}
+              <strong>affilated link</strong>.
+            </p>
+
+            <p class="text-sm text-indigo-800 dark:text-indigo-900">
+              An affilate link will not increase your price, but it will get me a small commission
+              and helps me out :)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Layout>

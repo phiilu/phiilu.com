@@ -1,0 +1,338 @@
+---
+title: Deploy Meilisearch to Fly.io in 5 Minutes
+icon: /images/icons/meilisearch-icon.svg
+slug: deploy-meilisearch-to-fly-io-in-5-minutes
+publishedDate: 2022-08-09
+published: true
+description: Meilisearch is an open-source search engine and a great alternative to Elastic Search or Algolia. Fly.io is great global app platform.
+tags: ['hosting', 'docker']
+---
+
+[Meilisearch](https://www.meilisearch.com) is a great open-source search engine that allows you to add full-text search to your apps.
+
+Meilisearch will offer a hosted option starting at 29$/month in the future, but of course, you can also self-host it. If you have a new project, self-hosting is a good option to save a few bucks in the beginning.
+
+With [Fly.io](https://fly.io) you get a [generous free tier](https://fly.io/docs/about/pricing/#hobby-plan) of 3 free VMs with 256MB each and 3GB of volume storage. Meilisearch is written in [Rust](https://www.rust-lang.org) so it is also quite memory-efficient. Even the 256MB instances on Fly will be more than enough for your side project to get started and later can be easily scaled.
+
+I recently started adding Meilisearch to my side-project [Pokézards](https://pokezards.com/?ref=phiilu.com). The search feature is not yet fully implemented (and released) but you could play around with it a bit [here](https://pokezards.com/search?ref=phiilu.com).
+
+## Prerequisites
+
+You will need to have a [fly.io](https://fly.io) account and have the fly CLI installed on your computer.
+
+[Check out the docs](https://fly.io/docs/flyctl/installing/) on how to install it on your OS.
+
+After installing you need to log in.
+
+```bash
+fly auth login
+```
+
+> Note: I have aliased flyctl to fly on my machine
+
+---
+
+**Let's get started**
+
+First, create a new directory. This directory will be the place where we will store the `fly.toml` configuration file.
+
+```bash
+mkdir meilisearch-example
+```
+
+Next, go into the directory and we can create a fly app for our Meilisearch app.
+
+## Generating the fly.toml configuration
+
+Start by executing following commandÖ
+
+```bash
+fly launch
+```
+
+The CLI will now ask us some questions that we will go through now.
+
+First, it asks us for the name of the app
+
+```bash
+? App Name (leave blank to use an auto-generated name): meilsearch-example
+```
+
+Next, it asks the organization the app belongs to. If you only have one organization it might not even ask that.
+
+```bash
+? Select organization:  [Use arrows to move, type to filter]
+> Florian Kapfenberger (personal)
+```
+
+Last but not least it will ask which region the app should be deployed to. This is one of the biggest benefits of fly that it will allow you to host the same app easily in multiple regions.
+
+Here you just select the region that is closest to you.
+
+```bash
+? Select region:  [Use arrows to move, type to filter]
+  ams (Amsterdam, Netherlands)
+  cdg (Paris, France)
+  dfw (Dallas, Texas (US))
+  ewr (Secaucus, NJ (US))
+> fra (Frankfurt, Germany)
+  gru (São Paulo)
+  hkg (Hong Kong, Hong Kong)
+  iad (Ashburn, Virginia (US))
+  lax (Los Angeles, California (US))
+  lhr (London, United Kingdom)
+  maa (Chennai (Madras), India)
+  mad (Madrid, Spain)
+  mia (Miami, Florida (US))
+  nrt (Tokyo, Japan)
+  ord (Chicago, Illinois (US))
+```
+
+And done!
+
+```
+Created app meilisearch-example in organization personal
+Wrote config file fly.toml
+```
+
+> Note: You could write the command in one go without interaction: `fly launch --name meilisearch-example --region fra --org personal`
+
+The CLI has created the app on Fly and generated the `fly.toml` configuration.
+
+![Fly.io app has been created and is visible on the dashboard ](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-1.png)
+
+```toml
+# fly.toml file generated for meilisearch-example on 2022-08-09T21:15:08+02:00
+
+app = "meilisearch-example"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[env]
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
+```
+
+Now that the initial configuration has been generated, we need to modify it a bit so that we can deploy Meilisearch.
+
+## Mounting a persistent volume to the Meilisearch app
+
+Before we launch Meilisearch we need to create a persistent volume on Fly and link it to the app we just created.
+
+The app on itself is just a small [Firecracker VM](https://fly.io/blog/sandboxing-and-workload-isolation/#firecracker), that has not much space for data like a database, plus it is not persistent and the data will be gone once the next version will be deployed.
+
+Creating a new volume is just executing a single command with the name, size, and region chosen.
+
+```bash
+fly volumes create meilisearch_data -s 1 -r fra
+```
+
+> Note: If you don't specify -r the CLI will ask you and show a region picker :)
+
+Here I have created a new volume named `meilisearch_data` with a size of `1GB` and it is deployed in the `fra` Frankfurt region.
+
+```output
+        ID: vol_1g673408j02vydxw
+      Name: meilisearch_data
+       App: meilisearch-example
+    Region: fra
+      Zone: 5dea
+   Size GB: 1
+ Encrypted: true
+Created at: 09 Aug 22 19:29 UTC
+```
+
+If you need more storage you can easily expand it later!
+
+Next, we need to tell our app how to mount this volume. Paste the following underneath `[env]`:
+
+```
+[mounts]
+  source="meilisearch_data"
+  destination="/meili_data"
+```
+
+`source` is the name of the volume that we created before and `destination` is the mount point on the Firecracker VM.
+
+The Meilisearch docker container will store the database files by default on `/meili_data`, that's why we mount the volume there.
+
+Now we are almost ready to hit that launch button, just one more thing missing.
+
+## Configuring Meilisearch using fly.toml
+
+Meilisearch operates on port `7700` by default, but if you look at the `fly.toml` configuration you will see the `internal_port` is set to `8080`. This is the default expectation by Fly, however, we can just change it to `7700` with no problems.
+
+Meiliseach allows us to do a lot of configuration by environment variables, which is great because we can easily set them in the fly.toml file underneath the `[env]` section.
+
+If you don't want to send telemetry data to Meilisearch you can disable them by setting the `MEILI_NO_ANALYTICS` environment variable.
+
+```bash
+[env]
+  MEILI_NO_ANALYTICS=""
+```
+
+We will take a look at how to secure and configure Meilisearch later, but for now, the minimal configuration has been done and we can finally hit that launch button!!!
+
+## Deploying Meilisearch to Fly
+
+No more waiting, let's deploy Meilisearch!
+
+Smash the launch button with the following command:
+
+```bash
+fly deploy -i getmeili/meilisearch:v0.28
+```
+
+```
+==> Verifying app config
+--> Verified app config
+==> Building image
+Searching for image 'getmeili/meilisearch:v0.28' remotely...
+image found: img_lrjxpggg3e8p7n6q
+==> Creating release
+--> release v2 created
+
+--> You can detach the terminal anytime without stopping the deployment
+==> Monitoring deployment
+
+ 1 desired, 1 placed, 1 healthy, 0 unhealthy [health checks: 1 total, 1 passing]
+--> v0 deployed successfully
+```
+
+> Note: If you don't want to specify the image all the time with -i you would need to create a Dockerfile. [Here is an example](https://fly.io/docs/app-guides/run-a-global-image-service/#creating-the-dockerfile).
+
+Nice! It deployed successfully!
+
+Login to your Dashboard and visit the URL of your app to see Meilisearch running on Fly.io.
+
+![Fly.io Dashboard of the created app after it was deployed](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-2.png)
+
+Or simply run `fly open` 😎
+
+![Meilisearch running on fly.io](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-3.png)
+
+## Securing Meilisearch
+
+Meilisearch is now deployed, but it is not secured and anybody can use your Meilisearch instance now.
+
+Also if you don't want to have access to search preview (the web GUI we just saw) then you need to set the environment to `production`
+
+Simply add the `MEILI_ENV` in the `fly.toml` file.
+
+```toml
+[env]
+  MEILI_NO_ANALYTICS=""
+  MEILI_ENV="production"
+```
+
+You now need to also set a master key to secure your Meilisearch instance. The master key can be set by the `MEILI_MASTER_KEY` environment variable. However the master key is a secret **WE DON'T** want to put it inside the `fly.toml` file.
+
+Secrets can be set on fly using the CLI, but first, generate a new secret on your local machine.
+
+```bash
+openssl rand -base64 32
+```
+
+This will generate a random string that you can use for the master key.
+
+Next set the secret using the fly CLI:
+
+```bash
+fly secrets set MEILI_MASTER_KEY=GZAA48c8vwvQ7eTOa/c+E3A1dFOL5WVoJLxMHpxTYVc=
+```
+
+```
+Release v1 created
+==> Monitoring deployment
+
+ 1 desired, 1 placed, 1 healthy, 0 unhealthy
+--> v1 deployed successfully
+```
+
+> Note: I did not expose my secret here, it is just a random string I don't use :)
+
+The CLI will immediately deploy a new version with the new secret environment variable set.
+
+You can check that Meilisearch is now secured by going to the search preview again.
+
+![Meilisearch search preview is now secured using the master key](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-4.png)
+
+You might have noticed we have set the `MEILI_ENV` to `production`, but the search preview is still showing up. When we set the secret, the CLI did not use the updated `fly.toml` file, it only redeployed the previous version where the environment variable was not yet set.
+
+We need to run `fly deploy -i getmeili/meilisearch:v0.28` again to commit the changes.
+
+## Making sure Meilisearch works
+
+Now that Meilisearch is deployed and secured we can finally use it.
+
+I followed the [Quickstart guide](https://docs.meilisearch.com/learn/getting_started/filtering_and_sorting.html#filtering-and-sorting) and tested my instance with it.
+
+Inserting the dataset:
+
+```bash
+curl -X POST 'https://meilisearch-example.fly.dev/indexes/meteorites/documents' \
+     -H 'Content-Type: application/json' \
+     -H 'Authorization: Bearer SECRET' \
+     --data-binary @meteorites.json
+```
+
+```
+{"taskUid":0,"indexUid":"meteorites","status":"enqueued","type":"documentAdditionOrUpdate","enqueuedAt":"2022-08-09T20:23:09.38597868Z"}%
+```
+
+Next, I switched from `production` to `development` environment to have a nice GUI to search for the data.
+
+I only did this for the blog post, for a production app I will probably want the environment to be set to `production`.
+
+It works! 🎉🎉
+
+![Meilsearch search preview in action](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-5.png)
+
+## Remove Meilisearch from Fly.io
+
+If you don't need Meilisearch anymore, you can simply delete it:
+
+```bash
+fly destroy meilisearch-example -y
+```
+
+## Conclusion
+
+There you have it. Meilisearch deployed to Fly.io is simple and can be done in just a few minutes!
+
+Fly just does so much of the heavy lifting in the background that it is ridiculous.
+
+Trying to set up a small VPS and installing Meilisearch with Nginx + Let's Encrypt would take a lot more time and after it is deployed you would still have to maintain the server and do security updates.
+
+Hope this helps some of you and if it did let me know on [Twitter](https://twitter.com/phiilu)!
+
+Cheers

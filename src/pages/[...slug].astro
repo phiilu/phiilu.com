@@ -1,0 +1,43 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import { Container } from '@components/react/Container';
+import { countWords } from '@/helpers/countWords';
+import { format } from 'date-fns';
+import { PostDetail } from '@components/react/PostDetail';
+import Layout from '@/layouts/Page.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+type Props = { post: CollectionEntry<'posts'> };
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const wordCount = countWords(post.body);
+const timeToRead = Math.round(wordCount / 275);
+
+const searchParams = new URLSearchParams();
+searchParams.append('title', post.data.title);
+searchParams.append('url', Astro.url.toString());
+searchParams.append('date', format(post.data.publishedDate, 'MMMM dd, yyyy'));
+searchParams.append('readTime', `${timeToRead} Minutes`);
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  keywords={post.data.tags.join(',')}
+  image={`/api/blog/og?${searchParams}`}
+>
+  <Container as="main">
+    <PostDetail client:idle post={post} url={Astro.url.href}>
+      <Content />
+    </PostDetail>
+  </Container>
+</Layout>

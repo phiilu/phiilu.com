@@ -1,0 +1,215 @@
+---
+title: Check your LAN network speeds with iperf3
+icon: /images/icons/terminal-icon.png
+slug: check-your-lan-network-speeds-with-iperf3
+publishedDate: 2020-09-04
+published: true
+description: Sometimes you might want to know if you really max out your router/switch/server network speeds and with iperf3 it is really easy to test your LAN network speeds.
+tags: ['server', 'ubuntu', 'network', 'terminal']
+---
+
+When you are installing new network cables or a new router/switch you might want to test if your equipment performs as it should.
+
+I recently installed new CAT 7 cables which I had crimped myself. Therefore I wanted to test if what I did was actually working and giving me the maximal theoretical speed of **1 Gbit/sec** in my network.
+
+When you want to test your internet speed you are usually used to going to a website like [speedtest.net][1] or [fast.com][2]. Those websites are great if you want to test your ISP's network speed, but usually not great if you want to test your **LAN** network speed. Of course, if you have a 1 Gbit/sec up and downlink contract with your ISP, those sites should work too.
+
+For the rest of us, who don't have those extreme speeds we need to use tools that are using our LAN network.
+
+`iperf3` is an excellent tool to measure LAN network speeds and to find bottlenecks or bad network equipment.
+
+In the following, I will show how to install `iperf3` and how to use it for a basic network test.
+
+## Install iperf3
+
+First of all, we need to install `iperf3` on both devices that you want to test.
+
+### Debian/Ubuntu
+
+```
+sudo apt install iperf3
+```
+
+### macOS
+
+```
+brew install iperf3
+```
+
+## Testing your LAN speeds
+
+`iperf3` is a client-server application, which means it will need to run on two different computers to work.
+
+First, determine which of your device should be the server and which should be the client. It does not matter which device has which role.
+
+In my case, I chose my Raspberry Pi as the server and my MacBook Pro as the client.
+
+On the server device you just start the iperf3 in server mode:
+
+```
+iperf3 -s
+```
+
+In your terminal window, you should now see that your server is ready
+
+```
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+```
+
+On your client device you will now have to connect to the server:
+
+```
+iperf3 -c 192.168.1.10
+```
+
+> Note that you should change the IP address to the one of the server
+
+```
+Connecting to host 192.168.1.10, port 5201
+[  5] local 192.168.1.179 port 63816 connected to 192.168.1.10 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   114 MBytes   956 Mbits/sec
+[  5]   1.00-2.00   sec   112 MBytes   941 Mbits/sec
+[  5]   2.00-3.00   sec   112 MBytes   935 Mbits/sec
+[  5]   3.00-4.00   sec   111 MBytes   928 Mbits/sec
+[  5]   4.00-5.00   sec   113 MBytes   945 Mbits/sec
+[  5]   5.00-6.00   sec   112 MBytes   943 Mbits/sec
+[  5]   6.00-7.00   sec   112 MBytes   941 Mbits/sec
+[  5]   7.00-8.00   sec   112 MBytes   941 Mbits/sec
+[  5]   8.00-9.00   sec   112 MBytes   941 Mbits/sec
+[  5]   9.00-10.00  sec   112 MBytes   941 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  sender
+[  5]   0.00-10.01  sec  1.10 GBytes   940 Mbits/sec                  receiver
+
+iperf Done.
+```
+
+Now you can see how fast your LAN speeds are. If you have a 1Gbit/sec network like me you should see speeds around `940 Mbits/sec`.
+
+This is really close to the theoretical 1Gbit/sec. You can repeat the test multiple times as there can be different results depending on the systems load.
+
+## Additional options to use
+
+Here I will list some extra options that you can pass to `iperf3`. If you want to check out more options use the man pages by typing `man iperf3` into the terminal.
+
+### Parallel test streams
+
+If you have more than 1 Gbits/s you can try to use the `-P` parameter to run multiple test streams at once at parallel.
+
+```
+iperf3 -c 192.168.1.13 -P 3
+```
+
+```
+Connecting to host 192.168.1.13, port 5201
+[  5] local 192.168.1.179 port 63847 connected to 192.168.1.13 port 5201
+[  7] local 192.168.1.179 port 63848 connected to 192.168.1.13 port 5201
+[  9] local 192.168.1.179 port 63849 connected to 192.168.1.13 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  15.0 MBytes   126 Mbits/sec
+[  7]   0.00-1.00   sec  42.8 MBytes   359 Mbits/sec
+[  9]   0.00-1.00   sec  56.7 MBytes   476 Mbits/sec
+[SUM]   0.00-1.00   sec   115 MBytes   961 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   1.00-2.00   sec  10.8 MBytes  90.8 Mbits/sec
+[  7]   1.00-2.00   sec  49.5 MBytes   416 Mbits/sec
+[  9]   1.00-2.00   sec  52.1 MBytes   437 Mbits/sec
+[SUM]   1.00-2.00   sec   112 MBytes   943 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   2.00-3.00   sec  17.7 MBytes   149 Mbits/sec
+[  7]   2.00-3.00   sec  47.5 MBytes   398 Mbits/sec
+[  9]   2.00-3.00   sec  47.3 MBytes   397 Mbits/sec
+[SUM]   2.00-3.00   sec   113 MBytes   944 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   3.00-4.00   sec  24.8 MBytes   208 Mbits/sec
+[  7]   3.00-4.00   sec  46.6 MBytes   391 Mbits/sec
+[  9]   3.00-4.00   sec  41.0 MBytes   344 Mbits/sec
+[SUM]   3.00-4.00   sec   112 MBytes   943 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   4.00-5.00   sec  26.0 MBytes   218 Mbits/sec
+[  7]   4.00-5.00   sec  43.2 MBytes   362 Mbits/sec
+[  9]   4.00-5.00   sec  42.9 MBytes   360 Mbits/sec
+[SUM]   4.00-5.00   sec   112 MBytes   940 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   5.00-6.00   sec  32.2 MBytes   270 Mbits/sec
+[  7]   5.00-6.00   sec  43.2 MBytes   363 Mbits/sec
+[  9]   5.00-6.00   sec  36.6 MBytes   307 Mbits/sec
+[SUM]   5.00-6.00   sec   112 MBytes   940 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   6.00-7.00   sec  33.4 MBytes   280 Mbits/sec
+[  7]   6.00-7.00   sec  39.6 MBytes   332 Mbits/sec
+[  9]   6.00-7.00   sec  39.3 MBytes   330 Mbits/sec
+[SUM]   6.00-7.00   sec   112 MBytes   943 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   7.00-8.00   sec  27.5 MBytes   231 Mbits/sec
+[  7]   7.00-8.00   sec  41.5 MBytes   348 Mbits/sec
+[  9]   7.00-8.00   sec  43.0 MBytes   361 Mbits/sec
+[SUM]   7.00-8.00   sec   112 MBytes   940 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   8.00-9.00   sec  23.2 MBytes   195 Mbits/sec
+[  7]   8.00-9.00   sec  45.3 MBytes   380 Mbits/sec
+[  9]   8.00-9.00   sec  42.6 MBytes   358 Mbits/sec
+[SUM]   8.00-9.00   sec   111 MBytes   932 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[  5]   9.00-10.00  sec  26.2 MBytes   219 Mbits/sec
+[  7]   9.00-10.00  sec  43.9 MBytes   368 Mbits/sec
+[  9]   9.00-10.00  sec  43.4 MBytes   364 Mbits/sec
+[SUM]   9.00-10.00  sec   113 MBytes   952 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec   237 MBytes   199 Mbits/sec                  sender
+[  5]   0.00-10.01  sec   236 MBytes   198 Mbits/sec                  receiver
+[  7]   0.00-10.00  sec   443 MBytes   372 Mbits/sec                  sender
+[  7]   0.00-10.01  sec   442 MBytes   370 Mbits/sec                  receiver
+[  9]   0.00-10.00  sec   445 MBytes   373 Mbits/sec                  sender
+[  9]   0.00-10.01  sec   444 MBytes   372 Mbits/sec                  receiver
+[SUM]   0.00-10.00  sec  1.10 GBytes   944 Mbits/sec                  sender
+[SUM]   0.00-10.01  sec  1.10 GBytes   940 Mbits/sec                  receiver
+
+iperf Done.
+```
+
+You see that there are now 3 test streams occupying the full 1 Gbit/sec bandwidth.
+
+### Changing the displayed speed format
+
+By default `iperf3` will show you the speed in `Mbit/sec`, but you can change that with the `-f [kmgtKMGT]` option.
+
+To display `Gbit/sec` you can you use the following command:
+
+```
+iperf3 -c 192.168.1.13 -f g
+```
+
+```
+Connecting to host 192.168.1.13, port 5201
+[  5] local 192.168.1.179 port 63952 connected to 192.168.1.13 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   1.00-2.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   2.00-3.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   3.00-4.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   4.00-5.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   5.00-6.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   6.00-7.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   7.00-8.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   8.00-9.00   sec   112 MBytes  0.94 Gbits/sec
+[  5]   9.00-10.00  sec   112 MBytes  0.94 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec  1.10 GBytes  0.94 Gbits/sec                  sender
+[  5]   0.00-10.01  sec  1.09 GBytes  0.94 Gbits/sec                  receiver
+
+iperf Done.
+```
+
+## Conclusion
+
+Now you know how you can test your own LAN network and it is not that difficult too. Next time you notice a drop in transfer speed between your NAS and computer, you may want to check your connection with `iperf3` and figure out where the problem could be 😄
+
+[1]: https://www.speedtest.net/
+[2]: https://fast.com/

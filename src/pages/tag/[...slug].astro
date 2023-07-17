@@ -1,0 +1,62 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import { Container } from '@components/react/Container';
+import { Heading } from '@components/react/Heading';
+import { PostListItem } from '@components/react/PostListItem';
+import clsx from 'clsx';
+import Layout from '@/layouts/Page.astro';
+import slugify from '@sindresorhus/slugify';
+import tagColors, { TagListItem } from '@/helpers/tagColors';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const allTags = posts.flatMap((post) => post.data.tags);
+  const tags = [...new Set(allTags)];
+
+  return tags.map((tag) => ({
+    params: { slug: slugify(tag) },
+    props: {
+      name: tag,
+      posts: posts.filter((post) => post.data.tags.includes(tag))
+    }
+  }));
+}
+
+type Props = { name: string; posts: CollectionEntry<'posts'>[] };
+
+const tag = Astro.props as Props;
+
+const count = tag.posts.length;
+
+// @ts-ignore
+const { bg, text, mainColor } = tagColors[tag.name] as TagListItem;
+---
+
+<Layout>
+  <Container as="main">
+    <article class="space-y-12">
+      <div class="px-4 space-y-4">
+        <Heading noMargin className="flex items-center space-x-2">
+          <span class={clsx('font-bold', mainColor)}>{count}</span>
+          <span>
+            Post
+            {count > 1 ? 's ' : ' '}
+             in
+          </span>
+          <span class={clsx('inline-block rounded-md px-4 py-1 text-3xl font-semibold', bg, text)}>
+            {tag.name}
+          </span>
+        </Heading>
+      </div>
+      <ul class="space-y-8">
+        {
+          tag.posts.map((post) => (
+            <li>
+              <PostListItem post={{ ...post.data, slug: post.slug }} />
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+  </Container>
+</Layout>

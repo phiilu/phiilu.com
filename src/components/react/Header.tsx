@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { Fragment, ReactNode } from "react";
 import clsx from "clsx";
 import { Container } from "./Container";
 import { useScroll } from "../../hooks/useScroll";
@@ -7,6 +7,7 @@ import { Banner } from "./Banner";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { PokezardsIcon } from "./icons/PokezardsIcon";
 import { spring } from "../../helpers/animation";
+import { Logo } from "./icons/Logo";
 
 interface MenuItemProps {
   onHoverStart: (event: MouseEvent, info: EventInfo) => void;
@@ -149,9 +150,10 @@ export const Header = ({ route }: HeaderProps) => {
       />
       <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
         <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-no-wrap rounded-xl">
-          <a href="/" className="flex-1">
+          <a href="/" className="flex-1 flex gap-2 items-center">
+            <Logo class="h-8 w-8" />
             <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
-              Phiilu
+              phiilu
             </h1>
           </a>
           <ul className="flex items-center justify-center flex-none w-full space-x-2 place-items-center md:w-auto">

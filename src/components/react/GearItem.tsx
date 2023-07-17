@@ -8,7 +8,7 @@ export type GearCollectionEntryRendered = {
   Content: AstroComponentFactory;
 } & CollectionEntry<'gear'>;
 
-interface GearItem {
+interface GearItemProps {
   gear: GearCollectionEntryRendered;
   children: ReactNode;
 }
@@ -18,7 +18,7 @@ export function GearItem({
     data: { title, affiliateLink, affilateLinkText, image, link }
   },
   children
-}: GearItem) {
+}: GearItemProps) {
   return (
     <div className="space-y-4">
       <div className={'grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-x-8 lg:gap-y-4'}>

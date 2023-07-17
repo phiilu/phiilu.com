@@ -1,20 +1,20 @@
 ---
-import { CollectionEntry, getCollection, getEntry } from "astro:content";
-import Layout from "../layouts/Page.astro";
-import { Container } from "../components/react/Container";
-import { PostDetail } from "../components/react/PostDetail";
-import { format } from "date-fns";
-import { countWords } from "../helpers/countWords";
+import { CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../layouts/Page.astro';
+import { Container } from '../components/react/Container';
+import { PostDetail } from '../components/react/PostDetail';
+import { format } from 'date-fns';
+import { countWords } from '../helpers/countWords';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = await getCollection('posts');
   return posts.map((post) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post }
   }));
 }
 
-type Props = { post: CollectionEntry<"posts"> };
+type Props = { post: CollectionEntry<'posts'> };
 
 const { post } = Astro.props;
 const { Content } = await post.render();
@@ -23,16 +23,16 @@ const wordCount = countWords(post.body);
 const timeToRead = Math.round(wordCount / 275);
 
 const searchParams = new URLSearchParams();
-searchParams.append("title", post.data.title);
-searchParams.append("url", Astro.url.toString());
-searchParams.append("date", format(post.data.publishedDate, "MMMM dd, yyyy"));
-searchParams.append("readTime", `${timeToRead} Minutes`);
+searchParams.append('title', post.data.title);
+searchParams.append('url', Astro.url.toString());
+searchParams.append('date', format(post.data.publishedDate, 'MMMM dd, yyyy'));
+searchParams.append('readTime', `${timeToRead} Minutes`);
 ---
 
 <Layout
   title={post.data.title}
   description={post.data.description}
-  keywords={post.data.tags.join(",")}
+  keywords={post.data.tags.join(',')}
   image={`/api/blog/og?${searchParams}`}
 >
   <Container as="main">

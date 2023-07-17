@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect } from 'react';
-import clsx from 'clsx';
+import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { clsx } from 'clsx';
 import { Container } from './Container';
 import { useScroll } from '../../hooks/useScroll';
 import { motion, EventInfo } from 'framer-motion';
@@ -68,16 +68,16 @@ interface HeaderProps {
 
 export const Header = ({ route }: HeaderProps) => {
   const [scrolled] = useScroll();
-  const [activeHoverIndex, setActiveHoverIndex] = React.useState(() => {
+  const [activeHoverIndex, setActiveHoverIndex] = useState(() => {
     return getActiveIndex(route);
   });
-  const hasClicked = React.useRef(false);
-  const hasHover = React.useRef(false);
+  const hasClicked = useRef(false);
+  const hasHover = useRef(false);
 
   const handleOnClicked = () => {
     hasClicked.current = true;
   };
-  const handleOnHoverStart = React.useCallback(
+  const handleOnHoverStart = useCallback(
     (index: number) => () => {
       hasHover.current = true;
       setActiveHoverIndex(index);

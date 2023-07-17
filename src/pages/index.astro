@@ -1,17 +1,14 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Hero from "../components/Hero.astro";
-import { Button } from "../components/react/Button";
-import { Container } from "../components/react/Container";
-import { SectionHeading } from "../components/react/SectionHeading";
-import Layout from "../layouts/Page.astro";
-import { getCollection } from "astro:content";
-import { PostListItem } from "../components/react/PostListItem";
+import Hero from '../components/Hero.astro';
+import { Button } from '../components/react/Button';
+import { Container } from '../components/react/Container';
+import { SectionHeading } from '../components/react/SectionHeading';
+import Layout from '../layouts/Page.astro';
+import { getCollection } from 'astro:content';
+import { PostListItem } from '../components/react/PostListItem';
 
-const posts = (await getCollection("posts"))
-  .sort(
-    (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
-  )
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf())
   .slice(0, 5);
 ---
 
@@ -20,8 +17,8 @@ const posts = (await getCollection("posts"))
     <Hero />
     <div class="space-y-8 md:space-y-14">
       <SectionHeading heading="Blog" subheading="Latest Articles">
-        Here are my latest written articles, I hope you like them! <br /> I
-        write about programming and server related topics.
+        Here are my latest written articles, I hope you like them! <br /> I write about programming
+        and server related topics.
       </SectionHeading>
       <ul class="space-y-16 md:space-y-8">
         {
@@ -30,7 +27,7 @@ const posts = (await getCollection("posts"))
               <PostListItem
                 post={{
                   ...post.data,
-                  slug: post.slug,
+                  slug: post.slug
                 }}
               />
             </li>
@@ -38,7 +35,7 @@ const posts = (await getCollection("posts"))
         }
       </ul>
       <div class="flex justify-center">
-        <Button as={"a"} href="/blog" width="medium">Visit My Blog</Button>
+        <Button as={'a'} href="/blog" width="medium">Visit My Blog</Button>
       </div>
     </div>
   </Container>

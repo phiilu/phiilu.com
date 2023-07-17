@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 // import trackEvent from "@helpers/tracking";
 
 const defaultClassName =

@@ -1,5 +1,4 @@
-import toastAction, { Toaster, ToastBar, resolveValue } from 'react-hot-toast';
-import { AnimatePresence, motion } from 'framer-motion';
+import toastAction, { Toaster, resolveValue } from 'react-hot-toast';
 import { Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { XMarkIcon } from '@heroicons/react/20/solid';

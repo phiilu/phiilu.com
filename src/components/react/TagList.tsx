@@ -1,16 +1,15 @@
-import React from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import tagColors, { TagListItem } from '../../helpers/tagColors';
+import { useMemo } from 'react';
 
 interface TagListProps {
   tags: string[];
 }
 
 export const TagList = ({ tags }: TagListProps) => {
-  return React.useMemo(() => {
+  return useMemo(() => {
     const tagList: TagListItem[] = tags.map((tag) => ({
-      // @ts-ignore
-      ...tagColors[tag]
+      ...tagColors[tag as keyof typeof tagColors]
     }));
 
     return (

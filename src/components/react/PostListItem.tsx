@@ -23,6 +23,7 @@ export const PostListItem = ({
   return useMemo(
     () => (
       <article className="relative inline-block p-4 text-gray-900 rounded-md outline-none group dark:text-gray-100 post-item hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:shadow-sm focus:text-gray-700 dark:focus:bg-gray-800 dark:hover:bg-gray-800">
+        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
         <a
           href={`/${slug}`}
           className="absolute top-0 bottom-0 left-0 right-0"

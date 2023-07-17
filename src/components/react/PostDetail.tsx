@@ -79,13 +79,6 @@ function PostSidebar({
   return (
     <aside className="pb-10">
       <div className="sticky top-0 flex flex-col items-start pt-4 border-t border-gray-200 dark:border-gray-800 xl:pl-4 sm:flex-row xl:border-l xl:border-t-0 xl:space-y-8 xl:block">
-        {/* <img
-          src={icon.url}
-          height="48px"
-          width="48px"
-          className="inline-block object-contain w-12 h-12 mt-4 mr-8 xl:block xl:self-center self-justify-center xl:mt-0 xl:mr-0"
-          alt={icon.alt}
-        /> */}
         <img
           src={icon}
           height="48px"

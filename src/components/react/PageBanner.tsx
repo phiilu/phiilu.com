@@ -1,18 +1,9 @@
-import { useEffect } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Banner } from './Banner';
 import { PokezardsIcon } from './icons/PokezardsIcon';
 
 export function PageBanner() {
   const [showPokezardsBanner, setShowPokezardsBanner] = useLocalStorage('show_banner', true);
-
-  //   useEffect(() => {
-  //     if (showPokezardsBanner) {
-  //       document.body.classList.add("pt-[72px]");
-  //     } else {
-  //       document.body.classList.toggle("pt-[72px]");
-  //     }
-  //   }, [showPokezardsBanner]);
 
   return (
     <>

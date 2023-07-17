@@ -1,5 +1,5 @@
 import * as React from 'react';
-import toast from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 import { Button } from './Button';
 import { ErrorIcon, LoadingIcon, SuccessIcon } from './icons/NotificationIcons';

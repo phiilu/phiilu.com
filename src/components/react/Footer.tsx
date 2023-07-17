@@ -44,21 +44,9 @@ export const Footer = () => {
         <div className="flex flex-wrap justify-center space-x-2 text-gray-500">
           <a
             className="px-2 py-2 text-xs font-semibold transition-colors duration-300 ease-in-out rounded-md hover:text-rss-500"
-            href="/rss/feed.xml"
+            href="/rss.xml"
           >
             RSS Feed
-          </a>
-          <a
-            className="px-2 py-2 text-xs font-semibold transition-colors duration-300 ease-in-out rounded-md hover:text-rss-500"
-            href="/rss/atom.xml"
-          >
-            Atom Feed
-          </a>
-          <a
-            className="px-2 py-2 text-xs font-semibold transition-colors duration-300 ease-in-out rounded-md hover:text-rss-500"
-            href="/rss/feed.json"
-          >
-            JSON Feed
           </a>
         </div>
       </Container>

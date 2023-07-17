@@ -1,6 +1,8 @@
 ---
 // import HeaderLink from "./HeaderLink.astro";
 import { Header as ReactHeader } from "./react/Header";
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
-<ReactHeader client:load route={Astro.url.pathname} />
+<ReactHeader client:load route={pathname} />

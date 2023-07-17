@@ -72,7 +72,7 @@ const menuItems = [
 ];
 
 function getActiveIndex(pathname: string) {
-  return menuItems.findIndex((item) => item.href === pathname);
+  return menuItems.findIndex((item) => pathname.startsWith(item.href));
 }
 
 interface HeaderProps {
@@ -82,9 +82,9 @@ interface HeaderProps {
 export const Header = ({ route }: HeaderProps) => {
   const [showBanner, setShowBanner] = useLocalStorage("show_banner", true);
   const [scrolled] = useScroll();
-  const [activeHoverIndex, setActiveHoverIndex] = React.useState(() =>
-    getActiveIndex(route),
-  );
+  const [activeHoverIndex, setActiveHoverIndex] = React.useState(() => {
+    return getActiveIndex(route);
+  });
   const hasClicked = React.useRef(false);
   const hasHover = React.useRef(false);
 

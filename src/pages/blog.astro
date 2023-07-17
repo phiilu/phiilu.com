@@ -36,7 +36,7 @@ function getPostsByMonth(posts: CollectionEntry<"posts">[]) {
 }
 
 const posts = (await getCollection("posts")).sort(
-  (a, b) => a.data.publishedDate.valueOf() - b.data.publishedDate.valueOf(),
+  (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
 );
 const postsByMonth = getPostsByMonth(posts);
 ---

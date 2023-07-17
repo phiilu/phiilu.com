@@ -287,5 +287,8 @@ module.exports = {
       }),
     },
   },
+  variants: {
+    extend: { typography: ["dark"], translate: ["group-hover"] },
+  },
   plugins: [require("@tailwindcss/typography"), addFontface],
 };

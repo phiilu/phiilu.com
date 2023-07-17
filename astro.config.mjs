@@ -8,10 +8,8 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
   adapter: vercel({
     analytics: true,
-    imageService: true,
   }),
   site: "https://phiilu.com",
   integrations: [

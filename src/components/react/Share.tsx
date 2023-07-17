@@ -2,6 +2,7 @@ import * as React from "react";
 import toast from "react-hot-toast";
 
 import { Button } from "./Button";
+import { ErrorIcon, LoadingIcon, SuccessIcon } from "./icons/NotificationIcons";
 
 interface ShareProps {
   title: string;
@@ -28,11 +29,40 @@ export function Share({ title, url, onClick }: ShareProps) {
         url,
       });
 
-      toast.promise(res, {
-        loading: "Share the post with the world",
-        success: "Shared successfully",
-        error: "So close",
-      });
+      toast.promise(
+        res,
+        {
+          loading: (
+            <ToastMessage
+              title="Share the post with the world"
+              text="Select how you want to share the post"
+            />
+          ),
+          success: (
+            <ToastMessage
+              title="Shared successfully"
+              text="Thank you for sharing my post!"
+            />
+          ),
+          error: (
+            <ToastMessage
+              title="So close"
+              text="Oh okay.. Maybe next time :)"
+            />
+          ),
+        },
+        {
+          success: {
+            icon: <SuccessIcon />,
+          },
+          loading: {
+            icon: <LoadingIcon />,
+          },
+          error: {
+            icon: <ErrorIcon />,
+          },
+        },
+      );
     } catch (error) {
       // do nothing
     }
@@ -90,5 +120,21 @@ export function Share({ title, url, onClick }: ShareProps) {
         </Button>
       </li>
     </ul>
+  );
+}
+
+interface ToastMessageProps {
+  title: string;
+  text: string;
+}
+
+function ToastMessage({ title, text }: ToastMessageProps) {
+  return (
+    <div className="ml-3 w-0 flex-1 pt-0.5">
+      <p className="text-sm font-medium text-gray-900 dark:text-white">
+        {title}
+      </p>
+      <p className="mt-1 text-sm text-gray-500 dark:text-gray-100">{text}</p>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import { Heading } from "./Heading";
-import { Children, useCallback, type ReactNode } from "react";
+import { useCallback, type ReactNode } from "react";
 import { ShareOnTwitterCta } from "./ShareOnTwitterCta";
 import { TagList } from "./TagList";
 import { Share } from "./Share";

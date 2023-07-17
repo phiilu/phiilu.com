@@ -15,7 +15,7 @@ interface GearItem {
 
 export function GearItem({
   gear: {
-    data: { title, affiliateLink, affiliateLinkText, image, link },
+    data: { title, affiliateLink, affilateLinkText, image, link },
   },
   children,
 }: GearItem) {
@@ -26,7 +26,7 @@ export function GearItem({
           "grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-x-8 lg:gap-y-4"
         }
       >
-        <a className="group" href={affiliateLink || link}>
+        <a className="group" href={affiliateLink || link || "#"}>
           <div
             className={
               "transition-colors duration-300 h-full overflow-hidden flex relative items-center justify-center p-4 rounded-md bg-gray-100 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
@@ -51,7 +51,7 @@ export function GearItem({
           {affiliateLink && (
             <div className="flex items-end flex-1 max-w-sm">
               <Button as={"a"} href={affiliateLink} variant="secondary">
-                {affiliateLinkText || "Buy"}
+                {affilateLinkText || "Buy"}
               </Button>
             </div>
           )}
@@ -74,7 +74,7 @@ export function SoftwareGearItem({
 }: SoftwareGearItemProps) {
   return (
     <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-      <a href={link}>
+      <a href={link || "#"}>
         <div
           className={
             "flex-none flex justify-center p-4 rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 w-24 h-24"
@@ -88,7 +88,7 @@ export function SoftwareGearItem({
           {title}
         </Heading>
         <div className="col-span-2">{children}</div>
-        <ProductLink href={link}>Homepage</ProductLink>
+        <ProductLink href={link || "#"}>Homepage</ProductLink>
       </div>
     </div>
   );

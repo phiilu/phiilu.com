@@ -40,4 +40,16 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { blog, posts };
+const gear = defineCollection({
+  type: "data",
+  schema: z.object({
+    title: z.string(),
+    image: z.string(),
+    category: z.string().nullable().optional(),
+    link: z.string().nullable().optional(),
+    affiliateLink: z.string().nullable().optional(),
+    affilateLinkText: z.string().nullable().optional(),
+  }),
+});
+
+export const collections = { blog, posts, gear };

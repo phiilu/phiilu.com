@@ -135,6 +135,12 @@ if (!fsOld.existsSync("posts")) {
   createMDXFiles(posts);
 }
 
+if (!fsOld.existsSync("gear")) {
+  await fs.mkdir("images/gear", { recursive: true });
+  await fs.mkdir("gear", { recursive: true });
+  createGearMDXFiles(gears);
+}
+
 async function createMDXFiles(posts: Post[]) {
   for (let post of posts) {
     // Construct the filename
@@ -188,6 +194,34 @@ tags: ${JSON.stringify(post.tags)}
 
     // Write the content to the file
     await fs.writeFile(path.join("posts", fileName), content);
+  }
+}
+
+async function createGearMDXFiles(gears: Gear[]) {
+  for (let gear of gears) {
+    // Construct the filename
+    const fileName = `${slugify(gear.title)}.mdx`;
+    const image = assets.find((asset) => asset.id === gear.image);
+
+    if (image) {
+      await downloadAsset(image, path.join("images", "gear"));
+    }
+
+    // Construct the frontmatter
+    const frontmatter = `---
+title: ${gear.title}
+image: ${image ? `images/gear/${image.fileNameNew}}` : ""}
+category: ${gear.category ?? ""}
+link: ${gear.link ?? ""}
+affiliateLink: ${gear.affilateLink ?? ""}
+affilateLinkText: ${gear.affilateLinkText ?? ""}
+---`;
+
+    // Construct the content
+    const content = `${frontmatter}\n\n${gear.description}`;
+
+    // Write the content to the file
+    await fs.writeFile(path.join("gear", fileName), content);
   }
 }
 

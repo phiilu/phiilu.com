@@ -1,0 +1,144 @@
+---
+title: Use your Raspberry Pi as a Docker server with docker-machine
+icon: /images/icons/docker-logo.png
+slug: docker-machine-generic-server-raspberry-pi
+publishedDate: 2021-01-07
+published: true
+description: In this article, I show you how you can setup docker and control it with docker-machine.
+tags: ['docker', 'raspberry pi', 'server', 'terminal']
+---
+
+If you have a slow computer or you somehow can't install Docker using the official [Docker Desktop][1] installer, you might want to use your Raspberry Pi (or any other server you have) to be your dedicated Docker server.
+
+Recently I had the problem that I could not install Docker Desktop in my VM that was running on my [Unraid][2] server. The problem is that on Ryzen CPUs nested virtualization is not (yet) supported on the OS that I used. [Nested virtualization][3] means that you can run a VM inside a VM.
+
+![Yo Dawg Virtual Machine Meme][4]
+
+So I could not use the official Docker for Mac installer to install Docker, I had to find another way.
+
+The answer to this was `docker-machine`.
+
+## What is docker-machine?
+
+`docker-machine` is a CLI program from Docker that allows you to use `docker` as you would normally, but execute the commands on a server instead. This is useful if you have multiple servers running docker and you can control them all by just changing the docker environment with one command `docker-machine env YOUR_ENV`.
+
+If you don't have `docker-machine` installed, try to install it with your OSs package manager or download it from [GitHub][5].
+
+On macOS you can install it like this from brew:
+
+```bash
+brew install docker-machine
+```
+
+Even if you can't install Docker Desktop, you should still be able to download the `docker` CLI, you will need it.
+
+## Preparing our server
+
+Before we use `docker-machine` we need to make some configurations on the server first.
+
+I would recommend creating a new user that will be used to login with `docker-machine`.
+
+```bash
+adduser docker-machine
+```
+
+Next, we need to allow the new user to execute commands with `sudo`, but with the addition that the user can use it without entering its password. This might be a security risk, so make sure the password of the `docker-machine` user is strong and your server is properly hardened.
+
+Edit the `sudoers` file by writing `visudo` into your terminal and append a new line after the entry for `root`.
+
+```bash
+docker-machine ALL=(ALL) NOPASSWD: ALL
+```
+
+Save and quit the editor.
+
+The `docker-machine` generic driver does not recognize the `raspbian` OS, so we need to trick it, by temporarily changing the `ID` field in the `/etc/os-release` to `debian`.
+
+```bash
+#/etc/os-release
+PRETTY_NAME="Raspbian GNU/Linux 10 (buster)"
+NAME="Raspbian GNU/Linux"
+VERSION_ID="10"
+VERSION="10 (buster)"
+VERSION_CODENAME=buster
+ID=debian
+ID_LIKE=debian
+HOME_URL="http://www.raspbian.org/"
+SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
+BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+```
+
+Finally, you will need to set up public-key authentication on your server with the `docker-machine` user. I have documented the process on how you can do this in [another article][6]. Scroll down to the **"Skip passwords with public key authentication"** section and follow the steps to set it up.
+
+Now your server should be ready to install docker using `docker-machine`.
+
+## Install docker on your server with docker-machine
+
+Now that you have the docker-machine CLI installed on your machine, we can use it to install docker on the server using just one command.
+
+```bash
+docker-machine create \
+  --driver generic \
+  --generic-ip-address=192.168.1.13 \
+  --generic-ssh-user=docker-machine \
+  --generic-ssh-key ~/.ssh/id_rsa \
+  rpi
+```
+
+```output
+Running pre-create checks...
+Creating machine...
+(rpi) Importing SSH key...
+Waiting for machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting for SSH to be available...
+Detecting the provisioner...
+Provisioning with debian...
+Copying certs to the local machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Docker is up and running!
+To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env rpi
+```
+
+That's it you should now have docker installed on your server!
+
+## Change your docker environment with docker-machine
+
+Now if you want to execute docker commands on the server you just need to change your docker environment with the following command:
+
+```bash
+eval $(docker-machine env rpi)
+```
+
+If you always want to use the server environment, put the line into your `.bashrc` or `.zshrc` file.
+
+## Start using Docker
+
+After changing the environment with `docker-machine` you can use `docker` the same way that you would do normally!
+
+```bash
+docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+
+## Useful docker-machine commands
+
+- `docker-machine ls` - list all environments
+- `docker-machine rm ENV` - deletes an existing environment
+- `docker-machine ip ENV` - get the IP address of the server
+- `docker-machine ssh ENV` - open an SSH connection to the server
+
+## Conclusion
+
+`docker-machine` is a cool tool and it is very easy to set up and use. I find this approach very interesting. For now, the setup is working quite well and I did not see any drawbacks to it.
+
+The only different thing is that I will have to use the IP of my server instead of `localhost` if I want to access services running on docker.
+
+[1]: https://www.docker.com/products/docker-desktop
+[2]: https://www.unraid.net/
+[3]: https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/nested-virtualization
+[4]: //images.ctfassets.net/hb3id6ag4raq/7u9jFuc5zgWhOX6aYeyc83/e7702108d2387b17a0587f12cb07ffce/yo-dawg-i-heard-you-like-virtual-machines-so-i-put-a-virtual-machine-inside-a-virtual-machine.jpg
+[5]: https://github.com/docker/machine/releases
+[6]: https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers

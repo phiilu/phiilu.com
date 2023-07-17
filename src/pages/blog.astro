@@ -1,0 +1,76 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import { Container } from '@components/react/Container';
+import { Heading } from '@components/react/Heading';
+import { isSameMonth, format as dateFormat, isSameYear } from 'date-fns';
+import { PostListItem } from '@components/react/PostListItem';
+import Layout from '@/layouts/Page.astro';
+
+type PostsByMonth = {
+  date: Date;
+  posts: CollectionEntry<'posts'>[];
+};
+
+function getPostsByMonth(posts: CollectionEntry<'posts'>[]) {
+  return posts.reduce((postsByDate, post: CollectionEntry<'posts'>) => {
+    const exists = postsByDate.find((p) => {
+      const newDate = new Date(post.data.publishedDate);
+      const existingDate = p.date;
+      return isSameMonth(newDate, existingDate) && isSameYear(newDate, existingDate);
+    });
+
+    if (exists) {
+      exists.posts.push(post);
+    } else {
+      const date = new Date(post.data.publishedDate);
+      postsByDate.push({
+        date: date,
+        posts: [post]
+      });
+    }
+
+    return postsByDate;
+  }, [] as PostsByMonth[]);
+}
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
+);
+const postsByMonth = getPostsByMonth(posts);
+---
+
+<Layout title="Blog">
+  <Container as="main">
+    <div class="space-y-16">
+      {
+        postsByMonth.map((postByMonth) => {
+          return (
+            <div class="space-y-8">
+              <Heading
+                noMargin
+                as="h1"
+                size="h3"
+                className="mx-4 text-indigo-500 border-b-2 border-gray-100 dark:border-gray-800 md:mx-0">
+                {dateFormat(postByMonth.date, 'MMMM yyyy')}
+              </Heading>
+              <div class="space-y-8 md:space-y-14">
+                <ul class="space-y-16 md:space-y-8">
+                  {postByMonth.posts.map((post) => (
+                    <li>
+                      <PostListItem
+                        post={{
+                          ...post.data,
+                          slug: post.slug
+                        }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </Container>
+</Layout>

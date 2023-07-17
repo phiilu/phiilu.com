@@ -1,0 +1,24 @@
+{
+  "name": "migration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx ts-node export-to-md.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sindresorhus/slugify": "^2.2.1",
+    "mime-types": "^2.1.35"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^12.2.3",
+    "@types/mime-types": "^2.1.1",
+    "@types/node": "^20.4.2",
+    "markdown-it": "^13.0.1",
+    "node-ts": "^6.0.1"
+  }
+}

@@ -1,0 +1,110 @@
+---
+title: Dealing with URL query parameters in Javascript using URLSearchParams
+icon: /images/icons/js-logo.png
+slug: dealing-with-url-query-parameters-in-javascript-using-urlsearchparams
+publishedDate: 2020-08-27
+published: true
+description: Interacting with the browsers URL search parameters was never easier with URLSearchParams. No need for external libraries.
+tags: ['javascript', 'beginners']
+---
+
+Often in Single Page Applications, you will have to interact with the URL to implement some functionality like pagination or filtering.
+
+The URL is a great place to put some of your applications state on it. The advantages are that users can copy the URL and share it and getting back to it with the set filters and page where they left off.
+
+The hard part is, sometimes how you get and update those URL parameters. Frankly, in modern browsers, there is a neat API named `URLSearchParams`. It allows us to extremely easy to retrieve or update the URL parameters. `URLSearchParams` is available in node.js and most browsers.
+
+Recently we had an issue with an npm package named `query-string` in production which would [throw an error in IE11][1], so we decided to remove it and use `URLSearchParams` with a polyfill instead. We could have switched to the older version 5 and support older browsers, but I wanted to try out something new.
+
+`query-string` is a great library and you can still use it, but it is more focused to be used on the backend with node.js and for newer browsers.
+
+## Example
+
+I have put together a simple example of the most commonly used methods in this CodeSandBox. The example will list all the provided search parameters, adds one parameter, and allows the user to add or delete a certain parameter. Open it on CodeSandBox directly to see the URL.
+
+<iframe
+  src="https://codesandbox.io/embed/urlsearchparams-example-0wp7y?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="URLSearchParams example"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+## Getting Started
+
+First, you will have to initialize the `URLSearchParams` class with a string that has the format of a query string like `?page=10&offset=5`
+
+```js
+const params = new URLSearchParams(window.location.search);
+```
+
+To get the query string from the current website you have to pass `URLSearchParams` the query string from the `window.location` object.
+
+Now you have an instance of `URLSearchParams` saved to `params` which you can use to read and modify query parameters.
+
+## Reading parameters
+
+If you just want to get one specific parameter you can use the method `get()`
+
+```js
+const page = params.get('page'); // will return the value of the parameter page
+console.log(page); // 10
+```
+
+To get a list of all values you can use `values()`
+
+```js
+const values = Array.from(params.values());
+console.log(values); // [10, 5]
+```
+
+`values()` will return an Iterator which you can use to loop over the values in a `foreach` or like in the example to create a new array with `Array.from`
+
+There is also an `entries()` method which you can use. It is similar to `values()`, but it will also return you the key of the query parameter.
+
+```js
+const entries = Array.from(params.entries());
+console.log(entries); // [['page', 10], ['offset', 5]]
+```
+
+## Updating parameters
+
+To modify URL parameters you can use functions like `append()`, `delete()` or `set()`.
+
+In my example, I delete the parameter `page` using a button like this
+
+```js
+$deletePageButton.addEventListener('click', () => {
+  if (params.has('page')) {
+    params.delete('page');
+  }
+});
+```
+
+The methods modify the current `URLSearchParams` instance. If you want to explore the whole API check out the documentation on [MDN][2].
+
+## Generating a URL
+
+Another useful use case is to generate a URL with `URL` and under the hood `URLSearchParams`.
+
+```js
+const myURL = new URL('https://phiilu.com');
+myURL.searchParams.set('greeting', 'Hello World');
+console.log(myURL.toString()); // https://phiilu.com/?greeting=Hello+World
+```
+
+Using `toString()` will generate a URL as you would expect!
+
+## Browser Support
+
+If you don't have to support Internet Explorer 11 you can use `URLSearchParams` right away because it is supported in all modern browsers. It's been in Chrome since version 49 and in Firefox since version 44.
+
+For you poor developers who still have to maintain IE11, you can still use `URLSearchParams` by using a [polyfill][3].
+
+## Conclusion
+
+There are a lot of APIs already built into browsers and sometimes they are just the right tool for the job. I think learning a few of them or just being aware that they exist will make your developer life a bit easier. `URLSearchParams` is really cool and very easy to use. I am happy that it exists.
+
+[1]: https://github.com/sindresorhus/query-string/issues/189
+[2]: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+[3]: https://github.com/ungap/url-search-params

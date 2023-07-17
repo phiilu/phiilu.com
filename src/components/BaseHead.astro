@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '@styles/global.css';
-import { SITE_DESCRIPTION } from '@/consts';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 
 export interface Props {
   title?: string;
@@ -41,12 +41,9 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 
 <!-- Primary Meta Tags -->
 <title>
-  {title ? `${title} | Phiilu | Florian Kapfenberger` : 'Phiilu | Florian Kapfenberger'}
+  {title ? `${title} | Phiilu | ${SITE_TITLE}` : SITE_TITLE}
 </title>
-<meta
-  name="title"
-  content={title ? `${title} | Phiilu | Florian Kapfenberger` : 'Phiilu | Florian Kapfenberger'}
-/>
+<meta name="title" content={title ? `${title} | Phiilu | ${SITE_TITLE}` : SITE_TITLE} />
 <meta name="author" content="Florian Kapfenberger" />
 <meta name="description" content={description || SITE_DESCRIPTION} />
 {keywords && <meta name="keywords" content={keywords} />}
@@ -55,13 +52,13 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={title || SITE_TITLE} />
 <meta property="og:description" content={description || SITE_DESCRIPTION} />
 {image && <meta property="og:image" content={new URL(image, ogImageBaseUrl)} />}
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={title || SITE_TITLE} />
 <meta property="twitter:description" content={description || SITE_DESCRIPTION} />
 {image && <meta property="twitter:image" content={new URL(image, ogImageBaseUrl)} />}

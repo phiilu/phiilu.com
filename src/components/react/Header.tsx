@@ -1,10 +1,10 @@
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { clsx } from 'clsx';
-import { Container } from './Container';
-import { useScroll } from '../../hooks/useScroll';
+import { Container } from '@react/Container';
+import { Logo } from '@react/icons/Logo';
 import { motion, EventInfo } from 'framer-motion';
-import { spring } from '../../helpers/animation';
-import { Logo } from './icons/Logo';
+import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { spring } from '@/helpers/animation';
+import { useScroll } from '@/hooks/useScroll';
 
 interface MenuItemProps {
   onHoverStart: (event: MouseEvent, info: EventInfo) => void;
@@ -20,8 +20,7 @@ function MenuItem({ onHoverStart, onHoverEnd, onClick, href, active, children }:
     <motion.li onHoverStart={onHoverStart} onHoverEnd={onHoverEnd} onClick={onClick}>
       <a
         href={href}
-        className="relative inline-block px-2 py-2 text-center transition-colors duration-100 ease-in-out rounded-md sm:inline md:px-4 font-semibold text-md font-open-sans"
-      >
+        className="relative inline-block px-2 py-2 text-center transition-colors duration-100 ease-in-out rounded-md sm:inline md:px-4 font-semibold text-md font-open-sans">
         {active && <SharedHover />}
         <span className="relative z-10 bg-blend-overlay">{children}</span>
       </a>
@@ -136,8 +135,7 @@ export const Header = ({ route }: HeaderProps) => {
                 active={activeHoverIndex === index}
                 onHoverStart={handleOnHoverStart(index)}
                 onHoverEnd={handleOnHoverEnd}
-                onClick={handleOnClicked}
-              >
+                onClick={handleOnClicked}>
                 {name}
               </MenuItem>
             ))}

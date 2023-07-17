@@ -1,8 +1,8 @@
-import { Heading } from './Heading';
-import { TagList } from './TagList';
-// import DraftBadge from "./DraftBadge";
-import { useMemo } from 'react';
+import { DraftBadge } from '@react/DraftBadge';
 import { format as formatDate } from 'date-fns';
+import { Heading } from '@react/Heading';
+import { TagList } from '@react/TagList';
+import { useMemo } from 'react';
 
 interface PostListItemProps {
   post: {
@@ -30,7 +30,7 @@ export const PostListItem = ({
           aria-label={`link to blog post "${title}" detail page`}
         />
         <div className="relative z-10 space-y-4 pointer-events-none xl:space-y-0 xl:grid xl:grid-cols-4 xl:col-gap-6">
-          {/* <DraftBadge isPublished={published}></DraftBadge> */}
+          <DraftBadge isPublished={published} />
           <div className="flex items-center pr-4 xl:space-x-6 xl:pb-0 xl:col-span-3">
             <div className="flex-shrink-0 hidden w-12 h-12 xl:inline-block">
               <img src={icon} height={48} width={48} alt={icon} className="object-contain" />

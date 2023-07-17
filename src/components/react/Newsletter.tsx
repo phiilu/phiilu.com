@@ -1,7 +1,7 @@
+import { Alert } from '@react/Alert';
+import { Button } from '@react/Button';
+import { Container } from '@react/Container';
 import { HTMLProps, useState } from 'react';
-import { Alert } from './Alert';
-import { Button } from './Button';
-import { Container } from './Container';
 
 interface InputProps extends HTMLProps<HTMLInputElement> {}
 
@@ -94,8 +94,7 @@ export function Newsletter() {
         <form
           onSubmit={handleSubmit}
           className="mt-8 space-y-3 sm:flex sm:space-y-0 sm:space-x-3"
-          aria-labelledby="newsletter-headline"
-        >
+          aria-labelledby="newsletter-headline">
           <Input
             label="Firstname"
             name="first_name"

@@ -1,4 +1,4 @@
-import { Heading } from './Heading';
+import { Heading } from '@react/Heading';
 
 interface SectionHeadingProps {
   heading: string;

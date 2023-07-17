@@ -1,8 +1,8 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import { SITE_DESCRIPTION } from "../consts";
-import "../styles/global.css";
+import '@styles/global.css';
+import { SITE_DESCRIPTION } from '@/consts';
 
 export interface Props {
   title?: string;
@@ -12,54 +12,25 @@ export interface Props {
   publishedDate?: Date;
 }
 
-const ogImageBaseUrl = "https://og-image.phiilu.com/";
+const ogImageBaseUrl = 'https://og-image.phiilu.com/';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-  title,
-  description,
-  image = "/api/og",
-  keywords,
-  publishedDate,
-} = Astro.props;
+const { title, description, image = '/api/og', keywords, publishedDate } = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  title="phiilu.com RSS Feed"
-  href="/rss.xml"
-/>
+<link rel="alternate" type="application/rss+xml" title="phiilu.com RSS Feed" href="/rss.xml" />
 <meta name="generator" content={Astro.generator} />
 
 <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href="/images/favicon/apple-touch-icon.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href="/images/favicon/favicon-32x32.png"
-/>
-<link
-  rel="icon"
-  type="image/png"
-  sizes="16x16"
-  href="/images/favicon/favicon-16x16.png"
-/>
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
 <link rel="manifest" href="/images/favicon/site.webmanifest" />
-<link
-  rel="mask-icon"
-  href="/images/favicon/safari-pinned-tab.svg"
-  color="#818cf8"
-/>
+<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#818cf8" />
 <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
 <meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="msapplication-config" content="/images/favicon/browserconfig.xml" />
@@ -70,26 +41,16 @@ const {
 
 <!-- Primary Meta Tags -->
 <title>
-  {
-    title
-      ? `${title} | Phiilu | Florian Kapfenberger`
-      : "Phiilu | Florian Kapfenberger"
-  }
+  {title ? `${title} | Phiilu | Florian Kapfenberger` : 'Phiilu | Florian Kapfenberger'}
 </title>
 <meta
   name="title"
-  content={title
-    ? `${title} | Phiilu | Florian Kapfenberger`
-    : "Phiilu | Florian Kapfenberger"}
+  content={title ? `${title} | Phiilu | Florian Kapfenberger` : 'Phiilu | Florian Kapfenberger'}
 />
 <meta name="author" content="Florian Kapfenberger" />
 <meta name="description" content={description || SITE_DESCRIPTION} />
 {keywords && <meta name="keywords" content={keywords} />}
-{
-  publishedDate && (
-    <meta name="article:published_time" content={publishedDate.toISOString()} />
-  )
-}
+{publishedDate && <meta name="article:published_time" content={publishedDate.toISOString()} />}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -102,12 +63,5 @@ const {
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
-<meta
-  property="twitter:description"
-  content={description || SITE_DESCRIPTION}
-/>
-{
-  image && (
-    <meta property="twitter:image" content={new URL(image, ogImageBaseUrl)} />
-  )
-}
+<meta property="twitter:description" content={description || SITE_DESCRIPTION} />
+{image && <meta property="twitter:image" content={new URL(image, ogImageBaseUrl)} />}

@@ -1,10 +1,10 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
-import Layout from '../layouts/Page.astro';
-import { Container } from '../components/react/Container';
-import { PostDetail } from '../components/react/PostDetail';
+import { Container } from '@components/react/Container';
+import { countWords } from '@/helpers/countWords';
 import { format } from 'date-fns';
-import { countWords } from '../helpers/countWords';
+import { PostDetail } from '@components/react/PostDetail';
+import Layout from '@/layouts/Page.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');

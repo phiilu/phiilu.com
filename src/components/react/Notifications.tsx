@@ -1,7 +1,7 @@
-import toastAction, { Toaster, resolveValue } from 'react-hot-toast';
-import { Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/20/solid';
+import toastAction, { Toaster, resolveValue } from 'react-hot-toast';
 
 export const Notifications = () => {
   return (
@@ -15,8 +15,7 @@ export const Notifications = () => {
           enterTo="translate-y-0 opacity-100 sm:translate-x-0"
           leave="transform transition ease-in duration-300"
           leaveFrom="opacity-100 translate-x-0"
-          leaveTo="opacity-0 translate-x-full"
-        >
+          leaveTo="opacity-0 translate-x-full">
           <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div className="p-4">
               <div className="flex items-start">
@@ -28,8 +27,7 @@ export const Notifications = () => {
                     className="inline-flex text-gray-400 bg-white rounded-md dark:bg-gray-900 dark:text-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     onClick={() => {
                       toastAction.dismiss(t.id);
-                    }}
-                  >
+                    }}>
                     <span className="sr-only">Close</span>
                     <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                   </button>

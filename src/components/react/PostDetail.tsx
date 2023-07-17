@@ -1,11 +1,11 @@
-import type { CollectionEntry } from 'astro:content';
-import { Heading } from './Heading';
-import { useCallback, type ReactNode } from 'react';
-import { ShareOnTwitterCta } from './ShareOnTwitterCta';
-import { TagList } from './TagList';
-import { Share } from './Share';
+import { countWords } from '@/helpers/countWords';
 import { format } from 'date-fns';
-import { countWords } from '../../helpers/countWords';
+import { Heading } from '@react/Heading';
+import { Share } from '@react/Share';
+import { ShareOnTwitterCta } from '@react/ShareOnTwitterCta';
+import { TagList } from '@react/TagList';
+import { useCallback, type ReactNode } from 'react';
+import type { CollectionEntry } from 'astro:content';
 
 interface PostDetailProps {
   post: CollectionEntry<'posts'>;
@@ -124,8 +124,7 @@ function PostSidebar({
                 //   value: "Buy Me a Coffee",
                 //   type: "link",
                 // }}
-                href="https://www.buymeacoffee.com/phiilu"
-              >
+                href="https://www.buymeacoffee.com/phiilu">
                 <img
                   alt="Buy me a mate tea"
                   src="https://img.buymeacoffee.com/button-api/?text=Buy me a mate tea&emoji=🍵&slug=phiilu&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"

@@ -1,6 +1,6 @@
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { Banner } from './Banner';
-import { PokezardsIcon } from './icons/PokezardsIcon';
+import { Banner } from '@react/Banner';
+import { PokezardsIcon } from '@react/icons/PokezardsIcon';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 export function PageBanner() {
   const [showPokezardsBanner, setShowPokezardsBanner] = useLocalStorage('show_banner', true);

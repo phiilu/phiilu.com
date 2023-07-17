@@ -1,16 +1,16 @@
 ---
-import { Container } from "../components/react/Container";
-import { Heading } from "../components/react/Heading";
-import Layout from "../layouts/Page.astro";
+import { Container } from '@components/react/Container';
+import { Heading } from '@components/react/Heading';
+import Layout from '@/layouts/Page.astro';
 ---
 
-<Layout title="Newsletter subscription successfull!" hide={["Newsletter"]}>
+<Layout title="Newsletter subscription successfull!" hide={['Newsletter']}>
   <Container as="main" className="text-center">
     <Heading noMargin className="mb-4 md:text-5xl">
       Thanks for signing up for my Newsletter!
     </Heading>
     <p class="text-lg leading-7 md:text-2xl">
-      Glad to you have you on the team{" "}
+      Glad to you have you on the team{' '}
       <span aria-label="smiley" role="img">😄</span>
     </p>
     <div class="mt-16">

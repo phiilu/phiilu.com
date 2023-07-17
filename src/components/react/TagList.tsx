@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
-import tagColors, { TagListItem } from '../../helpers/tagColors';
 import { useMemo } from 'react';
+import tagColors, { TagListItem } from '@/helpers/tagColors';
 
 interface TagListProps {
   tags: string[];
@@ -24,8 +24,7 @@ export const TagList = ({ tags }: TagListProps) => {
                   tag.bg,
                   tag.text,
                   tag.hover
-                )}
-              >
+                )}>
                 {tag.name}
               </a>
             </li>

@@ -1,8 +1,7 @@
-import * as React from 'react';
+import { Button } from '@react/Button';
+import { ErrorIcon, LoadingIcon, SuccessIcon } from '@react/icons/NotificationIcons';
 import { toast } from 'react-hot-toast';
-
-import { Button } from './Button';
-import { ErrorIcon, LoadingIcon, SuccessIcon } from './icons/NotificationIcons';
+import { useState, useEffect } from 'react';
 
 interface ShareProps {
   title: string;
@@ -11,9 +10,9 @@ interface ShareProps {
 }
 
 export function Share({ title, url, onClick }: ShareProps) {
-  const [isSareApiAvailable, setIsSareApiAvailable] = React.useState(false);
+  const [isSareApiAvailable, setIsSareApiAvailable] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsSareApiAvailable(!!window.navigator.share);
   }, []);
 
@@ -67,8 +66,7 @@ export function Share({ title, url, onClick }: ShareProps) {
             //   name: "Share Anywhere clicked",
             // }}
             variant="secondary"
-            onClick={handleSocialShare}
-          >
+            onClick={handleSocialShare}>
             Share Anywhere
           </Button>
         </li>
@@ -85,8 +83,7 @@ export function Share({ title, url, onClick }: ShareProps) {
             `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
             'twitter-share',
             'width=550,height=235'
-          )}
-        >
+          )}>
           Share on Twitter
         </Button>
       </li>
@@ -102,8 +99,7 @@ export function Share({ title, url, onClick }: ShareProps) {
             `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
             'hn-share',
             'width=550,height=350'
-          )}
-        >
+          )}>
           Share on Hacker News
         </Button>
       </li>

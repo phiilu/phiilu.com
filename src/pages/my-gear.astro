@@ -1,17 +1,16 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../layouts/Page.astro";
-import { Container } from "../components/react/Container";
-import { Heading } from "../components/react/Heading";
-import { GearCategoryIcons } from "../components/react/icons/GearCategoryIcons";
-
+import { Container } from '@components/react/Container';
+import { GearCategoryIcons } from '@components/react/icons/GearCategoryIcons';
+import { getCollection } from 'astro:content';
+import { Heading } from '@components/react/Heading';
+import Layout from '@/layouts/Page.astro';
 import {
   GearItem,
   type GearCollectionEntryRendered,
-  SoftwareGearItem,
-} from "../components/react/GearItem";
+  SoftwareGearItem
+} from '@components/react/GearItem';
 
-const gear = await getCollection("gear");
+const gear = await getCollection('gear');
 
 const gearRendered: GearCollectionEntryRendered[] = [];
 
@@ -19,27 +18,27 @@ for (const g of gear) {
   const { Content } = await g.render();
   gearRendered.push({
     ...g,
-    Content,
+    Content
   });
 }
 
 const gearByCategory = gearRendered.reduce(
   (accu, gearItem) => {
-    if (accu[gearItem.data.category]) {
-      accu[gearItem.data.category].push(gearItem);
+    if (accu[gearItem.data.category as string]) {
+      accu[gearItem.data.category as string].push(gearItem);
     } else {
-      accu[gearItem.data.category] = [gearItem];
+      accu[gearItem.data.category as string] = [gearItem];
     }
     return accu;
   },
-  {} as Record<string, GearCollectionEntryRendered[]>,
+  {} as Record<string, GearCollectionEntryRendered[]>
 );
 
 const sortedGearByCategory = {
   Hardware: gearByCategory.Hardware,
   Software: gearByCategory.Software,
   Office: gearByCategory.Office,
-  Lifestyle: gearByCategory.Lifestyle,
+  Lifestyle: gearByCategory.Lifestyle
 };
 ---
 
@@ -48,12 +47,9 @@ const sortedGearByCategory = {
     <div class="space-y-12 md:px-4">
       <Heading noMargin>My Gear</Heading>
       <p class="text-lg">
-        Inspired by{" "}
-        <a class="font-bold text-indigo-500" href="https://uses.tech/">
-          many others
-        </a>{" "}
-         I created a list on hardware, software and equipment I use daily to
-        make my life easier.
+        Inspired by{' '}
+        <a class="font-bold text-indigo-500" href="https://uses.tech/"> many others</a>{' '}
+         I created a list on hardware, software and equipment I use daily to make my life easier.
       </p>
 
       {
@@ -66,7 +62,7 @@ const sortedGearByCategory = {
               </Heading>
               <ul class="space-y-12">
                 {gears.map((gear) => {
-                  if (gear.data.category === "Software") {
+                  if (gear.data.category === 'Software') {
                     return (
                       <li>
                         <SoftwareGearItem gear={gear}>
@@ -89,9 +85,7 @@ const sortedGearByCategory = {
           );
         })
       }
-      <div
-        class="p-4 bg-indigo-50 rounded-md dark:bg-blue-300 dark:border-indigo-900"
-      >
+      <div class="p-4 bg-indigo-50 rounded-md dark:bg-blue-300 dark:border-indigo-900">
         <div class="flex">
           <div class="flex-shrink-0">
             <svg
@@ -110,14 +104,13 @@ const sortedGearByCategory = {
           <div class="ml-3 space-y-2">
             <p class="text-sm text-indigo-800 dark:text-indigo-900">
               If you click <strong>Buy</strong> or <strong>the image</strong>
-               you will get redirected to a page where you can buy the product
-              using an{" "}
+               you will get redirected to a page where you can buy the product using an{' '}
               <strong>affilated link</strong>.
             </p>
 
             <p class="text-sm text-indigo-800 dark:text-indigo-900">
-              An affilate link will not increase your price, but it will get me
-              a small commission and helps me out :)
+              An affilate link will not increase your price, but it will get me a small commission
+              and helps me out :)
             </p>
           </div>
         </div>

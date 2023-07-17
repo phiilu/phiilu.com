@@ -1,15 +1,13 @@
 ---
-import { Heading } from "./react/Heading";
-import profileImage from "../assets/images/me.jpg";
-import { Image } from "astro:assets";
+import { Heading } from '@react/Heading';
+import { Image } from 'astro:assets';
+import profileImage from '@assets/images/me.jpg';
 ---
 
 <div
   class="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-sm md:mx-0 md:space-x-8 xl:p-12 md:space-y-0 md:flex-row dark:bg-gray-800"
 >
-  <picture
-    class="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44"
-  >
+  <picture class="relative flex-none w-40 h-40 rounded-full shadow-xl md:h-44 md:w-44">
     <Image
       class="absolute flex-none object-cover w-40 h-40 rounded-full md:h-44 md:w-44"
       src={profileImage}
@@ -21,22 +19,17 @@ import { Image } from "astro:assets";
   <div class="space-y-2">
     <Heading noMargin>
       Hey, I&apos;m Florian (
-      <a
-        class="text-indigo-500 hover:text-indigo-400"
-        href="https://twitter.com/phiilu"
-      >
+      <a class="text-indigo-500 hover:text-indigo-400" href="https://twitter.com/phiilu">
         @phiilu
       </a>
        )
     </Heading>
     <p class="text-xl xl:text-3xl xl:leading-snug">
-      I am a <strong class="font-bold">Developer</strong> from{" "}
+      I am a <strong class="font-bold">Developer</strong> from{' '}
       <span aria-label="Austria">
-        <span class="dark:text-red-500">Au</span>str<span
-          class="dark:text-red-500">ia</span
-        >
-      </span>{" "}
-       creating websites &amp; apps using{" "}
+        <span class="dark:text-red-500">Au</span>str<span class="dark:text-red-500">ia</span>
+      </span>{' '}
+       creating websites &amp; apps using{' '}
       <a
         href="https://reactjs.org/"
         class="font-semibold text-indigo-600 dark:text-indigo-500 hover:text-indigo-400"

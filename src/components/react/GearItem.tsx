@@ -1,7 +1,7 @@
+import { Button } from '@react/Button';
+import { Heading } from '@react/Heading';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import type { CollectionEntry } from 'astro:content';
-import { Button } from './Button';
-import { Heading } from './Heading';
 import type { HTMLProps, ReactNode } from 'react';
 
 export type GearCollectionEntryRendered = {
@@ -26,8 +26,7 @@ export function GearItem({
           <div
             className={
               'transition-colors duration-300 h-full overflow-hidden flex relative items-center justify-center p-4 rounded-md bg-gray-100 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700'
-            }
-          >
+            }>
             <img className="flex justify-center" src={image} alt={title} />
             <div className="absolute bottom-0 left-0 right-0 transition-transform duration-300 transform translate-y-full bg-gray-100 shadow-xl group-hover:translate-y-0 dark:bg-gray-800">
               <p className="px-4 py-2 text-sm">
@@ -74,8 +73,7 @@ export function SoftwareGearItem({
         <div
           className={
             'flex-none flex justify-center p-4 rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 w-24 h-24'
-          }
-        >
+          }>
           <img className="flex justify-center" src={image} alt={image} />
         </div>
       </a>
@@ -99,8 +97,7 @@ function ProductLink({ href }: HTMLProps<HTMLAnchorElement>) {
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"

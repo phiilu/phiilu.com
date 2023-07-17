@@ -1,11 +1,11 @@
 ---
-import { Container } from "../components/react/Container";
-import { Heading } from "../components/react/Heading";
-import Layout from "../layouts/Page.astro";
-import { Image } from "astro:assets";
-import profileImage from "../assets/images/me.jpg";
-import { getCollection } from "astro:content";
-import { Age } from "../components/react/Age";
+import { Age } from '@components/react/Age';
+import { Container } from '@components/react/Container';
+import { getCollection } from 'astro:content';
+import { Heading } from '@components/react/Heading';
+import { Image } from 'astro:assets';
+import Layout from '@/layouts/Page.astro';
+import profileImage from '../assets/images/me.jpg';
 
 function getBirthdayInSecond() {
   const now = new Date();
@@ -16,7 +16,7 @@ function getBirthdayInSecond() {
 
 const age = getBirthdayInSecond();
 const ageInYears = Math.floor(age / 31536000);
-const postsCount = (await getCollection("posts")).length;
+const postsCount = (await getCollection('posts')).length;
 ---
 
 <Layout title="About Me">
@@ -58,10 +58,7 @@ const postsCount = (await getCollection("posts")).length;
                   fill="currentColor"></rect>
               </pattern>
             </defs>
-            <rect
-              width="404"
-              height="384"
-              fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"></rect>
+            <rect width="404" height="384" fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"></rect>
           </svg>
           <div class="relative mx-auto text-base max-w-prose lg:max-w-none">
             <figure>
@@ -72,9 +69,7 @@ const postsCount = (await getCollection("posts")).length;
                 width={600}
                 quality={80}
               />
-              <figcaption
-                class="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-100"
-              >
+              <figcaption class="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-100">
                 <svg
                   class="flex-none w-5 h-5 mr-2 text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +82,7 @@ const postsCount = (await getCollection("posts")).length;
                     clip-rule="evenodd"></path>
                 </svg>
                 <span class="flex-1">
-                  I should have read the text first{" "}
+                  I should have read the text first{' '}
                   <span aria-label="sweat smiley" role="img">😅</span>
                 </span>
               </figcaption>
@@ -98,33 +93,28 @@ const postsCount = (await getCollection("posts")).length;
           <div
             class="mx-auto prose text-gray-500 xl:prose-lg dark:prose-dark lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100 space-y-4"
           >
-            <p>
-              Hey thanks for visiting my blog and wanting to get to know me
-              better!
-            </p>
+            <p>Hey thanks for visiting my blog and wanting to get to know me better!</p>
             <p>
               I am an <Age client:idle age={age} />
                seconds ({ageInYears} years) old Austrian frontend developer.
             </p>
             <p>
-              My true passion is to create modern websites and webapps with
-              state of the art technology. My prefered framework for creating
-              websites these days, is{" "}
-              <a href="https://reactjs.org/">React</a>. I started learning React
-              in 2016 and since then I kept learning new tools, concepts and
-              technologies evolving around React.
+              My true passion is to create modern websites and webapps with state of the art
+              technology. My prefered framework for creating websites these days, is{' '}
+              <a href="https://reactjs.org/">React</a>. I started learning React in 2016 and since
+              then I kept learning new tools, concepts and technologies evolving around React.
             </p>
             <p>
-              I started this blog early 2020 and oh boy did I not know what a
-              crazy year this is gonna be. On January 7th I published{" "}
-              <a href="/hello-world">my very first blog post</a> and since then
-              I have written <strong>{postsCount}</strong> articles.
+              I started this blog early 2020 and oh boy did I not know what a crazy year this is
+              gonna be. On January 7th I published{' '}
+              <a href="/hello-world">my very first blog post</a> and since then I have written <strong
+                >{postsCount}</strong
+              > articles.
             </p>
             <p>
-              Besides coding I like to play video games and listening to music.
-              If I like a song, I sometimes learn to play it on my guitar. On
-              rainy days (or even sunny ones haha) I also like watching movies
-              and TV shows on Netflix.
+              Besides coding I like to play video games and listening to music. If I like a song, I
+              sometimes learn to play it on my guitar. On rainy days (or even sunny ones haha) I
+              also like watching movies and TV shows on Netflix.
             </p>
           </div>
         </div>

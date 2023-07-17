@@ -8,7 +8,15 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://phiilu.com",
-  integrations: [mdx(), sitemap(), tailwind(), react()],
+  integrations: [
+    mdx(),
+    sitemap({
+      changefreq: "weekly",
+      priority: 0.9,
+    }),
+    tailwind(),
+    react(),
+  ],
   experimental: {
     assets: true,
   },

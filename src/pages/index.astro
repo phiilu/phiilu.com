@@ -14,7 +14,7 @@ const posts = (await getCollection("posts"))
   .sort(
     (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
   )
-  .splice(0, 5);
+  .slice(0, 5);
 ---
 
 <Layout>

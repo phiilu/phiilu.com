@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  Phiilu.com
+  phiilu.com
 </h1>
 
 Personal blog from @phiilu

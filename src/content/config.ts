@@ -41,7 +41,7 @@ const posts = defineCollection({
 });
 
 const gear = defineCollection({
-  type: "data",
+  type: "content",
   schema: z.object({
     title: z.string(),
     image: z.string(),

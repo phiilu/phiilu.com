@@ -10,9 +10,11 @@ import { SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import { PostListItem } from "../components/react/PostListItem";
 
-const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
-);
+const posts = (await getCollection("posts"))
+  .sort(
+    (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
+  )
+  .splice(0, 5);
 ---
 
 <Layout>

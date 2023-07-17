@@ -208,7 +208,6 @@ module.exports = {
           css: {
             pre: {
               maxWidth: "100vw",
-              borderRadius: 0,
             },
             "pre code": {
               "word-break": "normal",

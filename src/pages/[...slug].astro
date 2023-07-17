@@ -26,7 +26,7 @@ const searchParams = new URLSearchParams();
 searchParams.append("title", post.data.title);
 searchParams.append("url", Astro.url.toString());
 searchParams.append("date", format(post.data.publishedDate, "MMMM dd, yyyy"));
-searchParams.append("readingTime", `${timeToRead} Minutes`);
+searchParams.append("readTime", `${timeToRead} Minutes`);
 ---
 
 <Layout

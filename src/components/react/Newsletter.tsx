@@ -1,6 +1,7 @@
 import { HTMLProps, useState } from "react";
 import { Alert } from "./Alert";
 import { Button } from "./Button";
+import { Container } from "./Container";
 
 interface InputProps extends HTMLProps<HTMLInputElement> {}
 
@@ -41,7 +42,8 @@ export function Newsletter() {
       .then(() => {
         setState("success");
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error(error);
         setState("error");
       });
   }
@@ -52,25 +54,31 @@ export function Newsletter() {
 
   if (state === "success") {
     return (
-      <Alert
-        variant="success"
-        title="Thanks for signing up for my Newsletter!"
-        message="Only one step left. Please check your email to confirm your subscription."
-      />
+      <Container className="py-12">
+        <Alert
+          variant="success"
+          title="Thanks for signing up for my Newsletter!"
+          message="Only one step left. Please check your email to confirm your subscription."
+          onClose={tryAgain}
+        />
+      </Container>
     );
   }
 
   if (state === "error") {
     return (
-      <Alert
-        variant="error"
-        title="Ohh shoot!"
-        message="Sorry we could not sign you up... wanna try again?"
-        action={{
-          name: "Hell yes!",
-          onClick: tryAgain,
-        }}
-      />
+      <Container className="py-12">
+        <Alert
+          variant="error"
+          title="Ohh shoot!"
+          message="Sorry we could not sign you up... wanna try again?"
+          action={{
+            name: "Hell yes!",
+            onClick: tryAgain,
+          }}
+          onClose={tryAgain}
+        />
+      </Container>
     );
   }
 

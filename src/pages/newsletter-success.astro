@@ -1,0 +1,26 @@
+---
+import { Container } from "../components/react/Container";
+import { Heading } from "../components/react/Heading";
+import Layout from "../layouts/Page.astro";
+---
+
+<Layout title="Newsletter subscription successfull!" hide={["Newsletter"]}>
+  <Container as="main" className="text-center">
+    <Heading noMargin className="mb-4 md:text-5xl">
+      Thanks for signing up for my Newsletter!
+    </Heading>
+    <p class="text-lg leading-7 md:text-2xl">
+      Glad to you have you on the team{" "}
+      <span aria-label="smiley" role="img">😄</span>
+    </p>
+    <div class="mt-16">
+      <img
+        width="368"
+        height="200"
+        src="/images/mailbox.svg"
+        alt="old school mailbox"
+        class="md:w-2/4 m-auto"
+      />
+    </div>
+  </Container>
+</Layout>

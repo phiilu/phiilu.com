@@ -12,9 +12,11 @@ export interface Props {
   image?: string;
   keywords?: string;
   publishedDate?: Date;
+  hide?: string[];
 }
 
-const { title, description, keywords, publishedDate, image } = Astro.props;
+const { title, description, keywords, publishedDate, image, hide } =
+  Astro.props;
 ---
 
 <html lang="en">
@@ -35,7 +37,7 @@ const { title, description, keywords, publishedDate, image } = Astro.props;
     >
       <Header />
       <slot />
-      <Newsletter />
+      {!hide?.includes("Newsletter") && <Newsletter client:idle />}
       <Footer />
     </div>
     <Notifications client:idle />

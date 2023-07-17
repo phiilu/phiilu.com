@@ -11,6 +11,7 @@ interface AlertProps {
   title: string;
   message: string;
   action?: Action;
+  onClose?: () => void;
 }
 
 export function Alert({
@@ -18,6 +19,7 @@ export function Alert({
   title,
   message,
   action,
+  onClose,
 }: AlertProps) {
   const [show, setShow] = React.useState(true);
   const success = variant === "success";
@@ -25,6 +27,7 @@ export function Alert({
 
   function handleClose() {
     setShow((prev) => !prev);
+    onClose?.();
   }
 
   if (!show) return null;

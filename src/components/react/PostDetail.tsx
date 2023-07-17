@@ -1,14 +1,14 @@
-import type { CollectionEntry } from "astro:content";
-import { Heading } from "./Heading";
-import { useCallback, type ReactNode } from "react";
-import { ShareOnTwitterCta } from "./ShareOnTwitterCta";
-import { TagList } from "./TagList";
-import { Share } from "./Share";
-import { format } from "date-fns";
-import { countWords } from "../../helpers/countWords";
+import type { CollectionEntry } from 'astro:content';
+import { Heading } from './Heading';
+import { useCallback, type ReactNode } from 'react';
+import { ShareOnTwitterCta } from './ShareOnTwitterCta';
+import { TagList } from './TagList';
+import { Share } from './Share';
+import { format } from 'date-fns';
+import { countWords } from '../../helpers/countWords';
 
 interface PostDetailProps {
-  post: CollectionEntry<"posts">;
+  post: CollectionEntry<'posts'>;
   children: ReactNode;
   url: string;
 }
@@ -18,13 +18,12 @@ export function PostDetail({ post, url, children }: PostDetailProps) {
   const timeToRead = Math.round(wordCount / 275);
 
   const handleSocialShare = useCallback(
-    (url: string, name: string, windowSize: string) =>
-      (e: React.MouseEvent<HTMLElement>) => {
-        e.preventDefault();
-        console.log("open");
-        window.open(url, name, windowSize);
-      },
-    [],
+    (url: string, name: string, windowSize: string) => (e: React.MouseEvent<HTMLElement>) => {
+      e.preventDefault();
+      console.log('open');
+      window.open(url, name, windowSize);
+    },
+    []
   );
 
   return (
@@ -40,8 +39,8 @@ export function PostDetail({ post, url, children }: PostDetailProps) {
         <ShareOnTwitterCta
           onClick={handleSocialShare(
             `https://twitter.com/share?text=${post.data.title} via @phiilu&url=${url}`,
-            "twitter-share",
-            "width=550,height=235",
+            'twitter-share',
+            'width=550,height=235'
           )}
         />
       </div>
@@ -65,11 +64,7 @@ interface PostSidebarProps {
   date: Date;
   tags: string[];
   timeToRead?: number;
-  handleSocialShare: (
-    url: string,
-    name: string,
-    windowSize: string,
-  ) => React.MouseEventHandler;
+  handleSocialShare: (url: string, name: string, windowSize: string) => React.MouseEventHandler;
 }
 
 function PostSidebar({
@@ -79,7 +74,7 @@ function PostSidebar({
   date,
   tags,
   timeToRead,
-  handleSocialShare,
+  handleSocialShare
 }: PostSidebarProps) {
   return (
     <aside className="pb-10">
@@ -102,19 +97,15 @@ function PostSidebar({
           <dl className="mt-4 mr-8 xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Published on</dt>
             <dd className="text-base font-medium leading-6 text-time dark:text-gray-400">
-              <time dateTime={`${date.getTime()}`}>
-                {format(date, "MMMM dd, yyyy")}
-              </time>
+              <time dateTime={`${date.getTime()}`}>{format(date, 'MMMM dd, yyyy')}</time>
             </dd>
           </dl>
           {timeToRead && timeToRead > 0 && (
             <dl className="mt-4 md:mr-8 xl:mt-0 xl:mr-0">
-              <dt className="font-semibold font-source-sans-pro">
-                Reading time
-              </dt>
+              <dt className="font-semibold font-source-sans-pro">Reading time</dt>
               <dd className="text-base font-medium leading-6 text-time dark:text-gray-400">
                 {timeToRead} Minute
-                {timeToRead > 1 ? "s" : ""}
+                {timeToRead > 1 ? 's' : ''}
               </dd>
             </dl>
           )}
@@ -125,17 +116,13 @@ function PostSidebar({
             </dd>
           </dl>
           <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
-            <dt className="font-semibold font-source-sans-pro">
-              Social Corner
-            </dt>
+            <dt className="font-semibold font-source-sans-pro">Social Corner</dt>
             <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time dark:text-gray-400">
               <Share title={title} url={url} onClick={handleSocialShare} />
             </dd>
           </dl>
           <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
-            <dt className="font-semibold font-source-sans-pro">
-              Support Corner
-            </dt>
+            <dt className="font-semibold font-source-sans-pro">Support Corner</dt>
             <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time dark:text-gray-400">
               <a
                 // tracking={{

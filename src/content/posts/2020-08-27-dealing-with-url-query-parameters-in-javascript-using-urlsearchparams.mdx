@@ -5,7 +5,7 @@ slug: dealing-with-url-query-parameters-in-javascript-using-urlsearchparams
 publishedDate: 2020-08-27
 published: true
 description: Interacting with the browsers URL search parameters was never easier with URLSearchParams. No need for external libraries.
-tags: ["javascript", "beginners"]
+tags: ['javascript', 'beginners']
 ---
 
 Often in Single Page Applications, you will have to interact with the URL to implement some functionality like pagination or filtering.
@@ -47,7 +47,7 @@ Now you have an instance of `URLSearchParams` saved to `params` which you can us
 If you just want to get one specific parameter you can use the method `get()`
 
 ```js
-const page = params.get("page"); // will return the value of the parameter page
+const page = params.get('page'); // will return the value of the parameter page
 console.log(page); // 10
 ```
 
@@ -74,9 +74,9 @@ To modify URL parameters you can use functions like `append()`, `delete()` or `s
 In my example, I delete the parameter `page` using a button like this
 
 ```js
-$deletePageButton.addEventListener("click", () => {
-  if (params.has("page")) {
-    params.delete("page");
+$deletePageButton.addEventListener('click', () => {
+  if (params.has('page')) {
+    params.delete('page');
   }
 });
 ```
@@ -88,8 +88,8 @@ The methods modify the current `URLSearchParams` instance. If you want to explor
 Another useful use case is to generate a URL with `URL` and under the hood `URLSearchParams`.
 
 ```js
-const myURL = new URL("https://phiilu.com");
-myURL.searchParams.set("greeting", "Hello World");
+const myURL = new URL('https://phiilu.com');
+myURL.searchParams.set('greeting', 'Hello World');
 console.log(myURL.toString()); // https://phiilu.com/?greeting=Hello+World
 ```
 

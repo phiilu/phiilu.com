@@ -1,10 +1,6 @@
 export function Logo(props: any) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 130.93 130.93"
-      {...props}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.93 130.93" {...props}>
       <path
         className="fill-[#f0abfc]"
         d="M88.27,38.49c0,8.17-2.14,15.83-5.91,22.46-7.98-13.67-22.76-22.88-39.71-22.98v-.52c0-29.32,43.84-30.92,45.54-1.65,.05,.89,.08,1.78,.08,2.68Z"

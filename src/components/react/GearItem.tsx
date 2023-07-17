@@ -1,12 +1,12 @@
-import type { AstroComponentFactory } from "astro/dist/runtime/server";
-import type { CollectionEntry } from "astro:content";
-import { Button } from "./Button";
-import { Heading } from "./Heading";
-import type { HTMLProps, ReactNode } from "react";
+import type { AstroComponentFactory } from 'astro/dist/runtime/server';
+import type { CollectionEntry } from 'astro:content';
+import { Button } from './Button';
+import { Heading } from './Heading';
+import type { HTMLProps, ReactNode } from 'react';
 
 export type GearCollectionEntryRendered = {
   Content: AstroComponentFactory;
-} & CollectionEntry<"gear">;
+} & CollectionEntry<'gear'>;
 
 interface GearItem {
   gear: GearCollectionEntryRendered;
@@ -15,29 +15,25 @@ interface GearItem {
 
 export function GearItem({
   gear: {
-    data: { title, affiliateLink, affilateLinkText, image, link },
+    data: { title, affiliateLink, affilateLinkText, image, link }
   },
-  children,
+  children
 }: GearItem) {
   return (
     <div className="space-y-4">
-      <div
-        className={
-          "grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-x-8 lg:gap-y-4"
-        }
-      >
-        <a className="group" href={affiliateLink || link || "#"}>
+      <div className={'grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-x-8 lg:gap-y-4'}>
+        <a className="group" href={affiliateLink || link || '#'}>
           <div
             className={
-              "transition-colors duration-300 h-full overflow-hidden flex relative items-center justify-center p-4 rounded-md bg-gray-100 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
+              'transition-colors duration-300 h-full overflow-hidden flex relative items-center justify-center p-4 rounded-md bg-gray-100 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700'
             }
           >
             <img className="flex justify-center" src={image} alt={title} />
             <div className="absolute bottom-0 left-0 right-0 transition-transform duration-300 transform translate-y-full bg-gray-100 shadow-xl group-hover:translate-y-0 dark:bg-gray-800">
               <p className="px-4 py-2 text-sm">
                 {affiliateLink
-                  ? "Clicking will redirect using the affiliate link"
-                  : "Clicking will redirect to product page"}
+                  ? 'Clicking will redirect using the affiliate link'
+                  : 'Clicking will redirect to product page'}
               </p>
             </div>
           </div>
@@ -46,14 +42,12 @@ export function GearItem({
           <Heading noMargin size="h3">
             {title}
           </Heading>
-          <div className="lg:col-span-2 prose lg:prose-lg dark:prose-dark">
-            {children}
-          </div>
+          <div className="lg:col-span-2 prose lg:prose-lg dark:prose-dark">{children}</div>
           {link && <ProductLink href={link}>Homepage</ProductLink>}
           {affiliateLink && (
             <div className="flex items-end flex-1 max-w-sm">
-              <Button as={"a"} href={affiliateLink} variant="secondary">
-                {affilateLinkText || "Buy"}
+              <Button as={'a'} href={affiliateLink} variant="secondary">
+                {affilateLinkText || 'Buy'}
               </Button>
             </div>
           )}
@@ -70,16 +64,16 @@ interface SoftwareGearItemProps {
 
 export function SoftwareGearItem({
   gear: {
-    data: { link, image, title },
+    data: { link, image, title }
   },
-  children,
+  children
 }: SoftwareGearItemProps) {
   return (
     <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-      <a href={link || "#"}>
+      <a href={link || '#'}>
         <div
           className={
-            "flex-none flex justify-center p-4 rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 w-24 h-24"
+            'flex-none flex justify-center p-4 rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 w-24 h-24'
           }
         >
           <img className="flex justify-center" src={image} alt={image} />
@@ -90,7 +84,7 @@ export function SoftwareGearItem({
           {title}
         </Heading>
         <div className="col-span-2">{children}</div>
-        <ProductLink href={link || "#"}>Homepage</ProductLink>
+        <ProductLink href={link || '#'}>Homepage</ProductLink>
       </div>
     </div>
   );
@@ -98,10 +92,7 @@ export function SoftwareGearItem({
 
 function ProductLink({ href }: HTMLProps<HTMLAnchorElement>) {
   return (
-    <a
-      className={"flex items-center gap-2 font-bold text-indigo-500"}
-      href={href}
-    >
+    <a className={'flex items-center gap-2 font-bold text-indigo-500'} href={href}>
       Product Details
       <svg
         className="w-6 h-6"

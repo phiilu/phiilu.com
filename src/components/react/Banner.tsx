@@ -1,6 +1,6 @@
 // import trackEvent from "@helpers/tracking";
 
-import type { ReactElement } from "react";
+import type { ReactElement } from 'react';
 
 interface BannerProps {
   onClose: () => void;
@@ -11,14 +11,7 @@ interface BannerProps {
   text: string;
 }
 
-export function Banner({
-  onClose,
-  shortText,
-  ctaText,
-  icon,
-  ctaHref,
-  text,
-}: BannerProps) {
+export function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }: BannerProps) {
   return (
     <div className="fixed  bottom-5 rounded-md shadow-md left-5 right-5 z-20 bg-gradient-to-r from-pokezards-yellow to-pokezards-dark-red">
       <div className="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -64,11 +57,7 @@ export function Banner({
                 stroke="currentColor"
                 aria-hidden="true"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>

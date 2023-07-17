@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from 'astro:content';
 
 const posts = defineCollection({
   schema: z.object({
@@ -14,8 +14,8 @@ const posts = defineCollection({
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
     tags: z.array(z.string()),
-    published: z.boolean(),
-  }),
+    published: z.boolean()
+  })
 });
 
 const gear = defineCollection({
@@ -25,8 +25,8 @@ const gear = defineCollection({
     category: z.string().nullable().optional(),
     link: z.string().nullable().optional(),
     affiliateLink: z.string().nullable().optional(),
-    affilateLinkText: z.string().nullable().optional(),
-  }),
+    affilateLinkText: z.string().nullable().optional()
+  })
 });
 
 export const collections = { posts, gear };

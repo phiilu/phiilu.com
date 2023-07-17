@@ -1,6 +1,6 @@
-import React from "react";
-import clsx from "clsx";
-import tagColors, { TagListItem } from "../../helpers/tagColors";
+import React from 'react';
+import clsx from 'clsx';
+import tagColors, { TagListItem } from '../../helpers/tagColors';
 
 interface TagListProps {
   tags: string[];
@@ -10,7 +10,7 @@ export const TagList = ({ tags }: TagListProps) => {
   return React.useMemo(() => {
     const tagList: TagListItem[] = tags.map((tag) => ({
       // @ts-ignore
-      ...tagColors[tag],
+      ...tagColors[tag]
     }));
 
     return (
@@ -21,10 +21,10 @@ export const TagList = ({ tags }: TagListProps) => {
               <a
                 href={`/tag/${tag.slug}`}
                 className={clsx(
-                  "pointer-events-auto inline-block rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-200 ease-in-out",
+                  'pointer-events-auto inline-block rounded-md px-2 py-1 text-sm font-semibold transition-colors duration-200 ease-in-out',
                   tag.bg,
                   tag.text,
-                  tag.hover,
+                  tag.hover
                 )}
               >
                 {tag.name}

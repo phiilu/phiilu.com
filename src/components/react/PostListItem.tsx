@@ -1,8 +1,8 @@
-import { Heading } from "./Heading";
-import { TagList } from "./TagList";
+import { Heading } from './Heading';
+import { TagList } from './TagList';
 // import DraftBadge from "./DraftBadge";
-import { useMemo } from "react";
-import { format as formatDate } from "date-fns";
+import { useMemo } from 'react';
+import { format as formatDate } from 'date-fns';
 
 interface PostListItemProps {
   post: {
@@ -18,7 +18,7 @@ interface PostListItemProps {
 }
 
 export const PostListItem = ({
-  post: { slug, title, description, published, icon, publishedDate, tags },
+  post: { slug, title, description, published, icon, publishedDate, tags }
 }: PostListItemProps) => {
   return useMemo(
     () => (
@@ -32,13 +32,7 @@ export const PostListItem = ({
           {/* <DraftBadge isPublished={published}></DraftBadge> */}
           <div className="flex items-center pr-4 xl:space-x-6 xl:pb-0 xl:col-span-3">
             <div className="flex-shrink-0 hidden w-12 h-12 xl:inline-block">
-              <img
-                src={icon}
-                height={48}
-                width={48}
-                alt={icon}
-                className="object-contain"
-              />
+              <img src={icon} height={48} width={48} alt={icon} className="object-contain" />
             </div>
             <div className="space-y-2">
               <Heading size="h2" noMargin>
@@ -51,20 +45,14 @@ export const PostListItem = ({
           </div>
           <div className="flex items-center pt-4 space-x-6 border-t border-gray-200 dark:group-hover:border-gray-700 dark:border-gray-800 xl:pl-4 xl:pt-0 xl:space-x-0 xl:border-l xl:border-t-0">
             <div className="inline-block w-12 h-12 xl:hidden">
-              <img
-                src={icon}
-                height={48}
-                width={48}
-                alt={icon}
-                className="object-contain"
-              />
+              <img src={icon} height={48} width={48} alt={icon} className="object-contain" />
             </div>
             <div>
               <dl>
                 <dt className="sr-only">Published on</dt>
                 <dd className="text-base font-medium leading-6 text-time font-source-sans-pro dark:text-gray-200">
                   <time dateTime="2020-06-30T18:05:31Z">
-                    {formatDate(publishedDate, "MMMM dd, yyyy")}
+                    {formatDate(publishedDate, 'MMMM dd, yyyy')}
                   </time>
                 </dd>
               </dl>
@@ -74,6 +62,6 @@ export const PostListItem = ({
         </div>
       </article>
     ),
-    [slug, title, description, published, icon, publishedDate, tags],
+    [slug, title, description, published, icon, publishedDate, tags]
   );
 };

@@ -5,7 +5,7 @@ slug: make-your-ubuntu-server-vps-more-secure-against-unauthorized-access
 publishedDate: 2020-09-26
 published: true
 description: When creating a new VPS you need to make sure that you secure your server from the scary internet. Only you should be able to log in and administrate your server.
-tags: ["server", "terminal", "ubuntu", "vps", "vultr"]
+tags: ['server', 'terminal', 'ubuntu', 'vps', 'vultr']
 ---
 
 When creating a new VPS you need to make sure that you secure your server from the scary internet. The only one that should be able to administrate the server should be you and **only** you!
@@ -148,7 +148,7 @@ Before doing that we want to set up public-key authentication for both our users
 
 ### Using public key authentication
 
-> This is a recap of the "Skip passwords with public key authentication" section of my [Use Visual Studio Code Remote to edit files on servers](https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/ "Use Visual Studio Code Remote to edit files on servers") post.
+> This is a recap of the "Skip passwords with public key authentication" section of my [Use Visual Studio Code Remote to edit files on servers](https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/ 'Use Visual Studio Code Remote to edit files on servers') post.
 
 [Public key authentication](https://en.wikipedia.org/wiki/Public-key_cryptography) is a secure way to connect to a server with SSH using a set of key pairs. The public key is saved on the server and the private key should be kept on your local machine. This is the key to unlock the server and **must never** be leaked or shared with someone else.
 
@@ -234,7 +234,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 ### A more secure ssh config
 
-To change the configuration for `ssh` open the `/etc/ssh/sshd_config` file with your favorite text editor or you can check out my blog post **[Use Visual Studio Code Remote to edit files on servers](https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/ "Use Visual Studio Code Remote to edit files on servers")** to use a GUI editor to modify your server files.
+To change the configuration for `ssh` open the `/etc/ssh/sshd_config` file with your favorite text editor or you can check out my blog post **[Use Visual Studio Code Remote to edit files on servers](https://phiilu.com/use-visual-studio-code-remote-to-edit-files-on-servers/ 'Use Visual Studio Code Remote to edit files on servers')** to use a GUI editor to modify your server files.
 
 First of all, I want to change that the `root` user is not able to log in with a password, but should be able to use public-key authentication to sign in.
 

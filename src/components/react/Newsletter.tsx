@@ -1,7 +1,7 @@
-import { HTMLProps, useState } from "react";
-import { Alert } from "./Alert";
-import { Button } from "./Button";
-import { Container } from "./Container";
+import { HTMLProps, useState } from 'react';
+import { Alert } from './Alert';
+import { Button } from './Button';
+import { Container } from './Container';
 
 interface InputProps extends HTMLProps<HTMLInputElement> {}
 
@@ -19,40 +19,40 @@ function Input({ label, type, required, placeholder, ...props }: InputProps) {
 }
 
 export function Newsletter() {
-  const [form, setForm] = useState({ first_name: "", email: "" });
-  const [state, setState] = useState("idle");
+  const [form, setForm] = useState({ first_name: '', email: '' });
+  const [state, setState] = useState('idle');
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setForm((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     }));
   }
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    fetch("https://api.phiilu.com/newsletter-signup", {
-      method: "POST",
+    fetch('https://api.phiilu.com/newsletter-signup', {
+      method: 'POST',
       body: JSON.stringify(form),
       headers: {
-        "Content-Type": "application/json",
-      },
+        'Content-Type': 'application/json'
+      }
     })
       .then((res) => res.json())
       .then(() => {
-        setState("success");
+        setState('success');
       })
       .catch((error) => {
         console.error(error);
-        setState("error");
+        setState('error');
       });
   }
 
   function tryAgain() {
-    setState("idle");
+    setState('idle');
   }
 
-  if (state === "success") {
+  if (state === 'success') {
     return (
       <Container className="py-12">
         <Alert
@@ -65,7 +65,7 @@ export function Newsletter() {
     );
   }
 
-  if (state === "error") {
+  if (state === 'error') {
     return (
       <Container className="py-12">
         <Alert
@@ -73,8 +73,8 @@ export function Newsletter() {
           title="Ohh shoot!"
           message="Sorry we could not sign you up... wanna try again?"
           action={{
-            name: "Hell yes!",
-            onClick: tryAgain,
+            name: 'Hell yes!',
+            onClick: tryAgain
           }}
           onClose={tryAgain}
         />
@@ -87,10 +87,7 @@ export function Newsletter() {
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
           Want blog post updates? <br className="hidden sm:inline" />
-          <span
-            className="text-indigo-600 dark:text-indigo-500"
-            id="newsletter-headline"
-          >
+          <span className="text-indigo-600 dark:text-indigo-500" id="newsletter-headline">
             Sign up for my newsletter.
           </span>
         </h2>

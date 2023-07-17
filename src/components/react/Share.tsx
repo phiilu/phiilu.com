@@ -1,17 +1,13 @@
-import * as React from "react";
-import toast from "react-hot-toast";
+import * as React from 'react';
+import toast from 'react-hot-toast';
 
-import { Button } from "./Button";
-import { ErrorIcon, LoadingIcon, SuccessIcon } from "./icons/NotificationIcons";
+import { Button } from './Button';
+import { ErrorIcon, LoadingIcon, SuccessIcon } from './icons/NotificationIcons';
 
 interface ShareProps {
   title: string;
   url: string;
-  onClick: (
-    url: string,
-    name: string,
-    windowSize: string,
-  ) => React.MouseEventHandler;
+  onClick: (url: string, name: string, windowSize: string) => React.MouseEventHandler;
 }
 
 export function Share({ title, url, onClick }: ShareProps) {
@@ -26,7 +22,7 @@ export function Share({ title, url, onClick }: ShareProps) {
       const res = window.navigator.share({
         title,
         text: `${title} by Florian Kapfenberger (@phiilu)`,
-        url,
+        url
       });
 
       toast.promise(
@@ -39,29 +35,21 @@ export function Share({ title, url, onClick }: ShareProps) {
             />
           ),
           success: (
-            <ToastMessage
-              title="Shared successfully"
-              text="Thank you for sharing my post!"
-            />
+            <ToastMessage title="Shared successfully" text="Thank you for sharing my post!" />
           ),
-          error: (
-            <ToastMessage
-              title="So close"
-              text="Oh okay.. Maybe next time :)"
-            />
-          ),
+          error: <ToastMessage title="So close" text="Oh okay.. Maybe next time :)" />
         },
         {
           success: {
-            icon: <SuccessIcon />,
+            icon: <SuccessIcon />
           },
           loading: {
-            icon: <LoadingIcon />,
+            icon: <LoadingIcon />
           },
           error: {
-            icon: <ErrorIcon />,
-          },
-        },
+            icon: <ErrorIcon />
+          }
+        }
       );
     } catch (error) {
       // do nothing
@@ -95,8 +83,8 @@ export function Share({ title, url, onClick }: ShareProps) {
           variant="twitter"
           onClick={onClick(
             `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
-            "twitter-share",
-            "width=550,height=235",
+            'twitter-share',
+            'width=550,height=235'
           )}
         >
           Share on Twitter
@@ -112,8 +100,8 @@ export function Share({ title, url, onClick }: ShareProps) {
           variant="hackernews"
           onClick={onClick(
             `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
-            "hn-share",
-            "width=550,height=350",
+            'hn-share',
+            'width=550,height=350'
           )}
         >
           Share on Hacker News
@@ -131,9 +119,7 @@ interface ToastMessageProps {
 function ToastMessage({ title, text }: ToastMessageProps) {
   return (
     <div className="ml-3 w-0 flex-1 pt-0.5">
-      <p className="text-sm font-medium text-gray-900 dark:text-white">
-        {title}
-      </p>
+      <p className="text-sm font-medium text-gray-900 dark:text-white">{title}</p>
       <p className="mt-1 text-sm text-gray-500 dark:text-gray-100">{text}</p>
     </div>
   );

@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import * as React from "react";
+import clsx from 'clsx';
+import * as React from 'react';
 
 type Action = {
   name: string;
@@ -7,23 +7,17 @@ type Action = {
 };
 
 interface AlertProps {
-  variant?: "success" | "error";
+  variant?: 'success' | 'error';
   title: string;
   message: string;
   action?: Action;
   onClose?: () => void;
 }
 
-export function Alert({
-  variant = "success",
-  title,
-  message,
-  action,
-  onClose,
-}: AlertProps) {
+export function Alert({ variant = 'success', title, message, action, onClose }: AlertProps) {
   const [show, setShow] = React.useState(true);
-  const success = variant === "success";
-  const error = variant === "error";
+  const success = variant === 'success';
+  const error = variant === 'error';
 
   function handleClose() {
     setShow((prev) => !prev);
@@ -34,17 +28,17 @@ export function Alert({
 
   return (
     <div
-      className={clsx("p-4 rounded-md", {
-        "bg-green-50": success,
-        "bg-red-50": error,
+      className={clsx('p-4 rounded-md', {
+        'bg-green-50': success,
+        'bg-red-50': error
       })}
     >
       <div className="flex">
         <div className="flex-shrink-0">
           <svg
-            className={clsx("w-5 h-5 ", {
-              "text-green-400": success,
-              "text-red-400": error,
+            className={clsx('w-5 h-5 ', {
+              'text-green-400': success,
+              'text-red-400': error
             })}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
@@ -60,18 +54,18 @@ export function Alert({
         <div className="ml-3">
           {title && (
             <h3
-              className={clsx("text-sm font-bold leading-5 ", {
-                "text-green-800": success,
-                "text-red-800": error,
+              className={clsx('text-sm font-bold leading-5 ', {
+                'text-green-800': success,
+                'text-red-800': error
               })}
             >
               {title}
             </h3>
           )}
           <div
-            className={clsx("mt-2 text-sm leading-5", {
-              "text-green-700": success,
-              "text-red-700": error,
+            className={clsx('mt-2 text-sm leading-5', {
+              'text-green-700': success,
+              'text-red-700': error
             })}
           >
             <p>{message}</p>
@@ -82,12 +76,11 @@ export function Alert({
                 <button
                   onClick={action.onClick}
                   className={clsx(
-                    "px-2 py-1.5 rounded-md text-sm leading-5 font-medium focus:outline-none transition ease-in-out duration-150",
+                    'px-2 py-1.5 rounded-md text-sm leading-5 font-medium focus:outline-none transition ease-in-out duration-150',
                     {
-                      "text-green-800 hover:bg-green-100 focus:bg-green-100":
-                        success,
-                      "text-red-800 hover:bg-red-100 focus:bg-red-100": error,
-                    },
+                      'text-green-800 hover:bg-green-100 focus:bg-green-100': success,
+                      'text-red-800 hover:bg-red-100 focus:bg-red-100': error
+                    }
                   )}
                 >
                   {action.name}
@@ -101,12 +94,11 @@ export function Alert({
             <button
               onClick={handleClose}
               className={clsx(
-                "inline-flex rounded-md p-1.5 focus:outline-none  transition ease-in-out duration-150",
+                'inline-flex rounded-md p-1.5 focus:outline-none  transition ease-in-out duration-150',
                 {
-                  "text-green-500 hover:bg-green-100 focus:bg-green-100":
-                    success,
-                  "text-red-500 hover:bg-red-100 focus:bg-red-100": error,
-                },
+                  'text-green-500 hover:bg-green-100 focus:bg-green-100': success,
+                  'text-red-500 hover:bg-red-100 focus:bg-red-100': error
+                }
               )}
               aria-label="Dismiss"
             >

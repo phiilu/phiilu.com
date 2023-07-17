@@ -5,7 +5,7 @@ slug: share-articles-on-social-media-with-the-web-share-api
 publishedDate: 2021-02-14
 published: true
 description: With the Web Share API you can use the native sharing mechanism of the device.
-tags: ["javascript", "web apis", "react"]
+tags: ['javascript', 'web apis', 'react']
 ---
 
 Sharing websites is a fundamental process of the web and providing a way to make it as easy as possible can allow users to easily share the work you created.
@@ -36,10 +36,9 @@ Using the Web Share API is very easy. In its basic version, it is just one funct
 
 ```javascript
 const data = {
-  title:
-    "Allow your mobile visitors to easier share your articles with the Web Share API",
-  url: "https://phiilu.com/share-articles-on-social-media-with-the-web-share-api",
-  text: "Allow your mobile visitors to easier share your articles with the Web Share API by Florian Kapfenberger (@phiilu)",
+  title: 'Allow your mobile visitors to easier share your articles with the Web Share API',
+  url: 'https://phiilu.com/share-articles-on-social-media-with-the-web-share-api',
+  text: 'Allow your mobile visitors to easier share your articles with the Web Share API by Florian Kapfenberger (@phiilu)'
 };
 const sharePromise = window.navigator.share(data);
 ```
@@ -79,10 +78,10 @@ In React I created a new `Share` component. If the `share` method is available I
 You can find the up-to-date file on my [GitHub][8].
 
 ```javascript
-import * as React from "react";
-import toast from "react-hot-toast";
+import * as React from 'react';
+import toast from 'react-hot-toast';
 
-import Button from "@components/Button/Button";
+import Button from '@components/Button/Button';
 
 function Share({ title, url, onClick }) {
   const [isSareApiAvailable, setIsSareApiAvailable] = React.useState(false);
@@ -96,25 +95,25 @@ function Share({ title, url, onClick }) {
       const res = window.navigator.share({
         title,
         text: `${title} by Florian Kapfenberger (@phiilu)`,
-        url,
+        url
       });
 
       toast.promise(res, {
         loading: {
-          title: "Share the post with the world",
-          text: "Select how you want to share the post",
-          dismiss: false,
+          title: 'Share the post with the world',
+          text: 'Select how you want to share the post',
+          dismiss: false
         },
         success: {
-          title: "Shared successfully",
-          text: "Thank you for sharing my post!",
-          dismiss: true,
+          title: 'Shared successfully',
+          text: 'Thank you for sharing my post!',
+          dismiss: true
         },
         error: {
-          title: "So close",
-          text: "Oh okay.. Maybe next time :)",
-          dismiss: true,
-        },
+          title: 'So close',
+          text: 'Oh okay.. Maybe next time :)',
+          dismiss: true
+        }
       });
     } catch (error) {
       // do nothing
@@ -127,9 +126,9 @@ function Share({ title, url, onClick }) {
         <li className="w-full">
           <Button
             tracking={{
-              event: "click",
-              value: "Share Anywhere clicked",
-              name: "Share Anywhere clicked",
+              event: 'click',
+              value: 'Share Anywhere clicked',
+              name: 'Share Anywhere clicked'
             }}
             variant="secondary"
             onClick={handleSocialShare}
@@ -141,15 +140,15 @@ function Share({ title, url, onClick }) {
       <li className="w-full">
         <Button
           tracking={{
-            event: "click",
-            value: "Share on Twitter clicked",
-            name: "Share on Twitter clicked",
+            event: 'click',
+            value: 'Share on Twitter clicked',
+            name: 'Share on Twitter clicked'
           }}
           variant="twitter"
           onClick={onClick(
             `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
-            "twitter-share",
-            "width=550,height=235",
+            'twitter-share',
+            'width=550,height=235'
           )}
         >
           Share on Twitter
@@ -158,15 +157,15 @@ function Share({ title, url, onClick }) {
       <li className="w-full">
         <Button
           tracking={{
-            event: "click",
-            value: "Share on Hacker News clicked",
-            name: "Share on Hacker News clicked",
+            event: 'click',
+            value: 'Share on Hacker News clicked',
+            name: 'Share on Hacker News clicked'
           }}
           variant="hackernews"
           onClick={onClick(
             `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
-            "hn-share",
-            "width=550,height=350",
+            'hn-share',
+            'width=550,height=350'
           )}
         >
           Share on Hacker News

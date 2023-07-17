@@ -10,55 +10,55 @@ export const listVariants = {
       duration: 0.5,
       ease: [0.48, 0.15, 0.25, 0.96],
       staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
+      delayChildren: 0.2
+    }
   },
   exit: {
-    transition: { staggerChildren: 0.1, staggerDirection: -1 },
-  },
+    transition: { staggerChildren: 0.1, staggerDirection: -1 }
+  }
 };
 export const itemVariants = {
   initial: {
     y: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 },
-    },
+      y: { stiffness: 1000 }
+    }
   },
   enter: {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
+      y: { stiffness: 1000, velocity: -100 }
+    }
   },
   exit: {
     y: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
-  },
+      y: { stiffness: 1000, velocity: -100 }
+    }
+  }
 };
 
 export const slideInUp = {
   exit: {
     y: 100,
     opacity: 0,
-    transition: { duration: 0.2, ease: easing },
+    transition: { duration: 0.2, ease: easing }
   },
   enter: {
     y: 0,
     opacity: 1,
-    transition: { delay: 0.1, duration: 0.5, ease: easing },
-  },
+    transition: { delay: 0.1, duration: 0.5, ease: easing }
+  }
 };
 
 export const delayedSlideInUp = {
   exit: {
     y: 100,
     opacity: 0,
-    transition: { duration: 0.2, ease: easing },
+    transition: { duration: 0.2, ease: easing }
   },
   enter: {
     y: 0,
@@ -66,22 +66,22 @@ export const delayedSlideInUp = {
     transition: {
       delay: 0.2,
       duration: 0.5,
-      ease: easing,
-    },
-  },
+      ease: easing
+    }
+  }
 };
 
 export const slideInLeft = {
   exit: {
     x: -100,
     opacity: 0,
-    transition: { duration: 0.4, ease: easing },
+    transition: { duration: 0.4, ease: easing }
   },
   enter: {
     x: 0,
     opacity: 1,
-    transition: { delay: 0.1, duration: 0.5, ease: easing },
-  },
+    transition: { delay: 0.1, duration: 0.5, ease: easing }
+  }
 };
 
 export const slideInRight = {
@@ -91,13 +91,13 @@ export const slideInRight = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: easing,
-    },
-  },
+      ease: easing
+    }
+  }
 };
 
 export const spring = {
-  type: "spring",
+  type: 'spring',
   stiffness: 500,
-  damping: 30,
+  damping: 30
 };

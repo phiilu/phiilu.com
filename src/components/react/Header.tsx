@@ -1,10 +1,10 @@
-import React, { ReactNode, useEffect } from "react";
-import clsx from "clsx";
-import { Container } from "./Container";
-import { useScroll } from "../../hooks/useScroll";
-import { motion, EventInfo } from "framer-motion";
-import { spring } from "../../helpers/animation";
-import { Logo } from "./icons/Logo";
+import React, { ReactNode, useEffect } from 'react';
+import clsx from 'clsx';
+import { Container } from './Container';
+import { useScroll } from '../../hooks/useScroll';
+import { motion, EventInfo } from 'framer-motion';
+import { spring } from '../../helpers/animation';
+import { Logo } from './icons/Logo';
 
 interface MenuItemProps {
   onHoverStart: (event: MouseEvent, info: EventInfo) => void;
@@ -15,20 +15,9 @@ interface MenuItemProps {
   href: string;
 }
 
-function MenuItem({
-  onHoverStart,
-  onHoverEnd,
-  onClick,
-  href,
-  active,
-  children,
-}: MenuItemProps) {
+function MenuItem({ onHoverStart, onHoverEnd, onClick, href, active, children }: MenuItemProps) {
   return (
-    <motion.li
-      onHoverStart={onHoverStart}
-      onHoverEnd={onHoverEnd}
-      onClick={onClick}
-    >
+    <motion.li onHoverStart={onHoverStart} onHoverEnd={onHoverEnd} onClick={onClick}>
       <a
         href={href}
         className="relative inline-block px-2 py-2 text-center transition-colors duration-100 ease-in-out rounded-md sm:inline md:px-4 font-semibold text-md font-open-sans"
@@ -54,19 +43,19 @@ function SharedHover() {
 const menuItems = [
   {
     index: 0,
-    href: "/blog",
-    name: "Blog",
+    href: '/blog',
+    name: 'Blog'
   },
   {
     index: 1,
-    href: "/about-me",
-    name: "About Me",
+    href: '/about-me',
+    name: 'About Me'
   },
   {
     index: 2,
-    href: "/my-gear",
-    name: "My Gear",
-  },
+    href: '/my-gear',
+    name: 'My Gear'
+  }
 ];
 
 function getActiveIndex(pathname: string) {
@@ -93,7 +82,7 @@ export const Header = ({ route }: HeaderProps) => {
       hasHover.current = true;
       setActiveHoverIndex(index);
     },
-    [],
+    []
   );
   function handleOnHoverEnd() {
     if (hasClicked.current) {
@@ -126,20 +115,14 @@ export const Header = ({ route }: HeaderProps) => {
   return (
     <div>
       <div
-        className={clsx(
-          "fixed top-0 left-0 z-20 h-2 bg-indigo-500 bg-opacity-75",
-          {
-            "rounded-r-full": scrolled !== 100,
-          },
-        )}
+        className={clsx('fixed top-0 left-0 z-20 h-2 bg-indigo-500 bg-opacity-75', {
+          'rounded-r-full': scrolled !== 100
+        })}
         style={{ width: `${scrolled}%` }}
       />
       <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
         <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-no-wrap rounded-xl">
-          <a
-            href="/"
-            className="flex-1 flex gap-2 items-center justify-center sm:justify-start"
-          >
+          <a href="/" className="flex-1 flex gap-2 items-center justify-center sm:justify-start">
             <Logo className="h-8 w-8" />
             <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
               phiilu

@@ -1,5 +1,5 @@
-import { Button } from "./Button";
-import { Heading } from "./Heading";
+import { Button } from './Button';
+import { Heading } from './Heading';
 
 interface ShareOnTwitterCtaProps {
   onClick: React.MouseEventHandler;
@@ -15,7 +15,7 @@ export function ShareOnTwitterCta({ onClick }: ShareOnTwitterCtaProps) {
         Did you find this post useful or learned something?
       </Heading>
       <p className="prose lg:prose-xl dark:prose-dark">
-        I would be really grateful if you let me{" "}
+        I would be really grateful if you let me{' '}
         <a
           //   tracking={{
           //     event: "click",
@@ -25,7 +25,7 @@ export function ShareOnTwitterCta({ onClick }: ShareOnTwitterCtaProps) {
           href="https://twitter.com/phiilu"
         >
           @phiilu
-        </a>{" "}
+        </a>{' '}
         know by sharing it on Twitter!
       </p>
       <Button

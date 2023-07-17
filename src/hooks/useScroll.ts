@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export function useScroll() {
   const [scrolled, setScrolled] = useState(0);
@@ -8,11 +8,9 @@ export function useScroll() {
     function handleScroll() {
       if (requestRunning === null) {
         requestRunning = window.requestAnimationFrame(() => {
-          const winScroll =
-            document.body.scrollTop || document.documentElement.scrollTop;
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
           const height =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
+            document.documentElement.scrollHeight - document.documentElement.clientHeight;
           const scrolled = (winScroll / height) * 100;
           setScrolled(scrolled);
 
@@ -21,8 +19,8 @@ export function useScroll() {
       }
     }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return [scrolled, setScrolled];

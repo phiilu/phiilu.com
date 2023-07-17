@@ -5,7 +5,7 @@ slug: generate-rss-feeds-for-your-static-next-js-blog
 publishedDate: 2020-11-20
 published: true
 description: RSS feeds are a great way to get updates for new articles on a website, therefore having one on your blog can be valuable for your readers who are using RSS readers.
-tags: ["next.js", "react", "javascript"]
+tags: ['next.js', 'react', 'javascript']
 ---
 
 On the internet, there are many ways to allow visitors to get updated for new content on your blog. A pretty common option is to offer a **Really Simple Syndication** or more commonly known as **RSS** feed.
@@ -45,26 +45,26 @@ Inside the `rss.js` file create a new function and name it something like `gener
 Next, we want to initialize the Feed instance.
 
 ```javascript
-const baseUrl = "https://phiilu.com";
+const baseUrl = 'https://phiilu.com';
 const date = new Date();
 
 const feed = new Feed({
   title: `Phiilu's Blog`,
-  description: "Welcome to my blog!",
+  description: 'Welcome to my blog!',
   id: baseUrl,
   link: baseUrl,
-  language: "en",
+  language: 'en',
   image: `${baseUrl}/images/logo.svg`,
   favicon: `${baseUrl}/favicon.ico`,
   copyright: `All rights reserved ${date.getFullYear()}, Florian Kapfenberger`,
   updated: date,
-  generator: "Next.js using Feed for Node.js",
+  generator: 'Next.js using Feed for Node.js',
   feedLinks: {
     rss2: `${baseUrl}/rss/feed.xml`,
     json: `${baseUrl}/rss/feed.json`,
-    atom: `${baseUrl}/rss/atom.xml`,
+    atom: `${baseUrl}/rss/atom.xml`
   },
-  author,
+  author
 });
 ```
 
@@ -80,13 +80,13 @@ I am using [Contentful](https://www.contentful.com/) as my headless CMS, so I am
 
 ```javascript
 const author = {
-  name: "Florian Kapfenberger",
-  email: "hey@phiilu.com",
-  link: "https://twitter.com/phiilu",
+  name: 'Florian Kapfenberger',
+  email: 'hey@phiilu.com',
+  link: 'https://twitter.com/phiilu'
 };
 
-const posts = await contentful.getEntries("post", {
-  order: "-fields.publishedDate",
+const posts = await contentful.getEntries('post', {
+  order: '-fields.publishedDate'
 });
 
 posts.forEach((post) => {
@@ -99,7 +99,7 @@ posts.forEach((post) => {
     content: markdown.toHTML(post.content),
     author: [author],
     contributor: [author],
-    date: new Date(post.rawDate),
+    date: new Date(post.rawDate)
   });
 });
 ```
@@ -111,10 +111,10 @@ Here I am fetching my articles using the Contentful API and adding them to the `
 Next.js will serve files from the `public` folder, so this is the location where we want to store the different feeds.
 
 ```javascript
-fs.mkdirSync("./public/rss", { recursive: true });
-fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
-fs.writeFileSync("./public/rss/atom.xml", feed.atom1());
-fs.writeFileSync("./public/rss/feed.json", feed.json1());
+fs.mkdirSync('./public/rss', { recursive: true });
+fs.writeFileSync('./public/rss/feed.xml', feed.rss2());
+fs.writeFileSync('./public/rss/atom.xml', feed.atom1());
+fs.writeFileSync('./public/rss/feed.json', feed.json1());
 ```
 
 Thanks to `feed` we can generate all three formats by just calling the correct function!
@@ -124,45 +124,45 @@ Thanks to `feed` we can generate all three formats by just calling the correct f
 After these 3 steps, your `rss.js` file should look similar to this one.
 
 ```javascript
-const Feed = require("feed").Feed;
-const contentful = require("./contentful").default;
-const markdown = require("markdown").markdown;
-const fs = require("fs");
+const Feed = require('feed').Feed;
+const contentful = require('./contentful').default;
+const markdown = require('markdown').markdown;
+const fs = require('fs');
 
 async function generateRssFeed() {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     return;
   }
 
   const baseUrl = process.env.BASE_URL;
   const date = new Date();
   const author = {
-    name: "Florian Kapfenberger",
-    email: "hey@phiilu.com",
-    link: "https://twitter.com/phiilu",
+    name: 'Florian Kapfenberger',
+    email: 'hey@phiilu.com',
+    link: 'https://twitter.com/phiilu'
   };
 
   const feed = new Feed({
     title: `Phiilu's Blog`,
-    description: "Welcome to my blog!",
+    description: 'Welcome to my blog!',
     id: baseUrl,
     link: baseUrl,
-    language: "en",
+    language: 'en',
     image: `${baseUrl}/images/logo.svg`,
     favicon: `${baseUrl}/favicon.ico`,
     copyright: `All rights reserved ${date.getFullYear()}, Florian Kapfenberger`,
     updated: date,
-    generator: "Next.js using Feed for Node.js",
+    generator: 'Next.js using Feed for Node.js',
     feedLinks: {
       rss2: `${baseUrl}/rss/feed.xml`,
       json: `${baseUrl}/rss/feed.json`,
-      atom: `${baseUrl}/rss/atom.xml`,
+      atom: `${baseUrl}/rss/atom.xml`
     },
-    author,
+    author
   });
 
-  const posts = await contentful.getEntries("post", {
-    order: "-fields.publishedDate",
+  const posts = await contentful.getEntries('post', {
+    order: '-fields.publishedDate'
   });
 
   posts.forEach((post) => {
@@ -175,14 +175,14 @@ async function generateRssFeed() {
       content: markdown.toHTML(post.content),
       author: [author],
       contributor: [author],
-      date: new Date(post.rawDate),
+      date: new Date(post.rawDate)
     });
   });
 
-  fs.mkdirSync("./public/rss", { recursive: true });
-  fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
-  fs.writeFileSync("./public/rss/atom.xml", feed.atom1());
-  fs.writeFileSync("./public/rss/feed.json", feed.json1());
+  fs.mkdirSync('./public/rss', { recursive: true });
+  fs.writeFileSync('./public/rss/feed.xml', feed.rss2());
+  fs.writeFileSync('./public/rss/atom.xml', feed.atom1());
+  fs.writeFileSync('./public/rss/feed.json', feed.json1());
 }
 
 export default generateRssFeed;
@@ -201,7 +201,7 @@ export async function getStaticProps() {
   await generateRssFeed();
 
   return {
-    props: { posts, ogImage, baseUrl },
+    props: { posts, ogImage, baseUrl }
   };
 }
 ```

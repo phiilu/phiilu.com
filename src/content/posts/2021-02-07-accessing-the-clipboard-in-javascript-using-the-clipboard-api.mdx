@@ -5,7 +5,7 @@ slug: accessing-the-clipboard-in-javascript-using-the-clipboard-api
 publishedDate: 2021-02-07
 published: true
 description: The Clipboard API is a way to interact with the clipboard of the user in the browser. This API is still an early working draft, but you can already use it today!
-tags: ["javascript", "web apis", "next.js", "react"]
+tags: ['javascript', 'web apis', 'next.js', 'react']
 ---
 
 Welcome to my new series where I will write about built-in Browser-APIs and demonstrate how you can use them today. Most of the APIs I will write about will be highly experimental and still will have the "Draft" status. So don't expect a wide browser adoption and only try this with modern browsers. You can always check [caniuse.com][1] or [MDN][2] for up-to-date information about the compatibility in the browsers.
@@ -36,7 +36,7 @@ function handlePasteEvent(event) {
   event.preventDefault();
 }
 
-document.addEventListener("paste", handlePasteEvent);
+document.addEventListener('paste', handlePasteEvent);
 ```
 
 The event that gets passed to the handler function will implement the `ClipboardEvent` interface. This interface will allow you to override the content of what is being passed to or from the Clipboard. Very handy if you want to format or remove the formatting of text that is being copied.
@@ -47,8 +47,8 @@ For browsers that implement the Permissions API, you should first check if you h
 > I tried it out without querying for permission and it was working fine. This could obviously change in the future.
 
 ```javascript
-navigator.permissions.query({ name: "clipboard-read" }).then(function (result) {
-  if (result.state === "granted") {
+navigator.permissions.query({ name: 'clipboard-read' }).then(function (result) {
+  if (result.state === 'granted') {
     // you can read from the clipboard
   }
 });
@@ -75,7 +75,7 @@ navigator.clipboard
     for (const clipboardItem of clipboardItems) {
       for (const type of clipboardItem.types) {
         const blob = await clipboardItem.getType(type);
-        if (type === "image/png") {
+        if (type === 'image/png') {
           const imageUrl = URL.createObjectURL(blob);
           console.log(imageUrl); // blob:http://localhost:3000/e53d5d55-c674-454b-9587-2501a4396eed
         }
@@ -100,7 +100,7 @@ As I already said you won't need to ask for the `clipboard-write` permissions be
 If you just want to write text to the clipboard you can use the convenience `writeText()` method. Just pass the text you want to put on the clipboard as the first argument and you are done!.
 
 ```javascript
-await navigator.clipboard.writeText("Hello World");
+await navigator.clipboard.writeText('Hello World');
 ```
 
 ### Images
@@ -110,14 +110,12 @@ If you want to write images to the clipboard you will have to use the `write()` 
 Here is an example of how you can read an image from the clipboard:
 
 ```javascript
-const result = await fetch(
-  "https://images.dog.ceo/breeds/pembroke/n02113023_15926.jpg",
-);
+const result = await fetch('https://images.dog.ceo/breeds/pembroke/n02113023_15926.jpg');
 const blob = await result.blob();
 await navigator.clipboard.write([
   new ClipboardItem({
-    "image/png": blob,
-  }),
+    'image/png': blob
+  })
 ]);
 ```
 

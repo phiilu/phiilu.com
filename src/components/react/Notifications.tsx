@@ -1,8 +1,8 @@
-import toastAction, { Toaster, ToastBar, resolveValue } from "react-hot-toast";
-import { AnimatePresence, motion } from "framer-motion";
-import { Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+import toastAction, { Toaster, ToastBar, resolveValue } from 'react-hot-toast';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Transition } from '@headlessui/react';
+import { Fragment } from 'react';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export const Notifications = () => {
   return (

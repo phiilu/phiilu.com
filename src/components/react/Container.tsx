@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 
 interface ContainerProps {
   as?: any;
@@ -7,20 +7,15 @@ interface ContainerProps {
   className?: string;
 }
 
-export const Container = ({
-  as,
-  noMargin,
-  children,
-  className,
-}: ContainerProps) => {
-  const Element = { as: as || "div" };
+export const Container = ({ as, noMargin, children, className }: ContainerProps) => {
+  const Element = { as: as || 'div' };
 
   return (
     <Element.as
       className={clsx(
-        "container max-w-3xl mx-auto xl:max-w-5xl",
-        { "px-4 xl:px-0": !noMargin },
-        className,
+        'container max-w-3xl mx-auto xl:max-w-5xl',
+        { 'px-4 xl:px-0': !noMargin },
+        className
       )}
     >
       {children}
@@ -30,6 +25,6 @@ export const Container = ({
 
 Container.defaultProps = {
   noMargin: false,
-  as: "div",
-  className: "",
+  as: 'div',
+  className: ''
 };

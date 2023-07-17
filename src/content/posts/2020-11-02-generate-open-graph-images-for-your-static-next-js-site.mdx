@@ -5,7 +5,7 @@ slug: generate-open-graph-images-for-your-static-next-js-site
 publishedDate: 2020-11-02
 published: true
 description: When you share a website on social media you will often find generated images added to the link. Those are OG images and in this post, I will show you how you can generate them dynamically with Next.js!
-tags: ["next.js", "react", "html"]
+tags: ['next.js', 'react', 'html']
 ---
 
 **UPDATE**: Since the blog post has been written, there are now better options to generate OG images. The post below is still an okay way to generate OG images, but maybe you want to checkout `@vercel/og` for an easier option. You cean learn more at the [documentation](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation).
@@ -50,8 +50,8 @@ we get a webpage which generates this image:
 So all you need is a simple route and a component that looks similar to this one.
 
 ```jsx
-import { useRouter } from "next/router";
-import GoogleFonts from "next-google-fonts";
+import { useRouter } from 'next/router';
+import GoogleFonts from 'next-google-fonts';
 
 function getFontSize(length) {
   if (length > 32) {
@@ -68,14 +68,14 @@ const PhiiluCom = () => {
   const router = useRouter();
 
   const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-  const link = searchParams.get("url");
+  const link = searchParams.get('url');
 
   if (!link) return null;
 
   const linkURL = new URL(link);
-  const title = searchParams.get("title");
-  const date = searchParams.get("date");
-  const readTime = searchParams.get("readTime");
+  const title = searchParams.get('title');
+  const date = searchParams.get('date');
+  const readTime = searchParams.get('readTime');
 
   return (
     <>
@@ -91,9 +91,7 @@ const PhiiluCom = () => {
             </p>
           )}
           <h1
-            className={`${getFontSize(
-              title.length,
-            )} font-bold text-gray-100 font-source-sans-pro`}
+            className={`${getFontSize(title.length)} font-bold text-gray-100 font-source-sans-pro`}
           >
             {title}
           </h1>
@@ -114,7 +112,7 @@ const PhiiluCom = () => {
               </p>
               <p
                 className="text-2xl font-semibold tracking-wide font-source-sans-pro"
-                style={{ color: "#1D9BF0" }}
+                style={{ color: '#1D9BF0' }}
               >
                 twitter.com/phiilu
               </p>
@@ -156,17 +154,17 @@ We basically need to do 3 things:
 All these steps translate into this code:
 
 ```js
-const playwright = require("playwright-aws-lambda");
-const { createHash } = require("crypto");
-const fs = require("fs");
+const playwright = require('playwright-aws-lambda');
+const { createHash } = require('crypto');
+const fs = require('fs');
 
-async function getOgImage(path, baseUrl = "https://og-image.phiilu.com") {
-  if (process.env.NODE_ENV === "development") {
-    return "og image will be generated in production";
+async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
+  if (process.env.NODE_ENV === 'development') {
+    return 'og image will be generated in production';
   }
 
   const url = `${baseUrl}${path}`;
-  const hash = createHash("md5").update(url).digest("hex");
+  const hash = createHash('md5').update(url).digest('hex');
   const browser = await playwright.launchChromium({ headless: true });
   const ogImageDir = `./public/images/og`;
   const imagePath = `${ogImageDir}/${hash}.png`;
@@ -181,8 +179,8 @@ async function getOgImage(path, baseUrl = "https://og-image.phiilu.com") {
 
   const page = await browser.newPage();
   await page.setViewportSize({ width: 1200, height: 630 });
-  await page.goto(url, { waitUntil: "networkidle" });
-  const buffer = await page.screenshot({ type: "png" });
+  await page.goto(url, { waitUntil: 'networkidle' });
+  const buffer = await page.screenshot({ type: 'png' });
   await browser.close();
 
   fs.mkdirSync(ogImageDir, { recursive: true });
@@ -205,8 +203,8 @@ async function getOgImage(path, baseUrl = 'https://og-image.phiilu.com') {
 Our function will take 2 parameters. The first one is the path with the query parameters that will generate the OG image like `/phiilu.com?title=Hello%20World&url=https://phiilu.com/hello-world`. The second one is optional, which is the `baseUrl` of our OG image app.
 
 ```js
-if (process.env.NODE_ENV === "development") {
-  return "og image will be generated in production";
+if (process.env.NODE_ENV === 'development') {
+  return 'og image will be generated in production';
 }
 ```
 
@@ -214,7 +212,7 @@ During the development of this feature, you might want to comment this block oth
 
 ```js
 const url = `${baseUrl}${path}`;
-const hash = createHash("md5").update(url).digest("hex");
+const hash = createHash('md5').update(url).digest('hex');
 const ogImageDir = `./public/images/og`;
 const imagePath = `${ogImageDir}/${hash}.png`;
 const publicPath = `${process.env.BASE_URL}/images/og/${hash}.png`;
@@ -245,8 +243,8 @@ Here we use the `fs.statSync` method to check if we already have an image for th
 const browser = await playwright.launchChromium({ headless: true });
 const page = await browser.newPage();
 await page.setViewportSize({ width: 1200, height: 630 });
-await page.goto(url, { waitUntil: "networkidle" });
-const buffer = await page.screenshot({ type: "png" });
+await page.goto(url, { waitUntil: 'networkidle' });
+const buffer = await page.screenshot({ type: 'png' });
 await browser.close();
 ```
 
@@ -278,13 +276,13 @@ This is what my `getStaticProps` in the `[slug].js` file inside the `pages` fold
 
 ```js
 export async function getStaticProps({ params: { slug } }) {
-  const post = await contentful.getEntry("post", slug);
+  const post = await contentful.getEntry('post', slug);
   const ogImage = await getOgImage(
-    `/phiilu.com?title=${post.title}&url=${process.env.BASE_URL}/${slug}`,
+    `/phiilu.com?title=${post.title}&url=${process.env.BASE_URL}/${slug}`
   );
 
   return {
-    props: { post, ogImage },
+    props: { post, ogImage }
   };
 }
 ```
@@ -292,7 +290,7 @@ export async function getStaticProps({ params: { slug } }) {
 Now you have the `ogImage` prop available inside the page component and we can render the `<meta />` tag inside the `Head` component.
 
 ```jsx
-import Head from "next/head";
+import Head from 'next/head';
 
 const PostDetails = ({ post, ogImage }) => {
   return (

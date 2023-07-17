@@ -1,11 +1,11 @@
 // contentful space export --space-id
-import contentful from "./contentful.json" assert { type: "json" };
-import fs from "fs/promises";
-import slugify from "@sindresorhus/slugify";
-import mime from "mime-types";
-import fsOld from "fs";
-import path from "path";
-import MarkdownIt from "markdown-it";
+import contentful from './contentful.json' assert { type: 'json' };
+import fs from 'fs/promises';
+import slugify from '@sindresorhus/slugify';
+import mime from 'mime-types';
+import fsOld from 'fs';
+import path from 'path';
+import MarkdownIt from 'markdown-it';
 
 const md = new MarkdownIt();
 
@@ -69,39 +69,39 @@ const assets: Asset[] = [];
 contentful.assets.forEach((asset) => {
   assets.push({
     id: asset.sys.id,
-    title: asset.fields.title["en-US"],
-    description: asset.fields.description?.["en-US"],
-    filename: asset.fields.file["en-US"].fileName,
-    details: asset.fields.file["en-US"].details,
-    contentType: asset.fields.file["en-US"].contentType,
-    url: asset.fields.file["en-US"].url,
-    fileNameNew: `${slugify(asset.fields.title["en-US"])}.${mime.extension(
-      asset.fields.file["en-US"].contentType,
-    )}`,
+    title: asset.fields.title['en-US'],
+    description: asset.fields.description?.['en-US'],
+    filename: asset.fields.file['en-US'].fileName,
+    details: asset.fields.file['en-US'].details,
+    contentType: asset.fields.file['en-US'].contentType,
+    url: asset.fields.file['en-US'].url,
+    fileNameNew: `${slugify(asset.fields.title['en-US'])}.${mime.extension(
+      asset.fields.file['en-US'].contentType
+    )}`
   });
 });
 
 contentful.entries.forEach((entry) => {
-  if (entry.sys.contentType.sys.id == "tag") {
+  if (entry.sys.contentType.sys.id == 'tag') {
     const tag = {
       id: entry.sys.id,
-      title: entry.fields.title["en-US"],
-      slug: entry.fields.slug?.["en-US"],
-      description: entry.fields.description["en-US"],
+      title: entry.fields.title['en-US'],
+      slug: entry.fields.slug?.['en-US'],
+      description: entry.fields.description['en-US']
     };
 
     tags.push(tag);
   }
 
-  if (entry.sys.contentType.sys.id == "gear") {
+  if (entry.sys.contentType.sys.id == 'gear') {
     const gear = {
-      title: entry.fields.title["en-US"],
-      description: entry.fields.description["en-US"],
-      image: entry.fields.image?.["en-US"].sys.id,
-      category: entry.fields.category?.["en-US"],
-      link: entry.fields.link?.["en-US"],
-      affilateLink: entry.fields.affiliateLink?.["en-US"],
-      affilateLinkText: entry.fields.affiliateLinkText?.["en-US"],
+      title: entry.fields.title['en-US'],
+      description: entry.fields.description['en-US'],
+      image: entry.fields.image?.['en-US'].sys.id,
+      category: entry.fields.category?.['en-US'],
+      link: entry.fields.link?.['en-US'],
+      affilateLink: entry.fields.affiliateLink?.['en-US'],
+      affilateLinkText: entry.fields.affiliateLinkText?.['en-US']
     };
 
     gears.push(gear);
@@ -109,17 +109,17 @@ contentful.entries.forEach((entry) => {
 });
 
 contentful.entries.forEach((entry) => {
-  if (entry.sys.contentType.sys.id == "post") {
+  if (entry.sys.contentType.sys.id == 'post') {
     const post = {
-      title: entry.fields.title["en-US"],
-      slug: entry.fields.slug?.["en-US"],
-      icon: entry.fields.icon?.["en-US"].sys.id,
-      publishedDate: entry.fields.publishedDate?.["en-US"],
-      description: entry.fields.description["en-US"],
-      tags: entry.fields.tags?.["en-US"].map(
-        (tag) => tags.find((t) => t.id === tag.sys.id)?.title || "",
+      title: entry.fields.title['en-US'],
+      slug: entry.fields.slug?.['en-US'],
+      icon: entry.fields.icon?.['en-US'].sys.id,
+      publishedDate: entry.fields.publishedDate?.['en-US'],
+      description: entry.fields.description['en-US'],
+      tags: entry.fields.tags?.['en-US'].map(
+        (tag) => tags.find((t) => t.id === tag.sys.id)?.title || ''
       ),
-      content: entry.fields.content?.["en-US"],
+      content: entry.fields.content?.['en-US']
     };
 
     posts.push(post);
@@ -128,16 +128,16 @@ contentful.entries.forEach((entry) => {
 
 // create mdx files
 
-if (!fsOld.existsSync("posts")) {
-  await fs.mkdir("images/icons", { recursive: true });
-  await fs.mkdir("images/posts", { recursive: true });
-  await fs.mkdir("posts", { recursive: true });
+if (!fsOld.existsSync('posts')) {
+  await fs.mkdir('images/icons', { recursive: true });
+  await fs.mkdir('images/posts', { recursive: true });
+  await fs.mkdir('posts', { recursive: true });
   createMDXFiles(posts);
 }
 
-if (!fsOld.existsSync("gear")) {
-  await fs.mkdir("images/gear", { recursive: true });
-  await fs.mkdir("gear", { recursive: true });
+if (!fsOld.existsSync('gear')) {
+  await fs.mkdir('images/gear', { recursive: true });
+  await fs.mkdir('gear', { recursive: true });
   createGearMDXFiles(gears);
 }
 
@@ -148,19 +148,13 @@ async function createMDXFiles(posts: Post[]) {
     const icon = assets.find((asset) => asset.id === post.icon);
 
     if (icon) {
-      await downloadAsset(icon, path.join("images", "icons"));
+      await downloadAsset(icon, path.join('images', 'icons'));
     }
 
     // Construct the frontmatter
     const frontmatter = `---
 title: ${post.title}
-icon: ${
-      icon
-        ? `/images/icons/${slugify(icon.title)}.${mime.extension(
-            icon.contentType,
-          )}`
-        : ""
-    }
+icon: ${icon ? `/images/icons/${slugify(icon.title)}.${mime.extension(icon.contentType)}` : ''}
 slug: ${post.slug}
 publishedDate: ${post.publishedDate}
 published: true
@@ -169,31 +163,26 @@ tags: ${JSON.stringify(post.tags)}
 ---`;
 
     let index = 0;
-    const postContent = post.content?.replace(
-      /\!\[(.*?)\]\((.*?)\)/gm,
-      (match, title, url) => {
-        let asset = assets.find((asset) => asset.url === url);
+    const postContent = post.content?.replace(/\!\[(.*?)\]\((.*?)\)/gm, (match, title, url) => {
+      let asset = assets.find((asset) => asset.url === url);
 
-        if (!asset) return match;
+      if (!asset) return match;
 
-        index += 1;
+      index += 1;
 
-        const fileName = `${post.slug}-${index}.${mime.extension(
-          asset.contentType,
-        )}`;
+      const fileName = `${post.slug}-${index}.${mime.extension(asset.contentType)}`;
 
-        asset.fileNameNew = fileName;
-        downloadAsset(asset, path.join("images", "posts"));
+      asset.fileNameNew = fileName;
+      downloadAsset(asset, path.join('images', 'posts'));
 
-        return `![${title}](/images/posts/${fileName})`;
-      },
-    );
+      return `![${title}](/images/posts/${fileName})`;
+    });
 
     // Construct the content
     const content = `${frontmatter}\n\n${postContent}`;
 
     // Write the content to the file
-    await fs.writeFile(path.join("posts", fileName), content);
+    await fs.writeFile(path.join('posts', fileName), content);
   }
 }
 
@@ -204,28 +193,28 @@ async function createGearMDXFiles(gears: Gear[]) {
     const image = assets.find((asset) => asset.id === gear.image);
 
     if (image) {
-      await downloadAsset(image, path.join("images", "gear"));
+      await downloadAsset(image, path.join('images', 'gear'));
     }
 
     // Construct the frontmatter
     const frontmatter = `---
 title: ${gear.title}
-image: ${image ? `images/gear/${image.fileNameNew}}` : ""}
-category: ${gear.category ?? ""}
-link: ${gear.link ?? ""}
-affiliateLink: ${gear.affilateLink ?? ""}
-affilateLinkText: ${gear.affilateLinkText ?? ""}
+image: ${image ? `images/gear/${image.fileNameNew}}` : ''}
+category: ${gear.category ?? ''}
+link: ${gear.link ?? ''}
+affiliateLink: ${gear.affilateLink ?? ''}
+affilateLinkText: ${gear.affilateLinkText ?? ''}
 ---`;
 
     // Construct the content
     const content = `${frontmatter}\n\n${gear.description}`;
 
     // Write the content to the file
-    await fs.writeFile(path.join("gear", fileName), content);
+    await fs.writeFile(path.join('gear', fileName), content);
   }
 }
 
-async function downloadAsset(asset: Asset, dir = "images") {
+async function downloadAsset(asset: Asset, dir = 'images') {
   try {
     const response = await fetch(`https:${asset.url}`);
     const arrayBuffer = await response.arrayBuffer();

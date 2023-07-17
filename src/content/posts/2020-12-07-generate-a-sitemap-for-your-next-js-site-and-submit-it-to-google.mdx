@@ -5,7 +5,7 @@ slug: generate-a-sitemap-for-your-next-js-site-and-submit-it-to-google
 publishedDate: 2020-12-07
 published: true
 description: Sitemaps are being used to give an outline of a website. Search engines will use the information to better crawl your website. In this post, I will show you how to generate a sitemap in Next.js.
-tags: ["next.js", "react", "javascript", "seo"]
+tags: ['next.js', 'react', 'javascript', 'seo']
 ---
 
 One way to improve your SEO is by submitting a sitemap to Google. Sitemaps are an XML representation of your website and its pages. It allows search engines to know what pages your website has, without crawling each link on your page first.
@@ -31,68 +31,68 @@ As in my post where I described [how to generate an RSS feed][5] with Next.js, I
 Here is the content of my `sitemap.js`:
 
 ```javascript
-const globby = require("globby");
-const contentful = require("./contentful").default;
-const { SitemapStream, streamToPromise } = require("sitemap");
-const { Readable } = require("stream");
-const fs = require("fs");
+const globby = require('globby');
+const contentful = require('./contentful').default;
+const { SitemapStream, streamToPromise } = require('sitemap');
+const { Readable } = require('stream');
+const fs = require('fs');
 
 // pages that should not be in the sitemap
-const blocklist = ["/newsletter-success", "/404"];
+const blocklist = ['/newsletter-success', '/404'];
 
 async function generateSitemap() {
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === 'development') {
     return;
   }
 
   const baseUrl = process.env.BASE_URL;
   const pages = await globby([
-    "src/pages/**/*{.js,.mdx}",
-    "!src/pages/**/[*",
-    "!src/pages/_*.js",
-    "!src/pages/api",
+    'src/pages/**/*{.js,.mdx}',
+    '!src/pages/**/[*',
+    '!src/pages/_*.js',
+    '!src/pages/api'
   ]);
 
   // normal page routes
   const pageLinks = pages
     .map((page) => {
       const path = page
-        .replace("pages", "")
-        .replace(".js", "")
-        .replace(".mdx", "")
-        .replace("src/", "");
-      return path === "/index"
-        ? { url: "/", changefreq: "daily", priority: 0.7 }
-        : { url: path, changefreq: "daily", priority: 0.7 };
+        .replace('pages', '')
+        .replace('.js', '')
+        .replace('.mdx', '')
+        .replace('src/', '');
+      return path === '/index'
+        ? { url: '/', changefreq: 'daily', priority: 0.7 }
+        : { url: path, changefreq: 'daily', priority: 0.7 };
     })
     .filter((page) => !blocklist.includes(page.url));
 
   // post routes
-  const posts = await contentful.getEntries("post", {
-    order: "-fields.publishedDate",
+  const posts = await contentful.getEntries('post', {
+    order: '-fields.publishedDate'
   });
   const postLinks = posts.map((post) => ({
     url: `/${post.slug}`,
-    changefreq: "daily",
-    priority: 0.7,
+    changefreq: 'daily',
+    priority: 0.7
   }));
 
   // tag routes
-  const tags = await contentful.getEntries("tag");
+  const tags = await contentful.getEntries('tag');
   const tagLinks = tags.map((tag) => ({
     url: `/tag/${tag.slug}`,
-    changefreq: "daily",
-    priority: 0.7,
+    changefreq: 'daily',
+    priority: 0.7
   }));
 
   const links = [...pageLinks, ...postLinks, ...tagLinks];
   const stream = new SitemapStream({ hostname: baseUrl });
 
-  const xml = await streamToPromise(Readable.from(links).pipe(stream)).then(
-    (data) => data.toString(),
+  const xml = await streamToPromise(Readable.from(links).pipe(stream)).then((data) =>
+    data.toString()
   );
 
-  fs.writeFileSync("./public/sitemap.xml", xml);
+  fs.writeFileSync('./public/sitemap.xml', xml);
 }
 
 export default generateSitemap;
@@ -115,10 +115,10 @@ Let's breakdown the code into smaller pieces and let me explain what we are doin
 
 const baseUrl = process.env.BASE_URL;
 const pages = await globby([
-  "src/pages/**/*{.js,.mdx}",
-  "!src/pages/**/[*",
-  "!src/pages/_*.js",
-  "!src/pages/api",
+  'src/pages/**/*{.js,.mdx}',
+  '!src/pages/**/[*',
+  '!src/pages/_*.js',
+  '!src/pages/api'
 ]);
 ```
 
@@ -131,19 +131,19 @@ I am using a package named `globby` to get all the pages from the `pages` folder
 ---
 
 ```javascript
-const blocklist = ["/newsletter-success", "/404"];
+const blocklist = ['/newsletter-success', '/404'];
 
 // normal page routes
 const pageLinks = pages
   .map((page) => {
     const path = page
-      .replace("pages", "")
-      .replace(".js", "")
-      .replace(".mdx", "")
-      .replace("src/", "");
-    return path === "/index"
-      ? { url: "/", changefreq: "daily", priority: 0.7 }
-      : { url: path, changefreq: "daily", priority: 0.7 };
+      .replace('pages', '')
+      .replace('.js', '')
+      .replace('.mdx', '')
+      .replace('src/', '');
+    return path === '/index'
+      ? { url: '/', changefreq: 'daily', priority: 0.7 }
+      : { url: path, changefreq: 'daily', priority: 0.7 };
   })
   .filter((page) => !blocklist.includes(page.url));
 ```
@@ -156,21 +156,21 @@ I also have some pages that I don't want to have inside the `sitemap.xml`, so I 
 
 ```javascript
 // post routes
-const posts = await contentful.getEntries("post", {
-  order: "-fields.publishedDate",
+const posts = await contentful.getEntries('post', {
+  order: '-fields.publishedDate'
 });
 const postLinks = posts.map((post) => ({
   url: `/${post.slug}`,
-  changefreq: "daily",
-  priority: 0.7,
+  changefreq: 'daily',
+  priority: 0.7
 }));
 
 // tag routes
-const tags = await contentful.getEntries("tag");
+const tags = await contentful.getEntries('tag');
 const tagLinks = tags.map((tag) => ({
   url: `/tag/${tag.slug}`,
-  changefreq: "daily",
-  priority: 0.7,
+  changefreq: 'daily',
+  priority: 0.7
 }));
 ```
 
@@ -181,10 +181,10 @@ This part may not be necessary for you, depending on if you are using a headless
 ```javascript
 const links = [...pageLinks, ...postLinks, ...tagLinks];
 const stream = new SitemapStream({ hostname: baseUrl });
-const xml = await streamToPromise(Readable.from(links).pipe(stream)).then(
-  (data) => data.toString(),
+const xml = await streamToPromise(Readable.from(links).pipe(stream)).then((data) =>
+  data.toString()
 );
-fs.writeFileSync("./public/sitemap.xml", xml);
+fs.writeFileSync('./public/sitemap.xml', xml);
 ```
 
 Last but not least, I created the final `links` array which will contain all links that I want to have inside my `sitemap.xml`. To generate the `sitemap.xml` I am using a package named `sitemap` that will be doing the hard work of generating the correct XML content. Finally, the XML data will be saved to a file inside the `public` folder, so Next.js can serve it.
@@ -199,7 +199,7 @@ export async function getStaticProps() {
   await generateRssFeed();
   await generateSitemap();
   return {
-    props: { posts, ogImage, baseUrl },
+    props: { posts, ogImage, baseUrl }
   };
 }
 ```

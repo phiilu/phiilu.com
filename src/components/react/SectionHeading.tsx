@@ -1,4 +1,4 @@
-import { Heading } from "./Heading";
+import { Heading } from './Heading';
 
 interface SectionHeadingProps {
   heading: string;
@@ -6,11 +6,7 @@ interface SectionHeadingProps {
   children: React.ReactNode;
 }
 
-export function SectionHeading({
-  heading,
-  subheading,
-  children,
-}: SectionHeadingProps) {
+export function SectionHeading({ heading, subheading, children }: SectionHeadingProps) {
   return (
     <div className="mx-4 md:mx-0 lg:text-center">
       <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase text-md xl:text-xl xl:leading-6 dark:text-indigo-500">

@@ -5,7 +5,7 @@ slug: add-apple-maps-to-your-website-using-a-serverless-function-and-host-it-on-
 publishedDate: 2020-10-05
 published: true
 description: Everyone knows that you can use Google Maps to add a map to your website, but did you know Apple has an JS SDK too?
-tags: ["html", "javascript", "serverless", "netlify", "apple maps"]
+tags: ['html', 'javascript', 'serverless', 'netlify', 'apple maps']
 ---
 
 I bet at one point in your developer career you were asked or wanted to implement an interactive map on your website. Interactive maps are great to visualize locations and routes for users and have replaced the need of using an old-school map helping us to navigate in the real world!
@@ -196,11 +196,7 @@ Let's start adding Apple Maps to the website! When you open the cloned repo and 
 Further down the file, you will find the `div` where we want to mount Apple Maps.
 
 ```html
-<div
-  id="apple-maps"
-  style="height: 800px"
-  class="w-full rounded-md shadow-lg"
-/>
+<div id="apple-maps" style="height: 800px" class="w-full rounded-md shadow-lg" />
 ```
 
 This `div` has set a `height` and some classes that will make it look a bit nicer. If you open up `http://localhost:18080/` you should see a simple website with navigation, a search box, and a blank space with a shadow around.
@@ -212,17 +208,17 @@ Now we want to add Apple Maps to this `div`, so open up the `index.js` file and 
 ```js
 mapkit.init({
   authorizationCallback: function (done) {
-    fetch("/api/token")
+    fetch('/api/token')
       .then((res) => res.text())
       .then(done);
   },
-  language: navigator.language || navigator.userLanguage,
+  language: navigator.language || navigator.userLanguage
 });
 
 const center = new mapkit.Coordinate(48.210033, 16.363449); // Vienna
-const map = new mapkit.Map("apple-maps", {
+const map = new mapkit.Map('apple-maps', {
   center,
-  cameraDistance: 15000,
+  cameraDistance: 15000
 });
 ```
 
@@ -292,30 +288,30 @@ npm i jsonwebtoken
 Now create a file named `token.js` and paste this code:
 
 ```js
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 const origin = process.env.SITE_ORIGIN;
-const privatekey = process.env.APPLE_MAPS_KEY.replace(/\\n/gm, "\n");
+const privatekey = process.env.APPLE_MAPS_KEY.replace(/\\n/gm, '\n');
 const keyid = process.env.MAPS_KEY_ID;
 const issuer = process.env.APPLE_TEAM_ID;
 
 exports.handler = async function (event, context) {
   const token = jwt.sign(
     {
-      origin,
+      origin
     },
     privatekey,
     {
-      algorithm: "ES256",
-      expiresIn: "1d",
+      algorithm: 'ES256',
+      expiresIn: '1d',
       keyid,
-      issuer,
-    },
+      issuer
+    }
   );
 
   return {
     statusCode: 200,
-    body: token,
+    body: token
   };
 };
 ```
@@ -412,20 +408,20 @@ Open up `index.js` and append the following lines to it:
 const search = new mapkit.Search({
   language: navigator.language || navigator.userLanguage,
   getsUserLocation: true,
-  region: map.region,
+  region: map.region
 });
 
-const searchFormElement = document.getElementById("search-form");
-const searchBoxElement = document.getElementById("search-box");
+const searchFormElement = document.getElementById('search-form');
+const searchBoxElement = document.getElementById('search-box');
 
-searchFormElement.addEventListener("submit", (e) => {
+searchFormElement.addEventListener('submit', (e) => {
   e.preventDefault();
   const query = searchBoxElement.value;
   if (query) {
     search.search(query, (error, data) => {
       console.log(data);
       if (error) {
-        console.log("Error", error);
+        console.log('Error', error);
         return;
       }
       map.setRegionAnimated(data.boundingRegion);
@@ -449,7 +445,7 @@ If it works, you can deploy your changes with `netlify deploy --prod`.
 [1]: https://developer.apple.com/documentation/mapkitjs
 [2]: https://duckduckgo.com/?q=where+is+vienna&t=ffab&atb=v233-1&ia=web
 [3]: https://duckduckgo.com/?q=where+is+vienna&t=ffab&atb=v233-1&ia=web&iaxm=about&iax=images
-[4]: //images.ctfassets.net/hb3id6ag4raq/3Hmr5g4f31R4s7ZdmgsFvz/089d327af77c258008f31e9ad5691309/Screenshot_2020-10-04_at_19.08.33.png "DuckDuckGo Apple Maps search result"
+[4]: //images.ctfassets.net/hb3id6ag4raq/3Hmr5g4f31R4s7ZdmgsFvz/089d327af77c258008f31e9ad5691309/Screenshot_2020-10-04_at_19.08.33.png 'DuckDuckGo Apple Maps search result'
 [5]: https://jwt.io/
 [6]: https://developer.apple.com/support/compare-memberships/
 [7]: https://apple-maps-example.netlify.app/

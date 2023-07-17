@@ -6,12 +6,25 @@ import { Newsletter } from "../components/react/Newsletter";
 import { Notifications } from "../components/react/Notifications";
 import { PageBanner } from "../components/react/PageBanner";
 
-const { title, description, keywords } = Astro.props;
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  keywords?: string;
+  publishedDate?: Date;
+}
+
+const { title, description, keywords, publishedDate } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} keywords={keywords} />
+    <BaseHead
+      title={title}
+      description={description}
+      keywords={keywords}
+      publishedDate={publishedDate}
+    />
   </head>
   <body>
     <PageBanner client:only />

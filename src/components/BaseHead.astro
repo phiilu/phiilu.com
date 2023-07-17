@@ -1,11 +1,12 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
+import { SITE_DESCRIPTION } from "../consts";
 import "../styles/global.css";
 
 export interface Props {
   title?: string;
-  description: string;
+  description?: string;
   image?: string;
   keywords?: string;
   publishedDate?: Date;
@@ -81,7 +82,7 @@ const {
     : "Phiilu | Florian Kapfenberger"}
 />
 <meta name="author" content="Florian Kapfenberger" />
-<meta name="description" content={description} />
+<meta name="description" content={description || SITE_DESCRIPTION} />
 {keywords && <meta name="keywords" content={keywords} />}
 {
   publishedDate && (

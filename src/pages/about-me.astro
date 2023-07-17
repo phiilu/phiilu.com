@@ -5,6 +5,7 @@ import Layout from "../layouts/Page.astro";
 import { Image } from "astro:assets";
 import profileImage from "../assets/images/me.jpg";
 import { getCollection } from "astro:content";
+import { Age } from "../components/react/Age";
 
 function getBirthdayInSecond() {
   const now = new Date();
@@ -103,7 +104,7 @@ const postsCount = (await getCollection("posts")).length;
               better!
             </p>
             <p>
-              I am an <strong aria-live="polite">{age}</strong>
+              I am an <Age client:idle age={age} />
                seconds ({ageInYears} years) old Austrian frontend developer.
             </p>
             <p>

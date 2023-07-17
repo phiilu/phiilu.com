@@ -14,7 +14,7 @@ export interface Props {
   publishedDate?: Date;
 }
 
-const { title, description, keywords, publishedDate } = Astro.props;
+const { title, description, keywords, publishedDate, image } = Astro.props;
 ---
 
 <html lang="en">
@@ -24,6 +24,7 @@ const { title, description, keywords, publishedDate } = Astro.props;
       description={description}
       keywords={keywords}
       publishedDate={publishedDate}
+      image={image}
     />
   </head>
   <body>

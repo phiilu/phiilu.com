@@ -3,6 +3,8 @@ import { CollectionEntry, getCollection, getEntry } from "astro:content";
 import Layout from "../layouts/Page.astro";
 import { Container } from "../components/react/Container";
 import { PostDetail } from "../components/react/PostDetail";
+import { format } from "date-fns";
+import { countWords } from "../helpers/countWords";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -16,9 +18,23 @@ type Props = { post: CollectionEntry<"posts"> };
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const wordCount = countWords(post.body);
+const timeToRead = Math.round(wordCount / 275);
+
+const searchParams = new URLSearchParams();
+searchParams.append("title", post.data.title);
+searchParams.append("url", Astro.url.toString());
+searchParams.append("date", format(post.data.publishedDate, "MMMM dd, yyyy"));
+searchParams.append("readingTime", `${timeToRead} Minutes`);
 ---
 
-<Layout>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  keywords={post.data.tags.join(",")}
+  image={`/api/blog/og?${searchParams}`}
+>
   <Container as="main">
     <PostDetail client:idle post={post} url={Astro.url.href}>
       <Content />

@@ -5,6 +5,7 @@ import { ShareOnTwitterCta } from "./ShareOnTwitterCta";
 import { TagList } from "./TagList";
 import { Share } from "./Share";
 import { format } from "date-fns";
+import { countWords } from "../../helpers/countWords";
 
 interface PostDetailProps {
   post: CollectionEntry<"posts">;
@@ -13,6 +14,9 @@ interface PostDetailProps {
 }
 
 export function PostDetail({ post, url, children }: PostDetailProps) {
+  const wordCount = countWords(post.body);
+  const timeToRead = Math.round(wordCount / 275);
+
   const handleSocialShare = useCallback(
     (url: string, name: string, windowSize: string) =>
       (e: React.MouseEvent<HTMLElement>) => {
@@ -45,7 +49,7 @@ export function PostDetail({ post, url, children }: PostDetailProps) {
         icon={post.data.icon}
         date={post.data.publishedDate}
         tags={post.data.tags}
-        // timeToRead={timeToRead}
+        timeToRead={timeToRead}
         title={post.data.title}
         url={url}
         handleSocialShare={handleSocialShare}

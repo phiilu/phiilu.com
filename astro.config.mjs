@@ -18,7 +18,8 @@ export default defineConfig({
     mdx(),
     sitemap({
       changefreq: 'weekly',
-      priority: 0.9
+      priority: 0.9,
+      filter: (page) => page !== 'https://phiilu.com/_image'
     }),
     tailwind(),
     react()

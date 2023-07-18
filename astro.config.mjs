@@ -9,6 +9,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   output: 'hybrid',
+  trailingSlash: 'never',
   adapter: vercel({
     analytics: true
   }),

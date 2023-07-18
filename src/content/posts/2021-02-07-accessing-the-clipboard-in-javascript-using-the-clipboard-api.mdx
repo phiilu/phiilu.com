@@ -89,7 +89,7 @@ navigator.clipboard
 
 Basically what we are doing here is to iterate over each item and check the MIME type and if it is a PNG image we will create an object URL that can be passed to the `src` attribute of an image to display it.
 
-> The **URL.createObjectURL()** static method creates a [DOMString][7] containing a URL representing the object given in the parameter. The URL lifetime is tied to the [document][8] in the window on which it was created. The new object URL represents the specified [File][9] object or [Blob][10] object. - [MDN][11]
+> The **URL.createObjectURL()** static method creates a string containing a URL representing the object given in the parameter. The URL lifetime is tied to the [document][8] in the window on which it was created. The new object URL represents the specified [File][9] object or [Blob][10] object. - [MDN][11]
 
 ## Writing to the Clipboard
 
@@ -152,7 +152,6 @@ The Clipboard API will finally deliver a consistent API without using hacky meth
 [4]: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API
 [5]: https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts
 [6]: https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem
-[7]: https://developer.mozilla.org/en-US/docs/Web/API/DOMString
 [8]: https://developer.mozilla.org/en-US/docs/Web/API/Document
 [9]: https://developer.mozilla.org/en-US/docs/Web/API/File
 [10]: https://developer.mozilla.org/en-US/docs/Web/API/Blob

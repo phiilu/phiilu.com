@@ -25,3 +25,4 @@ migration/contentful.json
 migration/images
 migration/posts
 migration/gear
+.vercel

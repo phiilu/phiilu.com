@@ -62,8 +62,7 @@ Here is a CodeSandbox if you want to test it on your device. If the code is not 
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="Web Share API - Sharing Files"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 ## How I added the Web Share API to my blog
 
@@ -131,8 +130,7 @@ function Share({ title, url, onClick }) {
               name: 'Share Anywhere clicked'
             }}
             variant="secondary"
-            onClick={handleSocialShare}
-          >
+            onClick={handleSocialShare}>
             Share Anywhere
           </Button>
         </li>
@@ -149,8 +147,7 @@ function Share({ title, url, onClick }) {
             `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
             'twitter-share',
             'width=550,height=235'
-          )}
-        >
+          )}>
           Share on Twitter
         </Button>
       </li>
@@ -166,8 +163,7 @@ function Share({ title, url, onClick }) {
             `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
             'hn-share',
             'width=550,height=350'
-          )}
-        >
+          )}>
           Share on Hacker News
         </Button>
       </li>
@@ -194,5 +190,5 @@ With just a few lines of code, you can improve the sharing process for your mobi
 [5]: https://twitter.com/phiilu
 [6]: https://phiilu.com/
 [7]: //images.ctfassets.net/hb3id6ag4raq/2cER3ladvU5pzLhRnOIcxv/6c0b892ed81d4ccebe0ea1e01d795c4b/RPReplay_Final1613311858.gif
-[8]: https://github.com/phiilu/phiilu.com/blob/main/src/components/Share/Share.js
+[8]: https://github.com/phiilu/phiilu.com/blob/867ca7e15c548b003d0cb1d28fa35f1e945f4351/src/components/Share/Share.js
 [9]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share

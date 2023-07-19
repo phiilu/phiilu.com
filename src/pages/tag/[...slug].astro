@@ -3,6 +3,7 @@ import { CollectionEntry, getCollection } from 'astro:content';
 import { Container } from '@components/react/Container';
 import { Heading } from '@components/react/Heading';
 import { PostListItem } from '@components/react/PostListItem';
+import { SITE_TITLE } from '@/consts';
 import clsx from 'clsx';
 import Layout from '@/layouts/Page.astro';
 import slugify from '@sindresorhus/slugify';
@@ -32,7 +33,7 @@ const count = tag.posts.length;
 const { bg, text, mainColor } = tagColors[tag.name] as TagListItem;
 ---
 
-<Layout>
+<Layout title={`${tag.name} | ${SITE_TITLE}`}>
   <Container as="main">
     <article class="space-y-12">
       <div class="px-4 space-y-4">

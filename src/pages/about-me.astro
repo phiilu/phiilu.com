@@ -4,8 +4,9 @@ import { Container } from '@components/react/Container';
 import { getCollection } from 'astro:content';
 import { Heading } from '@components/react/Heading';
 import { Image } from 'astro:assets';
+import { SITE_TITLE } from '@/consts';
 import Layout from '@/layouts/Page.astro';
-import profileImage from '../assets/images/me.jpg';
+import profileImage from '@/assets/images/me.jpg';
 
 function getBirthdayInSecond() {
   const now = new Date();
@@ -19,7 +20,7 @@ const ageInYears = Math.floor(age / 31536000);
 const postsCount = (await getCollection('posts')).length;
 ---
 
-<Layout title="About Me">
+<Layout title={`About Me | ${SITE_TITLE}`}>
   <Container>
     <div class="relative px-4 pb-16 mx-auto max-w-7xl">
       <div class="mx-auto text-base max-w-prose lg:max-w-none">

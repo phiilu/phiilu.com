@@ -3,6 +3,7 @@ import { Container } from '@components/react/Container';
 import { GearCategoryIcons } from '@components/react/icons/GearCategoryIcons';
 import { getCollection } from 'astro:content';
 import { Heading } from '@components/react/Heading';
+import { SITE_TITLE } from '@/consts';
 import Layout from '@/layouts/Page.astro';
 import {
   GearItem,
@@ -42,7 +43,7 @@ const sortedGearByCategory = {
 };
 ---
 
-<Layout title="My Gear / Uses">
+<Layout title={`My Gear / Uses | ${SITE_TITLE}`}>
   <Container as="main">
     <div class="space-y-12 md:px-4">
       <Heading noMargin>My Gear</Heading>

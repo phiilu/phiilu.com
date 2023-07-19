@@ -47,7 +47,7 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 <title>
   {title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}
 </title>
-<meta name="title" content={title ? `${title} | ${SITE_TITLE}` : SITE_TITLE} />
+<meta name="title" content={title ?? SITE_TITLE} />
 <meta name="author" content="Florian Kapfenberger" />
 <meta name="description" content={description || SITE_DESCRIPTION} />
 {keywords && <meta name="keywords" content={keywords} />}

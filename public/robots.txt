@@ -1,4 +1,7 @@
 User-agent: *
+Disallow: /newsletter-success
+
+User-agent: *
 Allow: /
 
 Sitemap: https://phiilu.com/sitemap-index.xml

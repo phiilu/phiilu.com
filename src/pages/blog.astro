@@ -4,6 +4,7 @@ import { Container } from '@components/react/Container';
 import { Heading } from '@components/react/Heading';
 import { isSameMonth, format as dateFormat, isSameYear } from 'date-fns';
 import { PostListItem } from '@components/react/PostListItem';
+import { SITE_TITLE } from '@/consts';
 import Layout from '@/layouts/Page.astro';
 
 type PostsByMonth = {
@@ -39,7 +40,7 @@ const posts = (await getCollection('posts')).sort(
 const postsByMonth = getPostsByMonth(posts);
 ---
 
-<Layout title="Blog">
+<Layout title={`Blog | ${SITE_TITLE}`}>
   <Container as="main">
     <div class="space-y-16">
       {

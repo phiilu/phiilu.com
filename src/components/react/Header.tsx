@@ -126,9 +126,9 @@ export const Header = ({ route }: HeaderProps) => {
         <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-no-wrap rounded-xl">
           <a href="/" className="flex-1 flex gap-2 items-center justify-center sm:justify-start">
             <Logo className="h-8 w-8" />
-            <h1 className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
+            <span className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
               phiilu
-            </h1>
+            </span>
           </a>
           <ul className="flex items-center justify-center flex-none w-full space-x-2 place-items-center md:w-auto">
             {menuItems.map(({ href, name, index }) => (

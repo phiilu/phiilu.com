@@ -1,6 +1,1 @@
-<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="24" cy="24" r="24" fill="#6875F5"/>
-<path d="M16 24V32C16 32.5304 16.2107 33.0391 16.5858 33.4142C16.9609 33.7893 17.4696 34 18 34H30C30.5304 34 31.0391 33.7893 31.4142 33.4142C31.7893 33.0391 32 32.5304 32 32V24" stroke="#000A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M28 18L24 14L20 18" stroke="#000A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M24 14V27" stroke="#000A72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg fill="none" height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" fill="#6875f5" r="24"/><g stroke="#000a72" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m16 24v8c0 .5304.2107 1.0391.5858 1.4142s.8838.5858 1.4142.5858h12c.5304 0 1.0391-.2107 1.4142-.5858s.5858-.8838.5858-1.4142v-8"/><path d="m28 18-4-4-4 4"/><path d="m24 14v13"/></g></svg>

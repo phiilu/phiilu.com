@@ -12,11 +12,11 @@ Sharing websites is a fundamental process of the web and providing a way to make
 
 The [Web Share API][1] allows the user to use the native share mechanism of the operating system. You probably already have seen this when you want to share an image or video using a native app.
 
-![iOS Share Sheet][2]
+![iOS Share Sheet](../../assets/images/posts/share-articles-on-social-media-with-the-web-share-api-1.jpeg)
 
 Because this is using the native sharing mechanism of the OS the Web Share API is not available in all browsers and OS. At the time of writing it is only available in Chrome (only Windows and Chrome OS), Edge, Safari, iOS Safari, Chrome for Android, Firefox for Android, and Samsung Internet. You can find an up-to-date list on [caniuse.com][3].
 
-![Can I Use - Web Share API (14. February 2021)][4]
+![Can I Use - Web Share API (14. February 2021)](../../assets/images/posts/share-articles-on-social-media-with-the-web-share-api-2.webp)
 
 ## Use the Web Share API if it is available
 
@@ -70,7 +70,7 @@ If you are reading this on [my blog][6] and you are using a supported device you
 
 If supported, you should see a button **Share Anywhere**. Try it out :)
 
-![Web Share API - iOS Share][7]
+![Web Share API - iOS Share](/images/posts/share-articles-on-social-media-with-the-web-share-api-3.gif)
 
 In React I created a new `Share` component. If the `share` method is available I will show the **Share Anywhere** button additional to the "Fallback" share buttons.
 
@@ -184,11 +184,8 @@ With just a few lines of code, you can improve the sharing process for your mobi
 - W3C: [https://www.w3.org/TR/web-share/][1]
 
 [1]: https://www.w3.org/TR/web-share/
-[2]: //images.ctfassets.net/hb3id6ag4raq/4aZeQQwhacNZSAuS8J3ka3/90f10885ec016c11639a17d39fcf2ec2/IMG_174065CE3004-1.jpeg
 [3]: https://caniuse.com/web-share
-[4]: //images.ctfassets.net/hb3id6ag4raq/2o3mOIgD492EJ3RxpKbjTr/397db663f087f383da61019734eb01d5/web-share-1613305231346.webp
 [5]: https://twitter.com/phiilu
 [6]: https://phiilu.com/
-[7]: //images.ctfassets.net/hb3id6ag4raq/2cER3ladvU5pzLhRnOIcxv/6c0b892ed81d4ccebe0ea1e01d795c4b/RPReplay_Final1613311858.gif
 [8]: https://github.com/phiilu/phiilu.com/blob/867ca7e15c548b003d0cb1d28fa35f1e945f4351/src/components/Share/Share.js
 [9]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share

@@ -14,6 +14,11 @@ export default defineConfig({
     analytics: true
   }),
   site: 'https://phiilu.com',
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula-soft'
+    }
+  },
   integrations: [
     mdx(),
     sitemap({

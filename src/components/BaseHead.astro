@@ -12,8 +12,12 @@ export interface Props {
   publishedDate?: Date;
 }
 
+function removeTrailingSlash(str: string) {
+  return str.replace(/\/+$/, '');
+}
+
 const ogImageBaseUrl = 'https://og-image.phiilu.com/';
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
 
 const { title, description, image = '/api/og', keywords, publishedDate } = Astro.props;
 ---
@@ -37,7 +41,7 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 <meta name="theme-color" content="#ffffff" />
 
 <!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+<link rel="canonical" href={canonicalUrl} />
 
 <!-- Primary Meta Tags -->
 <title>

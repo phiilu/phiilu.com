@@ -43,13 +43,17 @@ const postsByMonth = getPostsByMonth(posts);
 <Layout title={`Blog | ${SITE_TITLE}`}>
   <Container as="main">
     <div class="space-y-16">
+      <div>
+        <Heading>Blog</Heading>
+        <p>Here are all my blog posts! Enjoy :)</p>
+      </div>
       {
         postsByMonth.map((postByMonth) => {
           return (
             <div class="space-y-8">
               <Heading
                 noMargin
-                as="h1"
+                as="h2"
                 size="h3"
                 className="mx-4 text-indigo-500 border-b-2 border-gray-100 dark:border-gray-800 md:mx-0">
                 {dateFormat(postByMonth.date, 'MMMM yyyy')}

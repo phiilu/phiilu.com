@@ -45,7 +45,7 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 
 <!-- Primary Meta Tags -->
 <title>
-  {title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}
+  {title ?? SITE_TITLE}
 </title>
 <meta name="title" content={title ?? SITE_TITLE} />
 <meta name="author" content="Florian Kapfenberger" />
@@ -55,14 +55,14 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title || SITE_TITLE} />
 <meta property="og:description" content={description || SITE_DESCRIPTION} />
 {image && <meta property="og:image" content={new URL(image, ogImageBaseUrl)} />}
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalUrl} />
 <meta property="twitter:title" content={title || SITE_TITLE} />
 <meta property="twitter:description" content={description || SITE_DESCRIPTION} />
 {image && <meta property="twitter:image" content={new URL(image, ogImageBaseUrl)} />}

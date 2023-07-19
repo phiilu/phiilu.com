@@ -42,10 +42,10 @@ const postsByMonth = getPostsByMonth(posts);
 
 <Layout title={`Blog | ${SITE_TITLE}`}>
   <Container as="main">
-    <div class="space-y-16">
-      <div>
-        <Heading>Blog</Heading>
-        <p>Here are all my blog posts! Enjoy :)</p>
+    <div class="space-y-16 px-4">
+      <div class="space-y-12">
+        <Heading noMargin>Blog</Heading>
+        <p class="text-lg">Here are all my blog posts! Enjoy :)</p>
       </div>
       {
         postsByMonth.map((postByMonth) => {

@@ -124,7 +124,8 @@ function PostSidebar({
                 //   value: "Buy Me a Coffee",
                 //   type: "link",
                 // }}
-                href="https://www.buymeacoffee.com/phiilu">
+                href="https://www.buymeacoffee.com/phiilu"
+              >
                 <img
                   alt="Buy me a mate tea"
                   src="https://img.buymeacoffee.com/button-api/?text=Buy me a mate tea&emoji=🍵&slug=phiilu&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"

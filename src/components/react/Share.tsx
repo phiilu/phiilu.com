@@ -66,7 +66,8 @@ export function Share({ title, url, onClick }: ShareProps) {
             //   name: "Share Anywhere clicked",
             // }}
             variant="secondary"
-            onClick={handleSocialShare}>
+            onClick={handleSocialShare}
+          >
             Share Anywhere
           </Button>
         </li>
@@ -83,7 +84,8 @@ export function Share({ title, url, onClick }: ShareProps) {
             `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
             'twitter-share',
             'width=550,height=235'
-          )}>
+          )}
+        >
           Share on Twitter
         </Button>
       </li>
@@ -99,7 +101,8 @@ export function Share({ title, url, onClick }: ShareProps) {
             `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
             'hn-share',
             'width=550,height=350'
-          )}>
+          )}
+        >
           Share on Hacker News
         </Button>
       </li>

@@ -28,7 +28,8 @@ export function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }: Ban
               href={ctaHref}
               target="_blank"
               className="flex items-center justify-center px-4 py-2 text-sm font-medium bg-white border border-transparent rounded-md shadow-sm text-pokezards-dark-red hover:bg-orange-50"
-              rel="noreferrer">
+              rel="noreferrer"
+            >
               {ctaText}
             </a>
           </div>
@@ -44,7 +45,8 @@ export function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }: Ban
                 //   type: "close",
                 // });
               }}
-              className="flex p-2 -mr-1 rounded-md hover:bg-pokezards-dark-red-light focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2">
+              className="flex p-2 -mr-1 rounded-md hover:bg-pokezards-dark-red-light focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
+            >
               <span className="sr-only">Dismiss</span>
               <svg
                 className="w-6 h-6 text-white"
@@ -53,7 +55,8 @@ export function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }: Ban
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                aria-hidden="true">
+                aria-hidden="true"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>

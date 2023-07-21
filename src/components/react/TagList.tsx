@@ -24,7 +24,8 @@ export const TagList = ({ tags }: TagListProps) => {
                   tag.bg,
                   tag.text,
                   tag.hover
-                )}>
+                )}
+              >
                 {tag.name}
               </a>
             </li>

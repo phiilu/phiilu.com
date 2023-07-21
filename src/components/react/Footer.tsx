@@ -14,7 +14,8 @@ export const Footer = () => {
             //   name: "Twitter visits",
             // }}
             className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-twitter-200 hover:text-twitter-800"
-            href="https://twitter.com/phiilu">
+            href="https://twitter.com/phiilu"
+          >
             Twitter
           </a>
           <a
@@ -24,7 +25,8 @@ export const Footer = () => {
             //   name: "GitHub visits",
             // }}
             className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-github-200 hover:text-github-800 "
-            href="https://github.com/phiilu">
+            href="https://github.com/phiilu"
+          >
             GitHub
           </a>
           <a
@@ -34,14 +36,16 @@ export const Footer = () => {
             //   name: "LinkedIn visits",
             // }}
             className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-linkedin-200 hover:text-linkedin-800"
-            href="https://www.linkedin.com/in/florian-kapfenberger-59581b164/">
+            href="https://www.linkedin.com/in/florian-kapfenberger-59581b164/"
+          >
             LinkedIn
           </a>
         </div>
         <div className="flex flex-wrap justify-center space-x-2 text-gray-500">
           <a
             className="px-2 py-2 text-xs font-semibold transition-colors duration-300 ease-in-out rounded-md hover:text-rss-500"
-            href="/rss.xml">
+            href="/rss.xml"
+          >
             RSS Feed
           </a>
         </div>

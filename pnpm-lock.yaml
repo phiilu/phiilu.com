@@ -92,8 +92,8 @@ devDependencies:
     specifier: ^6.7.1
     version: 6.7.1(eslint@8.45.0)
   eslint-plugin-react:
-    specifier: ^7.32.2
-    version: 7.32.2(eslint@8.45.0)
+    specifier: ^7.33.0
+    version: 7.33.0(eslint@8.45.0)
   prettier:
     specifier: ^3.0.0
     version: 3.0.0
@@ -2637,8 +2637,8 @@ packages:
       semver: 6.3.1
     dev: true
 
-  /eslint-plugin-react@7.32.2(eslint@8.45.0):
-    resolution: {integrity: sha512-t2fBMa+XzonrrNkyVirzKlvn5RXzzPwRHtMvLAtVZrt8oxgnTQaYbU6SXTOO1mwQgp1y5+toMSKInnzGr0Knqg==}
+  /eslint-plugin-react@7.33.0(eslint@8.45.0):
+    resolution: {integrity: sha512-qewL/8P34WkY8jAqdQxsiL82pDUeT7nhs8IsuXgfgnsEloKCT4miAV9N9kGtx7/KM9NH/NCGUE7Edt9iGxLXFw==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8

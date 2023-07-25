@@ -51,6 +51,9 @@ jobs:
       - name: Run Prettier
         run: pnpm run prettier
 
+      - name: Run Linter
+        run: pnpm run lint
+
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

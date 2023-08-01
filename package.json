@@ -28,7 +28,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@types/react": "^18.2.16",
     "@types/react-dom": "^18.2.7",
-    "astro": "^2.9.3",
+    "astro": "^2.9.6",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.15.0",

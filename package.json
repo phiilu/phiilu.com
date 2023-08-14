@@ -22,7 +22,7 @@
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
     "@astrojs/vercel": "^3.7.4",
-    "@headlessui/react": "^1.7.15",
+    "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
     "@sindresorhus/slugify": "^2.2.1",
     "@tailwindcss/typography": "^0.5.9",

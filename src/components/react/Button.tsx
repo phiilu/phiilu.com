@@ -49,7 +49,8 @@ export const Button = ({
         'px-8': !raw && width === 'medium'
       })}
       onClick={handleOnClick}
-      {...props}>
+      {...props}
+    >
       {children}
     </Element.as>
   );

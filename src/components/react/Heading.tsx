@@ -29,7 +29,8 @@ export const Heading = ({ as, size, children, noMargin, className, ...props }: H
         },
         className
       )}
-      {...props}>
+      {...props}
+    >
       {children}
     </Element.as>
   );

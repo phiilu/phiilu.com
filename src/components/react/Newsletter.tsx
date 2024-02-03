@@ -94,7 +94,8 @@ export function Newsletter() {
         <form
           onSubmit={handleSubmit}
           className="mt-8 space-y-3 sm:flex sm:space-y-0 sm:space-x-3"
-          aria-labelledby="newsletter-headline">
+          aria-labelledby="newsletter-headline"
+        >
           <Input
             label="Firstname"
             name="first_name"

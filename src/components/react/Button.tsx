@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { type HTMLProps } from 'react';
 // import trackEvent from "@helpers/tracking";
 
 const defaultClassName =
@@ -8,7 +9,7 @@ const twitterVariant = `bg-twitter-200 dark:bg-twitter-500 dark:text-white dark:
 const hackerNewsVariant = `bg-hackernews-200 dark:bg-hackernews-500 dark:text-white dark:hover:bg-hackernews-400 text-hackernews-800 hover:bg-hackernews-500 hover:text-white`;
 const secondaryVariant = `bg-green-200 text-green-800 hover:bg-green-500 hover:text-white dark:bg-green-300 dark:text-green-900 dark:hover:text-green-900 dark:hover:bg-green-200`;
 
-interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
+interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   as?: any;
   variant?: string;
   width?: string;
@@ -48,8 +49,7 @@ export const Button = ({
         'px-8': !raw && width === 'medium'
       })}
       onClick={handleOnClick}
-      {...props}
-    >
+      {...props}>
       {children}
     </Element.as>
   );

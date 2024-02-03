@@ -1,15 +1,16 @@
 import { clsx } from 'clsx';
+import type { ReactNode } from 'react';
 
 interface HeadingProps {
   as?: any;
   size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  children?: React.ReactNode;
+  children?: ReactNode;
   noMargin?: boolean;
   className?: string;
 }
 
 export const Heading = ({ as, size, children, noMargin, className, ...props }: HeadingProps) => {
-  const Element = { as: as || size };
+  const Element = { as: as || size || 'h1' };
 
   return (
     <Element.as
@@ -28,8 +29,7 @@ export const Heading = ({ as, size, children, noMargin, className, ...props }: H
         },
         className
       )}
-      {...props}
-    >
+      {...props}>
       {children}
     </Element.as>
   );

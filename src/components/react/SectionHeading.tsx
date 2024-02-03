@@ -1,9 +1,10 @@
 import { Heading } from '@react/Heading';
+import type { ReactNode } from 'react';
 
 interface SectionHeadingProps {
   heading: string;
   subheading: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function SectionHeading({ heading, subheading, children }: SectionHeadingProps) {

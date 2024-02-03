@@ -1,8 +1,8 @@
 import { clsx } from 'clsx';
 import { Container } from '@react/Container';
 import { Logo } from '@react/icons/Logo';
-import { motion, EventInfo } from 'framer-motion';
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { motion, type EventInfo } from 'framer-motion';
+import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { spring } from '@/helpers/animation';
 import { useScroll } from '@/hooks/useScroll';
 

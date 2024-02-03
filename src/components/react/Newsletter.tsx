@@ -1,7 +1,7 @@
 import { Alert } from '@react/Alert';
 import { Button } from '@react/Button';
 import { Container } from '@react/Container';
-import { HTMLProps, useState } from 'react';
+import { type HTMLProps, useState } from 'react';
 
 interface InputProps extends HTMLProps<HTMLInputElement> {}
 

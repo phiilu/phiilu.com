@@ -1,9 +1,10 @@
 import { clsx } from 'clsx';
+import type { ReactNode } from 'react';
 
 interface ContainerProps {
   as?: any;
   noMargin?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

@@ -1,6 +1,6 @@
 import { Button } from '@react/Button';
 import { Heading } from '@react/Heading';
-import type { AstroComponentFactory } from 'astro/dist/runtime/server';
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { CollectionEntry } from 'astro:content';
 import type { HTMLProps, ReactNode } from 'react';
 

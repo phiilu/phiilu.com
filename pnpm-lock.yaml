@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.1.0
     version: 5.1.0(astro@4.3.2)(tailwindcss@3.4.1)
   '@astrojs/vercel':
-    specifier: ^7.1.1
-    version: 7.1.1(astro@4.3.2)
+    specifier: ^7.3.1
+    version: 7.3.1(astro@4.3.2)
   '@headlessui/react':
     specifier: ^1.7.18
     version: 1.7.18(react-dom@18.2.0)(react@18.2.0)
@@ -250,8 +250,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel@7.1.1(astro@4.3.2):
-    resolution: {integrity: sha512-bOTelKh8UzQhL5vNQ4CKQtjnsVSVTuLc7AKz1x9DCzegr7LuXMPPAnAfZnYqZLOp0SKQwD91yozzwZx9IdC8Dw==}
+  /@astrojs/vercel@7.3.1(astro@4.3.2):
+    resolution: {integrity: sha512-nzpvuRIJMbmLXd0nQpVrOGCPOEx792aAI25aFNK3uC0lD/yGyAlY4nHkCeaE/c+0vkiRdCbfGlHujz3emWpg2w==}
     peerDependencies:
       astro: ^4.2.0
     dependencies:

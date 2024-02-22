@@ -26,7 +26,7 @@
     "@heroicons/react": "^2.1.1",
     "@sindresorhus/slugify": "^2.2.1",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/react": "^18.2.54",
+    "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.18",
     "astro": "^4.4.0",
     "clsx": "^2.1.0",

@@ -11,7 +11,11 @@ export default defineConfig({
   output: 'hybrid',
   trailingSlash: 'never',
   adapter: vercel({
-    analytics: true
+    edgeMiddleware: true,
+    webAnalytics: {
+      enabled: true
+    },
+    maxDuration: 8
   }),
   site: 'https://phiilu.com',
   markdown: {

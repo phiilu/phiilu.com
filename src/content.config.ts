@@ -22,7 +22,7 @@ const gear = defineCollection({
     category: z.string().nullable().optional(),
     link: z.string().nullable().optional(),
     affiliateLink: z.string().nullable().optional(),
-    affilateLinkText: z.string().nullable().optional()
+    affiliateLinkText: z.string().nullable().optional()
   })
 });
 

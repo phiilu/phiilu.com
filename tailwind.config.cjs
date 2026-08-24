@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors');
-const addFontface = require('./tailwind/plugins/addFontFace.cjs');
+const addFontFace = require('./tailwind/plugins/addFontFace.cjs');
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -289,5 +289,5 @@ module.exports = {
   variants: {
     extend: { typography: ['dark'], translate: ['group-hover'] }
   },
-  plugins: [require('@tailwindcss/typography'), addFontface]
+  plugins: [require('@tailwindcss/typography'), addFontFace]
 };

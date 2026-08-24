@@ -15,7 +15,7 @@ interface GearItemProps {
 
 export function GearItem({
   gear: {
-    data: { title, affiliateLink, affilateLinkText, image, link }
+    data: { title, affiliateLink, affiliateLinkText, image, link }
   },
   children
 }: GearItemProps) {
@@ -47,7 +47,7 @@ export function GearItem({
           {affiliateLink && (
             <div className="flex items-end flex-1 max-w-sm">
               <Button as={'a'} href={affiliateLink} variant="secondary">
-                {affilateLinkText || 'Buy'}
+                {affiliateLinkText || 'Buy'}
               </Button>
             </div>
           )}

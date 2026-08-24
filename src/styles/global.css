@@ -79,7 +79,7 @@ html:not(.reduce-motion) {
   .post-item {
     animation: post-enter 0.5s ease-out both;
     /* ponytail: delay capped at 8 items so a long list does not crawl in. */
-    animation-delay: calc(min(var(--post-index, 0), 8) * 0.12s);
+    animation-delay: calc(min(var(--post-index, 0), 8) * 0.2s);
   }
 }
 

@@ -11,7 +11,7 @@ function Input({ label, type, required, placeholder, ...props }: InputProps) {
       aria-label={label}
       type={type}
       required={required}
-      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none dark:text-gray-100 dark:bg-gray-800 dark: focus:outline-hidden focus:shadow-outline focus:border-blue-300 sm:max-w-xs dark:placeholder-gray-400 dark:border-gray-700"
+      className="w-full px-4 py-3 text-base leading-6 text-gray-900 transition-colors duration-150 ease-in-out bg-white border rounded-md appearance-none placeholder-gray-500 border-black/10 focus:outline-hidden focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:text-gray-100 dark:bg-gray-900/60 dark:placeholder-gray-500 dark:border-white/10"
       placeholder={placeholder}
       {...props}
     />
@@ -54,7 +54,7 @@ export function Newsletter() {
 
   if (state === 'success') {
     return (
-      <Container className="py-12">
+      <Container className="py-6">
         <Alert
           variant="success"
           title="Thanks for signing up for my Newsletter!"
@@ -67,7 +67,7 @@ export function Newsletter() {
 
   if (state === 'error') {
     return (
-      <Container className="py-12">
+      <Container className="py-6">
         <Alert
           variant="error"
           title="Ohh shoot!"
@@ -83,17 +83,25 @@ export function Newsletter() {
   }
 
   return (
-    <section aria-labelledby="newsletter-headline" className="flex">
-      <div className="max-w-(--breakpoint-xl) px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
-        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
-          Want blog post updates? <br className="hidden sm:inline" />
-          <span className="text-indigo-600 dark:text-indigo-500" id="newsletter-headline">
-            Sign up for my newsletter.
-          </span>
-        </h2>
+    <Container className="py-6">
+      <section
+        aria-labelledby="newsletter-headline"
+        className="p-6 space-y-4 rounded-lg sm:p-8 bg-slate-100 dark:bg-gray-800/60 ring-1 ring-black/5 dark:ring-white/10"
+      >
+        <div className="space-y-1">
+          <h2
+            id="newsletter-headline"
+            className="text-lg font-semibold text-gray-900 dark:text-white"
+          >
+            Want blog post updates?
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Sign up for my newsletter — new posts in your inbox, no spam, unsubscribe anytime.
+          </p>
+        </div>
         <form
           onSubmit={handleSubmit}
-          className="mt-8 space-y-3 sm:flex sm:space-y-0 sm:space-x-3"
+          className="space-y-3 sm:flex sm:space-y-0 sm:space-x-3"
           aria-labelledby="newsletter-headline"
         >
           <Input
@@ -114,20 +122,11 @@ export function Newsletter() {
             value={form.email}
             onChange={handleChange}
           />
-          <div className="mt-3 rounded-md shadow-sm sm:mt-0 sm:shrink-0">
-            <Button
-              type="submit"
-              //   tracking={{
-              //     event: "newsletter-signup",
-              //     name: "Newsletter Signup Notify clicked",
-              //     value: "Newsletter Signup Notify clicked",
-              //   }}
-            >
-              Notify me
-            </Button>
-          </div>
+          <Button type="submit" width="medium" className="shrink-0 max-sm:w-full">
+            Notify me
+          </Button>
         </form>
-      </div>
-    </section>
+      </section>
+    </Container>
   );
 }

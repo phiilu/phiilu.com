@@ -4,7 +4,7 @@ const today = new Date();
 
 export const Footer = () => {
   return (
-    <footer className="mt-32 space-y-4">
+    <footer className="mt-16 space-y-4">
       <Container className="space-y-2 text-center">
         <div className="flex flex-wrap justify-center space-x-4">
           <a

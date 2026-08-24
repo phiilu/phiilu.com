@@ -38,6 +38,8 @@ const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
 );
 const postsByMonth = getPostsByMonth(posts);
+// Stagger runs across the whole list, not restarting inside each month group.
+const postIndexes = new Map(posts.map((post, index) => [post.id, index]));
 ---
 
 <Layout title={`Blog | ${SITE_TITLE}`}>
@@ -61,8 +63,8 @@ const postsByMonth = getPostsByMonth(posts);
               </Heading>
               <div class="space-y-8 md:space-y-14">
                 <ul class="space-y-16 md:space-y-8">
-                  {postByMonth.posts.map((post, index) => (
-                    <li style={`--post-index: ${index}`}>
+                  {postByMonth.posts.map((post) => (
+                    <li style={`--post-index: ${postIndexes.get(post.id)}`}>
                       <PostListItem
                         post={{
                           ...post.data,

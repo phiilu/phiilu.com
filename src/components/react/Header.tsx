@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { Container } from '@react/Container';
 import { Logo } from '@react/icons/Logo';
 import { motion, type EventInfo } from 'motion/react';
-import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { type ReactNode, useCallback, useRef, useState } from 'react';
 import { spring } from '@/helpers/animation';
 import { useScroll } from '@/hooks/useScroll';
 
@@ -68,9 +68,12 @@ interface HeaderProps {
 
 export const Header = ({ route }: HeaderProps) => {
   const [scrolled] = useScroll();
-  const [activeHoverIndex, setActiveHoverIndex] = useState(() => {
-    return getActiveIndex(route);
-  });
+  const [activeHoverIndex, setActiveHoverIndex] = useState(() => getActiveIndex(route));
+  // Set on click and never cleared: it suppresses the hover-out reset so the
+  // pill stays put while the browser navigates away. The island is recreated on
+  // every navigation, so `route` cannot change under a mounted Header and there
+  // is nothing to sync. That stops being true if a ClientRouter is ever added
+  // and this island is marked `transition:persist`.
   const hasClicked = useRef(false);
   const hasHover = useRef(false);
 
@@ -107,11 +110,6 @@ export const Header = ({ route }: HeaderProps) => {
     hasHover.current = false;
   }
 
-  useEffect(() => {
-    hasClicked.current = false;
-    setActiveHoverIndex(getActiveIndex(route));
-  }, [route]);
-
   return (
     <div>
       <div
@@ -121,7 +119,7 @@ export const Header = ({ route }: HeaderProps) => {
         style={{ width: `${scrolled}%` }}
       />
       <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
-        <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-no-wrap rounded-xl">
+        <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-nowrap rounded-xl">
           <a href="/" className="flex-1 flex gap-2 items-center justify-center sm:justify-start">
             <Logo className="h-8 w-8" />
             <span className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">

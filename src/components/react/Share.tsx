@@ -1,7 +1,11 @@
 import { Button } from '@react/Button';
 import { ErrorIcon, LoadingIcon, SuccessIcon } from '@react/icons/NotificationIcons';
 import { toast } from 'react-hot-toast';
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+
+// `navigator.share` availability never changes for the lifetime of the page,
+// so there is nothing to subscribe to. Kept at module scope for a stable ref.
+const subscribeToNothing = () => () => {};
 
 interface ShareProps {
   title: string;
@@ -10,11 +14,14 @@ interface ShareProps {
 }
 
 export function Share({ title, url, onClick }: ShareProps) {
-  const [isSareApiAvailable, setIsSareApiAvailable] = useState(false);
-
-  useEffect(() => {
-    setIsSareApiAvailable(!!window.navigator.share);
-  }, []);
+  // Feature detection has to report `false` for the server render so the markup
+  // matches, then switch to the real value once hydrated. useSyncExternalStore
+  // does that in one step; an effect would need an extra state round-trip.
+  const isShareApiAvailable = useSyncExternalStore(
+    subscribeToNothing,
+    () => !!window.navigator.share,
+    () => false
+  );
 
   function handleSocialShare() {
     try {
@@ -57,7 +64,7 @@ export function Share({ title, url, onClick }: ShareProps) {
 
   return (
     <ul className="space-y-2 sm:items-start sm:space-x-2 sm:space-y-0 xl:space-y-2 sm:flex xl:space-x-0 xl:block">
-      {isSareApiAvailable && (
+      {isShareApiAvailable && (
         <li className="w-full">
           <Button
             // tracking={{

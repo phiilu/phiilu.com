@@ -25,6 +25,8 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 
 <ClientRouter />
 
+<meta name="theme-color" content="#ffffff" />
+
 <!-- Apply the saved preferences before first paint, so there is no flash of
 the wrong theme and no animation the reader asked not to see. -->
 <script is:inline>
@@ -34,7 +36,12 @@ the wrong theme and no animation the reader asked not to see. -->
     const apply = () => {
       const root = document.documentElement;
       const theme = localStorage.getItem('theme') ?? 'system';
-      root.classList.toggle('dark', theme === 'dark' || (theme === 'system' && darkMedia.matches));
+      const dark = theme === 'dark' || (theme === 'system' && darkMedia.matches);
+      root.classList.toggle('dark', dark);
+      // Keeps the mobile browser chrome from staying white in dark mode.
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute('content', dark ? '#101828' : '#ffffff');
       const motion = localStorage.getItem('reduce-motion');
       root.classList.toggle(
         'reduce-motion',
@@ -71,7 +78,6 @@ the wrong theme and no animation the reader asked not to see. -->
 <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
 <meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="msapplication-config" content="/images/favicon/browserconfig.xml" />
-<meta name="theme-color" content="#ffffff" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalUrl} />

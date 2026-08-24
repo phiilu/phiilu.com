@@ -24,8 +24,10 @@ export default defineConfig({
     expressiveCode({
       themes: ['catppuccin-latte', 'catppuccin-mocha'],
       // The site toggles a `dark` class, so no media query fallback.
-      // Latte is the base theme; mocha only takes over under the `dark` class.
-      themeCssSelector: (theme) => theme.name === 'catppuccin-mocha' && 'html.dark',
+      // Latte is the base theme; mocha takes over under the `dark` class.
+      // The returned value is appended to `:root`, which is the <html> element
+      // carrying that class.
+      themeCssSelector: (theme) => theme.name === 'catppuccin-mocha' && '.dark',
       useDarkModeMediaQuery: false,
       // The post body renders inside a hydrated island, which drops EC's
       // injected <link>; inlined styles survive it.

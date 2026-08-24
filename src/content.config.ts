@@ -18,11 +18,11 @@ const gear = defineCollection({
   loader: glob({ base: './src/content/gear', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
-    image: z.string(),
+    image: z.string().optional(),
+    order: z.number().optional(),
+    label: z.string().optional(),
     category: z.string().nullable().optional(),
-    link: z.string().nullable().optional(),
-    affiliateLink: z.string().nullable().optional(),
-    affiliateLinkText: z.string().nullable().optional()
+    link: z.string().nullable().optional()
   })
 });
 

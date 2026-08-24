@@ -35,11 +35,15 @@ const gearByCategory = gearRendered.reduce(
   {} as Record<string, GearCollectionEntryRendered[]>
 );
 
+for (const items of Object.values(gearByCategory)) {
+  items.sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
+}
+
 const sortedGearByCategory = {
-  Hardware: gearByCategory.Hardware,
+  Desk: gearByCategory.Desk,
+  Audio: gearByCategory.Audio,
   Software: gearByCategory.Software,
-  Office: gearByCategory.Office,
-  Lifestyle: gearByCategory.Lifestyle
+  'Everyday Carry': gearByCategory['Everyday Carry']
 };
 ---
 
@@ -61,7 +65,13 @@ const sortedGearByCategory = {
                 <GearCategoryIcons category={category} />
                 {category}
               </Heading>
-              <ul class="space-y-12">
+              <ul
+                class={
+                  category === 'Software'
+                    ? 'grid gap-6 sm:grid-cols-2 lg:grid-cols-3'
+                    : 'grid gap-12 md:grid-cols-2'
+                }
+              >
                 {gears.map((gear) => {
                   if (gear.data.category === 'Software') {
                     return (
@@ -86,36 +96,6 @@ const sortedGearByCategory = {
           );
         })
       }
-      <div class="p-4 bg-indigo-50 rounded-md dark:bg-blue-300 dark:border-indigo-900">
-        <div class="flex">
-          <div class="shrink-0">
-            <svg
-              class="w-5 h-5 text-indigo-800 dark:text-indigo-700"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          <div class="ml-3 space-y-2">
-            <p class="text-sm text-indigo-800 dark:text-indigo-900">
-              If you click <strong>Buy</strong> or <strong>the image</strong>
-              you will get redirected to a page where you can buy the product using an{' '}
-              <strong>affiliate link</strong>.
-            </p>
-
-            <p class="text-sm text-indigo-800 dark:text-indigo-900">
-              An affiliate link will not increase your price, but it will get me a small commission
-              and helps me out :)
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   </Container>
 </Layout>

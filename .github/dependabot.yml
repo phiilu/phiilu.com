@@ -5,6 +5,11 @@ updates:
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 5
+    # let a release sit before we take it — supply-chain paranoia, not stability.
+    # does NOT apply to security updates: those still land the day the advisory does.
+    cooldown:
+      default-days: 3
+      semver-major-days: 7
     groups:
       # tooling: lint/format/types — CI proves it, majors included
       dev:

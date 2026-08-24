@@ -26,10 +26,12 @@
 @layer base {
   html {
     color-scheme: light;
+    background-color: var(--color-white);
   }
 
   html.dark {
     color-scheme: dark;
+    background-color: var(--color-gray-900);
   }
 }
 

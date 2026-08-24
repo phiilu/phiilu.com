@@ -7,14 +7,7 @@ import {
   MenuSection,
   MenuSeparator
 } from '@headlessui/react';
-import {
-  CheckIcon,
-  Cog6ToothIcon,
-  ComputerDesktopIcon,
-  MoonIcon,
-  SparklesIcon,
-  SunIcon
-} from '@heroicons/react/24/outline';
+import { Check, Monitor, Moon, Settings, Sparkles, Sun } from 'lucide-react';
 import { clsx } from 'clsx';
 import { useSyncExternalStore } from 'react';
 import {
@@ -27,10 +20,10 @@ import {
 } from '@/helpers/preferences';
 
 const themeOptions = [
-  { value: 'light', label: 'Light', Icon: SunIcon },
-  { value: 'dark', label: 'Dark', Icon: MoonIcon },
-  { value: 'system', label: 'System', Icon: ComputerDesktopIcon }
-] as const satisfies ReadonlyArray<{ value: Theme; label: string; Icon: typeof SunIcon }>;
+  { value: 'light', label: 'Light', Icon: Sun },
+  { value: 'dark', label: 'Dark', Icon: Moon },
+  { value: 'system', label: 'System', Icon: Monitor }
+] as const satisfies ReadonlyArray<{ value: Theme; label: string; Icon: typeof Sun }>;
 
 function getSettings() {
   return `${getTheme()}|${getReduceMotion()}`;
@@ -51,7 +44,7 @@ export function SettingsMenu() {
   return (
     <Menu as="div" className="relative">
       <MenuButton className="flex items-center justify-center w-9 h-9 transition-colors duration-100 ease-in-out rounded-md text-slate-600 hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 dark:text-slate-300 dark:hover:bg-slate-800">
-        <Cog6ToothIcon className="w-5 h-5" aria-hidden="true" />
+        <Settings className="w-5 h-5" aria-hidden="true" />
         <span className="sr-only">Settings</span>
       </MenuButton>
       <MenuItems
@@ -74,7 +67,7 @@ export function SettingsMenu() {
               {value === theme && (
                 <>
                   <span className="sr-only">(selected)</span>
-                  <CheckIcon className="w-4 h-4 ml-auto" aria-hidden="true" />
+                  <Check className="w-4 h-4 ml-auto" aria-hidden="true" />
                 </>
               )}
             </MenuItem>
@@ -89,12 +82,12 @@ export function SettingsMenu() {
             onClick={() => setReduceMotion(!reduceMotion)}
             className={itemClassName(reduceMotion)}
           >
-            <SparklesIcon className="w-4 h-4" aria-hidden="true" />
+            <Sparkles className="w-4 h-4" aria-hidden="true" />
             Reduce motion
             {reduceMotion && (
               <>
                 <span className="sr-only">(on)</span>
-                <CheckIcon className="w-4 h-4 ml-auto" aria-hidden="true" />
+                <Check className="w-4 h-4 ml-auto" aria-hidden="true" />
               </>
             )}
           </MenuItem>

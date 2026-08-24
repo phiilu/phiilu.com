@@ -1,9 +1,8 @@
 import { Button } from '@react/Button';
 import { blueskyShareUrl, xShareUrl } from '@/helpers/shareUrls';
 import { BlueskyIcon, HackerNewsIcon, XIcon } from '@react/icons/SocialIcons';
-import { ShareIcon } from '@heroicons/react/20/solid';
-import { ErrorIcon, LoadingIcon, SuccessIcon } from '@react/icons/NotificationIcons';
-import { toast } from 'react-hot-toast';
+import { Share2 } from 'lucide-react';
+import { toast } from 'sonner';
 import { useSyncExternalStore } from 'react';
 
 // `navigator.share` availability never changes for the lifetime of the page,
@@ -36,32 +35,11 @@ export function Share({ title, url, onClick, iconsOnly }: ShareProps) {
         url
       });
 
-      toast.promise(
-        res,
-        {
-          loading: (
-            <ToastMessage
-              title="Share the post with the world"
-              text="Select how you want to share the post"
-            />
-          ),
-          success: (
-            <ToastMessage title="Shared successfully" text="Thank you for sharing my post!" />
-          ),
-          error: <ToastMessage title="So close" text="Oh okay.. Maybe next time :)" />
-        },
-        {
-          success: {
-            icon: <SuccessIcon />
-          },
-          loading: {
-            icon: <LoadingIcon />
-          },
-          error: {
-            icon: <ErrorIcon />
-          }
-        }
-      );
+      toast.promise(res, {
+        loading: 'Select how you want to share the post',
+        success: 'Shared successfully — thank you!',
+        error: 'So close. Maybe next time :)'
+      });
     } catch {
       // do nothing
     }
@@ -73,7 +51,7 @@ export function Share({ title, url, onClick, iconsOnly }: ShareProps) {
         <ShareButton
           label="Share Anywhere"
           variant="secondary"
-          icon={<ShareIcon aria-hidden className="h-5 w-5 shrink-0" />}
+          icon={<Share2 aria-hidden className="h-5 w-5 shrink-0" />}
           iconsOnly={iconsOnly}
           onClick={handleSocialShare}
         />
@@ -130,19 +108,5 @@ function ShareButton({ label, variant, icon, iconsOnly, onClick }: ShareButtonPr
         {!iconsOnly && label}
       </Button>
     </li>
-  );
-}
-
-interface ToastMessageProps {
-  title: string;
-  text: string;
-}
-
-function ToastMessage({ title, text }: ToastMessageProps) {
-  return (
-    <div className="ml-3 w-0 flex-1 pt-0.5">
-      <p className="text-sm font-medium text-gray-900 dark:text-white">{title}</p>
-      <p className="mt-1 text-sm text-gray-500 dark:text-gray-100">{text}</p>
-    </div>
   );
 }

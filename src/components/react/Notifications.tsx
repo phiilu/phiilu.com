@@ -1,44 +1,32 @@
-import { Fragment } from 'react';
-import { Transition } from '@headlessui/react';
-import { XMarkIcon } from '@heroicons/react/20/solid';
-import toastAction, { Toaster, resolveValue } from 'react-hot-toast';
+import { Toaster } from 'sonner';
+import { useSyncExternalStore } from 'react';
+import { getTheme, subscribe } from '@/helpers/preferences';
 
 export const Notifications = () => {
+  // Sonner takes 'light' | 'dark' | 'system', which is exactly what the theme
+  // preference already stores.
+  const theme = useSyncExternalStore(subscribe, getTheme, () => 'system' as const);
+
   return (
-    <Toaster position="top-right">
-      {(t) => (
-        <Transition
-          show={t.visible}
-          as={Fragment}
-          enter="transform ease-out duration-300 transition"
-          enterFrom="-translate-y-full opacity-0 sm:translate-y-0 sm:translate-x-2"
-          enterTo="translate-y-0 opacity-100 sm:translate-x-0"
-          leave="transform transition ease-in duration-300"
-          leaveFrom="opacity-100 translate-x-0"
-          leaveTo="opacity-0 translate-x-full"
-        >
-          <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-lg ring-1 ring-black/5 dark:ring-white/10">
-            <div className="p-4">
-              <div className="flex items-start">
-                <div className="shrink-0">{resolveValue(t.icon, t)}</div>
-                {resolveValue(t.message, t)}
-                <div className="ml-4 flex shrink-0">
-                  <button
-                    type="button"
-                    className="inline-flex text-gray-400 bg-white rounded-md dark:bg-gray-900 dark:text-gray-100 hover:text-gray-500 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={() => {
-                      toastAction.dismiss(t.id);
-                    }}
-                  >
-                    <span className="sr-only">Close</span>
-                    <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Transition>
-      )}
-    </Toaster>
+    <Toaster
+      position="bottom-right"
+      // Clears the fixed Pokézards banner, which also lives in the bottom corner.
+      offset={{ bottom: '6.5rem', right: '1.25rem' }}
+      mobileOffset={{ bottom: '6.5rem', left: '1.25rem', right: '1.25rem' }}
+      theme={theme}
+      closeButton
+      toastOptions={{
+        classNames: {
+          toast:
+            'font-open-sans! rounded-md! border-0! bg-white! text-gray-900! shadow-lg! ring-1 ring-black/5 dark:bg-gray-800! dark:text-gray-100! dark:ring-white/10',
+          description: 'text-gray-600! dark:text-gray-400!',
+          closeButton:
+            'bg-white! text-gray-500! border-gray-200! hover:text-gray-900! dark:bg-gray-800! dark:text-gray-300! dark:border-gray-700! dark:hover:text-white!',
+          success: 'text-green-600! dark:text-green-400!',
+          error: 'text-red-600! dark:text-red-400!',
+          loading: 'text-indigo-600! dark:text-indigo-400!'
+        }
+      }}
+    />
   );
 };

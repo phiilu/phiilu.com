@@ -1,9 +1,9 @@
-# don't install anything published in the last 3 days — a compromised release
-# is usually yanked within hours, so waiting it out dodges most of the blast.
-# matches the dependabot cooldown in .github/dependabot.yml.
 minimumReleaseAge: 4320
+# else pnpm re-checks lockfile entries against the age limit and a
+# dependabot security bump fails --frozen-lockfile until it ages out
+trustLockfile: true
 
-onlyBuiltDependencies:
-  - esbuild
-  - unrs-resolver
-  - sharp
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+  sharp: true

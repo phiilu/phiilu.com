@@ -2,8 +2,9 @@
   "name": "phiilu.com",
   "version": "1.0.0",
   "type": "module",
+  "packageManager": "pnpm@11.22.0",
   "engines": {
-    "node": ">=22.12"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "astro dev",

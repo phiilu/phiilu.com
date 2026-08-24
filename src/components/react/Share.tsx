@@ -1,4 +1,7 @@
 import { Button } from '@react/Button';
+import { blueskyShareUrl, xShareUrl } from '@/helpers/shareUrls';
+import { BlueskyIcon, HackerNewsIcon, XIcon } from '@react/icons/SocialIcons';
+import { ShareIcon } from '@heroicons/react/20/solid';
 import { ErrorIcon, LoadingIcon, SuccessIcon } from '@react/icons/NotificationIcons';
 import { toast } from 'react-hot-toast';
 import { useSyncExternalStore } from 'react';
@@ -11,9 +14,11 @@ interface ShareProps {
   title: string;
   url: string;
   onClick: (url: string, name: string, windowSize: string) => React.MouseEventHandler;
+  /** Drops the labels, e.g. for the narrow post sidebar. */
+  iconsOnly?: boolean;
 }
 
-export function Share({ title, url, onClick }: ShareProps) {
+export function Share({ title, url, onClick, iconsOnly }: ShareProps) {
   // Feature detection has to report `false` for the server render so the markup
   // matches, then switch to the real value once hydrated. useSyncExternalStore
   // does that in one step; an effect would need an extra state round-trip.
@@ -27,7 +32,7 @@ export function Share({ title, url, onClick }: ShareProps) {
     try {
       const res = window.navigator.share({
         title,
-        text: `${title} by Florian Kapfenberger (@phiilu)`,
+        text: `${title} by Florian Kapfenberger (@phiilu.com)`,
         url
       });
 
@@ -63,57 +68,68 @@ export function Share({ title, url, onClick }: ShareProps) {
   }
 
   return (
-    <ul className="space-y-2 sm:items-start sm:space-x-2 sm:space-y-0 xl:space-y-2 sm:flex xl:space-x-0 xl:block">
+    <ul className={iconsOnly ? 'flex flex-wrap gap-2' : 'grid grid-cols-1 gap-2 sm:grid-cols-2'}>
       {isShareApiAvailable && (
-        <li className="w-full">
-          <Button
-            // tracking={{
-            //   event: "click",
-            //   value: "Share Anywhere clicked",
-            //   name: "Share Anywhere clicked",
-            // }}
-            variant="secondary"
-            onClick={handleSocialShare}
-          >
-            Share Anywhere
-          </Button>
-        </li>
+        <ShareButton
+          label="Share Anywhere"
+          variant="secondary"
+          icon={<ShareIcon aria-hidden className="h-5 w-5 shrink-0" />}
+          iconsOnly={iconsOnly}
+          onClick={handleSocialShare}
+        />
       )}
-      <li className="w-full">
-        <Button
-          //   tracking={{
-          //     event: "click",
-          //     value: "Share on Twitter clicked",
-          //     name: "Share on Twitter clicked",
-          //   }}
-          variant="twitter"
-          onClick={onClick(
-            `https://twitter.com/share?text=${title} via @phiilu&url=${url}`,
-            'twitter-share',
-            'width=550,height=235'
-          )}
-        >
-          Share on Twitter
-        </Button>
-      </li>
-      <li className="w-full">
-        <Button
-          //   tracking={{
-          //     event: "click",
-          //     value: "Share on Hacker News clicked",
-          //     name: "Share on Hacker News clicked",
-          //   }}
-          variant="hackernews"
-          onClick={onClick(
-            `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
-            'hn-share',
-            'width=550,height=350'
-          )}
-        >
-          Share on Hacker News
-        </Button>
-      </li>
+      <ShareButton
+        label="Share on Bluesky"
+        variant="bluesky"
+        icon={<BlueskyIcon />}
+        iconsOnly={iconsOnly}
+        onClick={onClick(blueskyShareUrl(title, url), 'bluesky-share', 'width=550,height=235')}
+      />
+      <ShareButton
+        label="Share on X"
+        variant="x"
+        icon={<XIcon />}
+        iconsOnly={iconsOnly}
+        onClick={onClick(xShareUrl(title, url), 'x-share', 'width=550,height=420')}
+      />
+      <ShareButton
+        label="Share on Hacker News"
+        variant="hackernews"
+        icon={<HackerNewsIcon />}
+        iconsOnly={iconsOnly}
+        onClick={onClick(
+          `https://news.ycombinator.com/submitlink?u=${url}&t=${title}`,
+          'hn-share',
+          'width=550,height=350'
+        )}
+      />
     </ul>
+  );
+}
+
+interface ShareButtonProps {
+  label: string;
+  variant: string;
+  icon: React.ReactNode;
+  iconsOnly?: boolean;
+  onClick: React.MouseEventHandler;
+}
+
+function ShareButton({ label, variant, icon, iconsOnly, onClick }: ShareButtonProps) {
+  return (
+    <li>
+      <Button
+        aria-label={label}
+        title={iconsOnly ? label : undefined}
+        className={iconsOnly ? 'px-3!' : 'whitespace-nowrap'}
+        width={iconsOnly ? 'medium' : 'full'}
+        variant={variant}
+        onClick={onClick}
+      >
+        {icon}
+        {!iconsOnly && label}
+      </Button>
+    </li>
   );
 }
 

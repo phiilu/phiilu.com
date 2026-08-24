@@ -2,7 +2,7 @@ import { countWords } from '@/helpers/countWords';
 import { format } from 'date-fns';
 import { Heading } from '@react/Heading';
 import { Share } from '@react/Share';
-import { ShareOnTwitterCta } from '@react/ShareOnTwitterCta';
+import { ShareCta } from '@react/ShareCta';
 import { TagList } from '@react/TagList';
 import { useCallback, type ReactNode } from 'react';
 import type { CollectionEntry } from 'astro:content';
@@ -35,13 +35,7 @@ export function PostDetail({ post, url, children }: PostDetailProps) {
         <div className="prose lg:prose-lg dark:prose-dark">{children}</div>
 
         <hr className="border-gray-200 dark:border-gray-800" />
-        <ShareOnTwitterCta
-          onClick={handleSocialShare(
-            `https://twitter.com/share?text=${post.data.title} via @phiilu&url=${url}`,
-            'twitter-share',
-            'width=550,height=235'
-          )}
-        />
+        <ShareCta title={post.data.title} url={url} onClick={handleSocialShare} />
       </div>
       <PostSidebar
         icon={post.data.icon}
@@ -110,7 +104,7 @@ function PostSidebar({
           <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">
             <dt className="font-semibold font-source-sans-pro">Social Corner</dt>
             <dd className="mt-2 text-base font-medium leading-6 xl:mt-0 text-time dark:text-gray-400">
-              <Share title={title} url={url} onClick={handleSocialShare} />
+              <Share iconsOnly title={title} url={url} onClick={handleSocialShare} />
             </dd>
           </dl>
           <dl className="w-full mt-4 lg:mr-8 sm:mt-2 xl:space-y-2 xl:mt-0 xl:mr-0">

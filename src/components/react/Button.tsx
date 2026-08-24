@@ -3,9 +3,10 @@ import { type HTMLProps } from 'react';
 // import trackEvent from "@helpers/tracking";
 
 const defaultClassName =
-  'flex justify-center items-center inline-block px-4 py-3 font-semibold text-center transition-colors duration-150 ease-in-out rounded-md border border-transparent rounded-md focus:outline-hidden focus:shadow-outline';
+  'flex justify-center items-center px-4 py-3 font-semibold text-center transition-colors duration-150 ease-in-out rounded-md border border-transparent rounded-md focus:outline-hidden focus:shadow-outline gap-2';
 const primaryVariant = `bg-indigo-200 text-indigo-800 hover:bg-indigo-700 hover:text-white dark:bg-indigo-600 dark:text-white dark:hover:bg-indigo-500`;
-const twitterVariant = `bg-twitter-200 dark:bg-twitter-700 dark:text-white dark:hover:bg-twitter-600 text-twitter-800 hover:bg-twitter-700 hover:text-white`;
+const blueskyVariant = `bg-bluesky-200 dark:bg-bluesky-700 dark:text-white dark:hover:bg-bluesky-600 text-bluesky-800 hover:bg-bluesky-700 hover:text-white`;
+const xVariant = `bg-gray-900 text-white hover:bg-black dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200`;
 const hackerNewsVariant = `bg-hackernews-200 dark:bg-hackernews-700 dark:text-white dark:hover:bg-hackernews-600 text-hackernews-800 hover:bg-hackernews-700 hover:text-white`;
 const secondaryVariant = `bg-green-200 text-green-800 hover:bg-green-700 hover:text-white dark:bg-green-300 dark:text-green-900 dark:hover:text-green-900 dark:hover:bg-green-200`;
 
@@ -43,7 +44,8 @@ export const Button = ({
         [defaultClassName]: !raw,
         [primaryVariant]: !raw && variant === 'primary',
         [secondaryVariant]: !raw && variant === 'secondary',
-        [twitterVariant]: !raw && variant === 'twitter',
+        [blueskyVariant]: !raw && variant === 'bluesky',
+        [xVariant]: !raw && variant === 'x',
         [hackerNewsVariant]: !raw && variant === 'hackernews',
         'w-full': !raw && width === 'full',
         'px-8': !raw && width === 'medium'

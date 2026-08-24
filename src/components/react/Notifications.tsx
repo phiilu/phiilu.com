@@ -17,7 +17,7 @@ export const Notifications = () => {
           leaveFrom="opacity-100 translate-x-0"
           leaveTo="opacity-0 translate-x-full"
         >
-          <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black/5">
+          <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-gray-900 shadow-lg ring-1 ring-black/5 dark:ring-white/10">
             <div className="p-4">
               <div className="flex items-start">
                 <div className="shrink-0">{resolveValue(t.icon, t)}</div>

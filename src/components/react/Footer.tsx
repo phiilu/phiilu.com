@@ -10,10 +10,10 @@ export const Footer = () => {
           <a
             // tracking={{
             //   event: "click",
-            //   value: "Twitter visits",
-            //   name: "Twitter visits",
+            //   value: "Bluesky visits",
+            //   name: "Bluesky visits",
             // }}
-            className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-twitter-200 hover:text-twitter-800"
+            className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-bluesky-200 hover:text-bluesky-800"
             href="https://bsky.app/profile/phiilu.com"
           >
             Bluesky

@@ -1,60 +1,42 @@
 name: CI
 
-# This action works with pull requests and pushes
 on:
   pull_request:
   push:
     branches:
       - main
-      - develop
 
 jobs:
-  prettier:
+  ci:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-
-      - name: Install Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: 22
+      - uses: actions/checkout@v5
 
       - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
         with:
           version: 10
-          run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
+      - uses: actions/setup-node@v5
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          node-version: 22
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Cache Astro build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.astro
+            .astro
+          key: astro-${{ hashFiles('pnpm-lock.yaml') }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            astro-${{ hashFiles('pnpm-lock.yaml') }}-
+            astro-
 
-      - name: Install dependencies
-        run: pnpm install
+      - run: pnpm run format:check
 
-      - name: Run Formatter
-        run: pnpm run format
+      - run: pnpm run lint
 
-      - name: Run Linter
-        run: pnpm run lint
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v6
-        with:
-          commit_message: 'chore: prettier changes'
+      - run: pnpm run build

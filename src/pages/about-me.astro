@@ -8,14 +8,14 @@ import { SITE_TITLE } from '@/consts';
 import Layout from '@/layouts/Page.astro';
 import profileImage from '@/assets/images/me.jpg';
 
-function getBirthdayInSecond() {
+function getBirthdayInSeconds() {
   const now = new Date();
   const dob = new Date(1996, 1, 22, 15, 30, 0);
 
   return Math.round((now.getTime() - dob.getTime()) / 1000);
 }
 
-const age = getBirthdayInSecond();
+const age = getBirthdayInSeconds();
 const ageInYears = Math.floor(age / 31536000);
 const postsCount = (await getCollection('posts')).length;
 ---
@@ -101,7 +101,7 @@ const postsCount = (await getCollection('posts')).length;
             </p>
             <p>
               My true passion is to create modern websites and webapps with state of the art
-              technology. My prefered framework for creating websites these days, is{' '}
+              technology. My preferred framework for creating websites these days, is{' '}
               <a href="https://reactjs.org/">React</a>. I started learning React in 2016 and since
               then I kept learning new tools, concepts and technologies evolving around React.
             </p>

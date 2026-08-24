@@ -9,8 +9,15 @@ interface HeadingProps {
   className?: string;
 }
 
-export const Heading = ({ as, size, children, noMargin, className, ...props }: HeadingProps) => {
-  const Element = { as: as || size || 'h1' };
+export const Heading = ({
+  as,
+  size = 'h1',
+  children,
+  noMargin,
+  className = '',
+  ...props
+}: HeadingProps) => {
+  const Element = { as: as || size };
 
   return (
     <Element.as
@@ -34,10 +41,4 @@ export const Heading = ({ as, size, children, noMargin, className, ...props }: H
       {children}
     </Element.as>
   );
-};
-
-Heading.defaultProps = {
-  as: undefined,
-  size: 'h1',
-  className: ''
 };

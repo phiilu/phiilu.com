@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "jsx-a11y", "import", "promise", "node"],
+  "categories": {
+    "correctness": "error"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "19.2"
+    }
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    "typescript/no-unused-vars": "error",
+    "typescript/no-explicit-any": "off"
+  },
+  "ignorePatterns": ["dist/**", ".vercel/**", ".astro/**"]
+}

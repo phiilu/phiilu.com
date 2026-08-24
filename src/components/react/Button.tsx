@@ -3,7 +3,7 @@ import { type HTMLProps } from 'react';
 // import trackEvent from "@helpers/tracking";
 
 const defaultClassName =
-  'flex justify-center items-center inline-block px-4 py-3 font-semibold text-center transition-colors duration-150 ease-in-out rounded-md border border-transparent rounded-md focus:outline-none focus:shadow-outline';
+  'flex justify-center items-center inline-block px-4 py-3 font-semibold text-center transition-colors duration-150 ease-in-out rounded-md border border-transparent rounded-md focus:outline-hidden focus:shadow-outline';
 const primaryVariant = `bg-indigo-200 text-indigo-800 hover:bg-indigo-500 hover:text-white dark:bg-indigo-500 dark:text-indigo-100 dark:hover:bg-indigo-400`;
 const twitterVariant = `bg-twitter-200 dark:bg-twitter-500 dark:text-white dark:hover:bg-twitter-400 text-twitter-800 hover:bg-twitter-500 hover:text-white`;
 const hackerNewsVariant = `bg-hackernews-200 dark:bg-hackernews-500 dark:text-white dark:hover:bg-hackernews-400 text-hackernews-800 hover:bg-hackernews-500 hover:text-white`;
@@ -17,9 +17,9 @@ interface ButtonProps extends HTMLProps<HTMLButtonElement> {
 }
 
 export const Button = ({
-  as,
-  variant,
-  width,
+  as = 'button',
+  variant = 'primary',
+  width = 'full',
   children,
   onClick,
   className,
@@ -54,9 +54,4 @@ export const Button = ({
       {children}
     </Element.as>
   );
-};
-Button.defaultProps = {
-  as: 'button',
-  variant: 'primary',
-  width: 'full'
 };

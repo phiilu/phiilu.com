@@ -14,13 +14,12 @@ interface PostDetailProps {
 }
 
 export function PostDetail({ post, url, children }: PostDetailProps) {
-  const wordCount = countWords(post.body);
+  const wordCount = countWords(post.body ?? '');
   const timeToRead = Math.round(wordCount / 275);
 
   const handleSocialShare = useCallback(
     (url: string, name: string, windowSize: string) => (e: React.MouseEvent<HTMLElement>) => {
       e.preventDefault();
-      console.log('open');
       window.open(url, name, windowSize);
     },
     []
@@ -32,7 +31,7 @@ export function PostDetail({ post, url, children }: PostDetailProps) {
       <div className="pb-4 md:mr-8 xl:pb-0 xl:mb-8 xl:col-span-3">
         <Heading noMargin>{post.data.title}</Heading>
       </div>
-      <div className="order-1 space-y-16 md:mr-8 xl:order-none xl:col-span-3">
+      <div className="order-1 space-y-16 md:mr-8 xl:order-0 xl:col-span-3">
         <div className="prose lg:prose-lg dark:prose-dark">{children}</div>
 
         <hr className="border-gray-200 dark:border-gray-800" />

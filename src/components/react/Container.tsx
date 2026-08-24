@@ -8,8 +8,13 @@ interface ContainerProps {
   className?: string;
 }
 
-export const Container = ({ as, noMargin, children, className }: ContainerProps) => {
-  const Element = { as: as || 'div' };
+export const Container = ({
+  as = 'div',
+  noMargin = false,
+  children,
+  className = ''
+}: ContainerProps) => {
+  const Element = { as };
 
   return (
     <Element.as
@@ -22,10 +27,4 @@ export const Container = ({ as, noMargin, children, className }: ContainerProps)
       {children}
     </Element.as>
   );
-};
-
-Container.defaultProps = {
-  noMargin: false,
-  as: 'div',
-  className: ''
 };

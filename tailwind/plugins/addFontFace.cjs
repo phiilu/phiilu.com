@@ -1,4 +1,4 @@
-module.exports = function addFontface({ addBase, theme }) {
+module.exports = function addFontFace({ addBase }) {
   const fonts = {
     '@font-face': [
       {

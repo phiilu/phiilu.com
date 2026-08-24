@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "engines": {
-    "node": ">=20 <22"
+    "node": ">=22.12"
   },
   "scripts": {
     "dev": "astro dev",
@@ -11,43 +11,39 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint 'src/**/*.{js,ts,tsx,astro}'",
-    "lint:fix": "eslint 'src/**/*.{js,ts,tsx,astro}' --fix",
-    "prettier": "prettier --write ."
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt . && prettier --write '**/*.astro'",
+    "format:check": "oxfmt --check . && prettier --check '**/*.astro'"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.3.1",
-    "@astrojs/react": "^3.6.3",
-    "@astrojs/rss": "^4.0.9",
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.2",
-    "@astrojs/vercel": "^7.8.2",
-    "@headlessui/react": "^1.7.19",
+    "@astrojs/mdx": "^7.0.7",
+    "@astrojs/react": "^6.0.4",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vercel": "^11.0.7",
+    "@headlessui/react": "^2.2.10",
     "@heroicons/react": "^2.2.0",
-    "@sindresorhus/slugify": "^2.2.1",
-    "@tailwindcss/typography": "^0.5.15",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "astro": "^4.16.15",
+    "@sindresorhus/slugify": "^3.0.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "astro": "^7.2.4",
     "clsx": "^2.1.1",
-    "date-fns": "^3.6.0",
-    "framer-motion": "^11.11.17",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hot-toast": "^2.4.1",
-    "sharp": "^0.33.5",
-    "tailwindcss": "^3.4.15"
+    "date-fns": "^4.4.0",
+    "motion": "^13.1.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-hot-toast": "^2.6.0",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.1",
-    "eslint-import-resolver-typescript": "^3.6.3",
-    "eslint-plugin-astro": "^0.31.4",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.2",
-    "prettier": "^3.4.1",
-    "prettier-plugin-astro": "^0.13.0"
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3"
   }
 }

@@ -14,8 +14,10 @@ export function useLocalStorage(key: string, initialValue: any) {
       // Parse stored json or if none return initialValue
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
-      // If error also return initialValue
-      console.log(error);
+      // Storage can be unavailable (private browsing, storage disabled) or hold
+      // malformed JSON. Falling back to the initial value is the right
+      // behaviour, but warn so a genuine bug is not swallowed silently.
+      console.warn(`useLocalStorage: could not read "${key}"`, error);
       return initialValue;
     }
   });
@@ -32,8 +34,10 @@ export function useLocalStorage(key: string, initialValue: any) {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
-      // A more advanced implementation would handle the error case
-      console.log(error);
+      // Most likely storage being unavailable or the quota being exceeded. The
+      // in-memory value is still updated, so the UI stays correct for this page
+      // view and only persistence is lost.
+      console.warn(`useLocalStorage: could not persist "${key}"`, error);
     }
   };
   return [storedValue, setValue];

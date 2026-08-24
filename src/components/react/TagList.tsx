@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { useMemo } from 'react';
-import tagColors, { TagListItem } from '@/helpers/tagColors';
+import tagColors, { type TagListItem } from '@/helpers/tagColors';
 
 interface TagListProps {
   tags: string[];
@@ -33,5 +33,5 @@ export const TagList = ({ tags }: TagListProps) => {
         })}
       </ul>
     );
-  }, [tags.length]);
+  }, [tags]);
 };

@@ -29,7 +29,7 @@ const { title, description, keywords, publishedDate, image, hide } = Astro.props
     />
   </head>
   <body>
-    <PageBanner client:only />
+    <PageBanner client:only="react" />
     <div
       class="grid min-h-screen antialised font-open-sans dark:bg-gray-900 dark:text-gray-100"
       style={{ gridTemplateRows: 'auto 1fr auto' }}

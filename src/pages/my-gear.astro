@@ -1,7 +1,7 @@
 ---
 import { Container } from '@components/react/Container';
 import { GearCategoryIcons } from '@components/react/icons/GearCategoryIcons';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { Heading } from '@components/react/Heading';
 import { SITE_TITLE } from '@/consts';
 import Layout from '@/layouts/Page.astro';
@@ -16,7 +16,7 @@ const gear = await getCollection('gear');
 const gearRendered: GearCollectionEntryRendered[] = [];
 
 for (const g of gear) {
-  const { Content } = await g.render();
+  const { Content } = await render(g);
   gearRendered.push({
     ...g,
     Content
@@ -88,7 +88,7 @@ const sortedGearByCategory = {
       }
       <div class="p-4 bg-indigo-50 rounded-md dark:bg-blue-300 dark:border-indigo-900">
         <div class="flex">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <svg
               class="w-5 h-5 text-indigo-800 dark:text-indigo-700"
               xmlns="http://www.w3.org/2000/svg"

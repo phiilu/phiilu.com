@@ -22,8 +22,8 @@ export const PostListItem = ({
 }: PostListItemProps) => {
   return useMemo(
     () => (
-      <article className="relative inline-block p-4 text-gray-900 rounded-md outline-none group dark:text-gray-100 post-item hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:shadow-sm focus:text-gray-700 dark:focus:bg-gray-800 dark:hover:bg-gray-800">
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+      <article className="relative inline-block p-4 text-gray-900 rounded-md outline-hidden group dark:text-gray-100 post-item hover:bg-gray-100 hover:text-gray-700 focus:bg-gray-100 focus:shadow-xs focus:text-gray-700 dark:focus:bg-gray-800 dark:hover:bg-gray-800">
+        {}
         <a
           href={`/${slug}`}
           className="absolute top-0 bottom-0 left-0 right-0"
@@ -32,7 +32,7 @@ export const PostListItem = ({
         <div className="relative z-10 space-y-4 pointer-events-none xl:space-y-0 xl:grid xl:grid-cols-4 xl:col-gap-6">
           <DraftBadge isPublished={published} />
           <div className="flex items-center pr-4 xl:space-x-6 xl:pb-0 xl:col-span-3">
-            <div className="flex-shrink-0 hidden w-12 h-12 xl:inline-block">
+            <div className="shrink-0 hidden w-12 h-12 xl:inline-block">
               <img src={icon} height={48} width={48} alt={icon} className="object-contain" />
             </div>
             <div className="space-y-2">

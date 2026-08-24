@@ -17,15 +17,15 @@ export const Notifications = () => {
           leaveFrom="opacity-100 translate-x-0"
           leaveTo="opacity-0 translate-x-full"
         >
-          <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+          <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black/5">
             <div className="p-4">
               <div className="flex items-start">
-                <div className="flex-shrink-0">{resolveValue(t.icon, t)}</div>
+                <div className="shrink-0">{resolveValue(t.icon, t)}</div>
                 {resolveValue(t.message, t)}
-                <div className="ml-4 flex flex-shrink-0">
+                <div className="ml-4 flex shrink-0">
                   <button
                     type="button"
-                    className="inline-flex text-gray-400 bg-white rounded-md dark:bg-gray-900 dark:text-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="inline-flex text-gray-400 bg-white rounded-md dark:bg-gray-900 dark:text-gray-100 hover:text-gray-500 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     onClick={() => {
                       toastAction.dismiss(t.id);
                     }}

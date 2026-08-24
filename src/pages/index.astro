@@ -27,7 +27,7 @@ const posts = (await getCollection('posts'))
               <PostListItem
                 post={{
                   ...post.data,
-                  slug: post.slug
+                  slug: post.id
                 }}
               />
             </li>

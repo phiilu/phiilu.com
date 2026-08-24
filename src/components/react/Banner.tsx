@@ -13,7 +13,7 @@ interface BannerProps {
 
 export function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }: BannerProps) {
   return (
-    <div className="fixed sm:container max-w-3xl mx-auto xl:max-w-5xl bottom-5 rounded-md shadow-md left-5 right-5 z-20 bg-gradient-to-r from-pokezards-yellow to-pokezards-dark-red">
+    <div className="fixed sm:container max-w-3xl mx-auto xl:max-w-5xl bottom-5 rounded-md shadow-md left-5 right-5 z-20 bg-linear-to-r from-pokezards-yellow to-pokezards-dark-red">
       <div className="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex items-center flex-1 w-0">
@@ -23,17 +23,17 @@ export function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }: Ban
               <span className="hidden md:inline">{text}</span>
             </p>
           </div>
-          <div className="flex-shrink-0 order-3 w-full mt-2 sm:order-2 sm:mt-0 sm:w-auto">
+          <div className="shrink-0 order-3 w-full mt-2 sm:order-2 sm:mt-0 sm:w-auto">
             <a
               href={ctaHref}
               target="_blank"
-              className="flex items-center justify-center px-4 py-2 text-sm font-medium bg-white border border-transparent rounded-md shadow-sm text-pokezards-dark-red hover:bg-orange-50"
+              className="flex items-center justify-center px-4 py-2 text-sm font-medium bg-white border border-transparent rounded-md shadow-xs text-pokezards-dark-red hover:bg-orange-50"
               rel="noreferrer"
             >
               {ctaText}
             </a>
           </div>
-          <div className="flex-shrink-0 order-2 sm:order-3 sm:ml-3">
+          <div className="shrink-0 order-2 sm:order-3 sm:ml-3">
             <button
               type="button"
               onClick={() => {
@@ -45,7 +45,7 @@ export function Banner({ onClose, shortText, ctaText, icon, ctaHref, text }: Ban
                 //   type: "close",
                 // });
               }}
-              className="flex p-2 -mr-1 rounded-md hover:bg-pokezards-dark-red-light focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
+              className="flex p-2 -mr-1 rounded-md hover:bg-pokezards-dark-red-light focus:outline-hidden focus:ring-2 focus:ring-white sm:-mr-2"
             >
               <span className="sr-only">Dismiss</span>
               <svg

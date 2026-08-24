@@ -34,7 +34,7 @@ export function Alert({ variant = 'success', title, message, action, onClose }: 
       })}
     >
       <div className="flex">
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <svg
             className={clsx('w-5 h-5 ', {
               'text-green-400': success,
@@ -76,7 +76,7 @@ export function Alert({ variant = 'success', title, message, action, onClose }: 
                 <button
                   onClick={action.onClick}
                   className={clsx(
-                    'px-2 py-1.5 rounded-md text-sm leading-5 font-medium focus:outline-none transition ease-in-out duration-150',
+                    'px-2 py-1.5 rounded-md text-sm leading-5 font-medium focus:outline-hidden transition ease-in-out duration-150',
                     {
                       'text-green-800 hover:bg-green-100 focus:bg-green-100': success,
                       'text-red-800 hover:bg-red-100 focus:bg-red-100': error
@@ -94,7 +94,7 @@ export function Alert({ variant = 'success', title, message, action, onClose }: 
             <button
               onClick={handleClose}
               className={clsx(
-                'inline-flex rounded-md p-1.5 focus:outline-none  transition ease-in-out duration-150',
+                'inline-flex rounded-md p-1.5 focus:outline-hidden  transition ease-in-out duration-150',
                 {
                   'text-green-500 hover:bg-green-100 focus:bg-green-100': success,
                   'text-red-500 hover:bg-red-100 focus:bg-red-100': error

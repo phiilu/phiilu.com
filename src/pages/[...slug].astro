@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { Container } from '@components/react/Container';
 import { countWords } from '@/helpers/countWords';
 import { format } from 'date-fns';
@@ -9,7 +9,7 @@ import Layout from '@/layouts/Page.astro';
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post }
   }));
 }
@@ -17,9 +17,9 @@ export async function getStaticPaths() {
 type Props = { post: CollectionEntry<'posts'> };
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
-const wordCount = countWords(post.body);
+const wordCount = countWords(post.body ?? '');
 const timeToRead = Math.round(wordCount / 275);
 
 const searchParams = new URLSearchParams();

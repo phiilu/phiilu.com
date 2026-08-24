@@ -3,7 +3,7 @@ import { Button } from '@react/Button';
 import { Container } from '@react/Container';
 import { type HTMLProps, useState } from 'react';
 
-interface InputProps extends HTMLProps<HTMLInputElement> {}
+type InputProps = HTMLProps<HTMLInputElement>;
 
 function Input({ label, type, required, placeholder, ...props }: InputProps) {
   return (
@@ -11,7 +11,7 @@ function Input({ label, type, required, placeholder, ...props }: InputProps) {
       aria-label={label}
       type={type}
       required={required}
-      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none dark:text-gray-100 dark:bg-gray-800 dark: focus:outline-none focus:shadow-outline focus:border-blue-300 sm:max-w-xs dark:placeholder-gray-400 dark:border-gray-700"
+      className="w-full px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md appearance-none dark:text-gray-100 dark:bg-gray-800 dark: focus:outline-hidden focus:shadow-outline focus:border-blue-300 sm:max-w-xs dark:placeholder-gray-400 dark:border-gray-700"
       placeholder={placeholder}
       {...props}
     />
@@ -84,7 +84,7 @@ export function Newsletter() {
 
   return (
     <div className="flex">
-      <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
+      <div className="max-w-(--breakpoint-xl) px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
           Want blog post updates? <br className="hidden sm:inline" />
           <span className="text-indigo-600 dark:text-indigo-500" id="newsletter-headline">
@@ -114,7 +114,7 @@ export function Newsletter() {
             value={form.email}
             onChange={handleChange}
           />
-          <div className="mt-3 rounded-md shadow sm:mt-0 sm:flex-shrink-0">
+          <div className="mt-3 rounded-md shadow-sm sm:mt-0 sm:shrink-0">
             <Button
               type="submit"
               //   tracking={{

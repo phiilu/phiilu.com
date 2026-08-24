@@ -9,7 +9,7 @@ export function ShareOnTwitterCta({ onClick }: ShareOnTwitterCtaProps) {
   return (
     <aside
       aria-label="Share on Twitter card"
-      className="px-6 py-6 space-y-4 rounded-md bg-slate-100 dark:bg-gray-800 shadow"
+      className="px-6 py-6 space-y-4 rounded-md bg-slate-100 dark:bg-gray-800 shadow-sm"
     >
       <Heading size="h2" noMargin className="text-slate-700">
         Did you find this post useful or learned something?

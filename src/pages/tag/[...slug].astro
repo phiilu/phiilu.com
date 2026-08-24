@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { Container } from '@components/react/Container';
 import { Heading } from '@components/react/Heading';
 import { PostListItem } from '@components/react/PostListItem';
@@ -53,7 +53,7 @@ const { bg, text, mainColor } = tagColors[tag.name] as TagListItem;
         {
           tag.posts.map((post) => (
             <li>
-              <PostListItem post={{ ...post.data, slug: post.slug }} />
+              <PostListItem post={{ ...post.data, slug: post.id }} />
             </li>
           ))
         }

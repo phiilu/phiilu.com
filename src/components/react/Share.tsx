@@ -50,7 +50,7 @@ export function Share({ title, url, onClick }: ShareProps) {
           }
         }
       );
-    } catch (error) {
+    } catch {
       // do nothing
     }
   }

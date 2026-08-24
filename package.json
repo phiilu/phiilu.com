@@ -15,7 +15,8 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt . && prettier --write '**/*.astro'",
-    "format:check": "oxfmt --check . && prettier --check '**/*.astro'"
+    "format:check": "oxfmt --check . && prettier --check '**/*.astro'",
+    "lint:a11y": "node scripts/a11y.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.7",
@@ -41,8 +42,10 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "oxfmt": "^0.64.0",
     "oxlint": "^1.79.0",
+    "playwright": "^1.62.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.3"

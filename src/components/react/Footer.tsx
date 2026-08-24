@@ -6,14 +6,14 @@ export const Footer = () => {
   return (
     <footer className="mt-16 space-y-4">
       <Container className="space-y-2 text-center">
-        <div className="flex flex-wrap justify-center space-x-4">
+        <div className="flex flex-wrap justify-center gap-x-1 sm:gap-x-4">
           <a
             // tracking={{
             //   event: "click",
             //   value: "Bluesky visits",
             //   name: "Bluesky visits",
             // }}
-            className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-bluesky-200 hover:text-bluesky-800"
+            className="px-3 sm:px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-bluesky-200 hover:text-bluesky-800"
             href="https://bsky.app/profile/phiilu.com"
           >
             Bluesky
@@ -24,7 +24,7 @@ export const Footer = () => {
             //   value: "GitHub visits",
             //   name: "GitHub visits",
             // }}
-            className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-github-200 hover:text-github-800 "
+            className="px-3 sm:px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-github-200 hover:text-github-800 "
             href="https://github.com/phiilu"
           >
             GitHub
@@ -35,13 +35,13 @@ export const Footer = () => {
             //   value: "LinkedIn visits",
             //   name: "LinkedIn visits",
             // }}
-            className="px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-linkedin-200 hover:text-linkedin-800"
+            className="px-3 sm:px-4 py-2 font-semibold transition-colors duration-300 ease-in-out rounded-md hover:bg-linkedin-200 hover:text-linkedin-800"
             href="https://www.linkedin.com/in/florian-kapfenberger-59581b164/"
           >
             LinkedIn
           </a>
         </div>
-        <div className="flex flex-wrap justify-center space-x-2 text-gray-600 dark:text-gray-400">
+        <div className="flex flex-wrap justify-center gap-x-2 text-gray-600 dark:text-gray-400">
           <a
             className="px-2 py-2 text-xs font-semibold transition-colors duration-300 ease-in-out rounded-md hover:text-rss-500"
             href="/rss.xml"

@@ -44,7 +44,7 @@ const postIndexes = new Map(posts.map((post, index) => [post.id, index]));
 
 <Layout title={`Blog | ${SITE_TITLE}`}>
   <Container as="main">
-    <div class="space-y-16 px-4">
+    <div class="space-y-16">
       <div class="space-y-12">
         <Heading noMargin>Blog</Heading>
         <p class="text-lg">Here are all my blog posts! Enjoy :)</p>
@@ -57,7 +57,7 @@ const postIndexes = new Map(posts.map((post, index) => [post.id, index]));
                 noMargin
                 as="h2"
                 size="h3"
-                className="mx-4 text-indigo-500 border-b-2 border-gray-100 dark:border-gray-800 md:mx-0"
+                className="text-indigo-500 border-b-2 border-gray-100 dark:border-gray-800"
               >
                 {dateFormat(postByMonth.date, 'MMMM yyyy')}
               </Heading>

@@ -22,7 +22,7 @@ const postsCount = (await getCollection('posts')).length;
 
 <Layout title={`About Me | ${SITE_TITLE}`}>
   <Container as="main">
-    <div class="relative px-4 pb-16 mx-auto max-w-7xl">
+    <div class="relative px-4 mx-auto max-w-7xl">
       <div class="mx-auto text-base max-w-prose lg:max-w-none">
         <p
           class="font-semibold leading-6 tracking-wide text-indigo-600 uppercase xl:text-xl text-md dark:text-indigo-400"
@@ -97,20 +97,38 @@ const postsCount = (await getCollection('posts')).length;
             <p>Hey thanks for visiting my blog and wanting to get to know me better!</p>
             <p>
               I am an <Age client:idle age={age} />{' '}
-              seconds ({ageInYears} years) old Austrian frontend developer.
+              seconds ({ageInYears} years) old developer from Austria.
             </p>
             <p>
-              My true passion is to create modern websites and webapps with state of the art
-              technology. My preferred framework for creating websites these days, is{' '}
-              <a href="https://reactjs.org/">React</a>. I started learning React in 2016 and since
-              then I kept learning new tools, concepts and technologies evolving around React.
+              I started out as a <a href="https://react.dev/">React</a> frontend developer and picked
+              up <a href="https://www.typescriptlang.org/">TypeScript</a> and{' '}
+              <a href="https://svelte.dev/">Svelte/SvelteKit</a> along the way. Today I am employed as
+              a native iOS developer, writing <a href="https://www.swift.org/">Swift</a> at{' '}
+              <a href="https://www.untis.at/">Untis</a>. My own time goes into{' '}
+              <a href="https://elixir-lang.org/">Elixir</a> and{' '}
+              <a href="https://www.phoenixframework.org/">Phoenix</a> with{' '}
+              <a href="https://ash-hq.org/">Ash</a>, which is where most of my curiosity sits right
+              now.
             </p>
             <p>
-              I started this blog early 2020 and oh boy did I not know what a crazy year this is
-              gonna be. On January 7th I published{' '}
-              <a href="/hello-world">my very first blog post</a> and since then I have written <strong
-                >{postsCount}</strong
-              > articles.
+              Along the way I collected a fairly wide base: servers, Kubernetes, CI/CD pipelines,
+              React Native, PHP and Laravel. T-shaped rather than jack of all trades, I like to
+              think: broad across a lot of ground, with the deep stroke of the T in native iOS at
+              work and in Elixir and Phoenix on my own time.
+            </p>
+            <p>
+              I self-host what I can and like owning the servers my things run on. A homelab at home
+              takes care of the services I use day to day, and anything public goes on a dedicated
+              server or a VPS when it matters. Plenty still ends up on Vercel or Cloudflare though,
+              because free is hard to argue with.
+            </p>
+            <p>
+              I started this blog in early 2020 and published{' '}
+              <a href="/hello-world">my very first blog post</a> on January 7th. Since then I have written{
+                ' '
+              }
+              <strong>{postsCount}</strong> articles, though the last couple of years have been quiet.
+              I am trying to change that.
             </p>
             <p>
               Besides coding I like to play video games and listening to music. If I like a song, I

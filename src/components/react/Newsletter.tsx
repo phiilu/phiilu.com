@@ -54,7 +54,7 @@ export function Newsletter() {
 
   if (state === 'success') {
     return (
-      <Container className="py-6">
+      <Container className="pt-16">
         <Alert
           variant="success"
           title="Thanks for signing up for my Newsletter!"
@@ -67,7 +67,7 @@ export function Newsletter() {
 
   if (state === 'error') {
     return (
-      <Container className="py-6">
+      <Container className="pt-16">
         <Alert
           variant="error"
           title="Ohh shoot!"
@@ -83,7 +83,7 @@ export function Newsletter() {
   }
 
   return (
-    <Container className="py-6">
+    <Container className="pt-16">
       <section
         aria-labelledby="newsletter-headline"
         className="p-6 space-y-4 rounded-lg sm:p-8 bg-slate-100 dark:bg-gray-800/60 ring-1 ring-black/5 dark:ring-white/10"
@@ -96,7 +96,7 @@ export function Newsletter() {
             Want blog post updates?
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            Sign up for my newsletter — new posts in your inbox, no spam, unsubscribe anytime.
+            New posts in your inbox. No spam, unsubscribe anytime.
           </p>
         </div>
         <form

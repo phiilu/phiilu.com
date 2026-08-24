@@ -1,9 +1,8 @@
 ---
-import { Button } from '@components/react/Button';
 import { Container } from '@components/react/Container';
+import { Heading } from '@components/react/Heading';
 import { getCollection } from 'astro:content';
 import { PostListItem } from '@components/react/PostListItem';
-import { SectionHeading } from '@components/react/SectionHeading';
 import Hero from '@components/Hero.astro';
 import Layout from '@/layouts/Page.astro';
 
@@ -16,10 +15,7 @@ const posts = (await getCollection('posts'))
   <Container as="main" noMargin className="md:px-4 space-y-14">
     <Hero />
     <div class="space-y-8 md:space-y-14">
-      <SectionHeading heading="Blog" subheading="Latest Articles">
-        Here are my latest written articles, I hope you like them! <br /> I write about programming and
-        server related topics.
-      </SectionHeading>
+      <Heading as="h2" size="h3" noMargin className="px-4">Latest Articles</Heading>
       <ul class="space-y-16 md:space-y-8">
         {
           posts.map((post, index) => (
@@ -34,9 +30,12 @@ const posts = (await getCollection('posts'))
           ))
         }
       </ul>
-      <div class="flex justify-center">
-        <Button as={'a'} href="/blog" width="medium">Visit My Blog</Button>
-      </div>
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-1 px-4 font-medium text-indigo-600 transition-colors dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300"
+      >
+        Visit my blog <span aria-hidden="true">&rarr;</span>
+      </a>
     </div>
   </Container>
 </Layout>

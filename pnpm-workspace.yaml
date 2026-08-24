@@ -1,0 +1,9 @@
+# don't install anything published in the last 3 days — a compromised release
+# is usually yanked within hours, so waiting it out dodges most of the blast.
+# matches the dependabot cooldown in .github/dependabot.yml.
+minimumReleaseAge: 4320
+
+onlyBuiltDependencies:
+  - esbuild
+  - unrs-resolver
+  - sharp

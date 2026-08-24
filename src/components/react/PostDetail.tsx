@@ -20,7 +20,6 @@ export function PostDetail({ post, url, children }: PostDetailProps) {
   const handleSocialShare = useCallback(
     (url: string, name: string, windowSize: string) => (e: React.MouseEvent<HTMLElement>) => {
       e.preventDefault();
-      console.log('open');
       window.open(url, name, windowSize);
     },
     []

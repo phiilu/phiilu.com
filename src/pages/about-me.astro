@@ -21,11 +21,11 @@ const postsCount = (await getCollection('posts')).length;
 ---
 
 <Layout title={`About Me | ${SITE_TITLE}`}>
-  <Container>
+  <Container as="main">
     <div class="relative px-4 pb-16 mx-auto max-w-7xl">
       <div class="mx-auto text-base max-w-prose lg:max-w-none">
         <p
-          class="font-semibold leading-6 tracking-wide text-indigo-600 uppercase xl:text-xl text-md"
+          class="font-semibold leading-6 tracking-wide text-indigo-600 uppercase xl:text-xl text-md dark:text-indigo-400"
         >
           About me
         </p>

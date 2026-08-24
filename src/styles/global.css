@@ -32,3 +32,61 @@
     color-scheme: dark;
   }
 }
+
+/* The class follows the setting in the menu, which defaults to the OS. */
+/*
+  Sledgehammer: everything CSS-animated stops, including the Tailwind hover
+  transitions and the Headless UI menu. Near-zero rather than `none` so that
+  animation and transition end events still fire.
+*/
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.reduce-motion::view-transition-group(*),
+html.reduce-motion::view-transition-old(*),
+html.reduce-motion::view-transition-new(*) {
+  animation: none !important;
+}
+
+/* Page transition: opacity only, moving text read as sluggish. */
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Staggered entrance for the post list, replayed on every ClientRouter swap. */
+@keyframes post-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+html:not(.reduce-motion) {
+  .post-item {
+    animation: post-enter 0.5s ease-out both;
+    /* ponytail: delay capped at 8 items so a long list does not crawl in. */
+    animation-delay: calc(min(var(--post-index, 0), 8) * 0.12s);
+  }
+}
+
+/*
+  dracula-soft renders comments at #7B7F8B, which is 3.6:1 on its own
+  background. Nudged up to clear 4.5:1; the rest of the theme is untouched.
+*/
+.astro-code span[style*='#7B7F8B'] {
+  color: #9aa1b3 !important;
+}

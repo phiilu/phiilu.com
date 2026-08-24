@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 interface HeadingProps {
   as?: any;
@@ -7,6 +7,7 @@ interface HeadingProps {
   children?: ReactNode;
   noMargin?: boolean;
   className?: string;
+  style?: CSSProperties;
 }
 
 export const Heading = ({

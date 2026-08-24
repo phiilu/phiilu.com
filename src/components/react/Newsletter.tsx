@@ -83,7 +83,7 @@ export function Newsletter() {
   }
 
   return (
-    <div className="flex">
+    <section aria-labelledby="newsletter-headline" className="flex">
       <div className="max-w-(--breakpoint-xl) px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10">
           Want blog post updates? <br className="hidden sm:inline" />
@@ -128,6 +128,6 @@ export function Newsletter() {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 }

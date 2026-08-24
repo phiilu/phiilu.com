@@ -3,6 +3,7 @@
 // all pages through the use of the <BaseHead /> component.
 import '@styles/global.css';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import { ClientRouter } from 'astro:transitions';
 
 export interface Props {
   title?: string;
@@ -22,18 +23,35 @@ const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site)
 const { title, description, image = '/api/og', keywords, publishedDate } = Astro.props;
 ---
 
-<!-- Set the theme before first paint to avoid a flash of the wrong colors. -->
+<ClientRouter />
+
+<!-- Apply the saved preferences before first paint, so there is no flash of
+the wrong theme and no animation the reader asked not to see. -->
 <script is:inline>
   (() => {
-    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
+    const motionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
     const apply = () => {
+      const root = document.documentElement;
       const theme = localStorage.getItem('theme') ?? 'system';
-      const dark = theme === 'dark' || (theme === 'system' && media.matches);
-      document.documentElement.classList.toggle('dark', dark);
+      root.classList.toggle('dark', theme === 'dark' || (theme === 'system' && darkMedia.matches));
+      const motion = localStorage.getItem('reduce-motion');
+      root.classList.toggle(
+        'reduce-motion',
+        motion === null ? motionMedia.matches : motion === 'true'
+      );
     };
     apply();
-    // Keeps "system" live while the page is open.
-    media.addEventListener('change', apply);
+    // This script re-runs on every swap, so bind the listeners only once.
+    if (!window.__preferenceListenersBound) {
+      window.__preferenceListenersBound = true;
+      // Keeps the "follow the system" settings live while the page is open.
+      darkMedia.addEventListener('change', apply);
+      motionMedia.addEventListener('change', apply);
+      // The ClientRouter replaces the <html> attributes on navigation, which
+      // drops the classes again.
+      document.addEventListener('astro:after-swap', apply);
+    }
   })();
 </script>
 

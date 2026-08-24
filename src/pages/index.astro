@@ -22,8 +22,8 @@ const posts = (await getCollection('posts'))
       </SectionHeading>
       <ul class="space-y-16 md:space-y-8">
         {
-          posts.map((post) => (
-            <li>
+          posts.map((post, index) => (
+            <li style={`--post-index: ${index}`}>
               <PostListItem
                 post={{
                   ...post.data,

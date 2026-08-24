@@ -81,7 +81,10 @@ export function SoftwareGearItem({
 
 function ProductLink({ href }: HTMLProps<HTMLAnchorElement>) {
   return (
-    <a className={'flex items-center gap-2 font-bold text-indigo-500'} href={href}>
+    <a
+      className={'flex items-center gap-2 font-bold text-indigo-600 dark:text-indigo-400'}
+      href={href}
+    >
       Open site
       <svg
         className="w-6 h-6"

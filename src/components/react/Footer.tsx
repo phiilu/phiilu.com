@@ -41,7 +41,7 @@ export const Footer = () => {
             LinkedIn
           </a>
         </div>
-        <div className="flex flex-wrap justify-center space-x-2 text-gray-500">
+        <div className="flex flex-wrap justify-center space-x-2 text-gray-600 dark:text-gray-400">
           <a
             className="px-2 py-2 text-xs font-semibold transition-colors duration-300 ease-in-out rounded-md hover:text-rss-500"
             href="/rss.xml"

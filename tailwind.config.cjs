@@ -220,10 +220,10 @@ module.exports = {
             },
             a: {
               'word-break': 'break-word',
-              textDecoration: 'none',
-              color: theme('colors.indigo.500'),
+              textDecoration: 'underline',
+              color: theme('colors.indigo.600'),
               '&:hover': {
-                color: theme('colors.indigo.600')
+                color: theme('colors.indigo.700')
               },
               '&:visited': {
                 color: theme('colors.indigo.800')
@@ -267,12 +267,12 @@ module.exports = {
               color: theme('colors.gray.100')
             },
             a: {
-              color: theme('colors.indigo.500'),
+              color: theme('colors.indigo.400'),
               '&:hover': {
-                color: theme('colors.indigo.600')
+                color: theme('colors.indigo.300')
               },
               '&:visited': {
-                color: theme('colors.indigo.700')
+                color: theme('colors.indigo.300')
               }
             },
             code: {

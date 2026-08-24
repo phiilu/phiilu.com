@@ -61,8 +61,8 @@ const postsByMonth = getPostsByMonth(posts);
               </Heading>
               <div class="space-y-8 md:space-y-14">
                 <ul class="space-y-16 md:space-y-8">
-                  {postByMonth.posts.map((post) => (
-                    <li>
+                  {postByMonth.posts.map((post, index) => (
+                    <li style={`--post-index: ${index}`}>
                       <PostListItem
                         post={{
                           ...post.data,

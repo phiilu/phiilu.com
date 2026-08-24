@@ -6,6 +6,13 @@ import BaseHead from '@components/BaseHead.astro';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 
+// A short crossfade: no movement, so text never slides under the reader.
+const fadeThrough = {
+  old: { name: 'page-fade-out', duration: '0.12s', easing: 'ease-out', fillMode: 'both' },
+  new: { name: 'page-fade-in', duration: '0.18s', easing: 'ease-out', fillMode: 'both' }
+};
+const pageTransition = { forwards: fadeThrough, backwards: fadeThrough };
+
 export interface Props {
   title?: string;
   description?: string;
@@ -35,7 +42,9 @@ const { title, description, keywords, publishedDate, image, hide } = Astro.props
       style={{ gridTemplateRows: 'auto 1fr auto' }}
     >
       <Header />
-      <slot />
+      <div transition:animate={pageTransition}>
+        <slot />
+      </div>
       {!hide?.includes('Newsletter') && <Newsletter client:idle />}
       <Footer />
     </div>

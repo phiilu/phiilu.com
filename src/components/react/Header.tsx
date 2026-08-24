@@ -1,11 +1,12 @@
 import { clsx } from 'clsx';
 import { Container } from '@react/Container';
 import { Logo } from '@react/icons/Logo';
-import { ThemeToggle } from '@react/ThemeToggle';
-import { motion, type EventInfo } from 'motion/react';
+import { SettingsMenu } from '@react/SettingsMenu';
+import { MotionConfig, motion, type EventInfo } from 'motion/react';
 import { type ReactNode, useCallback, useRef, useState } from 'react';
 import { spring } from '@/helpers/animation';
 import { useScroll } from '@/hooks/useScroll';
+import { useReduceMotion } from '@/hooks/useReduceMotion';
 
 interface MenuItemProps {
   onHoverStart: (event: MouseEvent, info: EventInfo) => void;
@@ -69,6 +70,7 @@ interface HeaderProps {
 
 export const Header = ({ route }: HeaderProps) => {
   const [scrolled] = useScroll();
+  const reduceMotion = useReduceMotion();
   const [activeHoverIndex, setActiveHoverIndex] = useState(() => getActiveIndex(route));
   // Set on click and never cleared: it suppresses the hover-out reset so the
   // pill stays put while the browser navigates away. The island is recreated on
@@ -112,40 +114,45 @@ export const Header = ({ route }: HeaderProps) => {
   }
 
   return (
-    <div>
-      <div
-        className={clsx('fixed top-0 left-0 z-20 h-1 bg-linear-to-r from-[#a78bfa] to-[#818cf8]', {
-          'rounded-r-full': scrolled !== 100
-        })}
-        style={{ width: `${scrolled}%` }}
-      />
-      <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
-        <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-nowrap rounded-xl">
-          <a href="/" className="flex-1 flex gap-2 items-center justify-center sm:justify-start">
-            <Logo className="h-8 w-8" />
-            <span className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
-              phiilu
-            </span>
-          </a>
-          <ul className="flex items-center justify-center flex-none w-full space-x-2 place-items-center md:w-auto">
-            {menuItems.map(({ href, name, index }) => (
-              <MenuItem
-                href={href}
-                key={index}
-                active={activeHoverIndex === index}
-                onHoverStart={handleOnHoverStart(index)}
-                onHoverEnd={handleOnHoverEnd}
-                onClick={handleOnClicked}
-              >
-                {name}
-              </MenuItem>
-            ))}
-            <li className="pl-1">
-              <ThemeToggle />
-            </li>
-          </ul>
-        </nav>
-      </Container>
-    </div>
+    <MotionConfig reducedMotion={reduceMotion ? 'always' : 'never'}>
+      <div>
+        <div
+          className={clsx(
+            'fixed top-0 left-0 z-20 h-1 bg-linear-to-r from-[#a78bfa] to-[#818cf8]',
+            {
+              'rounded-r-full': scrolled !== 100
+            }
+          )}
+          style={{ width: `${scrolled}%` }}
+        />
+        <Container as="header" className="w-full py-8 md:pb-16 md:pt-10">
+          <nav className="flex flex-wrap items-center px-4 py-4 space-y-6 bg-white dark:bg-gray-900 md:space-y-0 md:flex-nowrap rounded-xl">
+            <a href="/" className="flex-1 flex gap-2 items-center justify-center sm:justify-start">
+              <Logo className="h-8 w-8" />
+              <span className="text-4xl font-semibold tracking-tight text-center text-indigo-600 dark:text-indigo-500 md:text-2xl font-open-sans md:text-left">
+                phiilu
+              </span>
+            </a>
+            <ul className="flex items-center justify-center flex-none w-full space-x-2 place-items-center md:w-auto">
+              {menuItems.map(({ href, name, index }) => (
+                <MenuItem
+                  href={href}
+                  key={index}
+                  active={activeHoverIndex === index}
+                  onHoverStart={handleOnHoverStart(index)}
+                  onHoverEnd={handleOnHoverEnd}
+                  onClick={handleOnClicked}
+                >
+                  {name}
+                </MenuItem>
+              ))}
+              <li className="pl-1">
+                <SettingsMenu />
+              </li>
+            </ul>
+          </nav>
+        </Container>
+      </div>
+    </MotionConfig>
   );
 };

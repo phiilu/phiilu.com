@@ -20,7 +20,7 @@ export default defineConfig({
   site: 'https://phiilu.com',
   markdown: {
     shikiConfig: {
-      theme: 'dracula-soft'
+      theme: 'catppuccin-mocha'
     }
   },
   integrations: [

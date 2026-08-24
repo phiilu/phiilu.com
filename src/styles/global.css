@@ -82,11 +82,3 @@ html:not(.reduce-motion) {
     animation-delay: calc(min(var(--post-index, 0), 8) * 0.12s);
   }
 }
-
-/*
-  dracula-soft renders comments at #7B7F8B, which is 3.6:1 on its own
-  background. Nudged up to clear 4.5:1; the rest of the theme is untouched.
-*/
-.astro-code span[style*='#7B7F8B'] {
-  color: #9aa1b3 !important;
-}

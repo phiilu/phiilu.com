@@ -49,7 +49,7 @@ we get a webpage which generates this image:
 
 So all you need is a simple route and a component that looks similar to this one.
 
-```jsx
+```jsx title="pages/phiilu.com/post.jsx"
 import { useRouter } from 'next/router';
 import GoogleFonts from 'next-google-fonts';
 
@@ -153,7 +153,7 @@ We basically need to do 3 things:
 
 All these steps translate into this code:
 
-```js
+```js title="lib/getOgImage.js"
 const playwright = require('playwright-aws-lambda');
 const { createHash } = require('crypto');
 const fs = require('fs');
@@ -274,7 +274,7 @@ Go to a page where you want to generate the OG image and call the function insid
 
 This is what my `getStaticProps` in the `[slug].js` file inside the `pages` folder looks like:
 
-```js
+```js title="pages/[slug].js"
 export async function getStaticProps({ params: { slug } }) {
   const post = await contentful.getEntry('post', slug);
   const ogImage = await getOgImage(
@@ -289,7 +289,7 @@ export async function getStaticProps({ params: { slug } }) {
 
 Now you have the `ogImage` prop available inside the page component and we can render the `<meta />` tag inside the `Head` component.
 
-```jsx
+```jsx title="pages/[slug].js"
 import Head from 'next/head';
 
 const PostDetails = ({ post, ogImage }) => {

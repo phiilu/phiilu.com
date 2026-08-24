@@ -30,7 +30,7 @@ As in my post where I described [how to generate an RSS feed][5] with Next.js, I
 
 Here is the content of my `sitemap.js`:
 
-```javascript
+```javascript title="lib/sitemap.js"
 const globby = require('globby');
 const contentful = require('./contentful').default;
 const { SitemapStream, streamToPromise } = require('sitemap');
@@ -193,7 +193,7 @@ Last but not least, I created the final `links` array which will contain all lin
 
 I will be using the same approach as with generating the RSS feeds. Importing the `generateSitemap` function in the pages/index.js file and adding it to the getStaticProps will make sure Next.js will call this function during the build of the `pages/index.js` page and generate the sitemap.
 
-```javascript
+```javascript title="pages/index.js"
 export async function getStaticProps() {
   // ...
   await generateRssFeed();

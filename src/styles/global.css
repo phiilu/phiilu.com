@@ -82,3 +82,8 @@ html:not(.reduce-motion) {
     animation-delay: calc(min(var(--post-index, 0), 8) * 0.12s);
   }
 }
+
+/* Consecutive code blocks (command + its output) would otherwise touch. */
+.expressive-code + .expressive-code {
+  margin-top: 1rem;
+}

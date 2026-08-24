@@ -26,13 +26,13 @@ First of all, we need to install `iperf3` on both devices that you want to test.
 
 ### Debian/Ubuntu
 
-```
+```bash
 sudo apt install iperf3
 ```
 
 ### macOS
 
-```
+```bash
 brew install iperf3
 ```
 
@@ -46,13 +46,13 @@ In my case, I chose my Raspberry Pi as the server and my MacBook Pro as the clie
 
 On the server device you just start the iperf3 in server mode:
 
-```
+```bash
 iperf3 -s
 ```
 
 In your terminal window, you should now see that your server is ready
 
-```
+```ansi frame="terminal"
 -----------------------------------------------------------
 Server listening on 5201
 -----------------------------------------------------------
@@ -60,13 +60,13 @@ Server listening on 5201
 
 On your client device you will now have to connect to the server:
 
-```
+```bash
 iperf3 -c 192.168.1.10
 ```
 
 > Note that you should change the IP address to the one of the server
 
-```
+```ansi frame="terminal"
 Connecting to host 192.168.1.10, port 5201
 [  5] local 192.168.1.179 port 63816 connected to 192.168.1.10 port 5201
 [ ID] Interval           Transfer     Bitrate
@@ -100,11 +100,11 @@ Here I will list some extra options that you can pass to `iperf3`. If you want t
 
 If you have more than 1 Gbits/s you can try to use the `-P` parameter to run multiple test streams at once at parallel.
 
-```
+```bash
 iperf3 -c 192.168.1.13 -P 3
 ```
 
-```
+```ansi frame="terminal"
 Connecting to host 192.168.1.13, port 5201
 [  5] local 192.168.1.179 port 63847 connected to 192.168.1.13 port 5201
 [  7] local 192.168.1.179 port 63848 connected to 192.168.1.13 port 5201
@@ -181,11 +181,11 @@ By default `iperf3` will show you the speed in `Mbit/sec`, but you can change th
 
 To display `Gbit/sec` you can you use the following command:
 
-```
+```bash
 iperf3 -c 192.168.1.13 -f g
 ```
 
-```
+```ansi frame="terminal"
 Connecting to host 192.168.1.13, port 5201
 [  5] local 192.168.1.179 port 63952 connected to 192.168.1.13 port 5201
 [ ID] Interval           Transfer     Bitrate

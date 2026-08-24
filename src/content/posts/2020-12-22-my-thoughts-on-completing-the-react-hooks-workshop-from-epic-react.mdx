@@ -36,13 +36,13 @@ I was not aware of the [lazy initializer][5] function that you can pass to the `
 
 Instead of doing this:
 
-```jsx
+```jsx del={1}
 const [data, setDate] = useState(getSomeComplexDefaultState());
 ```
 
 You can write it like this:
 
-```jsx
+```jsx ins={1}
 const [data, setDate] = useState(() => getSomeComplexDefaultState());
 ```
 

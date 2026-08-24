@@ -46,7 +46,7 @@ Next, we need to allow the new user to execute commands with `sudo`, but with th
 
 Edit the `sudoers` file by writing `visudo` into your terminal and append a new line after the entry for `root`.
 
-```bash
+```txt title="/etc/sudoers" ins={1}
 docker-machine ALL=(ALL) NOPASSWD: ALL
 ```
 
@@ -54,8 +54,7 @@ Save and quit the editor.
 
 The `docker-machine` generic driver does not recognize the `raspbian` OS, so we need to trick it, by temporarily changing the `ID` field in the `/etc/os-release` to `debian`.
 
-```bash
-#/etc/os-release
+```ini title="/etc/os-release" ins={7}
 PRETTY_NAME="Raspbian GNU/Linux 10 (buster)"
 NAME="Raspbian GNU/Linux"
 VERSION_ID="10"
@@ -85,7 +84,7 @@ docker-machine create \
   rpi
 ```
 
-```output
+```ansi frame="terminal"
 Running pre-create checks...
 Creating machine...
 (rpi) Importing SSH key...

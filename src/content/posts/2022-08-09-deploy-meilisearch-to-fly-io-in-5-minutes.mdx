@@ -90,7 +90,7 @@ Here you just select the region that is closest to you.
 
 And done!
 
-```
+```ansi frame="terminal"
 Created app meilisearch-example in organization personal
 Wrote config file fly.toml
 ```
@@ -101,7 +101,7 @@ The CLI has created the app on Fly and generated the `fly.toml` configuration.
 
 ![Fly.io app has been created and is visible on the dashboard ](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-1.png)
 
-```toml
+```toml title="fly.toml"
 # fly.toml file generated for meilisearch-example on 2022-08-09T21:15:08+02:00
 
 app = "meilisearch-example"
@@ -160,7 +160,7 @@ fly volumes create meilisearch_data -s 1 -r fra
 
 Here I have created a new volume named `meilisearch_data` with a size of `1GB` and it is deployed in the `fra` Frankfurt region.
 
-```output
+```ansi frame="terminal"
         ID: vol_1g673408j02vydxw
       Name: meilisearch_data
        App: meilisearch-example
@@ -175,7 +175,7 @@ If you need more storage you can easily expand it later!
 
 Next, we need to tell our app how to mount this volume. Paste the following underneath `[env]`:
 
-```
+```toml title="fly.toml" ins={1-3}
 [mounts]
   source="meilisearch_data"
   destination="/meili_data"
@@ -195,7 +195,7 @@ Meiliseach allows us to do a lot of configuration by environment variables, whic
 
 If you don't want to send telemetry data to Meilisearch you can disable them by setting the `MEILI_NO_ANALYTICS` environment variable.
 
-```bash
+```toml title="fly.toml" ins={2}
 [env]
   MEILI_NO_ANALYTICS=""
 ```
@@ -212,7 +212,7 @@ Smash the launch button with the following command:
 fly deploy -i getmeili/meilisearch:v0.28
 ```
 
-```
+```ansi frame="terminal"
 ==> Verifying app config
 --> Verified app config
 ==> Building image
@@ -248,7 +248,7 @@ Also if you don't want to have access to search preview (the web GUI we just saw
 
 Simply add the `MEILI_ENV` in the `fly.toml` file.
 
-```toml
+```toml title="fly.toml" ins={3}
 [env]
   MEILI_NO_ANALYTICS=""
   MEILI_ENV="production"
@@ -270,7 +270,7 @@ Next set the secret using the fly CLI:
 fly secrets set MEILI_MASTER_KEY=GZAA48c8vwvQ7eTOa/c+E3A1dFOL5WVoJLxMHpxTYVc=
 ```
 
-```
+```ansi frame="terminal"
 Release v1 created
 ==> Monitoring deployment
 
@@ -305,7 +305,7 @@ curl -X POST 'https://meilisearch-example.fly.dev/indexes/meteorites/documents' 
      --data-binary @meteorites.json
 ```
 
-```
+```json frame="terminal"
 {"taskUid":0,"indexUid":"meteorites","status":"enqueued","type":"documentAdditionOrUpdate","enqueuedAt":"2022-08-09T20:23:09.38597868Z"}%
 ```
 

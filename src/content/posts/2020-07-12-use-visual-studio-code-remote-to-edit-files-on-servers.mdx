@@ -100,7 +100,7 @@ ssh-keygen -b 4096
 
 Which results in the following output.
 
-```
+```ansi frame="terminal"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/c/Users/flori/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -130,7 +130,7 @@ To copy the key to the server you just have to login to the server using the
 ssh-copy-id pi@192.168.1.10
 ```
 
-```
+```ansi frame="terminal"
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/c/Users/flori/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
@@ -157,7 +157,7 @@ file on the server are correct:
 ls -l ~/.ssh
 ```
 
-```
+```ansi frame="terminal"
 drwx------ 2 pi pi 4096 Jul  9 15:56 .
 drwxr-xr-x 8 pi pi 4096 Jul  9 13:29 ..
 -rw------- 1 pi pi  739 Jul  9 15:56 authorized_keys

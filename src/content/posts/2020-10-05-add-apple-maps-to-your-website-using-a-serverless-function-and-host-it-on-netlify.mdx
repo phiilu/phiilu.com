@@ -125,7 +125,7 @@ Inside the project directory run the following command to list all folders and f
 tree -I 'dist|node_modules'
 ```
 
-```
+```ansi frame="terminal"
 .
 ├── README.md
 ├── netlify.toml
@@ -148,7 +148,7 @@ Most of these files should not need explaining, but I will explain the most inte
 
 `netlify.toml` contains the configuration for Netlify and the Netlify CLI.
 
-```toml
+```toml title="netlify.toml"
 [build]
   command = "npm run build"
   functions = "src/functions"
@@ -186,8 +186,7 @@ Lots of the other files you see are to configure Tailwind. I just like to use Ta
 
 Let's start adding Apple Maps to the website! When you open the cloned repo and open up the `index.html` file you will see that there is already Apple MapKit pulled in from Apple.
 
-```html
-<!-- index.html -->
+```html title="index.html"
 <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
 ```
 
@@ -195,7 +194,7 @@ Let's start adding Apple Maps to the website! When you open the cloned repo and 
 
 Further down the file, you will find the `div` where we want to mount Apple Maps.
 
-```html
+```html title="index.html"
 <div id="apple-maps" style="height: 800px" class="w-full rounded-md shadow-lg" />
 ```
 
@@ -205,7 +204,7 @@ This `div` has set a `height` and some classes that will make it look a bit nice
 
 Now we want to add Apple Maps to this `div`, so open up the `index.js` file and paste this code:
 
-```js
+```js title="index.js"
 mapkit.init({
   authorizationCallback: function (done) {
     fetch('/api/token')
@@ -244,7 +243,7 @@ It's time to take our generated private key and use it to generate JWT tokens fo
 
 Before working on the serverless function we will need to create a `.env` file in the root of your project and put in our obtained credentials.
 
-```bash
+```bash title=".env"
 MAPS_KEY_ID=<MAP_KEY_ID>
 APPLE_TEAM_ID=<TEAM_ID>
 APPLE_MAPS_KEY=<PRIVATE_KEY>
@@ -255,7 +254,7 @@ Put in your information that you saved from the previous sections.
 
 `APPLE_MAPS_KEY` is a little special, because we downloaded it as a file. You will need to copy the contents of the file and replace all line breaks with `\n`. Your `APPLE_MAPS_KEY` entry should look like this:
 
-```bash
+```bash title=".env"
 APPLE_MAPS_KEY="-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMAyyqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg698QaJcP/pbDrXHE\nSzt8Igy6KgeUm2ky1LZZoBDcVzygCgYI2oZIzj0DAQehRANCAAST56qF4NUi1v0Y\nrWfvSNVbSdQjT7M6syC7bJYiB5zTlwzzGeIU2kilRNY7p3KlUnC5QGISGHjN3FL+\n7wjrPBNa\n-----END PRIVATE KEY-----"
 ```
 
@@ -263,7 +262,7 @@ APPLE_MAPS_KEY="-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMAyyqGSM49AgEGCCqGSM49AwE
 
 Your `.env` file should look something like this:
 
-```bash
+```bash title=".env"
 MAPS_KEY_ID=AAAAAAB994
 APPLE_TEAM_ID=1234A8E9Z5
 APPLE_MAPS_KEY="-----BEGIN PRIVATE KEY-----\nMIGTAgEAMBMAyyqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg698QaJcP/pbDrXHE\nSzt8Igy6KgeUm2ky1LZZoBDcVzagCgYI2oZIzj0DAQehRANCAAST56qF4NUi1v0Y\nrWfvSNVbSdQjT7M6syC7bJYiB5zTlwzzGeIU2kilRNY7p3KlUnC5QGISGHjN3FL+\n7wjrPBNa\n-----END PRIVATE KEY-----"
@@ -287,7 +286,7 @@ npm i jsonwebtoken
 
 Now create a file named `token.js` and paste this code:
 
-```js
+```js title="src/functions/token/token.js"
 const jwt = require('jsonwebtoken');
 
 const origin = process.env.SITE_ORIGIN;
@@ -340,7 +339,7 @@ netlify login
 
 Next, go to the root of your project directory and run `netlify deploy`. This will walk you through and create the site on Netlify.
 
-```
+```ansi frame="terminal"
 netlify deploy
 This folder isn't linked to a site yet
 ? What would you like to do? +  Create & configure a new site
@@ -367,7 +366,7 @@ Deploying to draft URL...
 
 As you can see I got an error the first time, so I reran the script and it worked!
 
-```
+```ansi frame="terminal"
 netlify deploy
 Deploy path:        /Users/florian/Code/privat/projects/apple-maps-example/dist
 Functions path:     /Users/florian/Code/privat/projects/apple-maps-example/src/functions
@@ -402,9 +401,7 @@ For now, we just displayed a map but did not interact with it. In this section, 
 
 Open up `index.js` and append the following lines to it:
 
-```js
-// index.js
-
+```js title="index.js"
 const search = new mapkit.Search({
   language: navigator.language || navigator.userLanguage,
   getsUserLocation: true,

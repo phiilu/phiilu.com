@@ -123,7 +123,7 @@ Thanks to `feed` we can generate all three formats by just calling the correct f
 
 After these 3 steps, your `rss.js` file should look similar to this one.
 
-```javascript
+```javascript title="lib/rss.js"
 const Feed = require('feed').Feed;
 const contentful = require('./contentful').default;
 const markdown = require('markdown').markdown;
@@ -194,7 +194,7 @@ Now that we have our little utility function to generate the RSS feeds, we need 
 
 To keep it simple I am importing this function in the `pages/index.js` file and adding it to the `getStaticProps`. Doing it this way will make sure Next.js will call this function during the build of the `pages/index.js` page and generate the feeds.
 
-```javascript
+```javascript title="pages/index.js"
 export async function getStaticProps() {
   // ...
 

@@ -32,13 +32,13 @@ We will disable the possibility to log in as the `root` user using a password, b
 
 To add a new user you can use the `adduser` command.
 
-```
+```bash
 adduser phiilu
 ```
 
 You will be asked a few questions including what password you want to use. Make sure the password is secure and in the best case random generated and stored in a password manager like [1Password](https://1password.com/) or [Lastpass](https://www.lastpass.com/).
 
-```
+```ansi frame="terminal"
 Adding user `phiilu' ...
 Adding new group `phiilu' (1000) ...
 Adding new user `phiilu' (1000) with group `phiilu' ...
@@ -59,13 +59,13 @@ Is the information correct? [Y/n]
 
 Now we have a new user that we can use to log in. If you are the `root` user you can just type
 
-```
+```bash
 su phiilu
 ```
 
 and you will be logged in as the user without prompted a password. You can also use log in with the `login` command.
 
-```
+```bash
 login phiilu
 ```
 
@@ -75,11 +75,11 @@ Next, we want to give the user permission to administrate the server. Right now 
 
 You can confirm this when trying to update the packages:
 
-```
+```bash
 sudo apt install
 ```
 
-```
+```ansi frame="terminal"
 [sudo] password for phiilu:
 phiilu is not in the sudoers file.  This incident will be reported.
 ```
@@ -90,7 +90,7 @@ We need to exit our current session with `exit`. You should now be logged in as 
 
 If you are `root`, you can type `visudo` to check the current sudoers file.
 
-```
+```txt title="/etc/sudoers"
 #
 # This file MUST be edited with the 'visudo' command as root.
 #
@@ -127,13 +127,13 @@ You can see that if a user is in the `sudo` group, he should be able to execute 
 
 To add a user to a group you can use the `usermod` command using the options `-a` for add and `-G` for alternative groups followed by the group's name and the user you want to modify.
 
-```
+```bash
 usermod -a -G sudo phiilu
 ```
 
 With `id` you can check the groups (and ids) of a user and can confirm that the user is now part of the `sudo` group.
 
-```
+```bash
 id phiilu
 uid=1000(phiilu) gid=1000(phiilu) groups=1000(phiilu),27(sudo)
 ```
@@ -160,13 +160,13 @@ The following commands should be the same for Windows and macOS except you might
 
 If you already have an SSH key that you might already use with `git` you can skip this step.
 
-```
+```bash
 ssh-keygen -b 4096
 ```
 
 Which results in the following output.
 
-```
+```ansi frame="terminal"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/c/Users/flori/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -185,7 +185,7 @@ You can either manually paste the key to the server or you can use a program cal
 
 On macOS you have to install `ssh-copy-id` using `brew` on Windows it should be already present in the Git Bash.
 
-```
+```bash
 brew install ssh-copy-id
 ```
 
@@ -193,11 +193,11 @@ To copy the key to the server you just have to log in to the server using the `s
 
 > replace VPS_IP with the real IP of your VPS
 
-```
+```bash
 ssh-copy-id root@VPS_IP
 ```
 
-```
+```ansi frame="terminal"
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/Users/florian/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
@@ -215,11 +215,11 @@ Now if you try to log in with `ssh` you should not be asked for a password.
 
 If you are still asked for a password check if the permissions on the `authorized_keys` file on the server are correct:
 
-```
+```bash
 ls -la ~/.ssh
 ```
 
-```
+```ansi frame="terminal"
 drwx------ 2 root root 4096 Sep 18 17:23 .
 drwx------ 7 root root 4096 Sep 21 14:48 ..
 -rw------- 1 root root  416 Sep 18 17:23 authorized_keys
@@ -227,7 +227,7 @@ drwx------ 7 root root 4096 Sep 21 14:48 ..
 
 If your permissions are different you might have to change them:
 
-```
+```bash
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 ```
@@ -244,7 +244,7 @@ Find the line that says `PermitRootLogin yes` and change it to `PermitRootLogin 
 
 If you want to only allow public-key authentication find the following configuration keys and change them:
 
-```
+```txt title="/etc/ssh/sshd_config"
 PubkeyAuthentication yes
 PasswordAuthentication no
 ```
@@ -253,7 +253,7 @@ PasswordAuthentication no
 
 Last but not least only allow users that you explicitly defined to log in to your server. Go to the end of the file and add the following line:
 
-```
+```txt title="/etc/ssh/sshd_config" ins={1}
 AllowUsers phiilu root dokku
 ```
 
@@ -263,7 +263,7 @@ Here you should add the usernames separated with space. In my case, I am allowin
 
 After changing the configuration you must restart the `sshd` server.
 
-```
+```bash
 sudo service sshd restart
 ```
 
@@ -279,7 +279,7 @@ In this post, I will only show you how you configure `fail2ban` to only check th
 
 Installation is very easy and only one command away.
 
-```
+```bash
 sudo apt install fail2ban
 ```
 
@@ -287,7 +287,7 @@ That is it, we don't need to make any additional configuration, fail2ban is now 
 
 If you want to make changes to the config file, you must copy the original `/etc/fail2ban/jail.conf` file and create a `/etc/fail2ban/jail.local` file
 
-```
+```bash
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
 
@@ -299,13 +299,13 @@ Sometimes you may want to unban an IP address because you somehow locked yoursel
 
 Luckily `fail2ban` lets us easily unban IP addresses using the included client:
 
-```
+```bash
 sudo fail2ban-client set sshd unbanip IP
 ```
 
 Here you can see an example of how I unbanned an IP.
 
-```
+```ansi frame="terminal"
 root@dokku:~# fail2ban-client status sshd
 Status for the jail: sshd
 |- Filter
@@ -334,13 +334,13 @@ Status for the jail: sshd
 
 Fail2ban comes with an easy to use client, where you can check the status of a specific service and see how many IPs are already banned
 
-```
+```bash
 fail2ban-client status sshd
 ```
 
 This is my server after being online for about a week. You can see and confirm that the Internet is a scary place and everyone wants to take over your server!
 
-```
+```ansi frame="terminal"
 Status for the jail: sshd
 |- Filter
 |  |- Currently failed:	0
@@ -358,7 +358,7 @@ Status for the jail: sshd
 
 A lot of VPS providers are allowing you to configure a firewall within their dashboard, but for those of you that are not able to do that, you can still use a software firewall like `ufw`. UFW is a software firewall and we can secure our server with just four commands!
 
-```
+```bash
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow ssh

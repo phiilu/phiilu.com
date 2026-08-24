@@ -33,8 +33,8 @@ import Layout from '@/layouts/Page.astro';
           a page, the technical data needed to deliver it — your IP address, the requested URL, the
           time, and your browser's user agent — is processed and kept briefly to run and secure the
           service. The legal basis is my legitimate interest in operating a website that works and
-          stays available (Art. 6 (1) (f) GDPR). A data processing agreement under Art. 28 GDPR is
-          in place with {HOSTING.shortName}. {HOSTING.transfer}
+          stays available (Art. 6 (1) (f) GDPR). {HOSTING.dpa}
+          {HOSTING.transfer}
         </p>
         {
           CDN && (
@@ -45,8 +45,7 @@ import Layout from '@/layouts/Page.astro';
               IP address, the requested URL, the time, your browser's user agent and connection
               metadata in order to route the request, cache the response and block attacks. The
               legal basis is my legitimate interest in a fast and attack-resistant website (Art. 6
-              (1) (f) GDPR). A data processing agreement under Art. 28 GDPR is in place with{' '}
-              {CDN.shortName}. {CDN.transfer} Its own privacy policy is at{' '}
+              (1) (f) GDPR). {CDN.dpa} {CDN.transfer} Its own privacy policy is at{' '}
               <a href={CDN.privacyPolicy}>{CDN.privacyPolicy}</a>.
             </p>
           )

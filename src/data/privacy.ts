@@ -18,6 +18,11 @@ export const HOSTING = {
   // Empty string when it does not.
   transfer:
     "Vercel processes data in the USA. Vercel Inc. participates in the EU-U.S. Data Privacy Framework, for which the European Commission adopted an adequacy decision on 10 July 2023 (Art. 45 GDPR); the listing is public at dataprivacyframework.gov/list. Vercel uses sub-processors of its own, listed at vercel.com/legal/subprocessors. Should that adequacy decision be annulled or suspended, transfers continue on the European Commission's standard contractual clauses (Art. 46 (2) (c) GDPR).",
+  // Empty because Vercel's DPA says it "applies to Vercel's Processing of
+  // Personal Data as a Processor under the Agreement for Customers who are on
+  // Enterprise and Pro plans" — this site is on Hobby, so there is no Art. 28
+  // contract to claim. Fill this in if the plan changes.
+  dpa: '',
   // Vercel's published retention for runtime logs on the free plan this site
   // uses. Art. 13 (2) (a) GDPR wants a period or a criterion, not "as needed".
   logRetention:
@@ -33,6 +38,8 @@ interface Provider {
   name: string;
   shortName: string;
   address: string;
+  /** Empty when the provider offers no Art. 28 contract on this plan. */
+  dpa: string;
   transfer: string;
   logRetention: string;
   privacyPolicy: string;
@@ -44,6 +51,10 @@ export const CDN: Provider | null = {
   address: '101 Townsend St., San Francisco, CA 94107, USA',
   transfer:
     "Cloudflare processes data in the USA. It states that it has certified to the EU-U.S. Data Privacy Framework, which the European Commission recognised as adequate on 10 July 2023 (Art. 45 GDPR), and that it falls back on the European Commission's standard contractual clauses (Art. 46 (2) (c) GDPR) should that certification lapse; write to me for a copy of those.",
+  // Cloudflare's self-serve subscription agreement, which the free plan is on,
+  // incorporates its Data Processing Addendum by reference — so this one is in
+  // place without anything having to be signed.
+  dpa: 'A data processing agreement under Art. 28 GDPR is in place with Cloudflare, incorporated by reference into its self-serve subscription agreement.',
   // Cloudflare publishes no fixed period, so this has to be a criterion rather
   // than a number.
   logRetention:

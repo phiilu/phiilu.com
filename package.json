@@ -11,9 +11,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint 'src/**/*.{js,ts,tsx,astro}'",
-    "lint:fix": "eslint 'src/**/*.{js,ts,tsx,astro}' --fix",
-    "prettier": "prettier --write ."
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt . && prettier --write '**/*.astro'",
+    "format:check": "oxfmt --check . && prettier --check '**/*.astro'"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.7",
@@ -39,17 +40,10 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "eslint": "^10.9.0",
-    "eslint-import-resolver-typescript": "^4.4.5",
-    "eslint-plugin-astro": "^3.1.0",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "globals": "^17.11.0",
+    "oxfmt": "^0.64.0",
+    "oxlint": "^1.79.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.67.0"
+    "typescript": "^5.9.3"
   }
 }

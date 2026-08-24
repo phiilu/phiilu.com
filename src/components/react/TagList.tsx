@@ -33,5 +33,5 @@ export const TagList = ({ tags }: TagListProps) => {
         })}
       </ul>
     );
-  }, [tags.length]);
+  }, [tags]);
 };

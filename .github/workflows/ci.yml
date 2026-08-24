@@ -48,8 +48,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run Prettier
-        run: pnpm run prettier
+      - name: Run Formatter
+        run: pnpm run format
 
       - name: Run Linter
         run: pnpm run lint

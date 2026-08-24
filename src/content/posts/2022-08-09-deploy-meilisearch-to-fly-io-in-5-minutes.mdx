@@ -99,7 +99,7 @@ Wrote config file fly.toml
 
 The CLI has created the app on Fly and generated the `fly.toml` configuration.
 
-![Fly.io app has been created and is visible on the dashboard ](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-1.png)
+![Fly.io app has been created and is visible on the dashboard ](../../assets/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-1.png)
 
 ```toml title="fly.toml"
 # fly.toml file generated for meilisearch-example on 2022-08-09T21:15:08+02:00
@@ -234,11 +234,11 @@ Nice! It deployed successfully!
 
 Login to your Dashboard and visit the URL of your app to see Meilisearch running on Fly.io.
 
-![Fly.io Dashboard of the created app after it was deployed](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-2.png)
+![Fly.io Dashboard of the created app after it was deployed](../../assets/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-2.png)
 
 Or simply run `fly open` 😎
 
-![Meilisearch running on fly.io](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-3.png)
+![Meilisearch running on fly.io](../../assets/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-3.png)
 
 ## Securing Meilisearch
 
@@ -284,7 +284,7 @@ The CLI will immediately deploy a new version with the new secret environment va
 
 You can check that Meilisearch is now secured by going to the search preview again.
 
-![Meilisearch search preview is now secured using the master key](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-4.png)
+![Meilisearch search preview is now secured using the master key](../../assets/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-4.png)
 
 You might have noticed we have set the `MEILI_ENV` to `production`, but the search preview is still showing up. When we set the secret, the CLI did not use the updated `fly.toml` file, it only redeployed the previous version where the environment variable was not yet set.
 
@@ -315,7 +315,7 @@ I only did this for the blog post, for a production app I will probably want the
 
 It works! 🎉🎉
 
-![Meilsearch search preview in action](/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-5.png)
+![Meilsearch search preview in action](../../assets/images/posts/deploy-meilisearch-to-fly-io-in-5-minutes-5.png)
 
 ## Remove Meilisearch from Fly.io
 

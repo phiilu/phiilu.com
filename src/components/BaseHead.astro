@@ -4,6 +4,7 @@
 import '@styles/global.css';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { ClientRouter } from 'astro:transitions';
+import { Font } from 'astro:assets';
 
 export interface Props {
   title?: string;
@@ -24,6 +25,9 @@ const { title, description, image = '/api/og', keywords, publishedDate } = Astro
 ---
 
 <ClientRouter />
+
+<Font cssVariable="--font-open-sans-family" preload />
+<Font cssVariable="--font-source-sans-pro-family" preload />
 
 <meta name="theme-color" content="#ffffff" />
 

@@ -1,5 +1,4 @@
 ---
-import { Newsletter } from '@components/react/Newsletter';
 import { Notifications } from '@components/react/Notifications';
 import { PageBanner } from '@components/react/PageBanner';
 import BaseHead from '@components/BaseHead.astro';
@@ -19,10 +18,9 @@ export interface Props {
   image?: string;
   keywords?: string;
   publishedDate?: Date;
-  hide?: string[];
 }
 
-const { title, description, keywords, publishedDate, image, hide } = Astro.props;
+const { title, description, keywords, publishedDate, image } = Astro.props;
 ---
 
 <html lang="en">
@@ -38,14 +36,13 @@ const { title, description, keywords, publishedDate, image, hide } = Astro.props
   <body>
     <PageBanner client:only="react" />
     <div
-      class="grid min-h-screen antialiased font-open-sans dark:bg-gray-900 dark:text-gray-100"
+      class="grid grid-cols-[minmax(0,1fr)] min-h-screen antialiased font-open-sans dark:bg-gray-900 dark:text-gray-100"
       style={{ gridTemplateRows: 'auto 1fr auto' }}
     >
       <Header />
       <div transition:animate={pageTransition}>
         <slot />
       </div>
-      {!hide?.includes('Newsletter') && <Newsletter client:idle />}
       <Footer />
     </div>
     <Notifications client:idle />

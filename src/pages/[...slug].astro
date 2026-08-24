@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 type Props = { post: CollectionEntry<'posts'> };
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 const wordCount = countWords(post.body ?? '');
 const timeToRead = Math.round(wordCount / 275);
@@ -36,7 +36,7 @@ searchParams.append('readTime', `${timeToRead} Minutes`);
   image={`/api/blog/og?${searchParams}`}
 >
   <Container as="main">
-    <PostDetail client:idle post={post} url={Astro.url.href}>
+    <PostDetail client:idle post={post} url={Astro.url.href} headings={headings}>
       <Content />
     </PostDetail>
   </Container>

@@ -273,6 +273,13 @@ const tags = {
     mainColor: 'text-red-500',
     description: 'hostingss'
   }
-};
+} satisfies Record<string, TagListItem>;
+
+// Tag names come from post frontmatter, so lookups are by arbitrary string.
+const tagsByName = new Map<string, TagListItem>(Object.entries(tags));
+
+export function getTagColors(name: string) {
+  return tagsByName.get(name);
+}
 
 export default tags;

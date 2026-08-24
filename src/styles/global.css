@@ -1,6 +1,183 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
-@config '../../tailwind.config.cjs';
+/*
+  Tailwind v4 keeps the theme in CSS. The two font variables point at the ones
+  Astro's font pipeline defines on :root, so the utilities follow whatever the
+  `fonts` config in astro.config.mjs resolves to.
+*/
+@theme {
+  --font-open-sans: var(--font-open-sans-family), sans-serif;
+  --font-source-sans-pro: var(--font-source-sans-pro-family), sans-serif;
+
+  --color-time: #6b7280;
+  --color-pokezards-primary: #ef8022;
+  --color-pokezards-primary-light: #f39b5c;
+  --color-pokezards-primary-lighter: #f5b588;
+  --color-pokezards-primary-lightest: #f9ceb2;
+  --color-pokezards-yellow: #f7bd15;
+  --color-pokezards-yellow-light: #f7bd15;
+  --color-pokezards-yellow-lighter: #f7bd15;
+  --color-pokezards-yellowlightest: #f7bd15;
+  --color-pokezards-dark-red: #d71e25;
+  --color-pokezards-dark-red-light: #df525a;
+  --color-pokezards-dark-red-lighter: #e78187;
+  --color-pokezards-dark-red-lightest: #efadb2;
+  --color-pokezards-red: #ec4924;
+  --color-pokezards-red-light: #ef715b;
+  --color-pokezards-red-lighter: #f49787;
+  --color-pokezards-red-lightest: #f7bbb2;
+
+  --color-openvpn-100: #fff4e6;
+  --color-openvpn-200: #ffe4bf;
+  --color-openvpn-300: #ffd399;
+  --color-openvpn-400: #ffb24d;
+  --color-openvpn-500: #ff9100;
+  --color-openvpn-600: #e68300;
+  --color-openvpn-700: #995700;
+  --color-openvpn-800: #734100;
+  --color-openvpn-900: #4d2c00;
+
+  --color-raspberrypi-100: #f9e8ed;
+  --color-raspberrypi-200: #f0c6d2;
+  --color-raspberrypi-300: #e7a4b7;
+  --color-raspberrypi-400: #d56080;
+  --color-raspberrypi-500: #c31c4a;
+  --color-raspberrypi-600: #b01943;
+  --color-raspberrypi-700: #75112c;
+  --color-raspberrypi-800: #580d21;
+  --color-raspberrypi-900: #3b0816;
+
+  --color-vscode-100: #ecf6fe;
+  --color-vscode-200: #cfe9fc;
+  --color-vscode-300: #b2dcfa;
+  --color-vscode-400: #79c2f6;
+  --color-vscode-500: #3fa8f2;
+  --color-vscode-600: #3997da;
+  --color-vscode-700: #266591;
+  --color-vscode-800: #1c4c6d;
+  --color-vscode-900: #133249;
+
+  --color-vultr-100: #e6f2ff;
+  --color-vultr-200: #bfdefe;
+  --color-vultr-300: #99cafe;
+  --color-vultr-400: #4da3fd;
+  --color-vultr-500: #007bfc;
+  --color-vultr-600: #006fe3;
+  --color-vultr-700: #004a97;
+  --color-vultr-800: #003771;
+  --color-vultr-900: #00254c;
+
+  --color-ubuntu-100: #fdeee9;
+  --color-ubuntu-200: #fad4c7;
+  --color-ubuntu-300: #f6bba6;
+  --color-ubuntu-400: #f08763;
+  --color-ubuntu-500: #e95420;
+  --color-ubuntu-600: #d24c1d;
+  --color-ubuntu-700: #8c3213;
+  --color-ubuntu-800: #69260e;
+  --color-ubuntu-900: #46190a;
+
+  --color-bluesky-100: #e6f2ff;
+  --color-bluesky-200: #cce6ff;
+  --color-bluesky-300: #99ccff;
+  --color-bluesky-400: #4da6ff;
+  --color-bluesky-500: #0085ff;
+  --color-bluesky-600: #0070d9;
+  --color-bluesky-700: #005099;
+  --color-bluesky-800: #003b73;
+  --color-bluesky-900: #00264d;
+
+  --color-github-100: #e9eaea;
+  --color-github-200: #c9cacb;
+  --color-github-300: #a8aaab;
+  --color-github-400: #666a6d;
+  --color-github-500: #252a2e;
+  --color-github-600: #212629;
+  --color-github-700: #16191c;
+  --color-github-800: #111315;
+  --color-github-900: #0b0d0e;
+
+  --color-rss-100: #fef4ed;
+  --color-rss-200: #fee3d1;
+  --color-rss-300: #fdd2b6;
+  --color-rss-400: #fbb17f;
+  --color-rss-500: #f98f48;
+  --color-rss-600: #e08141;
+  --color-rss-700: #95562b;
+  --color-rss-800: #704020;
+  --color-rss-900: #4b2b16;
+
+  --color-linkedin-100: #e6f1f8;
+  --color-linkedin-200: #bfdded;
+  --color-linkedin-300: #99c9e1;
+  --color-linkedin-400: #4da0cb;
+  --color-linkedin-500: #0077b5;
+  --color-linkedin-600: #006ba3;
+  --color-linkedin-700: #00476d;
+  --color-linkedin-800: #003651;
+  --color-linkedin-900: #002436;
+
+  --color-hackernews-100: #ffeee6;
+  --color-hackernews-200: #ffd6bf;
+  --color-hackernews-300: #ffbd99;
+  --color-hackernews-400: #fe8b4d;
+  --color-hackernews-500: #fe5900;
+  --color-hackernews-600: #e55000;
+  --color-hackernews-700: #983500;
+  --color-hackernews-800: #722800;
+  --color-hackernews-900: #4c1b00;
+
+  --color-netlify-100: #f0fffe;
+  --color-netlify-200: #9ffef6;
+  --color-netlify-300: #53fef0;
+  --color-netlify-400: #01fee9;
+  --color-netlify-500: #01ac9e;
+  --color-netlify-600: #018e82;
+  --color-netlify-700: #017066;
+  --color-netlify-800: #00514a;
+  --color-netlify-900: #00332f;
+
+  --color-serverless-100: #fff0f0;
+  --color-serverless-200: #fec9c8;
+  --color-serverless-300: #fea29f;
+  --color-serverless-400: #fd7b77;
+  --color-serverless-500: #fd544f;
+  --color-serverless-600: #fc1008;
+  --color-serverless-700: #c00902;
+  --color-serverless-800: #790501;
+  --color-serverless-900: #320201;
+
+  --color-html-100: #fdf5f1;
+  --color-html-200: #f8d0bf;
+  --color-html-300: #f2ab8c;
+  --color-html-400: #ec865a;
+  --color-html-500: #e7642c;
+  --color-html-600: #c54b16;
+  --color-html-700: #933811;
+  --color-html-800: #60240b;
+  --color-html-900: #2e1105;
+
+  --color-react-gray-100: #f6f7f8;
+  --color-react-gray-200: #bdc2cc;
+  --color-react-gray-300: #868fa2;
+  --color-react-gray-400: #545d6d;
+  --color-react-gray-500: #282c34;
+  --color-react-gray-600: #23272e;
+  --color-react-gray-700: #1f2228;
+  --color-react-gray-800: #1b1d23;
+  --color-react-gray-900: #16181d;
+
+  --color-react-100: #f5fdff;
+  --color-react-200: #d7f6fe;
+  --color-react-300: #b4edfd;
+  --color-react-400: #92e5fc;
+  --color-react-500: #65dbfb;
+  --color-react-600: #0bc5f9;
+  --color-react-700: #05addb;
+  --color-react-800: #048db3;
+  --color-react-900: #03627c;
+}
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -41,6 +218,7 @@
   transitions and the Headless UI menu. Near-zero rather than `none` so that
   animation and transition end events still fire.
 */
+html.reduce-motion,
 html.reduce-motion *,
 html.reduce-motion *::before,
 html.reduce-motion *::after {
@@ -88,4 +266,92 @@ html:not(.reduce-motion) {
 /* Consecutive code blocks (command + its output) would otherwise touch. */
 .expressive-code + .expressive-code {
   margin-top: 1rem;
+}
+
+/* Anchor jumps from the table of contents land under the heading, not on it. */
+html {
+  scroll-behavior: smooth;
+}
+
+.prose :is(h2, h3) {
+  scroll-margin-top: 6rem;
+}
+
+/*
+  These replace the v3 `typography` theme block. The dark rules were reached
+  through a custom `prose-dark` modifier, which v4's plugin has no equivalent
+  for, so they hang off the `dark` class on <html> instead.
+*/
+.prose {
+  pre {
+    max-width: 100vw;
+  }
+
+  pre code {
+    word-break: normal;
+  }
+
+  pre code::after {
+    content: none;
+  }
+
+  code {
+    word-break: break-word;
+  }
+
+  a {
+    color: var(--color-indigo-600);
+    text-decoration: underline;
+    word-break: break-word;
+  }
+
+  a:hover {
+    color: var(--color-indigo-700);
+  }
+
+  a:visited {
+    color: var(--color-indigo-800);
+  }
+}
+
+.dark .prose {
+  color: var(--color-gray-200);
+
+  strong {
+    color: var(--color-gray-100);
+  }
+
+  blockquote {
+    color: var(--color-gray-200);
+    background-color: var(--color-gray-800);
+    padding-top: var(--spacing-4, 1rem);
+    padding-bottom: var(--spacing-4, 1rem);
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+
+    > p {
+      margin: 0;
+    }
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--color-gray-100);
+  }
+
+  a {
+    color: var(--color-indigo-400);
+  }
+
+  a:hover,
+  a:visited {
+    color: var(--color-indigo-300);
+  }
+
+  code {
+    color: var(--color-gray-200);
+  }
+
+  hr {
+    border-color: var(--color-gray-800);
+  }
 }

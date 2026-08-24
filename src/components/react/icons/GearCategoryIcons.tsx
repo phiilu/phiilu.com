@@ -65,10 +65,14 @@ const CategoryIcons = {
   )
 };
 
+// Categories come from content frontmatter, so a lookup can miss: keyed by
+// string rather than by the literal keys of the object above.
+const iconsByCategory = new Map(Object.entries(CategoryIcons));
+
 interface GearCategoryIconsProps {
   category: string;
 }
 
 export function GearCategoryIcons({ category }: GearCategoryIconsProps) {
-  return CategoryIcons[category as keyof typeof CategoryIcons];
+  return iconsByCategory.get(category) ?? null;
 }

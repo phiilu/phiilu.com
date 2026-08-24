@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { useMemo } from 'react';
-import tagColors, { type TagListItem } from '@/helpers/tagColors';
+import { getTagColors } from '@/helpers/tagColors';
 
 interface TagListProps {
   tags: string[];
@@ -8,9 +8,8 @@ interface TagListProps {
 
 export const TagList = ({ tags }: TagListProps) => {
   return useMemo(() => {
-    const tagList: TagListItem[] = tags.map((tag) => ({
-      ...tagColors[tag as keyof typeof tagColors]
-    }));
+    // A tag with no entry has no slug to link to, so it is left out.
+    const tagList = tags.map(getTagColors).filter((tag) => tag !== undefined);
 
     return (
       <ul className="flex flex-wrap">

@@ -1,0 +1,96 @@
+---
+import { Container } from '@components/react/Container';
+import { Heading } from '@components/react/Heading';
+import { CONTACT_EMAIL, OWNER, SITE_TITLE, TOWN } from '@/consts';
+import Layout from '@/layouts/Page.astro';
+---
+
+<Layout
+  title={`Imprint | ${SITE_TITLE}`}
+  description="Imprint and disclosure according to § 25 of the Austrian Media Act."
+>
+  <Container as="main">
+    <div class="px-4">
+      <Heading noMargin className="mb-8">Imprint</Heading>
+      <div class="prose lg:prose-lg">
+        <p>
+          Disclosure according to § 25 of the Austrian Media Act (Offenlegung gemäß § 25
+          Mediengesetz).
+        </p>
+
+        <h2>Media owner, publisher and author</h2>
+        <p>
+          {OWNER}<br />
+          {TOWN}<br />
+          Austria
+        </p>
+        <p>
+          Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </p>
+
+        <h2>Ownership</h2>
+        <p>
+          This website is owned and run solely by {OWNER} as a private individual. There are no shareholders,
+          no participations, no silent partnerships and no trust arrangements, and no third party holds
+          any ownership, voting or profit-sharing rights in it. I hold no stake in any other media undertaking
+          (§ 25 (3) Mediengesetz).
+        </p>
+
+        <h2>Purpose and editorial direction (Blattlinie)</h2>
+        <p>
+          A private, non-commercial weblog. It publishes articles on software development, servers
+          and self-hosting, along with notes on the hardware and software I use. Everything here is
+          my personal opinion and is not written on behalf of my employer or any other party.
+        </p>
+        <p>
+          Declaration of the fundamental editorial direction under § 25 (4) of the Austrian Media
+          Act: this site is independent, not bound to any political party, religious body, company
+          or interest group, and carries no advertising, paid or sponsored content. It advocates
+          open source software, self-hosting, data protection and a free and open internet, and
+          reflects nothing beyond my own personal views.
+        </p>
+
+        <h2>Responsibility for content</h2>
+        <p>
+          The content of this site was written with care, but I cannot guarantee that it is
+          accurate, complete or current — especially in older articles, where the software described
+          has often moved on. Please verify anything you rely on; nothing here is professional
+          advice.
+        </p>
+
+        <h2>Links to other sites</h2>
+        <p>
+          This site links to sites I do not operate. I have no influence over their content and take
+          no responsibility for it; the respective operator is responsible. If you let me know that
+          a linked page has become unlawful, I will remove the link.
+        </p>
+
+        <h2>Copyright and trade marks</h2>
+        <p>
+          The articles are mine and are licensed to no one else. You are welcome to quote from one
+          with attribution and a link; for anything beyond that, please ask first. Screenshots
+          reproduce the interface of the software they show and are used here to illustrate the
+          text.
+        </p>
+        <p>
+          Plenty here is not mine, though. The product images on the gear page, the logos used as
+          article icons, the framework and language marks in the text and the donation button belong
+          to their respective owners and are used only to identify the product or project they stand
+          for, not to suggest any endorsement of or affiliation with this site. The framework glyphs
+          come from{' '}
+          <a href="https://simpleicons.org">Simple Icons</a> under CC0 1.0; that licence covers the files,
+          not the marks they depict.
+        </p>
+        <p>
+          If you hold rights in anything shown here — a mark, a logo or a photograph — and would
+          rather it were not used, write to me at{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and I will take it down.
+        </p>
+
+        <p>
+          How this site handles your data is described in the <a href="/privacy">privacy policy</a>.
+        </p>
+      </div>
+    </div>
+  </Container>
+</Layout>

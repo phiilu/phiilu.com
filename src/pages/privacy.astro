@@ -1,0 +1,186 @@
+---
+import { Container } from '@components/react/Container';
+import { Heading } from '@components/react/Heading';
+import { CONTACT_EMAIL, OWNER, SITE_TITLE } from '@/consts';
+import { ANALYTICS, CDN, HOSTING, STORED_SETTINGS, THIRD_PARTY_HOSTS } from '@/data/privacy';
+import Layout from '@/layouts/Page.astro';
+---
+
+<Layout
+  title={`Privacy Policy | ${SITE_TITLE}`}
+  description="What data this site processes, who receives it, and the rights you have over it."
+>
+  <Container as="main">
+    <div class="px-4">
+      <Heading noMargin className="mb-8">Privacy Policy</Heading>
+      <div class="prose lg:prose-lg">
+        <p>
+          This site sets no cookies, runs no third-party advertising and no cross-site tracking. It
+          shows one banner for a project of my own, which you can dismiss. It keeps a few of your
+          settings in your browser and counts page views without identifying you. The detail is
+          below.
+        </p>
+
+        <h2>Who is responsible</h2>
+        <p>
+          {OWNER}, contact <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. The full
+          disclosure is on the <a href="/imprint">imprint</a> page.
+        </p>
+
+        <h2>Hosting and server logs</h2>
+        <p>
+          The site is hosted by {HOSTING.name}, {HOSTING.address}. Every time your browser requests
+          a page, the technical data needed to deliver it — your IP address, the requested URL, the
+          time, and your browser's user agent — is processed and kept briefly to run and secure the
+          service. The legal basis is my legitimate interest in operating a website that works and
+          stays available (Art. 6 (1) (f) GDPR). A data processing agreement under Art. 28 GDPR is
+          in place with {HOSTING.shortName}. {HOSTING.transfer}
+        </p>
+        {
+          CDN && (
+            <p>
+              The site is served through the content delivery network of {CDN.name}, {CDN.address},
+              which sits in front of the hosting and delivers pages from a location near you.
+              Because it is the first server your browser talks to, {CDN.shortName} processes your
+              IP address, the requested URL, the time, your browser's user agent and connection
+              metadata in order to route the request, cache the response and block attacks. The
+              legal basis is my legitimate interest in a fast and attack-resistant website (Art. 6
+              (1) (f) GDPR). A data processing agreement under Art. 28 GDPR is in place with{' '}
+              {CDN.shortName}. {CDN.transfer} Its own privacy policy is at{' '}
+              <a href={CDN.privacyPolicy}>{CDN.privacyPolicy}</a>.
+            </p>
+          )
+        }
+
+        {
+          ANALYTICS && (
+            <>
+              <h2>Visitor statistics</h2>
+              <p>
+                I use {ANALYTICS.name} to see how many people read an article and where they came
+                from. {ANALYTICS.name} documents that {ANALYTICS.method}. The legal basis is my
+                legitimate interest in knowing which articles are worth writing more of (Art. 6 (1)
+                (f) GDPR).
+              </p>
+              <p>Vercel records, for each page view:</p>
+              <ul>
+                {ANALYTICS.collects.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <p>
+                I see these only as aggregate counts in a dashboard, never as one reader's history.
+                The statistics work without storing anything in, or reading anything from, your
+                browser, so they do not trigger the consent requirement in § 165 Abs 3 TKG 2021 and
+                no consent banner is shown for them.
+              </p>
+            </>
+          )
+        }
+
+        <h2>Settings stored on your device</h2>
+        <p>These preferences live in your browser's local storage and are never sent anywhere:</p>
+        <ul>
+          {
+            STORED_SETTINGS.map((setting) => (
+              <li>
+                <code>{setting.key}</code> — {setting.purpose}
+              </li>
+            ))
+          }
+        </ul>
+        <p>
+          These entries have no expiry date and stay in your browser until you change the setting
+          again or clear them through your browser's site data settings. They contain nothing but
+          the value shown above and are never transmitted to me or to anyone else, so nothing here
+          recognises you across visits.
+        </p>
+        <p>
+          Storing them, and reading them back when a page loads so the site renders the way you
+          chose, is storage on and access to your terminal equipment within the meaning of § 165 Abs
+          3 TKG 2021. No consent is required for it, because each entry exists solely to deliver the
+          site the way you explicitly asked for it — that is the exemption for what is strictly
+          necessary to provide a service the user expressly requested. Nothing here measures you.
+        </p>
+
+        <h2>Content loaded from other providers</h2>
+        <p>
+          A few things on this site are fetched from servers I do not run. When that happens, your
+          IP address necessarily reaches that provider, because it is what delivers the content to
+          you:
+        </p>
+        <ul>
+          {
+            THIRD_PARTY_HOSTS.map((provider) => (
+              <li>
+                <strong>{provider.name}</strong> — {provider.what}, loaded from{' '}
+                {provider.hosts.map((host, index) => (
+                  <>
+                    {index > 0 && ' and '}
+                    <code>{host}</code>
+                  </>
+                ))}
+                .
+              </li>
+            ))
+          }
+        </ul>
+        <p>
+          The legal basis is my legitimate interest in illustrating articles with runnable examples
+          (Art. 6 (1) (f) GDPR). CodeSandbox B.V. is established in the Netherlands, so this is not
+          a transfer to a third country; CodeSandbox states in its own privacy policy that it may
+          pass data to parties outside the EEA and that it does so only where there is an
+          appropriate level of protection.
+        </p>
+        <p>
+          Fonts, images and the donation button are all served from this site's own domain, so no
+          other provider learns anything about you through them. Links to GitHub, Bluesky or
+          LinkedIn are plain links: nothing is loaded from them until you click.
+        </p>
+
+        <h2>How long data is kept</h2>
+        <p>
+          {HOSTING.shortName} keeps its server logs {HOSTING.logRetention}.{' '}
+          {
+            CDN && (
+              <>
+                {CDN.shortName} keeps its logs {CDN.logRetention}.{' '}
+              </>
+            )
+          }
+          {ANALYTICS && <>Analytics data is {ANALYTICS.retention}.</>}
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          I hold no personal data about you myself. Everything described here is processed by my
+          providers in order to deliver the site, and a message to me is the fastest way to have me
+          take it up with them. You have the right to access your data, to have it corrected or
+          erased, to have its processing restricted, and to object to processing based on legitimate
+          interest. Data portability under Art. 20 GDPR does not apply here, because nothing on this
+          site is processed on the basis of consent or a contract. Write to <a
+            href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a
+          > and I will handle it. If you think I am getting this wrong, you can complain to the Austrian
+          data protection authority, the Datenschutzbehörde (<a href="https://www.dsb.gv.at"
+            >dsb.gv.at</a
+          >), Barichgasse 40-42, 1030 Vienna.
+        </p>
+        <p>
+          I do not use your data for automated decision-making or profiling within the meaning of
+          Art. 22 (1) and (4) GDPR.
+        </p>
+
+        <h2>Your right to object</h2>
+        <p>
+          Where I process your data on the basis of my legitimate interests (Art. 6 (1) (f) GDPR) —
+          the hosting, the delivery network, the visitor statistics and the embedded content
+          described above — you have the right to object at any time, on grounds relating to your
+          particular situation, under Art. 21 (1) GDPR. If you object, I will stop that processing
+          unless I can demonstrate compelling legitimate grounds which override your interests,
+          rights and freedoms. A message to the address above is enough; no form and no reason are
+          required.
+        </p>
+      </div>
+    </div>
+  </Container>
+</Layout>

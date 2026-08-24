@@ -3,17 +3,20 @@ import { format } from 'date-fns';
 import { Heading } from '@react/Heading';
 import { Share } from '@react/Share';
 import { ShareCta } from '@react/ShareCta';
+import { TableOfContents } from '@react/TableOfContents';
 import { TagList } from '@react/TagList';
 import { useCallback, type ReactNode } from 'react';
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 
 interface PostDetailProps {
   post: CollectionEntry<'posts'>;
   children: ReactNode;
   url: string;
+  headings: MarkdownHeading[];
 }
 
-export function PostDetail({ post, url, children }: PostDetailProps) {
+export function PostDetail({ post, url, headings, children }: PostDetailProps) {
   const wordCount = countWords(post.body ?? '');
   const timeToRead = Math.round(wordCount / 275);
 
@@ -32,7 +35,11 @@ export function PostDetail({ post, url, children }: PostDetailProps) {
         <Heading noMargin>{post.data.title}</Heading>
       </div>
       <div className="order-1 space-y-16 md:mr-8 xl:order-0 xl:col-span-3">
-        <div className="prose lg:prose-lg dark:prose-dark">{children}</div>
+        {/* Anchors the table of contents to the body copy, not the title. */}
+        <div className="relative">
+          <TableOfContents headings={headings} />
+          <div className="prose lg:prose-lg">{children}</div>
+        </div>
 
         <hr className="border-gray-200 dark:border-gray-800" />
         <ShareCta title={post.data.title} url={url} onClick={handleSocialShare} />
@@ -74,6 +81,7 @@ function PostSidebar({
       <div className="sticky top-0 flex flex-col items-start pt-4 sm:flex-row xl:space-y-8 xl:block">
         <img
           src={icon}
+          loading="lazy"
           height="48px"
           width="48px"
           className="inline-block object-contain w-12 h-12 mt-4 mr-8 xl:block xl:self-center self-justify-center xl:mt-0 xl:mr-0"
@@ -119,9 +127,14 @@ function PostSidebar({
                 // }}
                 href="https://www.buymeacoffee.com/phiilu"
               >
+                {/* Served from this site: fetching it from Buy Me a Coffee would
+                    hand them every reader's IP address for a static image. */}
                 <img
+                  loading="lazy"
                   alt="Buy me a mate tea"
-                  src="https://img.buymeacoffee.com/button-api/?text=Buy me a mate tea&emoji=🍵&slug=phiilu&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                  src="/images/buy-me-a-mate-tea.svg"
+                  width="253"
+                  height="50"
                 />
               </a>
             </dd>

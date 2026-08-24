@@ -5,7 +5,7 @@ interface TechIcon {
   paths: string[];
 }
 
-export const techIcons: Record<string, TechIcon> = {
+export const techIcons = {
   Elixir: {
     viewBox: '0 0 24 24',
     paths: [
@@ -64,4 +64,4 @@ export const techIcons: Record<string, TechIcon> = {
       'M42.3843 29.6848L38.7715 28.2938C38.6728 28.2529 38.5588 28.3017 38.517 28.4028L38.2139 29.1353C38.1721 29.2364 38.2182 29.3516 38.3169 29.3925L41.854 30.9665C41.9527 31.0075 42.0667 30.9587 42.1085 30.8575L42.4873 29.942C42.5292 29.8409 42.4831 29.7257 42.3843 29.6848Z'
     ]
   }
-};
+} satisfies Record<string, TechIcon>;

@@ -1,3 +1,8 @@
 **/.git
 **/node_modules
 pnpm-lock.yaml
+
+# Vendored and agent-installed assets: formatted upstream, keep diffs clean.
+.agents/
+.claude/
+tools/oxlint/anti-slop/

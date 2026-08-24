@@ -63,10 +63,11 @@ const postsCount = (await getCollection('posts')).length;
           </svg>
           <div class="relative mx-auto text-base max-w-prose lg:max-w-none">
             <figure>
+              {/* Height is important for the same reason as in Hero.astro. */}
               <Image
                 src={profileImage}
                 alt="Me"
-                class="object-cover object-center w-full h-full rounded-lg shadow-lg bg-slate-50"
+                class="object-cover object-center w-full h-full! rounded-lg shadow-lg bg-slate-50"
                 width={600}
                 quality={80}
               />
@@ -92,7 +93,7 @@ const postsCount = (await getCollection('posts')).length;
         </div>
         <div>
           <div
-            class="mx-auto prose text-gray-500 xl:prose-lg dark:prose-dark lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100 space-y-4"
+            class="mx-auto prose text-gray-500 xl:prose-lg lg:max-w-none lg:row-start-1 lg:col-start-1 dark:text-gray-100 space-y-4"
           >
             <p>Hey thanks for visiting my blog and wanting to get to know me better!</p>
             <p>

@@ -23,17 +23,15 @@ for (const g of gear) {
   });
 }
 
-const gearByCategory = gearRendered.reduce(
-  (accu, gearItem) => {
-    if (accu[gearItem.data.category as string]) {
-      accu[gearItem.data.category as string].push(gearItem);
-    } else {
-      accu[gearItem.data.category as string] = [gearItem];
-    }
-    return accu;
-  },
-  {} as Record<string, GearCollectionEntryRendered[]>
-);
+const gearByCategory: Record<string, GearCollectionEntryRendered[]> = {};
+
+for (const gearItem of gearRendered) {
+  // The schema allows a missing category; such an item has no section to go in.
+  const { category } = gearItem.data;
+  if (!category) continue;
+  gearByCategory[category] ??= [];
+  gearByCategory[category].push(gearItem);
+}
 
 for (const items of Object.values(gearByCategory)) {
   items.sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));

@@ -13,7 +13,7 @@ type PostsByMonth = {
 };
 
 function getPostsByMonth(posts: CollectionEntry<'posts'>[]) {
-  return posts.reduce((postsByDate, post: CollectionEntry<'posts'>) => {
+  return posts.reduce<PostsByMonth[]>((postsByDate, post: CollectionEntry<'posts'>) => {
     const exists = postsByDate.find((p) => {
       const newDate = new Date(post.data.publishedDate);
       const existingDate = p.date;
@@ -31,7 +31,7 @@ function getPostsByMonth(posts: CollectionEntry<'posts'>[]) {
     }
 
     return postsByDate;
-  }, [] as PostsByMonth[]);
+  }, []);
 }
 
 const posts = (await getCollection('posts')).sort(

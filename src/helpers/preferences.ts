@@ -1,3 +1,5 @@
+import { STORAGE_KEYS } from '@/data/privacy';
+
 export type Theme = 'light' | 'dark' | 'system';
 
 export const themes: Theme[] = ['light', 'dark', 'system'];
@@ -13,13 +15,13 @@ function prefersReducedMotion() {
 }
 
 export function getTheme(): Theme {
-  const stored = localStorage.getItem('theme') as Theme | null;
-  return stored && themes.includes(stored) ? stored : 'system';
+  const stored = localStorage.getItem(STORAGE_KEYS.theme);
+  return themes.find((theme) => theme === stored) ?? 'system';
 }
 
 // `null` means "follow the operating system".
 export function getReduceMotion(): boolean {
-  const stored = localStorage.getItem('reduce-motion');
+  const stored = localStorage.getItem(STORAGE_KEYS.reduceMotion);
   return stored === null ? prefersReducedMotion() : stored === 'true';
 }
 
@@ -38,12 +40,12 @@ function notify() {
 }
 
 export function setTheme(theme: Theme) {
-  localStorage.setItem('theme', theme);
+  localStorage.setItem(STORAGE_KEYS.theme, theme);
   notify();
 }
 
 export function setReduceMotion(reduce: boolean) {
-  localStorage.setItem('reduce-motion', String(reduce));
+  localStorage.setItem(STORAGE_KEYS.reduceMotion, String(reduce));
   notify();
 }
 
@@ -51,7 +53,7 @@ export function setReduceMotion(reduce: boolean) {
 // changes made in another tab.
 export function subscribe(onChange: () => void) {
   const onStorage = (event: StorageEvent) => {
-    if (event.key !== 'theme' && event.key !== 'reduce-motion') return;
+    if (event.key !== STORAGE_KEYS.theme && event.key !== STORAGE_KEYS.reduceMotion) return;
     notify();
   };
   listeners.add(onChange);

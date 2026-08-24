@@ -16,6 +16,7 @@ import {
   setReduceMotion,
   setTheme,
   subscribe,
+  themes,
   type Theme
 } from '@/helpers/preferences';
 
@@ -39,7 +40,9 @@ export function SettingsMenu() {
     return <div className="w-9 h-9" aria-hidden="true" />;
   }
 
-  const [theme, reduceMotion] = [settings.split('|')[0] as Theme, settings.endsWith('true')];
+  const storedTheme = settings.split('|')[0];
+  const theme = themes.find((option) => option === storedTheme) ?? 'system';
+  const reduceMotion = settings.endsWith('true');
 
   return (
     <Menu as="div" className="relative">

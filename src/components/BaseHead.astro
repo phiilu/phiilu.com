@@ -22,6 +22,21 @@ const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site)
 const { title, description, image = '/api/og', keywords, publishedDate } = Astro.props;
 ---
 
+<!-- Set the theme before first paint to avoid a flash of the wrong colors. -->
+<script is:inline>
+  (() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const apply = () => {
+      const theme = localStorage.getItem('theme') ?? 'system';
+      const dark = theme === 'dark' || (theme === 'system' && media.matches);
+      document.documentElement.classList.toggle('dark', dark);
+    };
+    apply();
+    // Keeps "system" live while the page is open.
+    media.addEventListener('change', apply);
+  })();
+</script>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />

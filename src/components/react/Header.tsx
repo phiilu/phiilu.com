@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import { Container } from '@react/Container';
 import { Logo } from '@react/icons/Logo';
+import { ThemeToggle } from '@react/ThemeToggle';
 import { motion, type EventInfo } from 'motion/react';
 import { type ReactNode, useCallback, useRef, useState } from 'react';
 import { spring } from '@/helpers/animation';
@@ -139,6 +140,9 @@ export const Header = ({ route }: HeaderProps) => {
                 {name}
               </MenuItem>
             ))}
+            <li className="pl-1">
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
       </Container>

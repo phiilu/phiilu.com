@@ -19,3 +19,16 @@
     border-color: var(--color-gray-200, currentcolor);
   }
 }
+
+/* Class-based dark mode so the header toggle can override the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+}

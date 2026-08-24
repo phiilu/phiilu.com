@@ -17,9 +17,13 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # dev tooling: any bump. everything else: no majors without eyeballs.
       - name: Enable auto-merge
-        if: steps.metadata.outputs.dependency-group == 'dev' || steps.metadata.outputs.update-type != 'version-update:semver-major'
+        # NB: for grouped PRs update-type is the HIGHEST bump in the group,
+        # so one major drags the whole group over the line. dev tooling and
+        # actions are gated on CI instead — a break shows up as a red build.
+        if: >-
+          contains(fromJSON('["dev", "actions"]'), steps.metadata.outputs.dependency-group)
+          || steps.metadata.outputs.update-type != 'version-update:semver-major'
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}

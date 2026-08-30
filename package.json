@@ -47,12 +47,12 @@
     "@astrojs/check": "^0.9.10",
     "@astrojs/markdown-remark": "^7.2.4",
     "@axe-core/playwright": "^4.13.0",
-    "@oxlint/plugins": "1.79.0",
-    "oxfmt": "^0.64.0",
-    "oxlint": "^1.79.0",
+    "@oxlint/plugins": "1.80.0",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
     "playwright": "^1.62.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   }
 }

@@ -49,36 +49,34 @@ const postIndexes = new Map(posts.map((post, index) => [post.id, index]));
         <Heading noMargin>Blog</Heading>
         <p class="text-lg">Here are all my blog posts! Enjoy :)</p>
       </div>
-      {
-        postsByMonth.map((postByMonth) => {
-          return (
-            <div class="space-y-8">
-              <Heading
-                noMargin
-                as="h2"
-                size="h3"
-                className="text-indigo-500 border-b-2 border-gray-100 dark:border-gray-800"
-              >
-                {dateFormat(postByMonth.date, 'MMMM yyyy')}
-              </Heading>
-              <div class="space-y-8 md:space-y-14">
-                <ul class="space-y-16 md:space-y-8">
-                  {postByMonth.posts.map((post) => (
-                    <li style={`--post-index: ${postIndexes.get(post.id)}`}>
-                      <PostListItem
-                        post={{
-                          ...post.data,
-                          slug: post.id
-                        }}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      {postsByMonth.map((postByMonth) => {
+        return (
+          <div class="space-y-8">
+            <Heading
+              noMargin
+              as="h2"
+              size="h3"
+              className="text-indigo-500 border-b-2 border-gray-100 dark:border-gray-800"
+            >
+              {dateFormat(postByMonth.date, 'MMMM yyyy')}
+            </Heading>
+            <div class="space-y-8 md:space-y-14">
+              <ul class="space-y-16 md:space-y-8">
+                {postByMonth.posts.map((post) => (
+                  <li style={`--post-index: ${postIndexes.get(post.id)}`}>
+                    <PostListItem
+                      post={{
+                        ...post.data,
+                        slug: post.id
+                      }}
+                    />
+                  </li>
+                ))}
+              </ul>
             </div>
-          );
-        })
-      }
+          </div>
+        );
+      })}
     </div>
   </Container>
 </Layout>

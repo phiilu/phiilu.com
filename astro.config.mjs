@@ -1,6 +1,7 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { defineConfig, fontProviders } from 'astro/config';
 import { ANALYTICS, THIRD_PARTY_HOSTS } from './src/data/privacy.ts';
+import { isNoindexed } from './src/consts.ts';
 import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
@@ -185,7 +186,7 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.9,
-      filter: (page) => page !== `${SITE}/_image`
+      filter: (page) => page !== `${SITE}/_image` && !isNoindexed(new URL(page).pathname)
     }),
     react(),
     verifyPrivacyDisclosures()

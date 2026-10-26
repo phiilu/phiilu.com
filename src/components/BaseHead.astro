@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '@styles/global.css';
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import { SITE_DESCRIPTION, SITE_TITLE, isNoindexed } from '@/consts';
 import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
 
@@ -85,6 +85,8 @@ the wrong theme and no animation the reader asked not to see. -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalUrl} />
+<!-- Out of the index, but Google still follows the links on the page. -->
+{isNoindexed(Astro.url.pathname) && <meta name="robots" content="noindex" />}
 
 <!-- Primary Meta Tags -->
 <title>

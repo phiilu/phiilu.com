@@ -55,13 +55,11 @@ const colors = getTagColors(tag.name);
         </Heading>
       </div>
       <ul class="space-y-8">
-        {
-          tag.posts.map((post) => (
-            <li>
-              <PostListItem post={{ ...post.data, slug: post.id }} />
-            </li>
-          ))
-        }
+        {tag.posts.map((post) => (
+          <li>
+            <PostListItem post={{ ...post.data, slug: post.id }} />
+          </li>
+        ))}
       </ul>
     </article>
   </Container>

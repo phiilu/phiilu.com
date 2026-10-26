@@ -12,7 +12,9 @@ import Layout from '@/layouts/Page.astro';
 >
   <Container as="main">
     <div class="px-4">
-      <Heading noMargin className="mb-8">Privacy Policy</Heading>
+      <Heading noMargin className="mb-8">
+        Privacy Policy
+      </Heading>
       <div class="prose lg:prose-lg">
         <p>
           This site sets no cookies, runs no third-party advertising and no cross-site tracking. It
@@ -36,57 +38,51 @@ import Layout from '@/layouts/Page.astro';
           stays available (Art. 6 (1) (f) GDPR). {HOSTING.dpa}
           {HOSTING.transfer}
         </p>
-        {
-          CDN && (
-            <p>
-              The site is served through the content delivery network of {CDN.name}, {CDN.address},
-              which sits in front of the hosting and delivers pages from a location near you.
-              Because it is the first server your browser talks to, {CDN.shortName} processes your
-              IP address, the requested URL, the time, your browser's user agent and connection
-              metadata in order to route the request, cache the response and block attacks. The
-              legal basis is my legitimate interest in a fast and attack-resistant website (Art. 6
-              (1) (f) GDPR). {CDN.dpa} {CDN.transfer} Its own privacy policy is at{' '}
-              <a href={CDN.privacyPolicy}>{CDN.privacyPolicy}</a>.
-            </p>
-          )
-        }
+        {CDN && (
+          <p>
+            The site is served through the content delivery network of {CDN.name}, {CDN.address},
+            which sits in front of the hosting and delivers pages from a location near you. Because
+            it is the first server your browser talks to, {CDN.shortName} processes your IP address,
+            the requested URL, the time, your browser's user agent and connection metadata in order
+            to route the request, cache the response and block attacks. The legal basis is my
+            legitimate interest in a fast and attack-resistant website (Art. 6 (1) (f) GDPR).{' '}
+            {CDN.dpa} {CDN.transfer} Its own privacy policy is at{' '}
+            <a href={CDN.privacyPolicy}>{CDN.privacyPolicy}</a>.
+          </p>
+        )}
 
-        {
-          ANALYTICS && (
-            <>
-              <h2>Visitor statistics</h2>
-              <p>
-                I use {ANALYTICS.name} to see how many people read an article and where they came
-                from. {ANALYTICS.name} documents that {ANALYTICS.method}. The legal basis is my
-                legitimate interest in knowing which articles are worth writing more of (Art. 6 (1)
-                (f) GDPR).
-              </p>
-              <p>Vercel records, for each page view:</p>
-              <ul>
-                {ANALYTICS.collects.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-              <p>
-                I see these only as aggregate counts in a dashboard, never as one reader's history.
-                The statistics work without storing anything in, or reading anything from, your
-                browser, so they do not trigger the consent requirement in § 165 Abs 3 TKG 2021 and
-                no consent banner is shown for them.
-              </p>
-            </>
-          )
-        }
+        {ANALYTICS && (
+          <>
+            <h2>Visitor statistics</h2>
+            <p>
+              I use {ANALYTICS.name} to see how many people read an article and where they came
+              from. {ANALYTICS.name} documents that {ANALYTICS.method}. The legal basis is my
+              legitimate interest in knowing which articles are worth writing more of (Art. 6 (1)
+              (f) GDPR).
+            </p>
+            <p>Vercel records, for each page view:</p>
+            <ul>
+              {ANALYTICS.collects.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <p>
+              I see these only as aggregate counts in a dashboard, never as one reader's history.
+              The statistics work without storing anything in, or reading anything from, your
+              browser, so they do not trigger the consent requirement in § 165 Abs 3 TKG 2021 and no
+              consent banner is shown for them.
+            </p>
+          </>
+        )}
 
         <h2>Settings stored on your device</h2>
         <p>These preferences live in your browser's local storage and are never sent anywhere:</p>
         <ul>
-          {
-            STORED_SETTINGS.map((setting) => (
-              <li>
-                <code>{setting.key}</code> — {setting.purpose}
-              </li>
-            ))
-          }
+          {STORED_SETTINGS.map((setting) => (
+            <li>
+              <code>{setting.key}</code> — {setting.purpose}
+            </li>
+          ))}
         </ul>
         <p>
           These entries have no expiry date and stay in your browser until you change the setting
@@ -109,20 +105,18 @@ import Layout from '@/layouts/Page.astro';
           you:
         </p>
         <ul>
-          {
-            THIRD_PARTY_HOSTS.map((provider) => (
-              <li>
-                <strong>{provider.name}</strong> — {provider.what}, loaded from{' '}
-                {provider.hosts.map((host, index) => (
-                  <>
-                    {index > 0 && ' and '}
-                    <code>{host}</code>
-                  </>
-                ))}
-                .
-              </li>
-            ))
-          }
+          {THIRD_PARTY_HOSTS.map((provider) => (
+            <li>
+              <strong>{provider.name}</strong> — {provider.what}, loaded from{' '}
+              {provider.hosts.map((host, index) => (
+                <>
+                  {index > 0 && ' and '}
+                  <code>{host}</code>
+                </>
+              ))}
+              .
+            </li>
+          ))}
         </ul>
         <p>
           The legal basis is my legitimate interest in illustrating articles with runnable examples
@@ -140,13 +134,11 @@ import Layout from '@/layouts/Page.astro';
         <h2>How long data is kept</h2>
         <p>
           {HOSTING.shortName} keeps its server logs {HOSTING.logRetention}.{' '}
-          {
-            CDN && (
-              <>
-                {CDN.shortName} keeps its logs {CDN.logRetention}.{' '}
-              </>
-            )
-          }
+          {CDN && (
+            <>
+              {CDN.shortName} keeps its logs {CDN.logRetention}.{' '}
+            </>
+          )}
           {ANALYTICS && <>Analytics data is {ANALYTICS.retention}.</>}
         </p>
 
@@ -157,12 +149,11 @@ import Layout from '@/layouts/Page.astro';
           take it up with them. You have the right to access your data, to have it corrected or
           erased, to have its processing restricted, and to object to processing based on legitimate
           interest. Data portability under Art. 20 GDPR does not apply here, because nothing on this
-          site is processed on the basis of consent or a contract. Write to <a
-            href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a
-          > and I will handle it. If you think I am getting this wrong, you can complain to the Austrian
-          data protection authority, the Datenschutzbehörde (<a href="https://www.dsb.gv.at"
-            >dsb.gv.at</a
-          >), Barichgasse 40-42, 1030 Vienna.
+          site is processed on the basis of consent or a contract. Write to{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and I will handle it. If you think
+          I am getting this wrong, you can complain to the Austrian data protection authority, the
+          Datenschutzbehörde (<a href="https://www.dsb.gv.at">dsb.gv.at</a>), Barichgasse 40-42,
+          1030 Vienna.
         </p>
         <p>
           I do not use your data for automated decision-making or profiling within the meaning of

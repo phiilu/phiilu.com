@@ -15,20 +15,20 @@ const posts = (await getCollection('posts'))
   <Container as="main" noMargin className="md:px-4 space-y-14">
     <Hero />
     <div class="space-y-8 md:space-y-14">
-      <Heading as="h2" size="h3" noMargin className="px-4">Latest Articles</Heading>
+      <Heading as="h2" size="h3" noMargin className="px-4">
+        Latest Articles
+      </Heading>
       <ul class="space-y-16 md:space-y-8">
-        {
-          posts.map((post, index) => (
-            <li style={`--post-index: ${index}`}>
-              <PostListItem
-                post={{
-                  ...post.data,
-                  slug: post.id
-                }}
-              />
-            </li>
-          ))
-        }
+        {posts.map((post, index) => (
+          <li style={`--post-index: ${index}`}>
+            <PostListItem
+              post={{
+                ...post.data,
+                slug: post.id
+              }}
+            />
+          </li>
+        ))}
       </ul>
       <a
         href="/blog"

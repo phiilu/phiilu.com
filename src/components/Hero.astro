@@ -62,9 +62,7 @@ const techs = [
 <section class="px-4 py-6 md:py-10">
   <div class="flex flex-col items-start gap-6 md:flex-row md:items-start md:gap-10">
     <picture class="relative self-center flex-none w-32 h-32 md:self-start md:w-56 md:h-56">
-      {
-        /* Heights are important: Astro's unlayered `height: auto` beats Tailwind's utilities layer. */
-      }
+      {/* Heights are important: Astro's unlayered `height: auto` beats Tailwind's utilities layer. */}
       <Image
         class="absolute object-cover w-32 h-32! rounded-full md:w-56 md:h-56! ring-1 ring-black/5 dark:ring-white/10"
         src={profileImage}
@@ -76,7 +74,9 @@ const techs = [
 
     <div class="max-w-2xl">
       <div class="flex flex-wrap items-center gap-x-3">
-        <Heading noMargin size="h2" as="h1">Hey, I&apos;m Florian</Heading>
+        <Heading noMargin size="h2" as="h1">
+          Hey, I&apos;m Florian
+        </Heading>
         <a
           class="px-2 py-1 text-base font-medium text-gray-600 transition-colors duration-200 ease-in-out rounded-md bg-slate-100 dark:bg-gray-800 dark:text-gray-300 hover:bg-indigo-100 hover:text-indigo-700 dark:hover:bg-indigo-500/20 dark:hover:text-indigo-300"
           href="https://bsky.app/profile/phiilu.com"
@@ -85,9 +85,7 @@ const techs = [
         </a>
       </div>
 
-      <div
-        class="mt-5 space-y-6 text-lg leading-relaxed text-gray-600 xl:text-xl xl:leading-relaxed dark:text-gray-300"
-      >
+      <div class="mt-5 space-y-6 text-lg leading-relaxed text-gray-600 xl:text-xl xl:leading-relaxed dark:text-gray-300">
         <p>
           A developer from{' '}
           <span class="relative inline-block group/austria">
@@ -96,43 +94,42 @@ const techs = [
             <span
               aria-hidden="true"
               class="absolute left-0 w-full origin-left transition-transform duration-300 ease-out scale-x-0 rounded-xs -bottom-1 h-1.5 group-hover/austria:scale-x-100 bg-[linear-gradient(to_bottom,#ED2939_0_33.3%,#fff_33.3%_66.6%,#ED2939_66.6%)]"
-            >
-            </span>
-          </span>, curious and{' '}
+            ></span>
+          </span>
+          , curious and{' '}
           <button
             type="button"
             popovertarget="t-shaped"
             class="font-medium text-gray-900 underline cursor-pointer decoration-dotted underline-offset-4 dark:text-gray-100 [anchor-name:--t-shaped]"
           >
-            T-shaped</button
-          >, always happy to go the extra mile to learn something new.
+            T-shaped
+          </button>
+          , always happy to go the extra mile to learn something new.
         </p>
         <p>
           I started out building{' '}
-          {
-            techs.map((tech) => (
-              <>
-                <a
-                  href={tech.href}
-                  class={`whitespace-nowrap font-medium hover:underline ${tech.color}`}
-                >
-                  {tech.icon && (
-                    <svg
-                      viewBox={techIcons[tech.icon].viewBox}
-                      aria-hidden="true"
-                      class="inline-block w-[1em] h-[1em] mr-1 align-[-0.125em] fill-current"
-                    >
-                      {techIcons[tech.icon].paths.map((d) => (
-                        <path d={d} />
-                      ))}
-                    </svg>
-                  )}
-                  {tech.name}
-                </a>
-                {tech.after}
-              </>
-            ))
-          }
+          {techs.map((tech) => (
+            <>
+              <a
+                href={tech.href}
+                class={`whitespace-nowrap font-medium hover:underline ${tech.color}`}
+              >
+                {tech.icon && (
+                  <svg
+                    viewBox={techIcons[tech.icon].viewBox}
+                    aria-hidden="true"
+                    class="inline-block w-[1em] h-[1em] mr-1 align-[-0.125em] fill-current"
+                  >
+                    {techIcons[tech.icon].paths.map((d) => (
+                      <path d={d} />
+                    ))}
+                  </svg>
+                )}
+                {tech.name}
+              </a>
+              {tech.after}
+            </>
+          ))}
         </p>
         <p>I self-host what I can, and I&apos;m trying to get back into writing about it here.</p>
       </div>

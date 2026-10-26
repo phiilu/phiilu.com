@@ -39,4 +39,6 @@ jobs:
 
       - run: pnpm run lint
 
+      - run: pnpm run check
+
       - run: pnpm run build

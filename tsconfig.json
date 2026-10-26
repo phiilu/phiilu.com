@@ -2,14 +2,14 @@
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", "migration"],
+  "contentMappers": [{ "package": "@astrojs/ts-content-mapper", "extensions": [".astro"] }],
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@react/*": ["src/components/react/*"],
-      "@styles/*": ["src/styles/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@react/*": ["./src/components/react/*"],
+      "@styles/*": ["./src/styles/*"]
     },
     "strictNullChecks": true,
     "jsx": "react-jsx",

@@ -11,3 +11,9 @@ export const SITE_DESCRIPTION =
 export const OWNER = 'Florian Kapfenberger';
 export const TOWN = '3170 Hainfeld';
 export const CONTACT_EMAIL = 'legal@kapfenberger.me';
+
+// Pages Google crawled and chose not to index: tag pages only list posts, and
+// the hello-world post is too thin to stand on its own. They get a noindex tag
+// and stay out of the sitemap, so the two never contradict each other.
+export const isNoindexed = (pathname: string) =>
+  pathname.startsWith('/tag/') || pathname === '/hello-world';

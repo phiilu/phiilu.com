@@ -31,7 +31,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "astro": "^7.4.2",
+    "astro": "^7.4.7",
     "astro-expressive-code": "^0.44.3",
     "clsx": "^2.1.1",
     "date-fns": "^4.4.0",
